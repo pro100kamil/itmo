@@ -27,7 +27,7 @@ public class main {
                 else{
                     a2[i][j] = Math.pow(Math.E, Math.pow(((Math.sin(X)+4)/1)/(4/0.25), 2));
                 }
-            }0
+            }
         }
         //4
         for (int i = 0; i < a2.length; i++) { 
