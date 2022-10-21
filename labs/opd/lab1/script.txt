@@ -1,0 +1,122 @@
+chmod -R 777 lab0  
+rm -r lab0
+
+mkdir lab0
+cd lab0
+
+# 1
+touch clamperl3
+mkdir gastrodon6
+mkdir gastrodon6/deerling
+mkdir gastrodon6/pelipper
+mkdir gastrodon6/natu
+touch gastrodon6/crawdaunt
+touch gastrodon6/mienshao
+mkdir gastrodon6/scrafty
+touch manectric7
+mkdir prinplup1
+mkdir prinplup1/lanturn
+touch prinplup1/empoleon
+mkdir prinplup1/spoink
+mkdir prinplup1/togepi
+touch prinplup1/bulbasaur
+touch stunky4
+mkdir wynaut9
+touch wynaut9/granbull
+mkdir wynaut9/masquerain
+mkdir wynaut9/krokorok
+mkdir wynaut9/tentacruel
+
+echo "Возможности Overland=1 Surface=6 Underwater=6 Jump=2
+Power=2 Intelligence=3 Gilled=0" > clamperl3
+echo "Ходы Ancientpower
+Avalanche Body Slam Counter Dark Pulse Dive Double-Edge Endeavor Fury
+Cutter Icy Wind Iron Defense Knock Off Mud-Slap Sleep Talk Snore Spite
+Superpower Swift Water Pulse Whirlpool" > gastrodon6/crawdaunt
+echo "Способности Focus
+Inner Focus Regenerator" > gastrodon6/mienshao
+echo "Способности Overcharge Static
+Lightningrod" > manectric7
+echo "Ходы Avalanche Covet Dive Fury Cutter Hydro
+Cannon Icy Wind Iron Defense Knock Off Mud-Slap Rock Climb Signal Beam
+Sleep Talk Snore Stealth Rock Steel Wing Water Pledge Water
+Pulse" > prinplup1/empoleon
+echo "satk=7 sdef=7 spd=5" > prinplup1/bulbasaur
+echo "Способности Venom Dark
+Art Stench Aftermath" > stunky4
+echo "Ходы Body Slam Charmt Counter Covet
+Defense Curl Double-Edge Dynamicpunch Fire Punch Fire Fang≠ Focus
+Punch Heal Bell Hyper Voice Ice Punch Ice Fang≠ Iron Tail Last Resort
+Low Kick Mega Kick Mega Punch Mud-Slap Outrage Scary Face≠ Seismic
+Toss Shock Wave Sleep Talk Snore Super Fang Superpower Thunderpunch
+Thunder Fang≠ Water Pulse" > wynaut9/granbull
+
+# 2
+chmod 440 clamperl3
+chmod 317 gastrodon6
+chmod 737 gastrodon6/deerling
+chmod 771 gastrodon6/pelipper 
+chmod 335 gastrodon6/natu
+chmod 006 gastrodon6/crawdaunt
+chmod 604 gastrodon6/mienshao
+chmod 771 gastrodon6/scrafty
+chmod u=x manectric7
+chmod 363 prinplup1
+chmod 736 prinplup1/lanturn
+chmod 060 prinplup1/empoleon
+chmod 537 prinplup1/spoink
+chmod 550 prinplup1/togepi
+chmod 066 prinplup1/bulbasaur
+chmod 444 stunky4
+chmod 733 wynaut9
+chmod 004 wynaut9/granbull
+chmod 363 wynaut9/masquerain
+chmod 733 wynaut9/krokorok
+chmod 753 wynaut9/tentacruel
+
+# 3
+ln -s stunky4 prinplup1/empoleonstunky
+cp manectric7 gastrodon6/pelipper
+cat clamperl3 > prinplup1/bulbasaurclamperl
+
+
+chmod u+r prinplup1
+chmod u+rx prinplup1/bulbasaur
+chmod u+rx prinplup1/empoleon
+cp -fR prinplup1 gastrodon6/deerling
+chmod u-rx prinplup1/empoleon
+chmod u-rx prinplup1/bulbasaur
+chmod u-r prinplup1
+
+ln -s wynaut9 Copy_79
+ln stunky4 gastrodon6/mienshaostunky
+chmod u+r prinplup1
+chmod u+rx prinplup1/empoleon
+cat prinplup1/empoleon prinplup1/empoleon > stunky4_62
+chmod u-rx prinplup1/empoleon
+chmod u-r prinplup1
+
+# 4
+mkdir tmp
+touch tmp/errors.txt
+echo "---4.1---"
+wc -m s* | sort 2>tmp/errors.txt
+echo "---4.2---"
+ls -R -u m* | head -n 2 2>tmp/errors.txt
+echo "---4.3---"
+cat wynaut9/* | sort 
+echo "---4.4---"
+cat -n gastrodon6/crawdaunt gastrodon6/mienshao 2>tmp/errors.txt | grep -vi "e$" 
+echo "---4.5---"
+cat gastrodon/* 2>tmp/errors.txt | grep -i "e$" 
+echo "---4.6---"
+ls -R -u s* 2>$1 | tail -n 2 
+echo "---------"
+
+# 5
+rm -f manectric7
+rm -f gastrodon6/crawdaunt
+rm prinplup1/empoleonstun*
+rm gastrodon6/mienshaostun*
+rm -r prinplup1
+rm -rf gastrodon6/pelipper
