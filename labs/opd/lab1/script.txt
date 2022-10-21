@@ -76,9 +76,10 @@ chmod 753 wynaut9/tentacruel
 
 # 3
 ln -s stunky4 prinplup1/empoleonstunky
+chmod u+r manectric7
 cp manectric7 gastrodon6/pelipper
+chmod u-r manectric7
 cat clamperl3 > prinplup1/bulbasaurclamperl
-
 
 chmod u+r prinplup1
 chmod u+rx prinplup1/bulbasaur
@@ -95,6 +96,10 @@ chmod u+rx prinplup1/empoleon
 cat prinplup1/empoleon prinplup1/empoleon > stunky4_62
 chmod u-rx prinplup1/empoleon
 chmod u-r prinplup1
+
+echo "---------"
+ls -1R
+echo "---------"
 
 # 4
 mkdir tmp
