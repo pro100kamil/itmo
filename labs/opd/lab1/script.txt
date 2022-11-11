@@ -75,7 +75,7 @@ chmod 733 wynaut9/krokorok
 chmod 753 wynaut9/tentacruel
 
 # 3
-ln -s stunky4 prinplup1/empoleonstunky
+ln -s ../stunky4 prinplup1/empoleonstunky
 chmod u+r manectric7
 cp manectric7 gastrodon6/pelipper
 chmod u-r manectric7
@@ -102,18 +102,17 @@ ls -1R
 echo "---------"
 
 # 4
-mkdir tmp
-touch tmp/errors.txt
+touch /tmp/errors367149.txt
 echo "---4.1---"
-wc -m s* | sort 2>tmp/errors.txt
+wc -m s* | sort 2>/tmp/errors367149
 echo "---4.2---"
-ls -R -u m* | head -n 2 2>tmp/errors.txt
+ls -R -u m* | head -n 2 2>/tmp/errors367149
 echo "---4.3---"
 cat wynaut9/* | sort 
 echo "---4.4---"
-cat -n gastrodon6/crawdaunt gastrodon6/mienshao 2>tmp/errors.txt | grep -vi "e$" 
+cat -n gastrodon6/crawdaunt gastrodon6/mienshao 2>/tmp/errors367149 | grep -vi "e$" 
 echo "---4.5---"
-cat gastrodon/* 2>tmp/errors.txt | grep -i "e$" 
+cat gastrodon/* 2>/tmp/errors367149 | grep -i "e$" 
 echo "---4.6---"
 ls -R -u s* 2>$1 | tail -n 2 
 echo "---------"
