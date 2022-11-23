@@ -2,7 +2,7 @@ class ParserJsonToDict:
     """Класс, содержащий функции для парсинга из json в словарь"""
 
     @staticmethod
-    def error(text_error: str):
+    def error(text_error):
         print(f'ERROR: {text_error}')
         exit(0)
 
@@ -40,7 +40,7 @@ class ParserJsonToDict:
 
     @staticmethod
     def parse(s: str):
-        """Преобразуем строку в число, в булево значение или в None"""
+        # преобразуем строку в число, в булево значение или в None
         is_parse_d = {
             ParserJsonToDict.is_int: ParserJsonToDict.parse_int,
             ParserJsonToDict.is_float: ParserJsonToDict.parse_float,
@@ -54,7 +54,7 @@ class ParserJsonToDict:
 
     @staticmethod
     def get_values(s: str, i: int) -> tuple:
-        """Ищет в строке s, начиная с i-той позиции"""
+        # ищет в строке s, начиная с i-той позиции
         while i < len(s):
             c = s[i]
             if c == '[':
@@ -154,25 +154,23 @@ class ParserJsonToDict:
         return res_d
 
 
-def dict_to_xml(d: dict, name='main') -> str:
-    """Из питоновского словаря в xml"""
+def dict_to_xml(d, name='main'):
+    """из питоновского словаря в xml"""
     text_xml = ''
     for k, v in d.items():
-        k = k.replace(" ", "_")
         if isinstance(v, dict):
             text_xml += dict_to_xml(v, k)
         elif isinstance(v, list):
-            text_xml += f'<{k}>\n'
+            text_xml += f'<{k.replace(" ", "_")}>\n'
             for el in v:
-                text_xml += dict_to_xml({k: el}, '')
-                # text_xml += dict_to_xml({'el_' + k: el}, '')
-            text_xml += f'</{k}>\n'
+                text_xml += dict_to_xml({'el_' + k: el}, '')
+            text_xml += f'</{k.replace(" ", "_")}>\n'
         else:
             if ParserJsonToDict.is_float(k):
                 k = 'num_' + k
-            text_xml += f'<{k}>'
+            text_xml += f'<{k.replace(" ", "_")}>'
             text_xml += str(v)
-            text_xml += f'</{k}>\n'
+            text_xml += f'</{k.replace(" ", "_")}>\n'
     if name == '':
         return text_xml
     return f'<{name.replace(" ", "_")}>\n' + text_xml + \
@@ -180,11 +178,10 @@ def dict_to_xml(d: dict, name='main') -> str:
 
 
 def main():
-    fn_in, fn_out = 'in.json', 'out.xml'
-    with open(fn_in, encoding='utf-8') as f_in, \
-            open(fn_out, 'w', encoding='utf-8') as f_out:
+    with open('in.json', encoding='utf-8') as f_in, \
+            open('out.xml', 'w', encoding='utf-8') as f_out:
         text = f_in.read()
-        # print(ParserJsonToDict.parse_json_object(text))
+        print(ParserJsonToDict.parse_json_object(text))
         print(dict_to_xml(ParserJsonToDict.parse_json_object(text)),
               file=f_out)
 

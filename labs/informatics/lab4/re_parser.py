@@ -1,14 +1,18 @@
-class ParserJsonToDict:
-    """Класс, содержащий функции для парсинга из json в словарь"""
+from re import fullmatch
+
+
+class ReParserJsonToDict:
+    """Класс, содержащий функции для парсинга из json в словарь
+    через регулярыные выражения"""
 
     @staticmethod
-    def error(text_error: str):
+    def error(text_error):
         print(f'ERROR: {text_error}')
         exit(0)
 
     @staticmethod
     def is_int(s: str) -> bool:
-        return s.isdigit()
+        return fullmatch(r'\d+', s) is not None
 
     @staticmethod
     def parse_int(s: str) -> int:
@@ -16,7 +20,7 @@ class ParserJsonToDict:
 
     @staticmethod
     def is_float(s: str) -> bool:
-        return s and set(s) <= (set(map(str, range(10))) | {'.'})
+        return fullmatch(r'\d+\.\d+', s) is not None
 
     @staticmethod
     def parse_float(s: str) -> float:
@@ -24,7 +28,7 @@ class ParserJsonToDict:
 
     @staticmethod
     def is_bool(s: str) -> bool:
-        return s in {'true', 'false'}
+        return fullmatch(r'true|false', s) is not None
 
     @staticmethod
     def parse_bool(s: str) -> bool:
@@ -32,7 +36,7 @@ class ParserJsonToDict:
 
     @staticmethod
     def is_null(s: str) -> bool:
-        return s == 'null'
+        return fullmatch(r'null', s) is not None
 
     @staticmethod
     def parse_null(s: str) -> None:
@@ -42,15 +46,15 @@ class ParserJsonToDict:
     def parse(s: str):
         """Преобразуем строку в число, в булево значение или в None"""
         is_parse_d = {
-            ParserJsonToDict.is_int: ParserJsonToDict.parse_int,
-            ParserJsonToDict.is_float: ParserJsonToDict.parse_float,
-            ParserJsonToDict.is_bool: ParserJsonToDict.parse_bool,
-            ParserJsonToDict.is_null: ParserJsonToDict.parse_null
+            ReParserJsonToDict.is_int: ReParserJsonToDict.parse_int,
+            ReParserJsonToDict.is_float: ReParserJsonToDict.parse_float,
+            ReParserJsonToDict.is_bool: ReParserJsonToDict.parse_bool,
+            ReParserJsonToDict.is_null: ReParserJsonToDict.parse_null
         }
         for f1, f2 in is_parse_d.items():
             if f1(s):
                 return f2(s)
-        ParserJsonToDict.error('неизвестный тип данных')
+        ReParserJsonToDict.error('неизвестный тип данных')
 
     @staticmethod
     def get_values(s: str, i: int) -> tuple:
@@ -63,36 +67,36 @@ class ParserJsonToDict:
                 i += 1
                 while brackets != 0:
                     if i >= len(s):
-                        ParserJsonToDict.error('[ не закрывается')
+                        ReParserJsonToDict.error('[ не закрывается')
                     if s[i] == '[':
                         brackets += 1
                     elif s[i] == ']':
                         brackets -= 1
                     tmp += s[i]
                     i += 1
-                return ParserJsonToDict.parse_array(tmp), i
+                return ReParserJsonToDict.parse_array(tmp), i
             elif c == '{':
                 tmp = '{'
                 brackets = 1  # кол-во открывшихся - кол-во закрывшихся
                 i += 1
                 while brackets != 0:
                     if i >= len(s):
-                        ParserJsonToDict.error('{ не закрывается')
+                        ReParserJsonToDict.error('{ не закрывается')
                     if s[i] == '{':
                         brackets += 1
                     elif s[i] == '}':
                         brackets -= 1
                     tmp += s[i]
                     i += 1
-                return ParserJsonToDict.parse_json_object(tmp), i
+                return ReParserJsonToDict.parse_json_object(tmp), i
             elif c.isalnum():
                 tmp = ''
                 while i < len(s) and (s[i].isalnum() or s[i] == '.'):
                     if i >= len(s):
-                        ParserJsonToDict.error('строка без кавычек')
+                        ReParserJsonToDict.error('строка без кавычек')
                     tmp += s[i]
                     i += 1
-                return ParserJsonToDict.parse(tmp), i
+                return ReParserJsonToDict.parse(tmp), i
             else:
                 i += 1
 
@@ -108,12 +112,12 @@ class ParserJsonToDict:
                 i += 1
                 while s[i] != '"':
                     if i >= len(s):
-                        ParserJsonToDict.error('нет кавычек')
+                        ReParserJsonToDict.error('нет кавычек')
                     tmp += s[i]
                     i += 1
                 res_l.append(tmp)
             elif c in '[{' or c.isalnum():
-                value, i = ParserJsonToDict.get_values(s, i)
+                value, i = ReParserJsonToDict.get_values(s, i)
                 res_l.append(value)
             else:
                 i += 1
@@ -133,7 +137,7 @@ class ParserJsonToDict:
                 i += 1
                 while s[i] != '"':
                     if i >= len(s):
-                        ParserJsonToDict.error('нет кавычек')
+                        ReParserJsonToDict.error('нет кавычек')
                     tmp += s[i]
                     i += 1
                 i += 1
@@ -144,8 +148,8 @@ class ParserJsonToDict:
                     key = None
             elif c in '[{' or c.isalnum():
                 if key is None:
-                    ParserJsonToDict.error('отсутсвует ключ')
-                value, i = ParserJsonToDict.get_values(s, i)
+                    ReParserJsonToDict.error('отсутсвует ключ')
+                value, i = ReParserJsonToDict.get_values(s, i)
                 res_d[key] = value
                 key = None
             else:
@@ -165,10 +169,9 @@ def dict_to_xml(d: dict, name='main') -> str:
             text_xml += f'<{k}>\n'
             for el in v:
                 text_xml += dict_to_xml({k: el}, '')
-                # text_xml += dict_to_xml({'el_' + k: el}, '')
             text_xml += f'</{k}>\n'
         else:
-            if ParserJsonToDict.is_float(k):
+            if ReParserJsonToDict.is_float(k):
                 k = 'num_' + k
             text_xml += f'<{k}>'
             text_xml += str(v)
@@ -180,12 +183,11 @@ def dict_to_xml(d: dict, name='main') -> str:
 
 
 def main():
-    fn_in, fn_out = 'in.json', 'out.xml'
+    fn_in, fn_out = 'in.json', 'out2.xml'
     with open(fn_in, encoding='utf-8') as f_in, \
             open(fn_out, 'w', encoding='utf-8') as f_out:
         text = f_in.read()
-        # print(ParserJsonToDict.parse_json_object(text))
-        print(dict_to_xml(ParserJsonToDict.parse_json_object(text)),
+        print(dict_to_xml(ReParserJsonToDict.parse_json_object(text)),
               file=f_out)
 
 
