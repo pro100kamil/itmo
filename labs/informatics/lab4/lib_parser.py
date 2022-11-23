@@ -6,7 +6,9 @@ def main():
     fn_in, fn_out = 'in.json', 'out1.xml'
     with open(fn_out, 'w', encoding='utf-8') as f_out:
         data = readfromjson(fn_in)
-        print(json2xml.Json2xml(data).to_xml(), file=f_out)
+        # print(help(json2xml.Json2xml))
+        print(json2xml.Json2xml(data, wrapper='main',
+                                attr_type=False).to_xml(), file=f_out)
 
 
 if __name__ == '__main__':

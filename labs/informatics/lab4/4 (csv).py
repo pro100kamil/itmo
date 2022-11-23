@@ -1,11 +1,29 @@
 from main_parser import ParserJsonToDict
 
 
-def dict_to_csv(d: dict, delimiter=',') -> str:
+def universal_dict_to_csv(d: dict, delimiter=',') -> str:
     """Из питоновского словаря в csv"""
     text_csv = ''
     for k, v in d.items():
-        text_csv += f'{k}{delimiter}{str(v)}\n'
+        text_csv += f'{k}{delimiter}{str(v).replace(",", ";")}\n'
+    return text_csv
+
+
+def parse(v) -> str:
+    if isinstance(v, str):
+        return f'"{v}"'
+    return str(v).replace(',', ';')
+
+
+def dict_to_csv(d: dict, delimiter=',') -> str:
+    """Из питоновского словаря в csv"""
+    text_csv = ''
+    keys = ["Номер занятия"] + list(d["Занятие 1"].keys())
+    text_csv += delimiter.join(map(parse, keys)) + '\n'
+    for k, v in d.items():
+        values = [k] + list(d[k].values())
+        text_csv += delimiter.join(map(parse, values)) + '\n'
+    # return text_csv.replace('[', '').replace(']', '')
     return text_csv
 
 
