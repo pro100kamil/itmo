@@ -1,0 +1,89 @@
+@startuml
+
+package people {
+class Person 
+
+class MumiDad 
+MumiDad --|> Person
+
+class Ondatr
+Ondatr --|> Person
+
+class Tofsla
+Tofsla --|> Person
+
+class Vifsla
+Vifsla --|> Person
+
+enum Status
+Status --o Person
+
+class Weapon 
+Weapon --o Person
+
+class Alarm
+Alarm --* MumiDad
+}
+
+package exceptions {
+class FewLivesException
+FewLivesException --|> Exception
+
+class OldWeaponException
+OldWeaponException --|> RuntimeException
+
+RuntimeException --|> Exception
+}
+
+package things {
+interface AddableThing 
+
+abstract class Thing
+
+class Clock 
+Clock --|> Thing
+
+interface OnOffable
+
+class Lamp
+Lamp --|> Thing
+Lamp ..|> OnOffable
+
+class KeroseneLamp
+KeroseneLamp --|> Lamp
+
+class Sofa
+Sofa --|> Thing
+
+class Suitcase
+Suitcase --|> Thing
+
+class Box
+Box --|> Thing
+
+class Table
+Table --|> Thing
+Table ..|> AddableThing
+}
+
+package places {
+interface AddablePerson
+
+abstract class Place
+Place ..|> AddablePerson
+Place ..|> AddableThing
+
+class Veranda
+Veranda --|> Place
+
+class Home
+
+class Room
+Room --|> Place
+Room --* Home
+
+class LivingRoom
+LivingRoom --|> Room
+LivingRoom --* Home
+}
+@enduml

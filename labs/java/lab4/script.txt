@@ -1,0 +1,2 @@
+javac -d classes *.java people/*.java exceptions/*.java things/*.java places/*.java
+java -cp classes Main

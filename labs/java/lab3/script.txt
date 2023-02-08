@@ -1,0 +1,3 @@
+javac -d classes people/*.java places/*.java things/*.java Main.java
+java -cp classes Main
+
