@@ -1,0 +1,106 @@
+@startuml
+object Pokemon
+Pokemon : From ru.ifmo.se.pokemon
+object Celebi
+Celebi : pokemons
+object Amaura
+Amaura : pokemons
+object Aurorus
+Aurorus : pokemons
+object Flabebe
+Flabebe : pokemons
+object Floette
+Floette : pokemons
+object Florges
+Florges : pokemons
+
+object PhysicalMove
+PhysicalMove : From ru.ifmo.se.pokemon
+object StatusMove
+StatusMove : From ru.ifmo.se.pokemon
+object SpecialMove
+SpecialMove : From ru.ifmo.se.pokemon
+
+object Rest
+Rest : moves
+object Swagger
+Swagger : moves
+object Recover
+Recover : moves
+object AerialAce
+AerialAce : moves
+
+object ChargeBeam
+ChargeBeam : moves
+object StoneEdge
+StoneEdge : moves
+object Thunderbolt
+Thunderbolt : moves
+
+object Thunder
+Thunder : moves
+
+object Facade
+Facade : moves
+object CalmMind
+CalmMind : moves
+
+object RazorLeaf
+RazorLeaf : moves
+
+object PetalBlizzard
+PetalBlizzard : moves
+
+
+Pokemon <|-- Celebi
+Pokemon <|-- Amaura
+Amaura <|-- Aurorus
+Pokemon <|-- Flabebe
+Flabebe <|-- Floette
+Floette <|-- Florges
+
+
+Rest --|> StatusMove
+Swagger --|> StatusMove
+Recover --|> StatusMove
+AerialAce --|> PhysicalMove
+
+ChargeBeam --|> SpecialMove
+StoneEdge --|> PhysicalMove
+Thunderbolt --|> SpecialMove
+
+Thunder --|> SpecialMove
+
+Facade --|> PhysicalMove
+CalmMind --|> StatusMove
+
+RazorLeaf --|> PhysicalMove
+
+PetalBlizzard --|> PhysicalMove
+
+Celebi <-- Rest
+Celebi <-- Swagger
+Celebi <-- Recover
+Celebi <-- AerialAce
+
+Amaura <-- ChargeBeam
+Amaura <-- StoneEdge
+Amaura <-- Thunderbolt
+
+Aurorus <-- ChargeBeam
+Aurorus <-- StoneEdge
+Aurorus <-- Thunderbolt
+Aurorus <-- Thunder
+
+Flabebe <-- Facade
+Flabebe <-- CalmMind
+
+Floette <-- Facade
+Floette <-- CalmMind
+Floette <-- RazorLeaf
+
+Florges <-- Facade
+Florges <-- CalmMind
+Florges <-- RazorLeaf
+Florges <-- PetalBlizzard
+@enduml
