@@ -8,17 +8,18 @@ import managers.CollectionManager;
  */
 public class FilterBySalary extends Command {
 	private Float salary;
+	private CollectionManager collectionManager;
 
-	public FilterBySalary(Float salary) {
+	public FilterBySalary(Float salary, CollectionManager collectionManager) {
 		super("filter_by_salary", "выводит работников с заданной зарплатой");
 		this.salary = salary;
+		this.collectionManager = collectionManager;
 	}
 
 	/**
 	 * Выводит работников с заданной зарплатой
-	 * @param collectionManager менеджер коллекции, отвечающий за основную коллекцию
 	 */
-	public void execute(CollectionManager collectionManager) {
+	public void execute() {
 		for (Worker worker : collectionManager.getFilterBySalary(salary)) {
 			System.out.println(worker);
 		}

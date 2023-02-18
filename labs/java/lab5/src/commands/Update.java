@@ -9,18 +9,19 @@ import managers.CollectionManager;
 public class Update extends Command {
 	private Integer id;
 	private	Worker elem;
+	private CollectionManager collectionManager;
 
-	public Update(Integer id, Worker elem) {
-		super("update", "обновляет работника по id на основе заданное работника");
+	public Update(Integer id, Worker elem, CollectionManager collectionManager) {
+		super("update", "обновляет работника по id на основе заданного работника");
 		this.id = id;
 		this.elem = elem;
+		this.collectionManager = collectionManager;
 	}
 
 	/**
 	 * Обновляет работника по id на основе заданное работника
-	 * @param collectionManager менеджер коллекции, отвечающий за коллекцию, в которую мы добавляем
 	 */
-	public void execute(CollectionManager collectionManager) {
+	public void execute() {
 		if (elem != null)
 			collectionManager.update(id, elem);
 	};

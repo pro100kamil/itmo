@@ -16,10 +16,10 @@ public class Worker implements Comparable <Worker> {
 	
     private Person person; //Поле не может быть null
 	
-	private static int curId = 1;
+	private static int nextId = 1;  //новому работнику присвоется такой id
 	
 	public Worker(String name, Coordinates coordinates, Float salary, Position position, Status status, Person person) {
-		id = curId++;
+		id = nextId++;
 		this.name = name;
 		this.coordinates = coordinates;
 		creationDate = LocalDateTime.now();
@@ -61,7 +61,6 @@ public class Worker implements Comparable <Worker> {
 		return person;
 	}
 	
-	
 	public void setName(String name) {
 		this.name = name;
 	}	
@@ -74,80 +73,29 @@ public class Worker implements Comparable <Worker> {
 		this.salary = salary;
 	}
 	
-	/**
-     * Изменяет зарплату работника, если зарплата корректна
-	 * @param salary строка с зарплатой
-	 * @return boolean true - зарплата корректна, false - не корректна
-     */
-	public boolean setSalary(String salary) {
-		if (salary.isEmpty()) {
-			this.salary = null;
-			return true;
-		}
-		try {
-			this.salary = Float.parseFloat(salary);
-		}
-		catch (NumberFormatException e) {
-			return false;
-		}
-		return true;
-	}
-	
 	public void setPosition(Position position) {
 		this.position = position;
 	}	
 	
-	/**
-     * Изменяет позицию работника, если позиция корректна
-	 * @param position строка с позицией
-	 * @return boolean true - позиция корректна, false - не корректна
-     */
-	public boolean setPosition(String position) {
-		if (position.isEmpty()) {
-			this.position = null;
-			return true;
-		}
-		try {
-			this.position = Position.valueOf(position);
-		}
-		catch (IllegalArgumentException e) {
-			return false;
-		}
-		return true;
-	}
-	
 	public void setStatus(Status status) {
 		this.status = status;
-	}
-	
-	/**
-     * Изменяет статус работника, если статус корректный
-	 * @param status строка со статусом
-	 * @return boolean true - статус корректный, false - некорректный
-     */
-	public boolean setStatus(String status) {
-		if (status.isEmpty()) {
-			this.status = null;
-			return true;
-		}
-		try {
-			this.status = Status.valueOf(status);
-		}
-		catch (IllegalArgumentException e) {
-			return false;
-		}
-		return true;
 	}
 	
 	public void setPerson(Person person) {
 		this.person = person;
 	}
 	
-	public static void moveCurId(Integer newId) {
-		if (newId.compareTo(curId) > 0)
-			curId = newId;
+	/**
+     * Сдвигает id следующего работника
+     */
+	public static void moveNextId(Integer newId) {
+		if (newId.compareTo(nextId) > 0)
+			nextId = newId;
 	}
 	
+	/**
+     * Проверка корректности всех полей
+     */
 	public boolean validate() {
 		if (id <= 0) {
 			return false;
@@ -161,7 +109,7 @@ public class Worker implements Comparable <Worker> {
 		if (creationDate == null) {
 			return false;
 		}
-		if (salary <= 0) {
+		if (salary != null && salary <= 0) {
 			return false;
 		}
 		if (person == null) {

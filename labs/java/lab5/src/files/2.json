@@ -32,19 +32,5 @@
       "height": 188.0,
       "passportID": "123456789"
     }
-  },
-  {
-    "id": 0,
-    "name": "",
-    "coordinates": {
-      "x": 5,
-      "y": 5
-    },
-    "creationDate": "2023-02-17T23:04:58.769333700",
-    "salary": 5.0,
-    "person": {
-      "height": 4.0,
-      "passportID": ""
-    }
   }
 ]

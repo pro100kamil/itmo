@@ -10,6 +10,12 @@ import java.io.IOException;
  * Класс для работы с файлами. Запись в них, считывание из них.
  */
 public class FileManager {
+	//public static String getTextFromFile(String fileName) {
+	/**
+	 * Получает текст из файла
+	 * @param fileName имя файла
+	 * @return String текст из файла
+	 */
 	public static String getFromFile(String fileName) {
 		try {
 			InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(fileName));
@@ -26,6 +32,11 @@ public class FileManager {
 		}
 	}
 	
+	/**
+	 * Записывает текст в файл
+	 * @param fileName имя файла
+	 * @param text текст для файла
+	 */
 	public static void writeTextToFile(String fileName, String text) {
 		try {
 			OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream(fileName));

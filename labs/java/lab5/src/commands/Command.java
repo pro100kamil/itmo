@@ -3,7 +3,7 @@ package commands;
 import managers.CollectionManager;
 
 /**
- * јбстрактный класс команды
+ * Абстрактный класс команды
  */
 public abstract class Command {
 	private String name, desription;
@@ -17,7 +17,10 @@ public abstract class Command {
 		return name;
 	}
 
-	public abstract void execute(CollectionManager collectionManager);
+	/**
+	 * Выполняет команду
+	 */
+	public abstract void execute();
 	
 	@Override
 	public String toString() {

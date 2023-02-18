@@ -9,21 +9,22 @@ import managers.*;
  * Команда execute_script file_name
  */
 public class ExecuteScript extends Command {
-	private String fileName;
-	private static int depth = 0, maxDepth = 3;
-	private CommandManager commandManager;
+	private static int depth = 0, maxDepth = 5;
+	private String fileName, dataFileName;
+	private CollectionManager collectionManager;
+	
 
-	public ExecuteScript(String fileName, CommandManager commandManager) {
+	public ExecuteScript(String fileName, CollectionManager collectionManager, String dataFileName) {
 		super("execute_script", "выполняет команды из файла");
 		this.fileName = fileName;
-		this.commandManager = commandManager;
+		this.collectionManager = collectionManager;
+		this.dataFileName = dataFileName;
 	}
 
 	/**
 	 * Выполняет команды из файла
-	 * @param collectionManager менеджер коллекции, отвечающий за основную коллекцию
 	 */
-	public void execute(CollectionManager collectionManager) {
+	public void execute() {
 		if (depth >= maxDepth) {
 			System.out.println("Превышена глубина рекурсии!");
 			return;
@@ -31,23 +32,8 @@ public class ExecuteScript extends Command {
 		System.out.println("Начинаем обработку файла с командами");
 		depth++;
 		Console fileConsole = new FileConsole(fileName);
-		InputManager newInputManager = new InputManager(fileConsole, collectionManager, commandManager);
+		InputManager newInputManager = new InputManager(fileConsole, collectionManager, dataFileName);
 		newInputManager.run();
 		depth--;
-		//String text = new FileManager.getFromFile(fileName);
-		/*InputManager inputManager = new InputManager(console);
-		while (true) {
-			try {
-				//command = commandManager.getCommand(console.getNextStr());
-				//command = inputManager.getCommand();
-				command = inputManager.getCommand(console.getNextStr(), commandManager);
-				if (command != null)
-					command.execute(collectionManager);
-			}
-			catch (Exception e) {
-				console.write(e.toString());
-			}
-			console.write("--------------------------");
-		}*/
 	};
 }

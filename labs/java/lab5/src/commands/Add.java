@@ -9,17 +9,18 @@ import exceptions.NotUniqueIdException;
  */
 public class Add extends Command {
 	private Worker elem;
+	private CollectionManager collectionManager;
 
-	public Add(Worker elem) {
+	public Add(Worker elem, CollectionManager collectionManager) {
 		super("add", "добавляет элемент в коллекцию");
 		this.elem = elem;
+		this.collectionManager = collectionManager;
 	}
 
 	/**
 	 * Добавляет работника в коллекцию
-	 * @param collectionManager менеджер коллекции, отвечающий за коллекцию, в которую мы добавляем
 	 */
-	public void execute(CollectionManager collectionManager) {
+	public void execute() {
 		if (elem != null) {
 			try {
 				collectionManager.add(elem);

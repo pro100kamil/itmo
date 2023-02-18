@@ -1,7 +1,7 @@
 package managers;
 
 /**
- *  ласс дл€ работы с файловым вводом
+ * Класс для работы с файловым вводом
  */
 public class FileConsole implements Console {
 	private String fileName;
@@ -19,7 +19,7 @@ public class FileConsole implements Console {
 	}
 	
 	public String getNextStr() {
-		return lines[curInd++];
+		return lines[curInd++].strip();
 	}
 	
 	public void write(String text) {

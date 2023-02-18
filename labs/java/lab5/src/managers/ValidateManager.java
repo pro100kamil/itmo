@@ -4,13 +4,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
- *  ласс дл¤ разных проверок (¤вл¤етс¤ ли строка числом, командой и тд)
+ *  Класс для разных проверок (является ли строка числом, командой и тд)
  */
 public class ValidateManager {
 	/**
-     * ѕровер¤ет, ¤вл¤етс¤ ли строка действительным числом
+     * Проверяет, является ли строка действительным числом
 	 * @param value строка, которую провер¤ем
-	 * @return boolean true - ¤вл¤етс¤, false - не ¤вл¤етс¤
+	 * @return boolean true - является, false - не является
      */
 	public static boolean isFloat(String value) {
 		try {
@@ -23,9 +23,9 @@ public class ValidateManager {
 	}
 	
 	/**
-     * ѕровер¤ет, ¤вл¤етс¤ ли строка целым числом
+     * Проверяет, является ли строка целым числом
 	 * @param value строка, которую провер¤ем
-	 * @return boolean true - ¤вл¤етс¤, false - не ¤вл¤етс¤
+	 * @return boolean true - является, false - не является
      */
 	public static boolean isInteger(String value) {
 		try {
@@ -38,9 +38,9 @@ public class ValidateManager {
 	}
 	
 	/**
-     * ѕровер¤ет, есть ли файл с таким названием
+     * Проверяет, есть ли файл с таким названием
 	 * @param value строка, которую провер¤ем
-	 * @return boolean true - ¤вл¤етс¤, false - не ¤вл¤етс¤
+	 * @return boolean true - является, false - не является
      */
 	public static boolean isFile(String value) {
 		return Files.exists(Path.of(value));

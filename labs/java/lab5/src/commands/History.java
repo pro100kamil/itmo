@@ -1,7 +1,5 @@
 package commands;
 
-import managers.CollectionManager;
-
 import java.util.LinkedList;
 
 /**
@@ -19,7 +17,7 @@ public class History extends Command {
 	 * Выводит последние 11 команд (внизу самая последняя)
 	 * @param collectionManager менеджер коллекции, отвечающий за основную коллекцию
 	 */
-	public void execute(CollectionManager collectionManager) {
+	public void execute() {
 		for (int i = Math.max(0, history.size() - 11); i < history.size(); i++) {
 			System.out.println(history.get(i).getName());
 		}

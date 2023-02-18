@@ -7,17 +7,18 @@ import managers.CollectionManager;
  */
 public class Remove extends Command {
 	private Integer id;
+	private CollectionManager collectionManager;
 
-	public Remove(Integer id) {
+	public Remove(Integer id, CollectionManager collectionManager) {
 		super("remove_by_id", "удаляет работника по id из коллекции");
 		this.id = id;
+		this.collectionManager = collectionManager;
 	}
 
 	/**
 	 * Удаляет работника по id из коллекции
-	 * @param collectionManager менеджер коллекции, отвечающий за основную коллекцию
 	 */
-	public void execute(CollectionManager collectionManager) {
+	public void execute() {
 		collectionManager.remove(id);
 	};
 }

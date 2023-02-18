@@ -14,7 +14,7 @@ public class ConsoleManager implements Console {
 	}
 	
 	public String getNextStr() {
-		return sc.nextLine();
+		return sc.nextLine().strip();
 	}
 	
 	public void write(String text) {

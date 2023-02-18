@@ -6,16 +6,17 @@ import managers.CollectionManager;
  * Команда clear
  */
 public class Clear extends Command {
+	private CollectionManager collectionManager;
 		
-	public Clear() { 
+	public Clear(CollectionManager collectionManager) { 
 		super("clear", "очищает коллекцию");
+		this.collectionManager = collectionManager;
 	}
 
 	/**
 	 * Очищает коллекцию
-	 * @param collectionManager менеджер коллекции, отвечающий за коллекцию, которую мы очистим
 	 */
-	public void execute(CollectionManager collectionManager) {
+	public void execute() {
 		collectionManager.clear();
 	};
 }

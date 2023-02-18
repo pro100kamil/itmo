@@ -37,7 +37,7 @@ public class CollectionManager {
 				}
 			}
 		}
-		Worker.moveCurId(maxId + 1);
+		Worker.moveNextId(maxId + 1);
 	}
 	
 	/**
@@ -71,6 +71,10 @@ public class CollectionManager {
 	/**Вывод всех элементов коллекции
 	 */
 	public void printElements() {
+		if (linkedList.size() == 0) {
+			System.out.println("Коллекция пустая");
+			return;
+		}
 		System.out.println("Элементы коллекции: " + linkedList.size());
 		int i = 0;
 		for (Worker worker : linkedList) {
@@ -95,6 +99,9 @@ public class CollectionManager {
 		}
 	}
 	
+	/**
+	 * Выводит позиции работников, работники идут по убыванию
+	 */
 	public void printFieldDescendingPosition() {
 		LinkedList<Worker> copyList = (LinkedList<Worker>)linkedList.clone();
 		Collections.sort(copyList);

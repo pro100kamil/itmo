@@ -6,15 +6,16 @@ import managers.CollectionManager;
  * Команда show
  */
 public class Show extends Command {
+	private CollectionManager collectionManager;
 	
-	public Show() { 
+	public Show(CollectionManager collectionManager) { 
 		super("show", "выводит элементы коллекции");
+		this.collectionManager = collectionManager;
 	}
 	
 	/**Выводит элементы коллекции
-	 * @param collectionManager менеджер коллекции, отвечающий за основную коллекцию
 	 */
-	public void execute(CollectionManager collectionManager) {
+	public void execute() {
 		collectionManager.printElements();
 	};
 }

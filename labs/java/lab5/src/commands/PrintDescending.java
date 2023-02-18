@@ -1,22 +1,22 @@
 package commands;
 
-import models.Worker;
 import managers.CollectionManager;
 
 /**
  * Команда print_descending
  */
 public class PrintDescending extends Command {
+	private CollectionManager collectionManager;
 
-	public PrintDescending() {
+	public PrintDescending(CollectionManager collectionManager) {
 		super("print_descending", "выводит элементы коллекции в порядке убывания");
+		this.collectionManager = collectionManager;
 	}
 
 	/**
-	 * Выводит элементы коллекции в порядке убывания
-	 * @param collectionManager менеджер коллекции, отвечающий за основную коллекцию
+	 * Выводит элементы коллекции в порядке убывания (работники сортируются по размеру зарплаты)
 	 */
-	public void execute(CollectionManager collectionManager) {
+	public void execute() {
 		collectionManager.printDescending();
 	};
 }

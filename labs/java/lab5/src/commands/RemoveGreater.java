@@ -8,17 +8,18 @@ import managers.CollectionManager;
  */
 public class RemoveGreater extends Command {
 	private Worker elem;
+	private CollectionManager collectionManager;
 
-	public RemoveGreater(Worker elem) {
-		super("remove", "удаляет работников, которые больше заданного");
+	public RemoveGreater(Worker elem, CollectionManager collectionManager) {
+		super("remove_greater", "удаляет работников, которые больше заданного");
 		this.elem = elem;
+		this.collectionManager = collectionManager;
 	}
 
 	/**
 	 * Удаляет работников, которые больше заданного
-	 * @param collectionManager менеджер коллекции, отвечающий за основную коллекцию
 	 */
-	public void execute(CollectionManager collectionManager) {
+	public void execute() {
 		collectionManager.removeGreater(elem);
 	};
 }

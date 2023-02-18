@@ -8,14 +8,15 @@ import managers.CollectionManager;
 public class Info extends Command {
 	private CollectionManager collectionManager;
 	
-	public Info() {
+	public Info(CollectionManager collectionManager) {
 		super("info", "выводит информацию о коллекции");
+		this.collectionManager = collectionManager;
 	}
 	
-	/**Выводит информацию о коллекции
-	 * @param collectionManager менеджер коллекции, отвечающий за основную коллекцию
+	/**
+	 *Выводит информацию о коллекции
 	 */
-	public void execute(CollectionManager collectionManager) {
+	public void execute() {
 		collectionManager.printInfo();
 	};
 }

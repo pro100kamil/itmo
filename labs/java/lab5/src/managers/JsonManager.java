@@ -1,7 +1,7 @@
 package managers;
 
 import models.*;
-import json_serializer.*;
+import json_adapters.*;
 
 import java.util.LinkedList;
 
@@ -17,18 +17,9 @@ public class JsonManager {
 	private static Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(
 LocalDateTime.class, new LocalDateTimeAdapter()).setPrettyPrinting().create();
 	
-	public static String getStrJsonFromWorker(Worker worker) {
-		//int target = 5;
-		//Cat target = new Cat("cat1", 2, 10); 
-		//Worker target = new Worker("Kamil", new Coordinates(Integer.valueOf(1), Integer.valueOf(2)), Float.valueOf(2.5f), Position.MANAGER, Status.FIRED); 
-		//Coordinates target = new Coordinates(Integer.valueOf(1), Integer.valueOf(2)); 
-		//Gson gson = new Gson();
-		//Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		String json = gson.toJson(worker);
-		return json;
-		//System.out.println(json);
-	}
-		
+	/**
+     * ѕолучает json-строку из св€занного списка работников
+     */
 	public static String getStrJsonFromLinkedListWorker(LinkedList<Worker> workers) {
 		try {
 			String json = gson.toJson(workers);
@@ -40,12 +31,14 @@ LocalDateTime.class, new LocalDateTimeAdapter()).setPrettyPrinting().create();
 		}
 	}
 	
-	public static Worker getWorkerFromStrJson(String json) {
-		return gson.fromJson(json, Worker.class);
-	}	
-	
+	/**
+     * ѕолучает из св€занный список работников из json-строки
+     */
 	public static LinkedList<Worker> getLinkedListWorkerFromStrJson(String json) {
 		try {
+			if (json.isEmpty()) { //есть возможность начать с чистого файла
+				json = "[]";
+			}
 			Worker[] workers = gson.fromJson(json, Worker[].class);
 			LinkedList<Worker> ll = new LinkedList<>();
 			for (Worker worker : workers) {

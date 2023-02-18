@@ -6,17 +6,19 @@ import managers.*;
  * Команда save
  */
 public class Save extends Command {
-	private String fileName = "files/data.json";
+	private String fileName;
+	private CollectionManager collectionManager;
 	
-	public Save() { 
+	public Save(String fileName, CollectionManager collectionManager) { 
 		super("save", "сохраняет коллекцию в файл");
+		this.fileName = fileName;
+		this.collectionManager = collectionManager;
 	}
 
 	/**
 	 * Сохраняет коллекцию в файл
-	 * @param collectionManager менеджер коллекции, отвечающий за основную коллекцию
 	 */
-	public void execute(CollectionManager collectionManager) {
+	public void execute() {
 		FileManager.writeTextToFile(fileName, JsonManager.getStrJsonFromLinkedListWorker(collectionManager.getLinkedList()));
 	};
 }

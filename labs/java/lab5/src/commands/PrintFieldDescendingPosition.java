@@ -6,17 +6,17 @@ import managers.CollectionManager;
  * Команда printFieldDescendingPostion
  */
 public class PrintFieldDescendingPosition extends Command {
-	private Command[] PrintFieldDescendingPosition;
+	private CollectionManager collectionManager;
 	
-	public PrintFieldDescendingPosition() { 
-		super("printFieldDescendingPosition", "выводит значения поля position всех элементов в порядке убывания");
+	public PrintFieldDescendingPosition(CollectionManager collectionManager) { 
+		super("print_field_descending_position", "выводит значения поля position всех элементов в порядке убывания");
+		this.collectionManager = collectionManager;
 	}
 
 	/**
 	 * Выводит значения поля position всех элементов в порядке убывания
-	 * @param collectionManager менеджер коллекции, отвечающий за основную коллекцию
 	 */
-	public void execute(CollectionManager collectionManager) {
+	public void execute() {
 		collectionManager.printFieldDescendingPosition();
 	};
 }
