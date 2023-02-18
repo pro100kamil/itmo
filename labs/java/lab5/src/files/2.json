@@ -1,0 +1,50 @@
+[
+  {
+    "id": -1,
+    "name": "Andrey",
+    "coordinates": {
+      "x": 1,
+      "y": 2
+    },
+    "creationDate": "2023-02-17T22:52:01.864807500",
+    "salary": 100.0,
+    "position": "MANAGER",
+    "status": "FIRED",
+    "person": {
+      "birthday": "2004-02-11",
+      "height": 188.0,
+      "passportID": "123456789"
+    }
+  },
+  {
+    "id": 1,
+    "name": "Andrey",
+    "coordinates": {
+      "x": 1,
+      "y": 2
+    },
+    "creationDate": "2023-02-17T22:52:01.864807500",
+    "salary": 100.0,
+    "position": "MANAGER",
+    "status": "FIRED",
+    "person": {
+      "birthday": "2004-02-11",
+      "height": 188.0,
+      "passportID": "123456789"
+    }
+  },
+  {
+    "id": 0,
+    "name": "",
+    "coordinates": {
+      "x": 5,
+      "y": 5
+    },
+    "creationDate": "2023-02-17T23:04:58.769333700",
+    "salary": 5.0,
+    "person": {
+      "height": 4.0,
+      "passportID": ""
+    }
+  }
+]
