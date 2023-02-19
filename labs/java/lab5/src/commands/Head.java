@@ -3,24 +3,24 @@ package commands;
 import managers.CollectionManager;
 
 /**
- * Команда head
+ * РљРѕРјР°РЅРґР° head
  */
 public class Head extends Command {
     private CollectionManager collectionManager;
 
     public Head(CollectionManager collectionManager) {
-        super("head", "выводит первый элемент коллекции");
+        super("head", "РІС‹РІРѕРґРёС‚ РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ РєРѕР»Р»РµРєС†РёРё");
         this.collectionManager = collectionManager;
     }
 
     /**
-     * Выводит первый элемент коллекции
+     * Р’С‹РІРѕРґРёС‚ РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ РєРѕР»Р»РµРєС†РёРё
      *
-     * @param collectionManager менеджер коллекции, отвечающий за основную коллекцию
+     * @param collectionManager РјРµРЅРµРґР¶РµСЂ РєРѕР»Р»РµРєС†РёРё, РѕС‚РІРµС‡Р°СЋС‰РёР№ Р·Р° РѕСЃРЅРѕРІРЅСѓСЋ РєРѕР»Р»РµРєС†РёСЋ
      */
     public void execute() {
         if (collectionManager.isEmpty()) {
-            System.out.println("Коллекция пустая, поэтому нет первого элемента!");
+            System.out.println("РљРѕР»Р»РµРєС†РёСЏ РїСѓСЃС‚Р°СЏ, РїРѕСЌС‚РѕРјСѓ РЅРµС‚ РїРµСЂРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р°!");
         } else {
             try {
                 System.out.println(collectionManager.getHead());
