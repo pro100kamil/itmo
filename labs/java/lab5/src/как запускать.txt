@@ -1,0 +1,6 @@
+javac -d classes -cp gson.jar Main.java models/*.java managers/*.java commands/*.java exceptions/*.java json_serializer/*.java
+java -cp classes;gson.jar Main files/1.json
+
+или 
+
+java -jar lab5.jar
