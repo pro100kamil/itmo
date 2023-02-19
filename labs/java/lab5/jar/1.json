@@ -26,19 +26,5 @@
       "height": 189.0,
       "passportID": "7777777"
     }
-  },
-  {
-    "id": -1,
-    "name": "sfds",
-    "coordinates": {
-      "x": 4,
-      "y": 4
-    },
-    "creationDate": "2023-02-19T13:40:47.619925200",
-    "person": {
-      "birthday": "2004-02-11",
-      "height": 44.0,
-      "passportID": "55555555555555555555555555"
-    }
   }
 ]

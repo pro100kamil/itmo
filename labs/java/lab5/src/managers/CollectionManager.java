@@ -136,7 +136,7 @@ public class CollectionManager {
      * @param worker заданный работник
      */
     public void update(int id, Worker worker) throws NullPointerException {
-        if (!idWorkerFromCollection.containsKey(worker.getId())) { //если нет пользователя с таким id
+        if (!idWorkerFromCollection.containsKey(id)) { //если нет пользователя с таким id
             System.out.println("Нет пользователя с таким id!");
             return;
         }
