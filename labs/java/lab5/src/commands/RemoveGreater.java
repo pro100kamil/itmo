@@ -1,0 +1,38 @@
+package commands;
+
+import exceptions.WrongCommandArgsException;
+import managers.ValidateManager;
+import models.Worker;
+import managers.CollectionManager;
+
+/**
+ * Команда remove_greater
+ */
+public class RemoveGreater extends CommandWithWorker {
+    private Worker worker;
+    private CollectionManager collectionManager;
+
+    public RemoveGreater(CollectionManager collectionManager) {
+        super("remove_greater", "удаляет работников, которые больше заданного");
+        this.collectionManager = collectionManager;
+    }
+
+    public void setWorker(Worker worker) {
+        this.worker = worker;
+    }
+
+    /**
+     * Удаляет работников, которые больше заданного
+     */
+    public void execute(String[] args) {
+        try {
+            if (args.length != 0) {
+                throw new WrongCommandArgsException();
+            }
+            collectionManager.removeGreater(worker);
+        } catch (WrongCommandArgsException e) {
+            System.out.println(e);
+        }
+    }
+
+}
