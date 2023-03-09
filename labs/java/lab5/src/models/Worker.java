@@ -166,8 +166,22 @@ public class Worker implements Comparable<Worker> {
         return -1;
     }
 
+//    @Override
+//    public String toString() {
+//        return "Worker " + id + " (" + name + ")";
+//    }
+
     @Override
     public String toString() {
-        return "Worker " + id + " (" + name + ")";
+        return "Worker{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", coordinates=" + coordinates +
+                ", creationDate=" + creationDate +
+                ", salary=" + salary +
+                ", position=" + position +
+                ", status=" + status +
+                ", person=" + person +
+                '}';
     }
 }

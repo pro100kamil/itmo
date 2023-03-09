@@ -22,6 +22,10 @@ public class ExecuteScript extends Command {
         this.collectionManager = collectionManager;
     }
 
+    public static void setMaxDepth(int maxDepth) {
+        ExecuteScript.maxDepth = maxDepth;
+    }
+
     /**
      * Выполняет команды из файла
      */

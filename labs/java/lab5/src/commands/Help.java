@@ -28,7 +28,5 @@ public class Help extends Command {
         } catch (WrongCommandArgsException e) {
             System.out.println(e);
         }
-
     }
-
 }

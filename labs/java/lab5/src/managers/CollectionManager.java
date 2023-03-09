@@ -121,12 +121,16 @@ public class CollectionManager {
      *
      * @param worker работник, которого мы добавляем
      */
-    public void add(Worker worker) throws NotUniqueIdException, NullPointerException {
+    public void add(Worker worker) throws NotUniqueIdException {
         if (idWorkerFromCollection.containsKey(worker.getId())) { //если уже есть пользователь с таким id
             throw new NotUniqueIdException();
         }
         idWorkerFromCollection.put(worker.getId(), worker);
         linkedList.add(worker);
+    }
+
+    public boolean existsId(int id) {
+        return idWorkerFromCollection.containsKey(id);
     }
 
     /**
@@ -165,6 +169,7 @@ public class CollectionManager {
      */
     public void removeGreater(Worker worker) throws NullPointerException {
         for (Worker other : linkedList) {
+            //other > worker
             if (other.compareTo(worker) > 0) {
                 linkedList.remove(other);
             }

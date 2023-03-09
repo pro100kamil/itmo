@@ -23,7 +23,7 @@ public class Remove extends Command {
             if (args.length != 1 || !ValidateManager.isInteger(args[0])) {
                 throw new WrongCommandArgsException();
             }
-            Integer id = Integer.parseInt(args[0]);
+            int id = Integer.parseInt(args[0]);
             collectionManager.remove(id);
         } catch (WrongCommandArgsException e) {
             System.out.println(e);

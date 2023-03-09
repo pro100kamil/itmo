@@ -1,6 +1,9 @@
 package managers;
 
 import commands.*;
+import exceptions.EndInputException;
+import exceptions.EndInputWorkerException;
+import models.Worker;
 import exceptions.NoSuchCommandException;
 
 import java.util.LinkedList;
@@ -51,7 +54,18 @@ public class CommandManager {
         }
         Command res = strCommands.get(strCommand);
         if (res instanceof CommandWithWorker) {
-            ((CommandWithWorker) res).setWorker(inputManager.getWorker());
+            Worker worker = inputManager.getWorker();
+            if (worker == null) return;
+            ((CommandWithWorker) res).setWorker(worker);
+        }
+        if (res instanceof ExecuteScript) {
+            try {
+                int maxDepth = inputManager.getInteger("Введите максимальную глубину рекурсии: ", true);
+                ((ExecuteScript) res).setMaxDepth(maxDepth);
+            }
+            catch (EndInputException | EndInputWorkerException e) {
+                return;
+            }
         }
         String[] args = new String[subsCommand.length - 1];
         for (int i = 1; i < subsCommand.length; i++) {

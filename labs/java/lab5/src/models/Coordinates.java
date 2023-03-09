@@ -16,9 +16,16 @@ public class Coordinates {
 	public Integer getY() {
 		return y;
 	}
-	
-	
+
 	public boolean validate() {
 		return x != null && y != null;
+	}
+
+	@Override
+	public String toString() {
+		return "Coordinates{" +
+				"x=" + x +
+				", y=" + y +
+				'}';
 	}
 }

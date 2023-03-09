@@ -10,7 +10,8 @@ public class Main {
             System.out.println("Нужно запускать файл только с одним аргументом (названием файла, откуда брать коллекцию)!!!");
             System.exit(0);
         }
-        String fileName = args[0];
+        //String fileName = args[0];
+        String fileName = System.getenv("fileNameWorker");
 
         LinkedList<Worker> ll = JsonManager.getLinkedListWorkerFromStrJson(FileManager.getTextFromFile(fileName));
 

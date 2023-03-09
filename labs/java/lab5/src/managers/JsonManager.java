@@ -36,10 +36,10 @@ public class JsonManager {
      */
     public static LinkedList<Worker> getLinkedListWorkerFromStrJson(String json) {
         try {
-            if (json.isEmpty()) { //есть возможность начать с чистого файла
-                json = "[]";
+            Worker[] workers = new Worker[0];
+            if (!json.isEmpty()) { //есть возможность начать с чистого файла
+                workers = gson.fromJson(json, Worker[].class);
             }
-            Worker[] workers = gson.fromJson(json, Worker[].class);
             LinkedList<Worker> ll = new LinkedList<>();
             for (Worker worker : workers) {
                 ll.add(worker);

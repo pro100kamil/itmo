@@ -22,6 +22,13 @@ public class Person {
 		}
 		return true;
 	}
-	
-	//public boolean setHeight()
+
+	@Override
+	public String toString() {
+		return "Person{" +
+				"birthday=" + birthday +
+				", height=" + height +
+				", passportID='" + passportID + '\'' +
+				'}';
+	}
 }
