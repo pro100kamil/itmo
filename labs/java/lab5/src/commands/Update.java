@@ -1,5 +1,6 @@
 package commands;
 
+import exceptions.NonExistentId;
 import exceptions.NotUniqueIdException;
 import exceptions.WrongCommandArgsException;
 import managers.ValidateManager;
@@ -22,20 +23,23 @@ public class Update extends CommandWithWorker {
         this.worker = worker;
     }
 
+    @Override
+    public void validateArgs(String[] args) throws WrongCommandArgsException, NonExistentId {
+        if (args.length != 1 || !ValidateManager.isInteger(args[0])) {
+            throw new WrongCommandArgsException();
+        }
+        Integer id = Integer.parseInt(args[0]);
+        if (!collectionManager.existsId(id)) {
+            throw new NonExistentId();
+        }
+    }
+
     /**
      * Обновляет работника по id на основе заданное работника
      */
     public void execute(String[] args) {
-        try {
-            if (args.length != 1 || !ValidateManager.isInteger(args[0])) {
-                throw new WrongCommandArgsException();
-            }
-            Integer id = Integer.parseInt(args[0]);
-            collectionManager.update(id, worker);
-        } catch (WrongCommandArgsException e) {
-            System.out.println(e);
-        }
-
+        Integer id = Integer.parseInt(args[0]);
+        collectionManager.update(id, worker);
     }
 
 }

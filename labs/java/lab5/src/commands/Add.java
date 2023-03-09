@@ -21,16 +21,20 @@ public class Add extends CommandWithWorker {
         this.worker = worker;
     }
 
+    @Override
+    public void validateArgs(String[] args) throws WrongCommandArgsException {
+        if (args.length != 0) {
+            throw new WrongCommandArgsException();
+        }
+    }
+
     /**
      * Добавляет работника в коллекцию
      */
     public void execute(String[] args) {
         try {
-            if (args.length != 0) {
-                throw new WrongCommandArgsException();
-            }
             collectionManager.add(worker);
-        } catch (NotUniqueIdException | WrongCommandArgsException e) {
+        } catch (NotUniqueIdException e) {
             System.out.println(e);
         }
     }

@@ -40,10 +40,10 @@ public class CollectionManager {
     }
 
     /**
-     * Проверяет, корректная ли у нас коллекция работников
+     * Проверяет, корректная ли у нас коллекция работников.
      * То есть все работники корректные и все id разные
      */
-    public boolean validate() throws NullPointerException {
+    public boolean validate() {
         for (Worker worker : linkedList) {
             if (!worker.validate() || idWorkerFromCollection.get(worker.getId()) != worker) {
                 return false;
@@ -57,14 +57,14 @@ public class CollectionManager {
      *
      * @return boolean true - коллекция пуста,false - в ней есть элементы
      */
-    public boolean isEmpty() throws NullPointerException {
+    public boolean isEmpty() {
         return linkedList.size() == 0;
     }
 
     /**
      * Выводит информацию о коллекции
      */
-    public void printInfo() throws NullPointerException {
+    public void printInfo() {
         System.out.println("Тип данных: " + linkedList.getClass().getName());
         System.out.println("Дата инициализации: " + creationDate);
         System.out.println("Количество элементов: " + linkedList.size());
@@ -73,7 +73,7 @@ public class CollectionManager {
     /**
      * Вывод всех элементов коллекции
      */
-    public void printElements() throws NullPointerException {
+    public void printElements() {
         if (linkedList.size() == 0) {
             System.out.println("Коллекция пустая");
             return;
@@ -93,7 +93,7 @@ public class CollectionManager {
     /**
      * Выводит элементы коллекции в порядке убывания
      */
-    public void printDescending() throws NullPointerException {
+    public void printDescending() {
         LinkedList<Worker> copyList = new LinkedList<>();
         Collections.copy(copyList, linkedList);
         Collections.sort(copyList);
@@ -106,7 +106,7 @@ public class CollectionManager {
     /**
      * Выводит позиции работников, работники идут по убыванию
      */
-    public void printFieldDescendingPosition() throws NullPointerException {
+    public void printFieldDescendingPosition() {
         LinkedList<Worker> copyList = new LinkedList<>();
         Collections.copy(copyList, linkedList);
         Collections.sort(copyList);
@@ -139,7 +139,7 @@ public class CollectionManager {
      * @param id     работника
      * @param worker заданный работник
      */
-    public void update(int id, Worker worker) throws NullPointerException {
+    public void update(int id, Worker worker) {
         if (!idWorkerFromCollection.containsKey(id)) { //если нет пользователя с таким id
             System.out.println("Нет пользователя с таким id!");
             return;
@@ -153,7 +153,7 @@ public class CollectionManager {
      *
      * @param id работника
      */
-    public void remove(int id) throws NullPointerException {
+    public void remove(int id) {
         if (!idWorkerFromCollection.containsKey(id)) { //если нет пользователя с таким id
             System.out.println("Нет пользователя с таким id!");
             return;
@@ -167,7 +167,7 @@ public class CollectionManager {
      *
      * @param worker заданный работник
      */
-    public void removeGreater(Worker worker) throws NullPointerException {
+    public void removeGreater(Worker worker) {
         for (Worker other : linkedList) {
             //other > worker
             if (other.compareTo(worker) > 0) {
@@ -179,7 +179,7 @@ public class CollectionManager {
     /**
      * Очистка коллекции
      */
-    public void clear() throws NullPointerException {
+    public void clear() {
         linkedList.clear();
     }
 
@@ -188,7 +188,7 @@ public class CollectionManager {
      *
      * @return Worker первый работник в коллекции
      */
-    public Worker getHead() throws NullPointerException {
+    public Worker getHead() {
         return linkedList.getFirst();
     }
 
@@ -207,7 +207,7 @@ public class CollectionManager {
      * @param salary заданная зарплата
      * @return LinkedList<Worker> работники с заданной зарплатой
      */
-    public LinkedList<Worker> getFilterBySalary(Float salary) throws NullPointerException {
+    public LinkedList<Worker> getFilterBySalary(Float salary) {
         LinkedList<Worker> tmp = new LinkedList<>();
         for (Worker worker : linkedList) {
             if (worker.getSalary() != null && worker.getSalary().equals(salary)) {

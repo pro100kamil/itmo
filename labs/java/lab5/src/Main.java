@@ -6,10 +6,10 @@ import java.util.LinkedList;
 public class Main {
 
     public static void main(String[] args) {
-        if (args.length != 1) {
-            System.out.println("Нужно запускать файл только с одним аргументом (названием файла, откуда брать коллекцию)!!!");
-            System.exit(0);
-        }
+//        if (args.length != 1) {
+//            System.out.println("Нужно запускать файл только с одним аргументом (названием файла, откуда брать коллекцию)!!!");
+//            System.exit(0);
+//        }
         //String fileName = args[0];
         String fileName = System.getenv("fileNameWorker");
 

@@ -1,10 +1,8 @@
 package managers;
 
 import commands.*;
-import exceptions.EndInputException;
-import exceptions.EndInputWorkerException;
+import exceptions.*;
 import models.Worker;
-import exceptions.NoSuchCommandException;
 
 import java.util.LinkedList;
 import java.util.TreeMap;
@@ -49,11 +47,23 @@ public class CommandManager {
     public void executeCommand(String strCommand) throws NoSuchCommandException {
         String[] subsCommand = strCommand.split("\\s+");
         strCommand = subsCommand[0];
+        String[] args = new String[subsCommand.length - 1];
+        for (int i = 1; i < subsCommand.length; i++) {
+            args[i - 1] = subsCommand[i];
+        }
+
         if (!strCommands.containsKey(strCommand)) { //если нет такой команды
             throw new NoSuchCommandException();
         }
         Command res = strCommands.get(strCommand);
         if (res instanceof CommandWithWorker) {
+            try {
+                ((CommandWithWorker) res).validateArgs(args);
+            }
+            catch (WrongCommandArgsException | NonExistentId e) {
+                System.out.println(e);
+                return;
+            }
             Worker worker = inputManager.getWorker();
             if (worker == null) return;
             ((CommandWithWorker) res).setWorker(worker);
@@ -66,10 +76,6 @@ public class CommandManager {
             catch (EndInputException | EndInputWorkerException e) {
                 return;
             }
-        }
-        String[] args = new String[subsCommand.length - 1];
-        for (int i = 1; i < subsCommand.length; i++) {
-            args[i - 1] = subsCommand[i];
         }
         res.execute(args);
         history.add(res);

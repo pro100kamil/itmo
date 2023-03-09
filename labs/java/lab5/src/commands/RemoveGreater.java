@@ -21,18 +21,18 @@ public class RemoveGreater extends CommandWithWorker {
         this.worker = worker;
     }
 
+    @Override
+    public void validateArgs(String[] args) throws WrongCommandArgsException {
+        if (args.length != 0) {
+            throw new WrongCommandArgsException();
+        }
+    }
+
     /**
      * Удаляет работников, которые больше заданного
      */
     public void execute(String[] args) {
-        try {
-            if (args.length != 0) {
-                throw new WrongCommandArgsException();
-            }
-            collectionManager.removeGreater(worker);
-        } catch (WrongCommandArgsException e) {
-            System.out.println(e);
-        }
+        collectionManager.removeGreater(worker);
     }
 
 }
