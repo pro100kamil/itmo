@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
  * Класс для работы с коллекцией
  */
 public class CollectionManager {
+    private Console console = new ConsoleManager();
     private LinkedList<Worker> linkedList;
     private TreeMap<Integer, Worker> idWorkerFromCollection = new TreeMap<>();
     private LocalDateTime creationDate;
@@ -65,9 +66,9 @@ public class CollectionManager {
      * Выводит информацию о коллекции
      */
     public void printInfo() {
-        System.out.println("Тип данных: " + linkedList.getClass().getName());
-        System.out.println("Дата инициализации: " + creationDate);
-        System.out.println("Количество элементов: " + linkedList.size());
+        console.write("Тип данных: " + linkedList.getClass().getName());
+        console.write("Дата инициализации: " + creationDate);
+        console.write("Количество элементов: " + linkedList.size());
     }
 
     /**
@@ -75,31 +76,30 @@ public class CollectionManager {
      */
     public void printElements() {
         if (linkedList.size() == 0) {
-            System.out.println("Коллекция пустая");
+            console.write("Коллекция пустая");
             return;
         }
-        System.out.println("Элементы коллекции: " + linkedList.size());
+        console.write("Элементы коллекции: " + linkedList.size());
         int i = 0;
         for (Worker worker : linkedList) {
             System.out.print(worker);
             if (i != linkedList.size() - 1) {
-                System.out.print(", ");
+                console.write(", ");
             }
             i += 1;
         }
-        System.out.println(".");
+        console.write(".");
     }
 
     /**
      * Выводит элементы коллекции в порядке убывания
      */
     public void printDescending() {
-        LinkedList<Worker> copyList = new LinkedList<>();
-        Collections.copy(copyList, linkedList);
+        LinkedList<Worker> copyList = new LinkedList<>(linkedList);
         Collections.sort(copyList);
         Collections.reverse(copyList);
         for (Worker worker : copyList) {
-            System.out.println(worker);
+            console.write(worker.toString());
         }
     }
 
@@ -107,12 +107,11 @@ public class CollectionManager {
      * Выводит позиции работников, работники идут по убыванию
      */
     public void printFieldDescendingPosition() {
-        LinkedList<Worker> copyList = new LinkedList<>();
-        Collections.copy(copyList, linkedList);
+        LinkedList<Worker> copyList = new LinkedList<>(linkedList);
         Collections.sort(copyList);
         Collections.reverse(copyList);
         for (Worker worker : copyList) {
-            System.out.println(worker.getPosition());
+            console.write(worker.getPosition().toString());
         }
     }
 
@@ -122,7 +121,7 @@ public class CollectionManager {
      * @param worker работник, которого мы добавляем
      */
     public void add(Worker worker) throws NotUniqueIdException {
-        if (idWorkerFromCollection.containsKey(worker.getId())) { //если уже есть пользователь с таким id
+        if (existsId(worker.getId())) { //если уже есть пользователь с таким id
             throw new NotUniqueIdException();
         }
         idWorkerFromCollection.put(worker.getId(), worker);
@@ -141,7 +140,7 @@ public class CollectionManager {
      */
     public void update(int id, Worker worker) {
         if (!idWorkerFromCollection.containsKey(id)) { //если нет пользователя с таким id
-            System.out.println("Нет пользователя с таким id!");
+            console.write("Нет пользователя с таким id!");
             return;
         }
         Worker w1 = idWorkerFromCollection.get(id);
@@ -155,7 +154,7 @@ public class CollectionManager {
      */
     public void remove(int id) {
         if (!idWorkerFromCollection.containsKey(id)) { //если нет пользователя с таким id
-            System.out.println("Нет пользователя с таким id!");
+            console.write("Нет пользователя с таким id!");
             return;
         }
         Worker worker = idWorkerFromCollection.get(id);

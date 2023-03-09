@@ -2,15 +2,17 @@ package commands;
 
 import exceptions.WrongCommandArgsException;
 import managers.CollectionManager;
+import managers.Console;
 
 /**
  * Команда clear
  */
 public class Clear extends Command {
+
     private CollectionManager collectionManager;
 
-    public Clear(CollectionManager collectionManager) {
-        super("clear", "очищает коллекцию");
+    public Clear(CollectionManager collectionManager, Console console) {
+        super("clear", "очищает коллекцию", console);
         this.collectionManager = collectionManager;
     }
 
@@ -24,7 +26,7 @@ public class Clear extends Command {
             }
             collectionManager.clear();
         } catch (WrongCommandArgsException e) {
-            System.out.println(e);
+            console.write(e.toString());
         }
 
     }

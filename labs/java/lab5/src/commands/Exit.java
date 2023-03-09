@@ -1,13 +1,14 @@
 package commands;
 
 import exceptions.WrongCommandArgsException;
+import managers.Console;
 
 /**
  * Команда exit
  */
 public class Exit extends Command {
-    public Exit() {
-        super("exit", "завершает программу");
+    public Exit(Console console) {
+        super("exit", "завершает программу", console);
     }
 
     /**
@@ -20,7 +21,7 @@ public class Exit extends Command {
             }
             System.exit(0);
         } catch (WrongCommandArgsException e) {
-            System.out.println(e);
+            console.write(e.toString());
         }
     }
 }

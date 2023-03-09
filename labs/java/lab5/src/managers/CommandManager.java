@@ -11,6 +11,7 @@ import java.util.TreeMap;
  * Класс для запуска команд, для сохранения истории
  */
 public class CommandManager {
+    private Console console;
     private CollectionManager collectionManager;
     private InputManager inputManager;
     private String dataFileName;
@@ -21,16 +22,17 @@ public class CommandManager {
         this.collectionManager = collectionManager;
         this.inputManager = inputManager;
         this.dataFileName = dataFileName;
-        Command[] allCommands= {new Help(null), new Info(collectionManager),
-                new Show(collectionManager), new Add(collectionManager),
-                new Update(collectionManager), new Remove(collectionManager), new Clear(collectionManager),
-                new Save(dataFileName, collectionManager),
-                new ExecuteScript(dataFileName, collectionManager), new Exit(), new Head(collectionManager),
-                new RemoveGreater(collectionManager),
-                new History(history), new FilterBySalary(collectionManager),
-                new PrintDescending(collectionManager), new PrintFieldDescendingPosition(collectionManager)};
+        console = inputManager.getConsole();
+        Command[] allCommands= {new Help(null, console), new Info(collectionManager, console),
+                new Show(collectionManager, console), new Add(collectionManager, console),
+                new Update(collectionManager, console), new Remove(collectionManager, console), new Clear(collectionManager, console),
+                new Save(dataFileName, collectionManager, console),
+                new ExecuteScript(dataFileName, collectionManager, console), new Exit(console), new Head(collectionManager, console),
+                new RemoveGreater(collectionManager, console),
+                new History(history, console), new FilterBySalary(collectionManager, console),
+                new PrintDescending(collectionManager, console), new PrintFieldDescendingPosition(collectionManager, console)};
 
-        Command helpCommand = new Help(allCommands);
+        Command helpCommand = new Help(allCommands, console);
 
         for (Command command : allCommands) {
             if (command instanceof Help) strCommands.put(command.getName(), helpCommand);
@@ -61,7 +63,7 @@ public class CommandManager {
                 ((CommandWithWorker) res).validateArgs(args);
             }
             catch (WrongCommandArgsException | NonExistentId e) {
-                System.out.println(e);
+                console.write(e.toString());
                 return;
             }
             Worker worker = inputManager.getWorker();

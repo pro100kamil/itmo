@@ -1,6 +1,7 @@
 package commands;
 
 import exceptions.WrongCommandArgsException;
+import managers.Console;
 
 import java.util.LinkedList;
 
@@ -10,8 +11,8 @@ import java.util.LinkedList;
 public class History extends Command {
     private LinkedList<Command> history;
 
-    public History(LinkedList<Command> history) {
-        super("history", "выводит последние 11 команд");
+    public History(LinkedList<Command> history, Console console) {
+        super("history", "выводит последние 11 команд", console);
         this.history = history;
     }
 
@@ -26,10 +27,10 @@ public class History extends Command {
                 throw new WrongCommandArgsException();
             }
             for (int i = Math.max(0, history.size() - 11); i < history.size(); i++) {
-                System.out.println(history.get(i).getName());
+                console.write(history.get(i).getName());
             }
         } catch (WrongCommandArgsException e) {
-            System.out.println(e);
+            console.write(e.toString());
         }
 
     }

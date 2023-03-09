@@ -3,6 +3,7 @@ package commands;
 import exceptions.NonExistentId;
 import exceptions.NotUniqueIdException;
 import exceptions.WrongCommandArgsException;
+import managers.Console;
 import managers.ValidateManager;
 import models.Worker;
 import managers.CollectionManager;
@@ -14,8 +15,8 @@ public class Update extends CommandWithWorker {
     private Worker worker;
     private CollectionManager collectionManager;
 
-    public Update(CollectionManager collectionManager) {
-        super("update", "обновляет работника по id на основе заданного работника");
+    public Update(CollectionManager collectionManager, Console console) {
+        super("update", "обновляет работника по id на основе заданного работника", console);
         this.collectionManager = collectionManager;
     }
 

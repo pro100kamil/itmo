@@ -1,6 +1,7 @@
 package commands;
 
 import exceptions.WrongCommandArgsException;
+import managers.Console;
 import managers.ValidateManager;
 import models.Worker;
 import managers.CollectionManager;
@@ -11,8 +12,8 @@ import managers.CollectionManager;
 public class FilterBySalary extends Command {
     private CollectionManager collectionManager;
 
-    public FilterBySalary(CollectionManager collectionManager) {
-        super("filter_by_salary", "выводит работников с заданной зарплатой");
+    public FilterBySalary(CollectionManager collectionManager, Console console) {
+        super("filter_by_salary", "выводит работников с заданной зарплатой", console);
         this.collectionManager = collectionManager;
     }
 
@@ -32,10 +33,10 @@ public class FilterBySalary extends Command {
                 throw new WrongCommandArgsException();
             }
             for (Worker worker : collectionManager.getFilterBySalary(salary)) {
-                System.out.println(worker);
+                console.write(worker.toString());
             }
         } catch (WrongCommandArgsException e) {
-            System.out.println(e);
+            console.write(e.toString());
         }
     }
 }

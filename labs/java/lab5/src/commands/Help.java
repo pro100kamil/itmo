@@ -2,6 +2,7 @@ package commands;
 
 import exceptions.NotUniqueIdException;
 import exceptions.WrongCommandArgsException;
+import managers.Console;
 
 /**
  * Команда help
@@ -9,8 +10,8 @@ import exceptions.WrongCommandArgsException;
 public class Help extends Command {
     private Command[] commands;
 
-    public Help(Command[] commands) {
-        super("help", "выводит полную информацию о командах");
+    public Help(Command[] commands, Console console) {
+        super("help", "выводит полную информацию о командах", console);
         this.commands = commands;
     }
 
@@ -23,10 +24,10 @@ public class Help extends Command {
                 throw new WrongCommandArgsException();
             }
             for (Command command : commands) {
-                System.out.println(command);
+                console.write(command.toString());
             }
         } catch (WrongCommandArgsException e) {
-            System.out.println(e);
+            console.write(e.toString());
         }
     }
 }

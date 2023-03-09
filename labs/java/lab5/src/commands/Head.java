@@ -2,6 +2,7 @@ package commands;
 
 import exceptions.WrongCommandArgsException;
 import managers.CollectionManager;
+import managers.Console;
 
 /**
  * Команда head
@@ -9,8 +10,8 @@ import managers.CollectionManager;
 public class Head extends Command {
     private CollectionManager collectionManager;
 
-    public Head(CollectionManager collectionManager) {
-        super("head", "выводит первый элемент коллекции");
+    public Head(CollectionManager collectionManager, Console console) {
+        super("head", "выводит первый элемент коллекции", console);
         this.collectionManager = collectionManager;
     }
 
@@ -25,12 +26,12 @@ public class Head extends Command {
                 throw new WrongCommandArgsException();
             }
             if (collectionManager.isEmpty()) {
-                System.out.println("Коллекция пустая, поэтому нет первого элемента!");
+                console.write("Коллекция пустая, поэтому нет первого элемента!");
             } else {
-                System.out.println(collectionManager.getHead());
+                console.write(collectionManager.getHead().toString());
             }
         } catch (WrongCommandArgsException e) {
-            System.out.println(e);
+            console.write(e.toString());
         }
 
     }

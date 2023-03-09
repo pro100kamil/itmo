@@ -132,18 +132,6 @@ public class Worker implements Comparable<Worker> {
         setPerson(worker.getPerson());
     }
 
-    /**
-     * Выводит полную информацию о работнике
-     */
-    public void egtInfo() {
-        System.out.println("id: " + id);
-        System.out.println("name: " + name);
-        System.out.println("coordinates: " + coordinates.getX() + ", " + coordinates.getY());
-        System.out.println("salary: " + salary);
-        System.out.println("position: " + position);
-        System.out.println("status: " + status);
-    }
-
     @Override
     public int compareTo(Worker other) {
         //сравниваем работников по зарплате

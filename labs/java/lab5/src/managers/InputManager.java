@@ -25,6 +25,10 @@ public class InputManager {
         this.dataFileName = dataFileName;
     }
 
+    public Console getConsole() {
+        return console;
+    }
+
     /**
      * Получает целое число типа Integer (не null) из стандартного ввода
      *

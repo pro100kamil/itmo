@@ -1,6 +1,7 @@
 package commands;
 
 import exceptions.WrongCommandArgsException;
+import managers.Console;
 import managers.ValidateManager;
 import models.Worker;
 import managers.CollectionManager;
@@ -12,8 +13,8 @@ public class RemoveGreater extends CommandWithWorker {
     private Worker worker;
     private CollectionManager collectionManager;
 
-    public RemoveGreater(CollectionManager collectionManager) {
-        super("remove_greater", "удаляет работников, которые больше заданного");
+    public RemoveGreater(CollectionManager collectionManager, Console console) {
+        super("remove_greater", "удаляет работников, которые больше заданного", console);
         this.collectionManager = collectionManager;
     }
 

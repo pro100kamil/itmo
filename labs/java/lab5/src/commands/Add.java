@@ -1,6 +1,7 @@
 package commands;
 
 import exceptions.WrongCommandArgsException;
+import managers.Console;
 import models.Worker;
 import managers.CollectionManager;
 import exceptions.NotUniqueIdException;
@@ -12,8 +13,8 @@ public class Add extends CommandWithWorker {
     private Worker worker;
     private CollectionManager collectionManager;
 
-    public Add(CollectionManager collectionManager) {
-        super("add", "добавляет элемент в коллекцию");
+    public Add(CollectionManager collectionManager, Console console) {
+        super("add", "добавляет элемент в коллекцию", console);
         this.collectionManager = collectionManager;
     }
 
@@ -35,7 +36,7 @@ public class Add extends CommandWithWorker {
         try {
             collectionManager.add(worker);
         } catch (NotUniqueIdException e) {
-            System.out.println(e);
+            console.write(e.toString());
         }
     }
 }

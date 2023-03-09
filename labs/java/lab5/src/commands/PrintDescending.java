@@ -2,6 +2,7 @@ package commands;
 
 import exceptions.WrongCommandArgsException;
 import managers.CollectionManager;
+import managers.Console;
 
 /**
  * Команда print_descending
@@ -9,8 +10,8 @@ import managers.CollectionManager;
 public class PrintDescending extends Command {
     private CollectionManager collectionManager;
 
-    public PrintDescending(CollectionManager collectionManager) {
-        super("print_descending", "выводит элементы коллекции в порядке убывания");
+    public PrintDescending(CollectionManager collectionManager, Console console) {
+        super("print_descending", "выводит элементы коллекции в порядке убывания", console);
         this.collectionManager = collectionManager;
     }
 
@@ -24,7 +25,7 @@ public class PrintDescending extends Command {
             }
             collectionManager.printDescending();
         } catch (WrongCommandArgsException e) {
-            System.out.println(e);
+            console.write(e.toString());
         }
     }
 

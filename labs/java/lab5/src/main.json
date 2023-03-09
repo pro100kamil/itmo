@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "name": "kolya_new",
+    "coordinates": {
+      "x": 4,
+      "y": 4
+    },
+    "creationDate": "2023-03-09T23:02:00.216972",
+    "salary": 99.0,
+    "person": {
+      "height": 5.0
+    }
+  },
+  {
+    "id": 3,
+    "name": "dsd",
+    "coordinates": {
+      "x": 45,
+      "y": 5
+    },
+    "creationDate": "2023-03-09T23:03:24.632633500",
+    "salary": 100.0,
+    "person": {
+      "height": 2.0
+    }
+  }
+]

@@ -2,6 +2,7 @@ package commands;
 
 import exceptions.WrongCommandArgsException;
 import managers.CollectionManager;
+import managers.Console;
 
 /**
  * Команда info
@@ -9,8 +10,8 @@ import managers.CollectionManager;
 public class Info extends Command {
     private CollectionManager collectionManager;
 
-    public Info(CollectionManager collectionManager) {
-        super("info", "выводит информацию о коллекции");
+    public Info(CollectionManager collectionManager, Console console) {
+        super("info", "выводит информацию о коллекции", console);
         this.collectionManager = collectionManager;
     }
 
@@ -24,7 +25,7 @@ public class Info extends Command {
             }
             collectionManager.printInfo();
         } catch (WrongCommandArgsException e) {
-            System.out.println(e);
+            console.write(e.toString());
         }
 
     }

@@ -17,6 +17,7 @@ import com.google.gson.GsonBuilder;
 public class JsonManager {
     private static Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(
             LocalDateTime.class, new LocalDateTimeAdapter()).setPrettyPrinting().create();
+    private static Console console = new ConsoleManager();
 
     /**
      * Получает json-строку из связанного списка работников
@@ -26,7 +27,7 @@ public class JsonManager {
             String json = gson.toJson(workers);
             return json;
         } catch (Exception e) {
-            System.out.println(e);
+            console.write(e.toString());
             return "ошибка парсинга";
         }
     }
@@ -46,7 +47,7 @@ public class JsonManager {
             }
             return ll;
         } catch (Exception e) {
-            System.out.println("Json-файл повреждён, данные из него не были взяты.");
+            console.write("Json-файл повреждён, данные из него не были взяты.");
             return new LinkedList<>();
         }
     }

@@ -2,6 +2,7 @@ package commands;
 
 import exceptions.WrongCommandArgsException;
 import managers.CollectionManager;
+import managers.Console;
 import managers.ValidateManager;
 
 /**
@@ -10,8 +11,8 @@ import managers.ValidateManager;
 public class Remove extends Command {
     private CollectionManager collectionManager;
 
-    public Remove(CollectionManager collectionManager) {
-        super("remove_by_id", "удаляет работника по id из коллекции");
+    public Remove(CollectionManager collectionManager, Console console) {
+        super("remove_by_id", "удаляет работника по id из коллекции", console);
         this.collectionManager = collectionManager;
     }
 
@@ -26,7 +27,7 @@ public class Remove extends Command {
             int id = Integer.parseInt(args[0]);
             collectionManager.remove(id);
         } catch (WrongCommandArgsException e) {
-            System.out.println(e);
+            console.write(e.toString());
         }
     }
 

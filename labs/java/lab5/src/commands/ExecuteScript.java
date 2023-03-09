@@ -16,8 +16,8 @@ public class ExecuteScript extends Command {
     private CollectionManager collectionManager;
 
 
-    public ExecuteScript(String dataFileName, CollectionManager collectionManager) {
-        super("execute_script", "выполняет команды из файла");
+    public ExecuteScript(String dataFileName, CollectionManager collectionManager, Console console) {
+        super("execute_script", "выполняет команды из файла", console);
         this.dataFileName = dataFileName;
         this.collectionManager = collectionManager;
     }
@@ -36,17 +36,17 @@ public class ExecuteScript extends Command {
             }
             String fileName = args[0];
             if (depth >= maxDepth) {
-                System.out.println("Превышена глубина рекурсии!");
+                console.write("Превышена глубина рекурсии!");
                 return;
             }
-            System.out.println("Начинаем обработку файла с командами");
+            console.write("Начинаем обработку файла с командами");
             depth++;
             Console fileConsole = new FileConsole(fileName);
             InputManager newInputManager = new InputManager(fileConsole, collectionManager, dataFileName);
             newInputManager.run();
             depth--;
         } catch (WrongCommandArgsException e) {
-            System.out.println(e);
+            console.write(e.toString());
         }
     }
 }
