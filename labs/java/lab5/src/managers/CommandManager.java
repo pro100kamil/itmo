@@ -13,14 +13,16 @@ import java.util.TreeMap;
 public class CommandManager {
     private Console console;
     private CollectionManager collectionManager;
+    private CollectionHistory collectionHistory;
     private InputManager inputManager;
     private String dataFileName;
     private LinkedList<Command> history = new LinkedList<>();
     private TreeMap<String, Command> strCommands = new TreeMap<>(); //название команды, объект класса этой команды
 
-    public CommandManager(CollectionManager collectionManager, InputManager inputManager, String dataFileName) {
-        this.collectionManager = collectionManager;
+    public CommandManager(InputManager inputManager, String dataFileName) {
         this.inputManager = inputManager;
+        this.collectionManager = inputManager.getCollectionManager();
+        this.collectionHistory = inputManager.getCollectionHistory();
         this.dataFileName = dataFileName;
         console = inputManager.getConsole();
         Command[] allCommands= {new Help(null, console), new Info(collectionManager, console),
@@ -30,7 +32,10 @@ public class CommandManager {
                 new ExecuteScript(dataFileName, collectionManager, console), new Exit(console), new Head(collectionManager, console),
                 new RemoveGreater(collectionManager, console),
                 new History(history, console), new FilterBySalary(collectionManager, console),
-                new PrintDescending(collectionManager, console), new PrintFieldDescendingPosition(collectionManager, console)};
+                new PrintDescending(collectionManager, console),
+                new PrintFieldDescendingPosition(collectionManager, console),
+                new Rollback(collectionHistory, collectionManager, console)
+        };
 
         Command helpCommand = new Help(allCommands, console);
 
@@ -80,6 +85,7 @@ public class CommandManager {
             }
         }
         res.execute(args);
+        collectionHistory.addStateCollection(collectionManager.getLinkedList());
         history.add(res);
     }
 }

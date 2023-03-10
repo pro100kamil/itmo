@@ -2,6 +2,7 @@ import models.*;
 import managers.*;
 
 import java.util.LinkedList;
+import java.util.TreeMap;
 
 public class Main {
 
@@ -11,14 +12,17 @@ public class Main {
 //            System.exit(0);
 //        }
         //String fileName = args[0];
-        String fileName = System.getenv("fileNameWorker");
+        String fileName = System.getenv("fileNameWorker");  //файл, где хранится начальное состояние коллекции
 
         LinkedList<Worker> ll = JsonManager.getLinkedListWorkerFromStrJson(FileManager.getTextFromFile(fileName));
+        TreeMap<Integer, LinkedList<Worker>> stepCollection =
+                JsonManager.getStepCollectionFromStrJson(FileManager.getTextFromFile(CollectionHistory.getFileName()));
 
         ConsoleManager consoleManager = new ConsoleManager();
         CollectionManager collectionManager = new CollectionManager(ll);
+        CollectionHistory collectionHistory = new CollectionHistory(stepCollection);
 
-        InputManager inputManager = new InputManager(consoleManager, collectionManager, fileName);
+        InputManager inputManager = new InputManager(consoleManager, collectionManager, collectionHistory, fileName);
         inputManager.run();
     }
 }

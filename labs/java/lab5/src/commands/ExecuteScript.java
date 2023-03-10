@@ -42,7 +42,7 @@ public class ExecuteScript extends Command {
             console.write("Начинаем обработку файла с командами");
             depth++;
             Console fileConsole = new FileConsole(fileName);
-            InputManager newInputManager = new InputManager(fileConsole, collectionManager, dataFileName);
+            InputManager newInputManager = new InputManager(fileConsole, collectionManager, null, dataFileName);
             newInputManager.run();
             depth--;
         } catch (WrongCommandArgsException e) {

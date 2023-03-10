@@ -15,13 +15,16 @@ import java.time.format.DateTimeParseException;
 public class InputManager {
     private Console console;
     private CollectionManager collectionManager;
+    private CollectionHistory collectionHistory;
     private String dataFileName;  //файл, из которого мы берём коллекцию и в который сохраняем
 
     private static String stopWorkerInput = "EXIT";  //слово, при котором обрывается ввод работника
 
-    public InputManager(Console console, CollectionManager collectionManager, String dataFileName) {
+    public InputManager(Console console, CollectionManager collectionManager, CollectionHistory collectionHistory,
+                        String dataFileName) {
         this.console = console;
         this.collectionManager = collectionManager;
+        this.collectionHistory = collectionHistory;
         this.dataFileName = dataFileName;
     }
 
@@ -29,10 +32,19 @@ public class InputManager {
         return console;
     }
 
+    public CollectionManager getCollectionManager() {
+        return collectionManager;
+    }
+
+    public CollectionHistory getCollectionHistory() {
+        return collectionHistory;
+    }
+
+
     /**
      * Получает целое число типа Integer (не null) из стандартного ввода
      *
-     * @param text текст, который подсказывает что и как вводить
+     * @param text     текст, который подсказывает что и как вводить
      * @param positive true - число только положительное, false - любое
      * @return Integer ввёденное целое число
      */
@@ -242,7 +254,7 @@ public class InputManager {
      */
     public void run() {
         Command command;
-        CommandManager commandManager = new CommandManager(collectionManager, this, dataFileName);
+        CommandManager commandManager = new CommandManager(this, dataFileName);
         while (console.hasNext()) {
             String text = "Введите команду (help - чтобы узнать команды):";
             console.write(text);

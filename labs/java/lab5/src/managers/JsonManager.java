@@ -7,6 +7,7 @@ import java.util.LinkedList;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.TreeMap;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,6 +50,39 @@ public class JsonManager {
         } catch (Exception e) {
             console.write("Json-файл повреждён, данные из него не были взяты.");
             return new LinkedList<>();
+        }
+    }
+
+    /**
+     * Получает json-строку из связанного списка работников
+     */
+    public static String getStrJsonFromStepCollection(TreeMap<Integer, LinkedList<Worker>> stepCollection) {
+        try {
+            String json = gson.toJson(stepCollection);
+            return json;
+        } catch (Exception e) {
+            console.write(e.toString());
+            return "ошибка парсинга";
+        }
+    }
+
+    /**
+     * Получает из связанный список работников из json-строки
+     */
+    public static TreeMap<Integer, LinkedList<Worker>> getStepCollectionFromStrJson(String json) {
+        try {
+            TreeMap<Integer, LinkedList<Worker>> stepCollection = new TreeMap<>();
+            if (json.isEmpty()) {  //есть возможность начать с чистого файла
+                stepCollection.put(0, new LinkedList<Worker>());
+            }
+            else {
+                stepCollection = gson.fromJson(json, stepCollection.getClass());
+            }
+            return stepCollection;
+        } catch (Exception e) {
+            console.write(e.toString());
+            console.write("Json-файл для состояний коллекции повреждён, данные из него не были взяты.");
+            return new TreeMap<Integer, LinkedList<Worker>>();
         }
     }
 }

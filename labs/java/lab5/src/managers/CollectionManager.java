@@ -40,6 +40,24 @@ public class CollectionManager {
         Worker.moveNextId(maxId + 1);
     }
 
+    public void setWorkers(LinkedList<Worker> workers) {
+        //TODO переделать
+        //если несколько одинаковых id, оставляем первый встречный
+        //оставляем только корректных работников
+        Integer maxId = 0;
+        for (Worker worker : workers) {
+            if (worker != null && worker.validate()) {
+                try {
+                    add(worker);
+                    maxId = Math.max(maxId, worker.getId());
+                } catch (NotUniqueIdException e) {
+
+                }
+            }
+        }
+        Worker.moveNextId(maxId + 1);
+    }
+
     /**
      * Проверяет, корректная ли у нас коллекция работников.
      * То есть все работники корректные и все id разные
@@ -153,6 +171,7 @@ public class CollectionManager {
      * @param id работника
      */
     public void remove(int id) {
+        //TODO удаление из словаря
         if (!idWorkerFromCollection.containsKey(id)) { //если нет пользователя с таким id
             console.write("Нет пользователя с таким id!");
             return;
@@ -192,9 +211,9 @@ public class CollectionManager {
     }
 
     /**
-     * Возвращает первый элемент коллекции (существует метод isEmpty, чтобы не допускать случая пустой коллекции)
+     * Возвращает связанный список работников
      *
-     * @return Worker первый работник в коллекции
+     * @return LinkedList<Worker> связанный список работников (текущее состояние коллекции)
      */
     public LinkedList<Worker> getLinkedList() {
         return linkedList;
