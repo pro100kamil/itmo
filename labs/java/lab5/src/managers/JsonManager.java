@@ -3,6 +3,7 @@ package managers;
 import models.*;
 import jsonAdapters.*;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import java.time.LocalDate;
@@ -19,6 +20,14 @@ public class JsonManager {
     private static Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(
             LocalDateTime.class, new LocalDateTimeAdapter()).setPrettyPrinting().create();
     private static Console console = new ConsoleManager();
+
+    private static LinkedList<Worker> getLinkedList(Worker[] workers) {
+        LinkedList<Worker> ll = new LinkedList<>();
+        for (Worker worker : workers) {
+            ll.add(worker);
+        }
+        return ll;
+    }
 
     /**
      * Получает json-строку из связанного списка работников
@@ -38,6 +47,11 @@ public class JsonManager {
      */
     public static LinkedList<Worker> getLinkedListWorkerFromStrJson(String json) {
         try {
+//            ArrayList<Worker> workers = new ArrayList<>();
+//            if (!json.isEmpty()) { //есть возможность начать с чистого файла
+//                workers = gson.fromJson(json, workers.getClass());
+//            }
+//            return new LinkedList(workers);
             Worker[] workers = new Worker[0];
             if (!json.isEmpty()) { //есть возможность начать с чистого файла
                 workers = gson.fromJson(json, Worker[].class);
@@ -56,7 +70,7 @@ public class JsonManager {
     /**
      * Получает json-строку из связанного списка работников
      */
-    public static String getStrJsonFromStepCollection(TreeMap<Integer, LinkedList<Worker>> stepCollection) {
+    public static String getStrJsonFromStepCollection(TreeMap<String, LinkedList<Worker>> stepCollection) {
         try {
             String json = gson.toJson(stepCollection);
             return json;
@@ -69,20 +83,25 @@ public class JsonManager {
     /**
      * Получает из связанный список работников из json-строки
      */
-    public static TreeMap<Integer, LinkedList<Worker>> getStepCollectionFromStrJson(String json) {
+    public static TreeMap<String, LinkedList<Worker>> getStepCollectionFromStrJson(String json, LinkedList<Worker> ll) {
         try {
-            TreeMap<Integer, LinkedList<Worker>> stepCollection = new TreeMap<>();
+            TreeMap<String, LinkedList<Worker>> stepCollection = new TreeMap<>();
             if (json.isEmpty()) {  //есть возможность начать с чистого файла
-                stepCollection.put(0, new LinkedList<Worker>());
+                stepCollection.put("0", ll);
             }
             else {
-                stepCollection = gson.fromJson(json, stepCollection.getClass());
+                TreeMap<String, ArrayList<Worker>> tmpStepCollection = new TreeMap<>();
+                tmpStepCollection = gson.fromJson(json, tmpStepCollection.getClass());
+                for (String k : tmpStepCollection.keySet()) {
+                    stepCollection.put(k, new LinkedList(tmpStepCollection.get(k)));
+                }
+                stepCollection.put(stepCollection.lastKey(), ll);
             }
             return stepCollection;
         } catch (Exception e) {
             console.write(e.toString());
             console.write("Json-файл для состояний коллекции повреждён, данные из него не были взяты.");
-            return new TreeMap<Integer, LinkedList<Worker>>();
+            return new TreeMap<String, LinkedList<Worker>>();
         }
     }
 }

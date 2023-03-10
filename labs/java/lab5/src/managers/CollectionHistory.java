@@ -10,11 +10,11 @@ import java.util.TreeMap;
  */
 public class CollectionHistory {
     private static String fileName = "_.json";   //файл, где хранятся данные о состояниях коллекции
-    private TreeMap<Integer, LinkedList<Worker>> stepCollection = new TreeMap<>();
+    private TreeMap<String, LinkedList<Worker>> stepCollection = new TreeMap<>();
     //номер команды (шага) в абсолютной нумерации: состояние списка на этот момент
-    //нумерация с 0, 0 - пустая коллекция
+    //нумерация с 0, 0 - начальное состояние колллекции
 
-    public CollectionHistory(TreeMap<Integer, LinkedList<Worker>> stepCollection) {
+    public CollectionHistory(TreeMap<String, LinkedList<Worker>> stepCollection) {
         this.stepCollection = stepCollection;
     }
 
@@ -31,7 +31,7 @@ public class CollectionHistory {
      * @param linkedList - текущее состояние
      */
     public void addStateCollection(LinkedList<Worker> linkedList) {
-        stepCollection.put(stepCollection.size(), new LinkedList<Worker>(linkedList));
+        stepCollection.put(String.valueOf(stepCollection.size()), new LinkedList<Worker>(linkedList));
         save();
     }
 
@@ -43,7 +43,7 @@ public class CollectionHistory {
         int total = stepCollection.size();
         n = Math.min(n, total - 1);
         for (int i = total - n; i < total; i++) {
-            stepCollection.remove(i);
+            stepCollection.remove(String.valueOf(i));
         }
         save();
     }

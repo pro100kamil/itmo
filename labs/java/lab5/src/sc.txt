@@ -1,11 +1,2 @@
-add
-wewr
-74
-22
-5
-
-
-
-5
-
+execute_script sc.txt
 show

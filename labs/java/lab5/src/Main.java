@@ -15,8 +15,9 @@ public class Main {
         String fileName = System.getenv("fileNameWorker");  //файл, где хранится начальное состояние коллекции
 
         LinkedList<Worker> ll = JsonManager.getLinkedListWorkerFromStrJson(FileManager.getTextFromFile(fileName));
-        TreeMap<Integer, LinkedList<Worker>> stepCollection =
-                JsonManager.getStepCollectionFromStrJson(FileManager.getTextFromFile(CollectionHistory.getFileName()));
+
+        TreeMap<String, LinkedList<Worker>> stepCollection =
+                JsonManager.getStepCollectionFromStrJson(FileManager.getTextFromFile(CollectionHistory.getFileName()), ll);
 
         ConsoleManager consoleManager = new ConsoleManager();
         CollectionManager collectionManager = new CollectionManager(ll);

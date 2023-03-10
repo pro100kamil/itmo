@@ -26,24 +26,13 @@ public class CollectionManager {
         //если несколько одинаковых id, оставляем первый встречный
         //оставляем только корректных работников
         this();
-        Integer maxId = 0;
-        for (Worker worker : workers) {
-            if (worker != null && worker.validate()) {
-                try {
-                    add(worker);
-                    maxId = Math.max(maxId, worker.getId());
-                } catch (NotUniqueIdException e) {
-
-                }
-            }
-        }
-        Worker.moveNextId(maxId + 1);
+        setWorkers(workers);
     }
 
     public void setWorkers(LinkedList<Worker> workers) {
-        //TODO переделать
         //если несколько одинаковых id, оставляем первый встречный
         //оставляем только корректных работников
+        clear();
         Integer maxId = 0;
         for (Worker worker : workers) {
             if (worker != null && worker.validate()) {
@@ -171,12 +160,12 @@ public class CollectionManager {
      * @param id работника
      */
     public void remove(int id) {
-        //TODO удаление из словаря
         if (!idWorkerFromCollection.containsKey(id)) { //если нет пользователя с таким id
             console.write("Нет пользователя с таким id!");
             return;
         }
         Worker worker = idWorkerFromCollection.get(id);
+        idWorkerFromCollection.remove(id);
         linkedList.remove(worker);
     }
 
@@ -189,6 +178,7 @@ public class CollectionManager {
         for (Worker other : linkedList) {
             //other > worker
             if (other.compareTo(worker) > 0) {
+                idWorkerFromCollection.remove(other.getId());
                 linkedList.remove(other);
             }
         }
@@ -198,6 +188,7 @@ public class CollectionManager {
      * Очистка коллекции
      */
     public void clear() {
+        idWorkerFromCollection.clear();
         linkedList.clear();
     }
 

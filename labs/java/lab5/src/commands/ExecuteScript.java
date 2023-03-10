@@ -15,7 +15,6 @@ public class ExecuteScript extends Command {
     private String dataFileName;
     private CollectionManager collectionManager;
 
-
     public ExecuteScript(String dataFileName, CollectionManager collectionManager, Console console) {
         super("execute_script", "выполняет команды из файла", console);
         this.dataFileName = dataFileName;
@@ -27,13 +26,20 @@ public class ExecuteScript extends Command {
     }
 
     /**
+     * Проверяет корректность аргументов команды
+     */
+    public void validateArgs(String[] args) throws WrongCommandArgsException {
+        if (args.length != 1 || !ValidateManager.isFile(args[0])) {
+            throw new WrongCommandArgsException();
+        }
+    }
+
+    /**
      * Выполняет команды из файла
      */
     public void execute(String[] args) {
         try {
-            if (args.length != 1 || !ValidateManager.isFile(args[0])) {
-                throw new WrongCommandArgsException();
-            }
+            validateArgs(args);
             String fileName = args[0];
             if (depth >= maxDepth) {
                 console.write("Превышена глубина рекурсии!");

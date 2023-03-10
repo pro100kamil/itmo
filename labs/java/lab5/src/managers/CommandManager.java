@@ -25,7 +25,7 @@ public class CommandManager {
         this.collectionHistory = inputManager.getCollectionHistory();
         this.dataFileName = dataFileName;
         console = inputManager.getConsole();
-        Command[] allCommands= {new Help(null, console), new Info(collectionManager, console),
+        Command[] allCommands = {new Help(null, console), new Info(collectionManager, console),
                 new Show(collectionManager, console), new Add(collectionManager, console),
                 new Update(collectionManager, console), new Remove(collectionManager, console), new Clear(collectionManager, console),
                 new Save(dataFileName, collectionManager, console),
@@ -66,8 +66,7 @@ public class CommandManager {
         if (res instanceof CommandWithWorker) {
             try {
                 ((CommandWithWorker) res).validateArgs(args);
-            }
-            catch (WrongCommandArgsException | NonExistentId e) {
+            } catch (WrongCommandArgsException | NonExistentId e) {
                 console.write(e.toString());
                 return;
             }
@@ -77,15 +76,24 @@ public class CommandManager {
         }
         if (res instanceof ExecuteScript) {
             try {
-                int maxDepth = inputManager.getInteger("Введите максимальную глубину рекурсии: ", true);
-                ((ExecuteScript) res).setMaxDepth(maxDepth);
-            }
-            catch (EndInputException | EndInputWorkerException e) {
+                ((ExecuteScript) res).validateArgs(args);
+                //макс глубина рекурсии спрашивается только тогда, когда мы работаем со стандартным вводом
+                if (console instanceof ConsoleManager) {
+                    int maxDepth = inputManager.getInteger("Введите максимальную глубину рекурсии: ", true);
+                    ExecuteScript.setMaxDepth(maxDepth);
+                }
+            } catch (WrongCommandArgsException e) {
+                console.write(e.toString());
+                return;
+            } catch (EndInputException | EndInputWorkerException e) {
                 return;
             }
         }
         res.execute(args);
-        collectionHistory.addStateCollection(collectionManager.getLinkedList());
-        history.add(res);
+        //collectionHistory == null, если у нас работа с файлом
+        if (collectionHistory != null) {
+            collectionHistory.addStateCollection(collectionManager.getLinkedList());
+            history.add(res);
+        }
     }
 }
