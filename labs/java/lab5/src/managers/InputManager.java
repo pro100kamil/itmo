@@ -4,6 +4,7 @@ import models.*;
 import commands.*;
 import exceptions.*;
 
+import java.util.NoSuchElementException;
 import java.util.TreeMap;
 import java.util.LinkedList;
 import java.time.LocalDate;
@@ -263,6 +264,8 @@ public class InputManager {
                 commandManager.executeCommand(console.getNextStr());
             } catch (NoSuchCommandException e) {
                 console.write(e.toString());
+            } catch (NoSuchElementException e) {
+                console.write("");
             }
             console.write("--------------------------");
             console.write("");

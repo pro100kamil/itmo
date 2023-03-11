@@ -7,13 +7,12 @@ import java.util.TreeMap;
 public class Main {
 
     public static void main(String[] args) {
-//        if (args.length != 1) {
-//            System.out.println("Нужно запускать файл только с одним аргументом (названием файла, откуда брать коллекцию)!!!");
-//            System.exit(0);
-//        }
-        //String fileName = args[0];
-        String fileName = System.getenv("fileNameWorker");  //файл, где хранится начальное состояние коллекции
-
+        String fileName = System.getenv("fileNameCollection");  //файл, где хранится начальное состояние коллекции
+        if (fileName == null)  {
+            System.out.println("Нужно запускать файл с переменной окружения " +
+                    "'fileNameCollection' (названием файла, откуда брать коллекцию)!!!");
+            System.exit(0);
+        }
         LinkedList<Worker> ll = JsonManager.getLinkedListWorkerFromStrJson(FileManager.getTextFromFile(fileName));
 
         TreeMap<String, LinkedList<Worker>> stepCollection =
@@ -28,8 +27,8 @@ public class Main {
     }
 }
 
-//javac -d classes -cp gson.jar Main.java models/*.java managers/*.java commands/*.java exceptions/*.java json_adapters/*.java
-//java -cp classes;gson.jar Main files/1.json
 
-//jar -cfm Main.jar Manifest.txt -C classes .
-//java -jar Main.jar
+//scp -P 2222 lab5.jar s367149@helios.cs.ifmo.ru:~/labs
+//set fileNameCollection=main.json
+//javac -d classes -cp gson.jar Main.java models/*.java managers/*.java commands/*.java exceptions/*.java jsonAdapters/*.java
+//java -cp classes;gson.jar Main

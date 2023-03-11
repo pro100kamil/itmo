@@ -1,5 +1,6 @@
 package managers;
 
+import models.Position;
 import models.Worker;
 import exceptions.NotUniqueIdException;
 
@@ -118,7 +119,9 @@ public class CollectionManager {
         Collections.sort(copyList);
         Collections.reverse(copyList);
         for (Worker worker : copyList) {
-            console.write(worker.getPosition().toString());
+            Position pos = worker.getPosition();
+            if (pos != null) console.write(pos.toString());
+            else console.write("null");
         }
     }
 

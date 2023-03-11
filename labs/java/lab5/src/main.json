@@ -12,5 +12,18 @@
     "person": {
       "height": 189.0
     }
+  },
+  {
+    "id": 2,
+    "name": "Bob",
+    "coordinates": {
+      "x": 54,
+      "y": 666
+    },
+    "creationDate": "2023-03-11T03:06:51.141141200",
+    "salary": 999.0,
+    "person": {
+      "height": 55.0
+    }
   }
 ]
