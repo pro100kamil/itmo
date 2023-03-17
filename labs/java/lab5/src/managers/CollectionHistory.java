@@ -53,6 +53,7 @@ public class CollectionHistory {
      * Вызываем из других методов, чтобы в файле были самые актуальные состояния.
      */
     public void save() {
-        FileManager.writeTextToFile(fileName, JsonManager.getStrJsonFromStepCollection(stepCollection));
+        FileManager.writeTextToFile(fileName, JsonManager.getStrJsonFromStepCollection(
+                new TreeMap<String, LinkedList<Worker>>(stepCollection)));
     }
 }

@@ -159,6 +159,10 @@ public class Worker implements Comparable<Worker> {
 //        return "Worker " + id + " (" + name + ")";
 //    }
 
+    public Worker copy() {
+        return this;
+    }
+
     @Override
     public String toString() {
         return "Worker{" +

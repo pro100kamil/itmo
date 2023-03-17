@@ -23,10 +23,10 @@ public class FilterBySalary extends Command {
     public void execute(String[] args) {
         try {
             Float salary = null;
-            if (args.length == 1 || ValidateManager.isFloat(args[0])) {
+            if (args.length == 1 && ValidateManager.isFloat(args[0])) {
                 salary = Float.valueOf(args[0]);
             }
-            else if (args.length == 1 || args[0].equals("null")) {
+            else if (args.length == 1 && args[0].equals("null")) {
                 salary = null;
             }
             else {

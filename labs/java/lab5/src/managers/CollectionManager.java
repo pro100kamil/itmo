@@ -214,6 +214,19 @@ public class CollectionManager {
     }
 
     /**
+     * Возвращает копию связанного список работников
+     *
+     * @return LinkedList<Worker> копия связанного списка работников (текущего состояние коллекции)
+     */
+    public LinkedList<Worker> copy() {
+        LinkedList<Worker> res = new LinkedList<>();
+        for (Worker worker : linkedList) {
+            res.add(worker.copy());
+        }
+        return res;
+    }
+
+    /**
      * Возвращает связанный список работников с заданной зарплатой
      *
      * @param salary заданная зарплата

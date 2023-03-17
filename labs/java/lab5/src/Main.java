@@ -29,6 +29,7 @@ public class Main {
 
 
 //scp -P 2222 lab5.jar s367149@helios.cs.ifmo.ru:~/labs
-//set fileNameCollection=main.json
+//ssh -p 2222 s367149@helios.cs.ifmo.ru
+//export fileNameCollection=main.json
 //javac -d classes -cp gson.jar Main.java models/*.java managers/*.java commands/*.java exceptions/*.java jsonAdapters/*.java
 //java -cp classes;gson.jar Main

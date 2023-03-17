@@ -93,7 +93,7 @@ public class JsonManager {
                 TreeMap<String, ArrayList<Worker>> tmpStepCollection = new TreeMap<>();
                 tmpStepCollection = gson.fromJson(json, tmpStepCollection.getClass());
                 for (String k : tmpStepCollection.keySet()) {
-                    stepCollection.put(k, new LinkedList(tmpStepCollection.get(k)));
+                    stepCollection.put(k, tmpStepCollection.get(k).copy());
                 }
                 stepCollection.put(stepCollection.lastKey(), ll);
             }
