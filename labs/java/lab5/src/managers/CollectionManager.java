@@ -155,6 +155,7 @@ public class CollectionManager {
         }
         Worker w1 = idWorkerFromCollection.get(id);
         w1.update(worker);
+
     }
 
     /**
@@ -178,7 +179,7 @@ public class CollectionManager {
      * @param worker заданный работник
      */
     public void removeGreater(Worker worker) {
-        for (Worker other : linkedList) {
+        for (Worker other : new LinkedList<Worker>(linkedList)) {
             //other > worker
             if (other.compareTo(worker) > 0) {
                 idWorkerFromCollection.remove(other.getId());

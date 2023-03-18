@@ -92,7 +92,10 @@ public class CommandManager {
         res.execute(args);
         //collectionHistory == null, если у нас работа с файлом
         if (collectionHistory != null) {
-            collectionHistory.addStateCollection(collectionManager.getLinkedList());
+            //откат лишь отменяет команды, при нём не появляется новое состояние
+            if (!(res instanceof Rollback)) {
+                collectionHistory.addStateCollection(collectionManager.getLinkedList());
+            }
             history.add(res);
         }
     }

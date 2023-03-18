@@ -6,7 +6,9 @@ import managers.Console;
 import java.util.LinkedList;
 
 /**
- * Команда history
+ * Команда history.
+ * Выводит последние 11 команд (внизу самая последняя).
+ * Тут учитываются все команды (кроме команд внутри файла), даже если они были отменены и даже сама команда rollback.
  */
 public class History extends Command {
     private LinkedList<Command> history;
@@ -17,9 +19,10 @@ public class History extends Command {
     }
 
     /**
-     * Выводит последние 11 команд (внизу самая последняя)
      *
-     * @param collectionManager менеджер коллекции, отвечающий за основную коллекцию
+     *
+     *
+     * @param args аргументы, с которым
      */
     public void execute(String[] args) {
         try {

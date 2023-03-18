@@ -7,7 +7,7 @@ public class Rollback extends Command {
     CollectionHistory collectionHistory;
     CollectionManager collectionManager;
     public Rollback(CollectionHistory collectionHistory, CollectionManager collectionManager, Console console) {
-        super("rollback", "отменяет действие последних n комманд", console);
+        super("rollback", "отменяет действие последних n команд", console);
         this.collectionHistory = collectionHistory;
         this.collectionManager = collectionManager;
     }

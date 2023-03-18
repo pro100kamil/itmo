@@ -13,14 +13,12 @@ public class Main {
                     "'fileNameCollection' (названием файла, откуда брать коллекцию)!!!");
             System.exit(0);
         }
-        LinkedList<Worker> ll = JsonManager.getLinkedListWorkerFromStrJson(FileManager.getTextFromFile(fileName));
-
-        TreeMap<String, LinkedList<Worker>> stepCollection =
-                JsonManager.getStepCollectionFromStrJson(FileManager.getTextFromFile(CollectionHistory.getFileName()), ll);
+        LinkedList<Worker> start_ll = JsonManager.getLinkedListWorkerFromStrJson(FileManager.getTextFromFile(fileName));
 
         ConsoleManager consoleManager = new ConsoleManager();
-        CollectionManager collectionManager = new CollectionManager(ll);
-        CollectionHistory collectionHistory = new CollectionHistory(stepCollection);
+        CollectionManager collectionManager = new CollectionManager(start_ll);
+        CollectionHistory collectionHistory = new CollectionHistory();
+        collectionHistory.setStart(start_ll);
 
         InputManager inputManager = new InputManager(consoleManager, collectionManager, collectionHistory, fileName);
         inputManager.run();
@@ -28,8 +26,9 @@ public class Main {
 }
 
 
-//scp -P 2222 lab5.jar s367149@helios.cs.ifmo.ru:~/labs
-//ssh -p 2222 s367149@helios.cs.ifmo.ru
-//export fileNameCollection=main.json
+//scp -P 2222 lab5.jar s367149@helios.cs.ifmo.ru:~/labs   //загрузка джарника на гелиос
+//ssh -p 2222 s367149@helios.cs.ifmo.ru  //вход на гелиос
+//export fileNameCollection=maishoshown.json    //создание переменной окружения
+
 //javac -d classes -cp gson.jar Main.java models/*.java managers/*.java commands/*.java exceptions/*.java jsonAdapters/*.java
 //java -cp classes;gson.jar Main
