@@ -2,7 +2,6 @@ import models.*;
 import managers.*;
 
 import java.util.LinkedList;
-import java.util.TreeMap;
 
 public class Main {
 
@@ -28,7 +27,7 @@ public class Main {
 
 //scp -P 2222 lab5.jar s367149@helios.cs.ifmo.ru:~/labs   //загрузка джарника на гелиос
 //ssh -p 2222 s367149@helios.cs.ifmo.ru  //вход на гелиос
-//export fileNameCollection=maishoshown.json    //создание переменной окружения
+//export fileNameCollection=main.json    //создание переменной окружения
 
 //javac -d classes -cp gson.jar Main.java models/*.java managers/*.java commands/*.java exceptions/*.java jsonAdapters/*.java
 //java -cp classes;gson.jar Main
