@@ -13,7 +13,7 @@ public class Server {
     public static void main(String[] args) throws Exception {
         byte arr[] = new byte[10];
         int len = arr.length;
-        int port = 8081;
+        int port = 6969;
         ServerSocketChannel serv = ServerSocketChannel.open();
         SocketAddress addr = new InetSocketAddress(port);
 

@@ -1,22 +1,22 @@
 package managers;
 
-import models.Position;
 import models.Worker;
 import exceptions.NotUniqueIdException;
 
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.TreeMap;
 import java.time.LocalDateTime;
+import java.util.stream.Collectors;
 
 /**
  * Класс для работы с коллекцией
  */
 public class CollectionManager {
-    private Console console = new ConsoleManager();
+    private final Console console = new ConsoleManager();
     private LinkedList<Worker> linkedList;
     private TreeMap<Integer, Worker> idWorkerFromCollection = new TreeMap<>();
-    private LocalDateTime creationDate;
+    private final LocalDateTime creationDate;
 
     public CollectionManager() {
         creationDate = LocalDateTime.now();
@@ -80,7 +80,7 @@ public class CollectionManager {
     }
 
     /**
-     * Вывод всех элементов коллекции
+     * Выводит все элементы коллекции
      */
     public void printElements() {
         if (linkedList.size() == 0) {
@@ -88,41 +88,21 @@ public class CollectionManager {
             return;
         }
         console.write("Элементы коллекции: " + linkedList.size());
-        int i = 0;
-        for (Worker worker : linkedList) {
-            System.out.print(worker);
-            if (i != linkedList.size() - 1) {
-                console.write(", ");
-            }
-            i += 1;
-        }
-        console.write(".");
+        linkedList.forEach(worker -> console.write(worker.toString()));
     }
 
     /**
      * Выводит элементы коллекции в порядке убывания
      */
     public void printDescending() {
-        LinkedList<Worker> copyList = new LinkedList<>(linkedList);
-        Collections.sort(copyList);
-        Collections.reverse(copyList);
-        for (Worker worker : copyList) {
-            console.write(worker.toString());
-        }
+        linkedList.stream().sorted(Comparator.reverseOrder()).forEach(worker -> console.write(worker.toString()));
     }
 
     /**
      * Выводит позиции работников, работники идут по убыванию
      */
     public void printFieldDescendingPosition() {
-        LinkedList<Worker> copyList = new LinkedList<>(linkedList);
-        Collections.sort(copyList);
-        Collections.reverse(copyList);
-        for (Worker worker : copyList) {
-            Position pos = worker.getPosition();
-            if (pos != null) console.write(pos.toString());
-            else console.write("null");
-        }
+        linkedList.stream().sorted(Comparator.reverseOrder()).forEach(worker -> console.write(worker.getPosition().toString()));
     }
 
     /**
@@ -153,13 +133,12 @@ public class CollectionManager {
             console.write("Нет пользователя с таким id!");
             return;
         }
-        Worker w1 = idWorkerFromCollection.get(id);
-        w1.update(worker);
+        idWorkerFromCollection.get(id).update(worker);
 
     }
 
     /**
-     * Удаляем работника из коллекции
+     * Удаляет работника из коллекции
      *
      * @param id работника
      */
@@ -168,9 +147,8 @@ public class CollectionManager {
             console.write("Нет пользователя с таким id!");
             return;
         }
-        Worker worker = idWorkerFromCollection.get(id);
+        linkedList.remove(idWorkerFromCollection.get(id));
         idWorkerFromCollection.remove(id);
-        linkedList.remove(worker);
     }
 
     /**
@@ -179,13 +157,11 @@ public class CollectionManager {
      * @param worker заданный работник
      */
     public void removeGreater(Worker worker) {
-        for (Worker other : new LinkedList<>(linkedList)) {
-            //other > worker
-            if (other.compareTo(worker) > 0) {
-                idWorkerFromCollection.remove(other.getId());
-                linkedList.remove(other);
-            }
-        }
+        //other > worker => удаляем other
+        linkedList.stream().filter(other -> other.compareTo(worker) > 0).forEach(other -> {
+            idWorkerFromCollection.remove(other.getId());
+            linkedList.remove(other);
+        });
     }
 
     /**
@@ -215,31 +191,15 @@ public class CollectionManager {
     }
 
     /**
-     * Возвращает копию связанного список работников
-     *
-     * @return LinkedList<Worker> копия связанного списка работников (текущего состояние коллекции)
-     */
-    public LinkedList<Worker> copy() {
-        LinkedList<Worker> res = new LinkedList<>();
-        for (Worker worker : linkedList) {
-            res.add(worker.copy());
-        }
-        return res;
-    }
-
-    /**
      * Возвращает связанный список работников с заданной зарплатой
      *
      * @param salary заданная зарплата
      * @return LinkedList<Worker> работники с заданной зарплатой
      */
     public LinkedList<Worker> getFilterBySalary(Float salary) {
-        LinkedList<Worker> tmp = new LinkedList<>();
-        for (Worker worker : linkedList) {
-            if (worker.getSalary() != null && worker.getSalary().equals(salary)) {
-                tmp.add(worker);
-            }
-        }
-        return tmp;
+        return linkedList.stream().filter(worker ->
+                (worker.getSalary() == null && salary == null)
+                        || (worker.getSalary() != null && worker.getSalary().equals(salary))
+        ).collect(Collectors.toCollection(LinkedList::new));
     }
 }
