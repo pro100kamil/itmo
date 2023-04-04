@@ -15,7 +15,7 @@ public class ValidateManager {
      */
     public static boolean isFloat(String value) {
         try {
-            Float tmp = Float.parseFloat(value);
+            Float.parseFloat(value);
         } catch (NumberFormatException e) {
             return false;
         }
@@ -30,7 +30,7 @@ public class ValidateManager {
      */
     public static boolean isInteger(String value) {
         try {
-            Integer tmp = Integer.parseInt(value);
+            Integer.parseInt(value);
         } catch (NumberFormatException e) {
             return false;
         }

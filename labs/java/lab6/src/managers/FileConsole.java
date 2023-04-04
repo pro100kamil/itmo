@@ -5,7 +5,7 @@ package managers;
  */
 public class FileConsole implements Console {
     private String fileName;
-    private String[] lines;
+    private final String[] lines;
     private int curInd = 0;
 
     public FileConsole(String fileName) {

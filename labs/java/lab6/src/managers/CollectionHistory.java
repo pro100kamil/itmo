@@ -6,13 +6,13 @@ import java.util.LinkedList;
 import java.util.TreeMap;
 
 /**
- * Класс, который работает с коллекциями, которые были на разных шагах
+ * Класс, который работает с коллекциями, которые были на разных шагах.
  */
 public class CollectionHistory {
-    private static String fileName = "_.json";   //файл, где хранятся данные о состояниях коллекции
+    private static final String fileName = "_.json";   //файл, где хранятся данные о состояниях коллекции
     //private TreeMap<String, LinkedList<Worker>> stepCollection = new TreeMap<>();
     //номер команды (шага) в абсолютной нумерации: состояние списка на этот момент
-    //нумерация с 0, 0 - начальное состояние колллекции
+    //нумерация с 0, 0 - начальное состояние коллекции
 
     /**
      * Берёт из файла состояний TreeMap<String, LinkedList<Worker>> stepCollection

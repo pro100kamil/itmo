@@ -1,12 +1,9 @@
 package managers;
 
 import models.*;
-import commands.*;
 import exceptions.*;
 
 import java.util.NoSuchElementException;
-import java.util.TreeMap;
-import java.util.LinkedList;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
@@ -14,12 +11,12 @@ import java.time.format.DateTimeParseException;
  * Класс для работы с вводом
  */
 public class InputManager {
-    private Console console;
-    private CollectionManager collectionManager;
-    private CollectionHistory collectionHistory;
-    private String dataFileName;  //файл, из которого мы берём коллекцию и в который сохраняем
+    private final Console console;
+    private final CollectionManager collectionManager;
+    private final CollectionHistory collectionHistory;
+    private final String dataFileName;  //файл, из которого мы берём коллекцию и в который сохраняем коллекцию
 
-    private static String stopWorkerInput = "EXIT";  //слово, при котором обрывается ввод работника
+    private static final String stopWorkerInput = "EXIT";  //слово, при котором обрывается ввод работника
 
     public InputManager(Console console, CollectionManager collectionManager, CollectionHistory collectionHistory,
                         String dataFileName) {
@@ -47,11 +44,11 @@ public class InputManager {
      *
      * @param text     текст, который подсказывает что и как вводить
      * @param positive true - число только положительное, false - любое
-     * @return Integer ввёденное целое число
+     * @return Integer введённое целое число
      */
     public Integer getInteger(String text, boolean positive) throws EndInputException, EndInputWorkerException {
-        String tmp = ""; //временное хранение ввода
-        Integer x;
+        String tmp;  //временное хранение ввода
+        int x;
         console.write(text);
         while (console.hasNext()) {
             tmp = console.getNextStr();
@@ -60,7 +57,7 @@ public class InputManager {
             }
             if (ValidateManager.isInteger(tmp)) {
                 x = Integer.parseInt(tmp);
-                if (x > 0 || (x <= 0 && !positive)) {
+                if (x > 0 || (!positive)) {
                     return x;
                 }
             }
@@ -75,11 +72,11 @@ public class InputManager {
      * @param text     текст, который подсказывает что и как вводить
      * @param notNull  true - число не может быть null, false - может
      * @param positive true - число только положительное, false - любое
-     * @return Float ввёденное целое число (может быть null)
+     * @return Float введённое целое число (может быть null)
      */
     public Float getFloat(String text, boolean notNull, boolean positive) throws EndInputException, EndInputWorkerException {
-        String tmp = ""; //временное хранение ввода
-        Float x;
+        String tmp; //временное хранение ввода
+        float x;
         console.write(text);
         while (console.hasNext()) {
             tmp = console.getNextStr();
@@ -111,7 +108,7 @@ public class InputManager {
             text += el + " ";
         }
 
-        String tmp = ""; //временное хранение ввода
+        String tmp; //временное хранение ввода
         console.write(text);
         while (console.hasNext()) {
             tmp = console.getNextStr();
@@ -141,7 +138,7 @@ public class InputManager {
             text += el + " ";
         }
 
-        String tmp = ""; //временное хранение ввода
+        String tmp; //временное хранение ввода
         console.write(text);
         while (console.hasNext()) {
             tmp = console.getNextStr();
@@ -164,10 +161,10 @@ public class InputManager {
      * Получает дату типа LocalDate (может быть null) из стандартного ввода
      *
      * @param text текст, который подсказывает что и как вводить
-     * @return LocalDate ввёденная дата (может быть null)
+     * @return LocalDate введённая дата (может быть null)
      */
     public LocalDate getDate(String text) throws EndInputException, EndInputWorkerException {
-        String tmp = ""; //временное хранение ввода
+        String tmp; //временное хранение ввода
         console.write(text);
         while (console.hasNext()) {
             tmp = console.getNextStr();
@@ -192,10 +189,10 @@ public class InputManager {
      * @param text      текст, который подсказывает что и как вводить
      * @param minLength минимальная допустимая длина для вводимой строки
      * @param notNull   true - число не может быть null, false - может
-     * @return Float ввёденное целое число (может быть null)
+     * @return Float введённое целое число (может быть null)
      */
     public String getNotBlankString(String text, int minLength, boolean notNull) throws EndInputException, EndInputWorkerException {
-        String tmp = ""; //временное хранение ввода
+        String tmp; //временное хранение ввода
         console.write(text);
         while (console.hasNext()) {
             tmp = console.getNextStr();
@@ -220,8 +217,6 @@ public class InputManager {
      */
     public Worker getWorker() {
         try {
-            String tmp = ""; //временное хранение ввода
-
             String name = getNotBlankString("Введите имя работника:", 1, true);
 
             console.write("Введите координаты работника (X, Y).");
@@ -238,13 +233,13 @@ public class InputManager {
 
             LocalDate birthday = getDate("Введите день рождения в формате 'yyyy-mm-dd' или пустую строку для null:");
 
-            float height = getFloat("Введите рост работника (вещественнное число, целую и дробную часть разделяйте точкой):", true, true).floatValue();
+            float height = getFloat("Введите рост работника (вещественное число, целую и дробную часть разделяйте точкой):", true, true).floatValue();
 
-            String passportID = getNotBlankString("Введите id пасспорта (более 6 символов) или пустую строку для null:", 7, false);
+            String passportID = getNotBlankString("Введите id паспорта (более 6 символов) или пустую строку для null:", 7, false);
 
             Person person = new Person(birthday, height, passportID);
 
-            return new Worker(name, new Coordinates(Integer.valueOf(x), Integer.valueOf(y)), salary, position, status, person);
+            return new Worker(name, coordinates, salary, position, status, person);
         } catch (EndInputException | EndInputWorkerException e) {
             return null;
         }
@@ -254,7 +249,6 @@ public class InputManager {
      * Запускает интерактивный режим
      */
     public void run() {
-        Command command;
         CommandManager commandManager = new CommandManager(this, dataFileName);
         while (console.hasNext()) {
             String text = "Введите команду (help - чтобы узнать команды):";

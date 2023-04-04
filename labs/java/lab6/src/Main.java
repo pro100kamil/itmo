@@ -14,7 +14,7 @@ public class Main {
         }
         LinkedList<Worker> start_ll = JsonManager.getLinkedListWorkerFromStrJson(FileManager.getTextFromFile(fileName));
 
-        ConsoleManager consoleManager = new ConsoleManager();
+        StandardConsole consoleManager = new StandardConsole();
         CollectionManager collectionManager = new CollectionManager(start_ll);
         CollectionHistory collectionHistory = new CollectionHistory();
         collectionHistory.setStart(start_ll);

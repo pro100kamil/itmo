@@ -5,7 +5,6 @@ import models.*;
 import jsonAdapters.*;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import java.time.LocalDate;
@@ -19,25 +18,16 @@ import com.google.gson.GsonBuilder;
  * Класс для работы с json-файлами. Запись в них, считывание из них.
  */
 public class JsonManager {
-    private static Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(
+    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(
             LocalDateTime.class, new LocalDateTimeAdapter()).setPrettyPrinting().create();
-    private static Console console = new ConsoleManager();
-
-    private static LinkedList<Worker> getLinkedList(Worker[] workers) {
-        LinkedList<Worker> ll = new LinkedList<>();
-        for (Worker worker : workers) {
-            ll.add(worker);
-        }
-        return ll;
-    }
+    private static final Console console = new StandardConsole();
 
     /**
      * Получает json-строку из связанного списка работников
      */
     public static String getStrJsonFromLinkedListWorker(LinkedList<Worker> workers) {
         try {
-            String json = gson.toJson(workers);
-            return json;
+            return gson.toJson(workers);
         } catch (Exception e) {
             console.write(e.toString());
             return "ошибка парсинга";
@@ -67,8 +57,7 @@ public class JsonManager {
      */
     public static String getStrJsonFromStepCollection(TreeMap<String, LinkedList<Worker>> stepCollection) {
         try {
-            String json = gson.toJson(stepCollection);
-            return json;
+            return gson.toJson(stepCollection);
         } catch (Exception e) {
             console.write(e.toString());
             return "ошибка парсинга";
@@ -93,5 +82,4 @@ public class JsonManager {
             return new TreeMap<String, LinkedList<Worker>>();
         }
     }
-
 }

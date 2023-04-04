@@ -11,19 +11,17 @@ import java.util.TreeMap;
  * Класс для запуска команд, для сохранения истории
  */
 public class CommandManager {
-    private Console console;
-    private CollectionManager collectionManager;
-    private CollectionHistory collectionHistory;
-    private InputManager inputManager;
-    private String dataFileName;
-    private LinkedList<Command> history = new LinkedList<>();
-    private TreeMap<String, Command> strCommands = new TreeMap<>(); //название команды, объект класса этой команды
+    private final Console console;
+    private final CollectionManager collectionManager;
+    private final CollectionHistory collectionHistory;
+    private final InputManager inputManager;
+    private final LinkedList<Command> history = new LinkedList<>();
+    private final TreeMap<String, Command> strCommands = new TreeMap<>(); //название команды, объект класса этой команды
 
     public CommandManager(InputManager inputManager, String dataFileName) {
         this.inputManager = inputManager;
         this.collectionManager = inputManager.getCollectionManager();
         this.collectionHistory = inputManager.getCollectionHistory();
-        this.dataFileName = dataFileName;
         console = inputManager.getConsole();
         Command[] allCommands = {new Help(null, console), new Info(collectionManager, console),
                 new Show(collectionManager, console), new Add(collectionManager, console),
@@ -43,7 +41,6 @@ public class CommandManager {
             if (command instanceof Help) strCommands.put(command.getName(), helpCommand);
             else strCommands.put(command.getName(), command);
         }
-
     }
 
     /**
@@ -78,7 +75,7 @@ public class CommandManager {
             try {
                 ((ExecuteScript) res).validateArgs(args);
                 //макс глубина рекурсии спрашивается только тогда, когда мы работаем со стандартным вводом
-                if (console instanceof ConsoleManager) {
+                if (console instanceof StandardConsole) {
                     int maxDepth = inputManager.getInteger("Введите максимальную глубину рекурсии: ", true);
                     ExecuteScript.setMaxDepth(maxDepth);
                 }

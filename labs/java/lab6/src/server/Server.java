@@ -1,5 +1,7 @@
 package server;
 
+import managers.Console;
+import managers.StandardConsole;
 import models.Worker;
 
 import java.io.IOException;
@@ -10,28 +12,32 @@ import java.nio.channels.SocketChannel;
 import java.util.LinkedList;
 
 public class Server {
-    public static void main(String[] args) throws Exception {
+    private static final Console console = new StandardConsole();
+    public static LinkedList<Worker> getWorkers(String host, int port) {
         try {
             ServerSocketChannel serv = ServerSocketChannel.open();
-            serv.bind(new InetSocketAddress("127.0.0.1", 6969));
+            serv.bind(new InetSocketAddress(host, port));
 
             SocketChannel socketChannel = serv.accept();
 
             ObjectInputStream ois = new ObjectInputStream(socketChannel.socket().getInputStream());
 
             Object obj = ois.readObject();
-            if (obj instanceof LinkedList) {
-                LinkedList<Worker> workers = (LinkedList<Worker>) obj;
-                workers.forEach(System.out::println);
-            }
-//            LinkedList<Worker> workers = (LinkedList<Worker>)ois.readObject();
-//            Worker worker = (Worker) ois.readObject();
-
+            LinkedList<Worker> workers = (LinkedList<Worker>) obj;
+            workers.forEach(System.out::println);
 
             serv.close();
+            return workers;
 
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+            console.write("Принять данные не получилось");
+        } catch (ClassCastException e) {
+            console.write("Передан неправильный тип данных");
         }
+        return new LinkedList<>();
+    }
+    public static void main(String[] args) {
+        LinkedList<Worker> workers = getWorkers("127.0.0.1", 6969);
+        workers.forEach(System.out::println);
     }
 }

@@ -3,6 +3,7 @@ package managers;
 import models.Worker;
 import exceptions.NotUniqueIdException;
 
+
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.TreeMap;
@@ -13,9 +14,9 @@ import java.util.stream.Collectors;
  * Класс для работы с коллекцией
  */
 public class CollectionManager {
-    private final Console console = new ConsoleManager();
-    private LinkedList<Worker> linkedList;
-    private TreeMap<Integer, Worker> idWorkerFromCollection = new TreeMap<>();
+    private final Console console = new StandardConsole();
+    private final LinkedList<Worker> linkedList;
+    private final TreeMap<Integer, Worker> idWorkerFromCollection = new TreeMap<>();
     private final LocalDateTime creationDate;
 
     public CollectionManager() {
@@ -34,15 +35,13 @@ public class CollectionManager {
         //если несколько одинаковых id, оставляем первый встречный
         //оставляем только корректных работников
         clear();
-        Integer maxId = 0;
+        int maxId = 0;
         for (Worker worker : workers) {
             if (worker != null && worker.validate()) {
                 try {
                     add(worker);
                     maxId = Math.max(maxId, worker.getId());
-                } catch (NotUniqueIdException e) {
-
-                }
+                } catch (NotUniqueIdException ignored) {}
             }
         }
         Worker.moveNextId(maxId + 1);
