@@ -1,11 +1,13 @@
 package models;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Person {
-	private LocalDate birthday; //Поле может быть null
-    private float height; //Значение поля должно быть больше 0
-    private String passportID; //Длина строки должна быть не меньше 7, Строка не может быть пустой, Поле может быть null
+public class Person implements Serializable {
+	private final LocalDate birthday; //Поле может быть null
+    private final float height; //Значение поля должно быть больше 0
+    private final String passportID;
+	//Длина строки должна быть не меньше 7, строка не может быть пустой, поле может быть null
 	
 	public Person(LocalDate birthday, float height, String passportID) {
 		this.birthday = birthday;

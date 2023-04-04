@@ -1,12 +1,13 @@
 package models;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  * Класс работника
  */
-public class Worker implements Comparable<Worker> {
-    private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+public class Worker implements Comparable<Worker>, Serializable {
+    private final Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     public java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
@@ -16,7 +17,7 @@ public class Worker implements Comparable<Worker> {
 
     private Person person; //Поле не может быть null
 
-    private static int nextId = 1;  //новому работнику присвоется такой id
+    private static int nextId = 1;  //новому работнику присваивается такой id
 
     public Worker(String name, Coordinates coordinates, Float salary, Position position, Status status, Person person) {
         id = nextId++;
@@ -144,7 +145,7 @@ public class Worker implements Comparable<Worker> {
         if (other.getSalary() == null) {
             return 1;
         }
-        float delta = salary.floatValue() - other.getSalary().floatValue();
+        float delta = salary - other.getSalary();
         if (delta > 0) {
             return 1;
         }
@@ -152,15 +153,6 @@ public class Worker implements Comparable<Worker> {
             return 0;
         }
         return -1;
-    }
-
-//    @Override
-//    public String toString() {
-//        return "Worker " + id + " (" + name + ")";
-//    }
-
-    public Worker copy() {
-        return this;
     }
 
     @Override

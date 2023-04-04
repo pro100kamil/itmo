@@ -1,8 +1,10 @@
 package models;
 
-public class Coordinates {
-    private Integer x; //Поле не может быть null
-    private Integer y; //Поле не может быть null
+import java.io.Serializable;
+
+public class Coordinates implements Serializable {
+    private final Integer x; //Поле не может быть null
+    private final Integer y; //Поле не может быть null
 	
 	public Coordinates(Integer x, Integer y) {
 		this.x = x;

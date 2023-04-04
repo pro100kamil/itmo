@@ -1,16 +1,21 @@
 package client;
 
-import java.io.OutputStream;
+import models.Coordinates;
+import models.Worker;
+
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class Client {
     public static void main(String[] args) throws Exception {
-        byte arr[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        Socket sock;
-        OutputStream os;
-        String host = "127.0.0.1"; int port = 6969;
-        sock = new Socket(host, port);
-        os = sock.getOutputStream();
-        os.write(arr);
+        Worker worker = new Worker("Max", new Coordinates(10, 100),
+                9999F, null, null, null);
+
+        String host = "127.0.0.1";
+        int port = 6969;
+        Socket sock = new Socket(host, port);
+        ObjectOutputStream oos = new ObjectOutputStream(sock.getOutputStream());
+        oos.writeObject(worker);
+        sock.close();
     }
 }
