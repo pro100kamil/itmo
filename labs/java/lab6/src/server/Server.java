@@ -43,12 +43,16 @@ public class Server {
     public void run() {
         String dataFileName = "main.json";
 
-        CollectionManager collectionManager = new CollectionManager();
         LinkedList<Worker> start_ll = JsonManager.getLinkedListWorkerFromStrJson(FileManager.getTextFromFile(dataFileName));
-        collectionManager.setWorkers(start_ll);
+
+        System.out.println(start_ll);
+        CollectionManager collectionManager = new CollectionManager(start_ll);
 
         CollectionHistory collectionHistory = new CollectionHistory();
-        CommandManager commandManager = new CommandManager(collectionManager,collectionHistory);
+        CollectionHistory.setDataFileName(dataFileName);
+        collectionHistory.setStart(start_ll);
+
+        CommandManager commandManager = new CommandManager(collectionManager, collectionHistory);
 
         try {
             start("127.0.0.1", 6969);
@@ -78,8 +82,7 @@ public class Server {
                     try {
                         writeObject(strRes);  //отправляем клиенту
                         socketChannel.close();
-                    }
-                    catch (IOException e) {
+                    } catch (IOException e) {
                         console.write("Не получилось передать данные клиенту");
                     }
                 } catch (IOException | ClassNotFoundException e) {

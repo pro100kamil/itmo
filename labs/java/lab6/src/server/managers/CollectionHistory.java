@@ -9,7 +9,7 @@ import java.util.TreeMap;
  * Класс, который работает с разными состояниями коллекции.
  */
 public class CollectionHistory {
-    private static final String dataFileName = "main.json";   //файл, где хранится текущее состояние коллекции
+    private static String dataFileName = "main.json";   //файл, где хранится текущее состояние коллекции
     private static final String fileName = "_.json";   //файл, где хранятся данные о состояниях коллекции
     //private TreeMap<String, LinkedList<Worker>> stepCollection = new TreeMap<>();
     //номер команды (шага) в абсолютной нумерации: состояние списка на этот момент
@@ -27,6 +27,10 @@ public class CollectionHistory {
 
     public static String getFileName() {
         return fileName;
+    }
+
+    public static void setDataFileName(String newDataFileName) {
+        dataFileName = newDataFileName;
     }
 
     /**
@@ -84,7 +88,9 @@ public class CollectionHistory {
      * @param stepCollection словарь текущих состояний
      */
     public void save(TreeMap<String, LinkedList<Worker>> stepCollection) {
-        FileManager.writeTextToFile(dataFileName, JsonManager.getStrJsonFromLinkedListWorker(getCurState()));
+        if (getStepCollection().size() > 0) {
+            FileManager.writeTextToFile(dataFileName, JsonManager.getStrJsonFromLinkedListWorker(getCurState()));
+        }
         FileManager.writeTextToFile(fileName, JsonManager.getStrJsonFromStepCollection(stepCollection));
     }
 }

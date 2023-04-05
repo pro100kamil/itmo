@@ -28,7 +28,6 @@ public class Worker implements Comparable<Worker>, Serializable {
         this.position = position;
         this.status = status;
         this.person = person;
-        System.out.println(id);
     }
 
     public Integer getId() {
@@ -93,7 +92,6 @@ public class Worker implements Comparable<Worker>, Serializable {
     public static void moveNextId(Integer newId) {
         if (newId.compareTo(nextId) > 0)
             nextId = newId;
-        System.out.println(nextId);
     }
 
     /**

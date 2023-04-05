@@ -17,15 +17,15 @@ public class Main {
                     "'fileNameCollection' (названием файла, откуда брать коллекцию)!!!");
             System.exit(0);
         }
-        LinkedList<Worker> start_ll = JsonManager.getLinkedListWorkerFromStrJson(FileManager.getTextFromFile(fileName));
-
-        StandardConsole consoleManager = new StandardConsole();
-        CollectionManager collectionManager = new CollectionManager(start_ll);
-        CollectionHistory collectionHistory = new CollectionHistory();
-        collectionHistory.setStart(start_ll);
-
-        InputManager inputManager = new InputManager(consoleManager);
-        inputManager.run();
+//        LinkedList<Worker> start_ll = JsonManager.getLinkedListWorkerFromStrJson(FileManager.getTextFromFile(fileName));
+//
+//        StandardConsole consoleManager = new StandardConsole();
+//        CollectionManager collectionManager = new CollectionManager(start_ll);
+//        CollectionHistory collectionHistory = new CollectionHistory();
+//        collectionHistory.setStart(start_ll);
+//
+//        InputManager inputManager = new InputManager(consoleManager);
+//        inputManager.run();
     }
 }
 
