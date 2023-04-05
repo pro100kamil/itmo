@@ -15,6 +15,18 @@
       }
     },
     {
+      "id": 3,
+      "name": "Anton",
+      "coordinates": {
+        "x": 55,
+        "y": 5
+      },
+      "creationDate": "2023-04-04T00:42:56.787646500",
+      "person": {
+        "height": 5.0
+      }
+    },
+    {
       "id": 2,
       "name": "Bob",
       "coordinates": {
@@ -41,6 +53,18 @@
       "status": "FIRED",
       "person": {
         "height": 189.0
+      }
+    },
+    {
+      "id": 3,
+      "name": "Anton",
+      "coordinates": {
+        "x": 55,
+        "y": 5
+      },
+      "creationDate": "2023-04-04T00:42:56.787646500",
+      "person": {
+        "height": 5.0
       }
     },
     {
@@ -73,6 +97,18 @@
       }
     },
     {
+      "id": 3,
+      "name": "Anton",
+      "coordinates": {
+        "x": 55,
+        "y": 5
+      },
+      "creationDate": "2023-04-04T00:42:56.787646500",
+      "person": {
+        "height": 5.0
+      }
+    },
+    {
       "id": 2,
       "name": "Bob",
       "coordinates": {
@@ -99,6 +135,18 @@
       "status": "FIRED",
       "person": {
         "height": 189.0
+      }
+    },
+    {
+      "id": 3,
+      "name": "Anton",
+      "coordinates": {
+        "x": 55,
+        "y": 5
+      },
+      "creationDate": "2023-04-04T00:42:56.787646500",
+      "person": {
+        "height": 5.0
       }
     },
     {
@@ -131,6 +179,18 @@
       }
     },
     {
+      "id": 3,
+      "name": "Anton",
+      "coordinates": {
+        "x": 55,
+        "y": 5
+      },
+      "creationDate": "2023-04-04T00:42:56.787646500",
+      "person": {
+        "height": 5.0
+      }
+    },
+    {
       "id": 2,
       "name": "Bob",
       "coordinates": {
@@ -146,17 +206,15 @@
   ],
   "13": [
     {
-      "id": 1,
-      "name": "Andrey",
+      "id": 3,
+      "name": "Anton",
       "coordinates": {
-        "x": 56,
-        "y": 65
+        "x": 55,
+        "y": 5
       },
-      "creationDate": "2023-03-11T02:50:42.568977200",
-      "salary": 1000.0,
-      "status": "FIRED",
+      "creationDate": "2023-04-04T00:42:56.787646500",
       "person": {
-        "height": 189.0
+        "height": 5.0
       }
     },
     {
@@ -175,17 +233,15 @@
   ],
   "14": [
     {
-      "id": 1,
-      "name": "Andrey",
+      "id": 3,
+      "name": "Anton",
       "coordinates": {
-        "x": 56,
-        "y": 65
+        "x": 55,
+        "y": 5
       },
-      "creationDate": "2023-03-11T02:50:42.568977200",
-      "salary": 1000.0,
-      "status": "FIRED",
+      "creationDate": "2023-04-04T00:42:56.787646500",
       "person": {
-        "height": 189.0
+        "height": 5.0
       }
     },
     {
@@ -218,6 +274,18 @@
       }
     },
     {
+      "id": 3,
+      "name": "Anton",
+      "coordinates": {
+        "x": 55,
+        "y": 5
+      },
+      "creationDate": "2023-04-04T00:42:56.787646500",
+      "person": {
+        "height": 5.0
+      }
+    },
+    {
       "id": 2,
       "name": "Bob",
       "coordinates": {
@@ -244,6 +312,18 @@
       "status": "FIRED",
       "person": {
         "height": 189.0
+      }
+    },
+    {
+      "id": 3,
+      "name": "Anton",
+      "coordinates": {
+        "x": 55,
+        "y": 5
+      },
+      "creationDate": "2023-04-04T00:42:56.787646500",
+      "person": {
+        "height": 5.0
       }
     },
     {
@@ -276,6 +356,18 @@
       }
     },
     {
+      "id": 3,
+      "name": "Anton",
+      "coordinates": {
+        "x": 55,
+        "y": 5
+      },
+      "creationDate": "2023-04-04T00:42:56.787646500",
+      "person": {
+        "height": 5.0
+      }
+    },
+    {
       "id": 2,
       "name": "Bob",
       "coordinates": {
@@ -286,18 +378,6 @@
       "salary": 999.0,
       "person": {
         "height": 55.0
-      }
-    },
-    {
-      "id": 3,
-      "name": "NEW",
-      "coordinates": {
-        "x": 55,
-        "y": 5
-      },
-      "creationDate": "2023-04-04T00:42:56.787646500",
-      "person": {
-        "height": 5.0
       }
     }
   ],
@@ -317,6 +397,18 @@
       }
     },
     {
+      "id": 3,
+      "name": "Anton",
+      "coordinates": {
+        "x": 55,
+        "y": 5
+      },
+      "creationDate": "2023-04-04T00:42:56.787646500",
+      "person": {
+        "height": 5.0
+      }
+    },
+    {
       "id": 2,
       "name": "Bob",
       "coordinates": {
@@ -327,18 +419,6 @@
       "salary": 999.0,
       "person": {
         "height": 55.0
-      }
-    },
-    {
-      "id": 3,
-      "name": "NEW",
-      "coordinates": {
-        "x": 55,
-        "y": 5
-      },
-      "creationDate": "2023-04-04T00:42:56.787646500",
-      "person": {
-        "height": 5.0
       }
     }
   ],
@@ -358,6 +438,18 @@
       }
     },
     {
+      "id": 3,
+      "name": "Anton",
+      "coordinates": {
+        "x": 55,
+        "y": 5
+      },
+      "creationDate": "2023-04-04T00:42:56.787646500",
+      "person": {
+        "height": 5.0
+      }
+    },
+    {
       "id": 2,
       "name": "Bob",
       "coordinates": {
@@ -368,18 +460,6 @@
       "salary": 999.0,
       "person": {
         "height": 55.0
-      }
-    },
-    {
-      "id": 3,
-      "name": "NEW",
-      "coordinates": {
-        "x": 55,
-        "y": 5
-      },
-      "creationDate": "2023-04-04T00:42:56.787646500",
-      "person": {
-        "height": 5.0
       }
     }
   ],
@@ -399,50 +479,8 @@
       }
     },
     {
-      "id": 2,
-      "name": "Bob",
-      "coordinates": {
-        "x": 54,
-        "y": 666
-      },
-      "creationDate": "2023-03-11T03:06:51.141141200",
-      "salary": 999.0,
-      "person": {
-        "height": 55.0
-      }
-    }
-  ],
-  "20": [
-    {
-      "id": 1,
-      "name": "Andrey",
-      "coordinates": {
-        "x": 56,
-        "y": 65
-      },
-      "creationDate": "2023-03-11T02:50:42.568977200",
-      "salary": 1000.0,
-      "status": "FIRED",
-      "person": {
-        "height": 189.0
-      }
-    },
-    {
-      "id": 2,
-      "name": "Bob",
-      "coordinates": {
-        "x": 54,
-        "y": 666
-      },
-      "creationDate": "2023-03-11T03:06:51.141141200",
-      "salary": 999.0,
-      "person": {
-        "height": 55.0
-      }
-    },
-    {
       "id": 3,
-      "name": "NEW",
+      "name": "Anton",
       "coordinates": {
         "x": 55,
         "y": 5
@@ -451,22 +489,6 @@
       "person": {
         "height": 5.0
       }
-    }
-  ],
-  "21": [
-    {
-      "id": 1,
-      "name": "Andrey",
-      "coordinates": {
-        "x": 56,
-        "y": 65
-      },
-      "creationDate": "2023-03-11T02:50:42.568977200",
-      "salary": 1000.0,
-      "status": "FIRED",
-      "person": {
-        "height": 189.0
-      }
     },
     {
       "id": 2,
@@ -479,346 +501,6 @@
       "salary": 999.0,
       "person": {
         "height": 55.0
-      }
-    },
-    {
-      "id": 3,
-      "name": "NEW",
-      "coordinates": {
-        "x": 55,
-        "y": 5
-      },
-      "creationDate": "2023-04-04T00:42:56.787646500",
-      "person": {
-        "height": 5.0
-      }
-    }
-  ],
-  "22": [
-    {
-      "id": 1,
-      "name": "Andrey",
-      "coordinates": {
-        "x": 56,
-        "y": 65
-      },
-      "creationDate": "2023-03-11T02:50:42.568977200",
-      "salary": 1000.0,
-      "status": "FIRED",
-      "person": {
-        "height": 189.0
-      }
-    },
-    {
-      "id": 2,
-      "name": "Bob",
-      "coordinates": {
-        "x": 54,
-        "y": 666
-      },
-      "creationDate": "2023-03-11T03:06:51.141141200",
-      "salary": 999.0,
-      "person": {
-        "height": 55.0
-      }
-    },
-    {
-      "id": 3,
-      "name": "NEW",
-      "coordinates": {
-        "x": 55,
-        "y": 5
-      },
-      "creationDate": "2023-04-04T00:42:56.787646500",
-      "person": {
-        "height": 5.0
-      }
-    }
-  ],
-  "23": [
-    {
-      "id": 1,
-      "name": "Andrey",
-      "coordinates": {
-        "x": 56,
-        "y": 65
-      },
-      "creationDate": "2023-03-11T02:50:42.568977200",
-      "salary": 1000.0,
-      "status": "FIRED",
-      "person": {
-        "height": 189.0
-      }
-    },
-    {
-      "id": 2,
-      "name": "Bob",
-      "coordinates": {
-        "x": 54,
-        "y": 666
-      },
-      "creationDate": "2023-03-11T03:06:51.141141200",
-      "salary": 999.0,
-      "person": {
-        "height": 55.0
-      }
-    },
-    {
-      "id": 3,
-      "name": "NEW",
-      "coordinates": {
-        "x": 55,
-        "y": 5
-      },
-      "creationDate": "2023-04-04T00:42:56.787646500",
-      "person": {
-        "height": 5.0
-      }
-    }
-  ],
-  "24": [
-    {
-      "id": 1,
-      "name": "Andrey",
-      "coordinates": {
-        "x": 56,
-        "y": 65
-      },
-      "creationDate": "2023-03-11T02:50:42.568977200",
-      "salary": 1000.0,
-      "status": "FIRED",
-      "person": {
-        "height": 189.0
-      }
-    },
-    {
-      "id": 2,
-      "name": "Bob",
-      "coordinates": {
-        "x": 54,
-        "y": 666
-      },
-      "creationDate": "2023-03-11T03:06:51.141141200",
-      "salary": 999.0,
-      "person": {
-        "height": 55.0
-      }
-    },
-    {
-      "id": 3,
-      "name": "NEW",
-      "coordinates": {
-        "x": 55,
-        "y": 5
-      },
-      "creationDate": "2023-04-04T00:42:56.787646500",
-      "person": {
-        "height": 5.0
-      }
-    }
-  ],
-  "25": [
-    {
-      "id": 1,
-      "name": "Andrey",
-      "coordinates": {
-        "x": 56,
-        "y": 65
-      },
-      "creationDate": "2023-03-11T02:50:42.568977200",
-      "salary": 1000.0,
-      "status": "FIRED",
-      "person": {
-        "height": 189.0
-      }
-    },
-    {
-      "id": 2,
-      "name": "Bob",
-      "coordinates": {
-        "x": 54,
-        "y": 666
-      },
-      "creationDate": "2023-03-11T03:06:51.141141200",
-      "salary": 999.0,
-      "person": {
-        "height": 55.0
-      }
-    },
-    {
-      "id": 3,
-      "name": "NEW",
-      "coordinates": {
-        "x": 55,
-        "y": 5
-      },
-      "creationDate": "2023-04-04T00:42:56.787646500",
-      "person": {
-        "height": 5.0
-      }
-    }
-  ],
-  "26": [
-    {
-      "id": 1,
-      "name": "Andrey",
-      "coordinates": {
-        "x": 56,
-        "y": 65
-      },
-      "creationDate": "2023-03-11T02:50:42.568977200",
-      "salary": 1000.0,
-      "status": "FIRED",
-      "person": {
-        "height": 189.0
-      }
-    },
-    {
-      "id": 2,
-      "name": "Bob",
-      "coordinates": {
-        "x": 54,
-        "y": 666
-      },
-      "creationDate": "2023-03-11T03:06:51.141141200",
-      "salary": 999.0,
-      "person": {
-        "height": 55.0
-      }
-    },
-    {
-      "id": 3,
-      "name": "NEW",
-      "coordinates": {
-        "x": 55,
-        "y": 5
-      },
-      "creationDate": "2023-04-04T00:42:56.787646500",
-      "person": {
-        "height": 5.0
-      }
-    }
-  ],
-  "27": [
-    {
-      "id": 1,
-      "name": "Andrey",
-      "coordinates": {
-        "x": 56,
-        "y": 65
-      },
-      "creationDate": "2023-03-11T02:50:42.568977200",
-      "salary": 1000.0,
-      "status": "FIRED",
-      "person": {
-        "height": 189.0
-      }
-    },
-    {
-      "id": 2,
-      "name": "Bob",
-      "coordinates": {
-        "x": 54,
-        "y": 666
-      },
-      "creationDate": "2023-03-11T03:06:51.141141200",
-      "salary": 999.0,
-      "person": {
-        "height": 55.0
-      }
-    },
-    {
-      "id": 3,
-      "name": "NEW",
-      "coordinates": {
-        "x": 55,
-        "y": 5
-      },
-      "creationDate": "2023-04-04T00:42:56.787646500",
-      "person": {
-        "height": 5.0
-      }
-    }
-  ],
-  "28": [
-    {
-      "id": 1,
-      "name": "Andrey",
-      "coordinates": {
-        "x": 56,
-        "y": 65
-      },
-      "creationDate": "2023-03-11T02:50:42.568977200",
-      "salary": 1000.0,
-      "status": "FIRED",
-      "person": {
-        "height": 189.0
-      }
-    },
-    {
-      "id": 2,
-      "name": "Bob",
-      "coordinates": {
-        "x": 54,
-        "y": 666
-      },
-      "creationDate": "2023-03-11T03:06:51.141141200",
-      "salary": 999.0,
-      "person": {
-        "height": 55.0
-      }
-    },
-    {
-      "id": 3,
-      "name": "NEW",
-      "coordinates": {
-        "x": 55,
-        "y": 5
-      },
-      "creationDate": "2023-04-04T00:42:56.787646500",
-      "person": {
-        "height": 5.0
-      }
-    }
-  ],
-  "29": [
-    {
-      "id": 1,
-      "name": "Andrey",
-      "coordinates": {
-        "x": 56,
-        "y": 65
-      },
-      "creationDate": "2023-03-11T02:50:42.568977200",
-      "salary": 1000.0,
-      "status": "FIRED",
-      "person": {
-        "height": 189.0
-      }
-    },
-    {
-      "id": 2,
-      "name": "Bob",
-      "coordinates": {
-        "x": 54,
-        "y": 666
-      },
-      "creationDate": "2023-03-11T03:06:51.141141200",
-      "salary": 999.0,
-      "person": {
-        "height": 55.0
-      }
-    },
-    {
-      "id": 3,
-      "name": "NEW",
-      "coordinates": {
-        "x": 55,
-        "y": 5
-      },
-      "creationDate": "2023-04-04T00:42:56.787646500",
-      "person": {
-        "height": 5.0
       }
     }
   ],
@@ -838,50 +520,8 @@
       }
     },
     {
-      "id": 2,
-      "name": "Bob",
-      "coordinates": {
-        "x": 54,
-        "y": 666
-      },
-      "creationDate": "2023-03-11T03:06:51.141141200",
-      "salary": 999.0,
-      "person": {
-        "height": 55.0
-      }
-    }
-  ],
-  "30": [
-    {
-      "id": 1,
-      "name": "Andrey",
-      "coordinates": {
-        "x": 56,
-        "y": 65
-      },
-      "creationDate": "2023-03-11T02:50:42.568977200",
-      "salary": 1000.0,
-      "status": "FIRED",
-      "person": {
-        "height": 189.0
-      }
-    },
-    {
-      "id": 2,
-      "name": "Bob",
-      "coordinates": {
-        "x": 54,
-        "y": 666
-      },
-      "creationDate": "2023-03-11T03:06:51.141141200",
-      "salary": 999.0,
-      "person": {
-        "height": 55.0
-      }
-    },
-    {
       "id": 3,
-      "name": "NEW",
+      "name": "Anton",
       "coordinates": {
         "x": 55,
         "y": 5
@@ -890,73 +530,21 @@
       "person": {
         "height": 5.0
       }
-    }
-  ],
-  "31": [],
-  "32": [
+    },
     {
-      "id": 1,
-      "name": "NEW",
+      "id": 2,
+      "name": "Bob",
       "coordinates": {
-        "x": 4,
-        "y": 4
+        "x": 54,
+        "y": 666
       },
-      "creationDate": "2023-04-05T17:44:12.009430700",
-      "salary": 4.0,
+      "creationDate": "2023-03-11T03:06:51.141141200",
+      "salary": 999.0,
       "person": {
-        "height": 4.0
+        "height": 55.0
       }
     }
   ],
-  "33": [],
-  "34": [],
-  "35": [],
-  "36": [
-    {
-      "id": 1,
-      "name": "NEW",
-      "coordinates": {
-        "x": 5,
-        "y": 5
-      },
-      "creationDate": "2023-04-05T17:53:59.734184",
-      "salary": 5.0,
-      "person": {
-        "height": 5.0
-      }
-    }
-  ],
-  "37": [
-    {
-      "id": 1,
-      "name": "NEW",
-      "coordinates": {
-        "x": 5,
-        "y": 5
-      },
-      "creationDate": "2023-04-05T17:53:59.734184",
-      "salary": 5.0,
-      "person": {
-        "height": 5.0
-      }
-    }
-  ],
-  "38": [
-    {
-      "id": 1,
-      "name": "NEW",
-      "coordinates": {
-        "x": 5,
-        "y": 5
-      },
-      "creationDate": "2023-04-05T17:53:59.734184",
-      "salary": 5.0,
-      "person": {
-        "height": 5.0
-      }
-    }
-  ],
-  "39": [],
   "4": [
     {
       "id": 1,
@@ -973,55 +561,8 @@
       }
     },
     {
-      "id": 2,
-      "name": "Bob",
-      "coordinates": {
-        "x": 54,
-        "y": 666
-      },
-      "creationDate": "2023-03-11T03:06:51.141141200",
-      "salary": 999.0,
-      "person": {
-        "height": 55.0
-      }
-    }
-  ],
-  "40": [],
-  "41": [],
-  "42": [],
-  "43": [],
-  "44": [],
-  "45": [
-    {
-      "id": 1,
-      "name": "Andrey",
-      "coordinates": {
-        "x": 56,
-        "y": 65
-      },
-      "creationDate": "2023-03-11T02:50:42.568977200",
-      "salary": 1000.0,
-      "status": "FIRED",
-      "person": {
-        "height": 189.0
-      }
-    },
-    {
-      "id": 2,
-      "name": "Bob",
-      "coordinates": {
-        "x": 54,
-        "y": 666
-      },
-      "creationDate": "2023-03-11T03:06:51.141141200",
-      "salary": 999.0,
-      "person": {
-        "height": 55.0
-      }
-    },
-    {
       "id": 3,
-      "name": "NEW",
+      "name": "Anton",
       "coordinates": {
         "x": 55,
         "y": 5
@@ -1030,22 +571,6 @@
       "person": {
         "height": 5.0
       }
-    }
-  ],
-  "46": [
-    {
-      "id": 1,
-      "name": "Andrey",
-      "coordinates": {
-        "x": 56,
-        "y": 65
-      },
-      "creationDate": "2023-03-11T02:50:42.568977200",
-      "salary": 1000.0,
-      "status": "FIRED",
-      "person": {
-        "height": 189.0
-      }
     },
     {
       "id": 2,
@@ -1058,141 +583,6 @@
       "salary": 999.0,
       "person": {
         "height": 55.0
-      }
-    },
-    {
-      "id": 3,
-      "name": "NEW",
-      "coordinates": {
-        "x": 55,
-        "y": 5
-      },
-      "creationDate": "2023-04-04T00:42:56.787646500",
-      "person": {
-        "height": 5.0
-      }
-    }
-  ],
-  "47": [
-    {
-      "id": 1,
-      "name": "Andrey",
-      "coordinates": {
-        "x": 56,
-        "y": 65
-      },
-      "creationDate": "2023-03-11T02:50:42.568977200",
-      "salary": 1000.0,
-      "status": "FIRED",
-      "person": {
-        "height": 189.0
-      }
-    },
-    {
-      "id": 2,
-      "name": "Bob",
-      "coordinates": {
-        "x": 54,
-        "y": 666
-      },
-      "creationDate": "2023-03-11T03:06:51.141141200",
-      "salary": 999.0,
-      "person": {
-        "height": 55.0
-      }
-    },
-    {
-      "id": 3,
-      "name": "NEW",
-      "coordinates": {
-        "x": 55,
-        "y": 5
-      },
-      "creationDate": "2023-04-04T00:42:56.787646500",
-      "person": {
-        "height": 5.0
-      }
-    }
-  ],
-  "48": [
-    {
-      "id": 1,
-      "name": "Andrey",
-      "coordinates": {
-        "x": 56,
-        "y": 65
-      },
-      "creationDate": "2023-03-11T02:50:42.568977200",
-      "salary": 1000.0,
-      "status": "FIRED",
-      "person": {
-        "height": 189.0
-      }
-    },
-    {
-      "id": 2,
-      "name": "Bob",
-      "coordinates": {
-        "x": 54,
-        "y": 666
-      },
-      "creationDate": "2023-03-11T03:06:51.141141200",
-      "salary": 999.0,
-      "person": {
-        "height": 55.0
-      }
-    },
-    {
-      "id": 3,
-      "name": "NEW",
-      "coordinates": {
-        "x": 55,
-        "y": 5
-      },
-      "creationDate": "2023-04-04T00:42:56.787646500",
-      "person": {
-        "height": 5.0
-      }
-    }
-  ],
-  "49": [
-    {
-      "id": 1,
-      "name": "Andrey",
-      "coordinates": {
-        "x": 56,
-        "y": 65
-      },
-      "creationDate": "2023-03-11T02:50:42.568977200",
-      "salary": 1000.0,
-      "status": "FIRED",
-      "person": {
-        "height": 189.0
-      }
-    },
-    {
-      "id": 2,
-      "name": "Bob",
-      "coordinates": {
-        "x": 54,
-        "y": 666
-      },
-      "creationDate": "2023-03-11T03:06:51.141141200",
-      "salary": 999.0,
-      "person": {
-        "height": 55.0
-      }
-    },
-    {
-      "id": 3,
-      "name": "NEW",
-      "coordinates": {
-        "x": 55,
-        "y": 5
-      },
-      "creationDate": "2023-04-04T00:42:56.787646500",
-      "person": {
-        "height": 5.0
       }
     }
   ],
@@ -1209,6 +599,18 @@
       "status": "FIRED",
       "person": {
         "height": 189.0
+      }
+    },
+    {
+      "id": 3,
+      "name": "Anton",
+      "coordinates": {
+        "x": 55,
+        "y": 5
+      },
+      "creationDate": "2023-04-04T00:42:56.787646500",
+      "person": {
+        "height": 5.0
       }
     },
     {
@@ -1241,6 +643,18 @@
       }
     },
     {
+      "id": 3,
+      "name": "Anton",
+      "coordinates": {
+        "x": 55,
+        "y": 5
+      },
+      "creationDate": "2023-04-04T00:42:56.787646500",
+      "person": {
+        "height": 5.0
+      }
+    },
+    {
       "id": 2,
       "name": "Bob",
       "coordinates": {
@@ -1267,6 +681,18 @@
       "status": "FIRED",
       "person": {
         "height": 189.0
+      }
+    },
+    {
+      "id": 3,
+      "name": "Anton",
+      "coordinates": {
+        "x": 55,
+        "y": 5
+      },
+      "creationDate": "2023-04-04T00:42:56.787646500",
+      "person": {
+        "height": 5.0
       }
     },
     {
@@ -1299,6 +725,18 @@
       }
     },
     {
+      "id": 3,
+      "name": "Anton",
+      "coordinates": {
+        "x": 55,
+        "y": 5
+      },
+      "creationDate": "2023-04-04T00:42:56.787646500",
+      "person": {
+        "height": 5.0
+      }
+    },
+    {
       "id": 2,
       "name": "Bob",
       "coordinates": {
@@ -1325,6 +763,18 @@
       "status": "FIRED",
       "person": {
         "height": 189.0
+      }
+    },
+    {
+      "id": 3,
+      "name": "Anton",
+      "coordinates": {
+        "x": 55,
+        "y": 5
+      },
+      "creationDate": "2023-04-04T00:42:56.787646500",
+      "person": {
+        "height": 5.0
       }
     },
     {

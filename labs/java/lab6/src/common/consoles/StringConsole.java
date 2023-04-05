@@ -1,7 +1,5 @@
 package common.consoles;
 
-import common.consoles.Console;
-
 /**
  * Класс для работы со строковой консолью.
  * Ввода нет.
@@ -23,7 +21,7 @@ public class StringConsole implements Console {
         res += text + "\n";
     }
 
-    public String getAllText(){
+    public String getAllText() {
         return res.strip();
     }
 }

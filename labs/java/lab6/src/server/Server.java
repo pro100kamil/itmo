@@ -22,6 +22,7 @@ public class Server {
 
     public void start(String host, int port) throws IOException {
         serv = ServerSocketChannel.open();
+        serv.configureBlocking(false);
         serv.bind(new InetSocketAddress(host, port));
     }
 
@@ -55,6 +56,7 @@ public class Server {
             while (true) {
                 try {
                     socketChannel = serv.accept();
+                    if (socketChannel == null) continue;
                     StringConsole strConsole = new StringConsole();
 
                     Command command = (Command) getObject(); //получаем команду от клиента
@@ -72,9 +74,9 @@ public class Server {
                     commandManager.executeCommand(command);  //выполняем её
 
                     String strRes = strConsole.getAllText();
+                    if (strRes.equals("")) strRes = "Команда выполнилась успешно";
                     try {
-                        //отправляем клиенту
-                        writeObject(strRes);
+                        writeObject(strRes);  //отправляем клиенту
                         socketChannel.close();
                     }
                     catch (IOException e) {

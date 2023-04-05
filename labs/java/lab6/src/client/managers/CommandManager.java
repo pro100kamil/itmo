@@ -22,7 +22,6 @@ public class CommandManager {
         Command[] allCommands = {new Help(null), new Info(),
                 new Show(), new Add(),
                 new Update(), new Remove(), new Clear(),
-                new Save(),
                 new ExecuteScript(), new Exit(), new Head(),
                 new RemoveGreater(),
                 new History(), new FilterBySalary(),

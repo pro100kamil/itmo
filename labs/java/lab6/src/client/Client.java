@@ -27,7 +27,6 @@ public class Client {
         oos.writeObject(obj);
     }
 
-//    public static void run(Command command, String[] args) {
     public void run(Command command) {
         try {
             start("127.0.0.1", 6969);

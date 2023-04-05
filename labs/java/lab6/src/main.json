@@ -14,6 +14,18 @@
     }
   },
   {
+    "id": 3,
+    "name": "Anton",
+    "coordinates": {
+      "x": 55,
+      "y": 5
+    },
+    "creationDate": "2023-04-04T00:42:56.787646500",
+    "person": {
+      "height": 5.0
+    }
+  },
+  {
     "id": 2,
     "name": "Bob",
     "coordinates": {
@@ -24,18 +36,6 @@
     "salary": 999.0,
     "person": {
       "height": 55.0
-    }
-  },
-  {
-    "id": 3,
-    "name": "NEW",
-    "coordinates": {
-      "x": 55,
-      "y": 5
-    },
-    "creationDate": "2023-04-04T00:42:56.787646500",
-    "person": {
-      "height": 5.0
     }
   }
 ]

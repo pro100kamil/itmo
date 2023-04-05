@@ -2,6 +2,7 @@ package client.managers;
 
 import client.Client;
 import common.commands.Command;
+import common.commands.Exit;
 import common.models.*;
 import common.exceptions.*;
 import common.consoles.Console;
@@ -241,7 +242,12 @@ public class InputManager {
             try {
                 String strCommand = console.getNextStr();
                 Command command = commandManager.getCommand(strCommand);
-                new Client().run(command);
+                if (command instanceof Exit) { //команда exit выполняется на стороне клиента
+                    command.execute(command.getArgs());
+                }
+                else {
+                    new Client().run(command);
+                }
             } catch (NoSuchCommandException | WrongCommandArgsException | NonExistentId e) {
                 console.write(e.toString());
             } catch (NoSuchElementException | EndInputException | EndInputWorkerException e) {
