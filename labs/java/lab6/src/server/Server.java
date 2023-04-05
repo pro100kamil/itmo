@@ -45,7 +45,6 @@ public class Server {
 
         LinkedList<Worker> start_ll = JsonManager.getLinkedListWorkerFromStrJson(FileManager.getTextFromFile(dataFileName));
 
-        System.out.println(start_ll);
         CollectionManager collectionManager = new CollectionManager(start_ll);
 
         CollectionHistory collectionHistory = new CollectionHistory();

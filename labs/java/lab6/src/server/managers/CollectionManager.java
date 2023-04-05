@@ -107,7 +107,8 @@ public class CollectionManager {
      * Выводит позиции работников, работники идут по убыванию
      */
     public void printFieldDescendingPosition() {
-        linkedList.stream().sorted(Comparator.reverseOrder()).forEach(worker -> console.write(worker.getPosition().toString()));
+        linkedList.stream().sorted(Comparator.reverseOrder()).forEach(worker ->
+                console.write(worker.getPosition() == null ? "null" : worker.getPosition().toString()));
     }
 
     /**
@@ -116,6 +117,9 @@ public class CollectionManager {
      * @param worker работник, которого мы добавляем
      */
     public void add(Worker worker) throws NotUniqueIdException {
+        if (worker.getId() == 0) {
+            worker.setId();
+        }
         if (existsId(worker.getId())) { //если уже есть пользователь с таким id
             throw new NotUniqueIdException();
         }

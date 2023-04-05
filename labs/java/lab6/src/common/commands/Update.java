@@ -32,6 +32,7 @@ public class Update extends CommandWithWorker {
 
     @Override
     public void execute(String[] args) {
+        //TODO сделать серверную валидацию
         collectionManager.update(Integer.parseInt(args[0]), worker);
     }
 }

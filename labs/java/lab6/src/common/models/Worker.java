@@ -7,7 +7,8 @@ import java.time.LocalDateTime;
  * Класс работника
  */
 public class Worker implements Comparable<Worker>, Serializable {
-    private final Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    private Integer id = 0; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    //id = 0 изначально, чтоб понимать, что ему не задали значение на сервере
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     public java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
@@ -18,9 +19,8 @@ public class Worker implements Comparable<Worker>, Serializable {
     private Person person; //Поле не может быть null
 
     private static int nextId = 1;  //новому работнику присваивается такой id
-
+    //TODO нормальная генерация ID
     public Worker(String name, Coordinates coordinates, Float salary, Position position, Status status, Person person) {
-        id = nextId++;
         this.name = name;
         this.coordinates = coordinates;
         creationDate = LocalDateTime.now();
@@ -28,6 +28,10 @@ public class Worker implements Comparable<Worker>, Serializable {
         this.position = position;
         this.status = status;
         this.person = person;
+    }
+
+    public void setId() {
+        id = nextId++;
     }
 
     public Integer getId() {
