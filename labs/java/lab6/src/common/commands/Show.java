@@ -1,0 +1,31 @@
+package common.commands;
+
+import common.exceptions.WrongCommandArgsException;
+
+/**
+ * Команда show.
+ * Выводит элементы коллекции.
+ */
+public class Show extends Command {
+
+    public Show() {
+        super("show", "выводит элементы коллекции");
+    }
+
+    @Override
+    public void validateArgs(String[] args) throws WrongCommandArgsException {
+        if (args.length != 0) {
+            throw new WrongCommandArgsException();
+        }
+    }
+
+    @Override
+    public void execute(String[] args) {
+        try {
+            validateArgs(args);
+            collectionManager.printElements();
+        } catch (WrongCommandArgsException e) {
+            console.write(e.toString());
+        }
+    }
+}

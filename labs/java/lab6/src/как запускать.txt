@@ -1,2 +1,2 @@
-javac -d classes -cp gson.jar Server.java models/*.java managers/*.java commands/*.java exceptions/*.java json_serializer/*.java
+javac -d classes -cp gson.jar Server.java common.models/*.java managers/*.java common.commands/*.java common.exceptions/*.java json_serializer/*.java
 java -cp classes;gson.jar Server files/1.json

@@ -1,36 +1,76 @@
 package client;
 
-import models.Coordinates;
-import models.Position;
-import models.Status;
-import models.Worker;
+import common.commands.Command;
+import managers.Console;
+import managers.StandardConsole;
+import common.models.Coordinates;
+import common.models.Position;
+import common.models.Status;
+import common.models.Worker;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Client {
+    private static Socket sock;
+    private final static Console console = new StandardConsole();
 
-    static void writeObject(String host, int port, Object obj) {
+    public static void start(String host, int port) throws IOException {
+        sock = new Socket(host, port);
+    }
+
+    public static Object getObject() throws IOException, ClassNotFoundException {
+        ObjectInputStream ois = new ObjectInputStream(sock.getInputStream());
+        return ois.readObject();
+    }
+
+    public static void writeObject(Object obj) throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(sock.getOutputStream());
+        oos.writeObject(obj);
+    }
+
+//    public static void run(Command command, String[] args) {
+    public static void run(Command command) {
         try {
-            Socket sock = new Socket(host, port);
+            start("127.0.0.1", 6969);
+            try {
+                writeObject(command);  //отправляем команду
+                try {
+                    //получаем результат в виде строки
+                    String strRes = (String) getObject();
+                    console.write(strRes);
+                    /*
+                    //получаем результат в виде коллекции
+                    LinkedList<Worker> workers = (LinkedList<Worker>) getObject();
 
-            ObjectOutputStream oos = new ObjectOutputStream(sock.getOutputStream());
+                    workers.forEach(worker -> console.write(worker.toString()));*/
 
-            oos.writeObject(obj);
-
-            sock.close();
-        }
-        catch (IOException e) {
-            System.out.println("Не получилось передать данные на сервер");
+                    close();
+                } catch (IOException | ClassNotFoundException e) {
+                    console.write(e.toString());
+                    console.write("Принять данные не получилось");
+                } catch (ClassCastException e) {
+                    console.write(e.toString());
+                    console.write("Передан неправильный тип данных");
+                }
+            } catch (IOException e) {
+                console.write("Не получилось передать данные на сервер");
+            }
+        } catch (IOException e) {
+            console.write(e.toString());
+            console.write("Не получилось подключиться к серверу");
         }
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void close() throws IOException {
+        sock.close();
+    }
+
+    public static void main(String[] args) {
         Worker max = new Worker("Max", new Coordinates(10, 100),
                 9999F, null, null, null);
 
@@ -43,10 +83,7 @@ public class Client {
 
         LinkedList<Worker> workers = new LinkedList<>(List.of(max, sasha, andrey));
 
-        //сортируем по имени
-        workers = workers.stream().sorted(Comparator.comparing(Worker::getName))
-                .collect(Collectors.toCollection(LinkedList::new));
 
-        writeObject("127.0.0.1", 6969, workers);
+//        writeObject("127.0.0.1", 6969, "filter_by_salary 100");
     }
 }

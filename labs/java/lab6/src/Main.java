@@ -1,5 +1,10 @@
-import models.*;
+import client.managers.InputManager;
+import common.models.*;
 import managers.*;
+import server.managers.CollectionHistory;
+import server.managers.CollectionManager;
+import server.managers.FileManager;
+import server.managers.JsonManager;
 
 import java.util.LinkedList;
 
@@ -19,7 +24,7 @@ public class Main {
         CollectionHistory collectionHistory = new CollectionHistory();
         collectionHistory.setStart(start_ll);
 
-        InputManager inputManager = new InputManager(consoleManager, collectionManager, collectionHistory, fileName);
+        InputManager inputManager = new InputManager(consoleManager);
         inputManager.run();
     }
 }
@@ -29,5 +34,5 @@ public class Main {
 //ssh -p 2222 s367149@helios.cs.ifmo.ru  //вход на гелиос
 //export fileNameCollection=main.json    //создание переменной окружения
 
-//javac -d classes -cp gson.jar Main.java models/*.java managers/*.java commands/*.java exceptions/*.java jsonAdapters/*.java
+//javac -d classes -cp gson.jar Main.java common.models/*.java managers/*.java common.commands/*.java common.exceptions/*.java server.jsonAdapters/*.java
 //java -cp classes;gson.jar Main
