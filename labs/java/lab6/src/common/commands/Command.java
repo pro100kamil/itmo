@@ -2,7 +2,7 @@ package common.commands;
 
 import common.exceptions.NonExistentId;
 import common.exceptions.WrongCommandArgsException;
-import managers.Console;
+import common.consoles.Console;
 import server.managers.CollectionHistory;
 import server.managers.CollectionManager;
 
@@ -23,6 +23,11 @@ public abstract class Command implements Serializable {
     protected String dataFileName;
     protected LinkedList<Command> history;
 
+    protected Command(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
     public void setConsole(Console console) {
         this.console = console;
     }
@@ -41,11 +46,6 @@ public abstract class Command implements Serializable {
 
     public void setHistory(LinkedList<Command> history) {
         this.history = history;
-    }
-
-    protected Command(String name, String description) {
-        this.name = name;
-        this.description = description;
     }
 
     public String getName() {

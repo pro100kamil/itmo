@@ -2,8 +2,8 @@ package server.managers;
 
 import com.google.gson.reflect.TypeToken;
 import common.models.*;
-import managers.Console;
-import managers.StandardConsole;
+import common.consoles.Console;
+import common.consoles.StandardConsole;
 import server.jsonAdapters.*;
 
 import java.lang.reflect.Type;

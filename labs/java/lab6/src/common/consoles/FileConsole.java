@@ -1,4 +1,4 @@
-package managers;
+package common.consoles;
 
 import server.managers.FileManager;
 

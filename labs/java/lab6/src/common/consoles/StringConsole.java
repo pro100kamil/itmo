@@ -1,4 +1,6 @@
-package managers;
+package common.consoles;
+
+import common.consoles.Console;
 
 /**
  * Класс для работы со строковой консолью.
@@ -22,6 +24,6 @@ public class StringConsole implements Console {
     }
 
     public String getAllText(){
-        return res;
+        return res.strip();
     }
 }

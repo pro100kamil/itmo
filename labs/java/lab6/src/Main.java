@@ -1,6 +1,6 @@
 import client.managers.InputManager;
+import common.consoles.StandardConsole;
 import common.models.*;
-import managers.*;
 import server.managers.CollectionHistory;
 import server.managers.CollectionManager;
 import server.managers.FileManager;

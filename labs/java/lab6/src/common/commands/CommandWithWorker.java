@@ -1,7 +1,6 @@
 package common.commands;
 
 import common.models.Worker;
-import managers.Console;
 
 /**
  * Класс команды, которая принимает работника (добавить работника, удалить больше конкретного работника и обновить).

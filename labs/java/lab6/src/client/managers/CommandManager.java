@@ -3,8 +3,8 @@ package client.managers;
 import common.commands.*;
 import common.exceptions.*;
 import common.models.Worker;
-import managers.Console;
-import managers.StandardConsole;
+import common.consoles.Console;
+import common.consoles.StandardConsole;
 
 import java.util.TreeMap;
 

@@ -1,14 +1,7 @@
 package client;
 
 import client.managers.InputManager;
-import common.models.Worker;
-import managers.StandardConsole;
-import server.managers.CollectionHistory;
-import server.managers.CollectionManager;
-import server.managers.FileManager;
-import server.managers.JsonManager;
-
-import java.util.LinkedList;
+import common.consoles.StandardConsole;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,10 +10,5 @@ public class Main {
         InputManager inputManager = new InputManager(console);
 
         inputManager.run();
-
-//        boolean fl = true;
-//        while (fl) {
-//            Client.run();
-//        }
     }
 }

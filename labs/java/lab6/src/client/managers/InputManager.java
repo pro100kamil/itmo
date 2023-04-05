@@ -4,7 +4,7 @@ import client.Client;
 import common.commands.Command;
 import common.models.*;
 import common.exceptions.*;
-import managers.Console;
+import common.consoles.Console;
 
 import java.util.NoSuchElementException;
 import java.time.LocalDate;
@@ -90,13 +90,13 @@ public class InputManager {
      * @return Position позиция работника (может быть null)
      */
     public Position getPosition() throws EndInputException, EndInputWorkerException {
-        String text = "Введите позицию работника или пустую строку для null. Варианты: ";
+        StringBuilder text = new StringBuilder("Введите позицию работника или пустую строку для null. Варианты: ");
         for (Position el : Position.values()) {
-            text += el + " ";
+            text.append(el).append(" ");
         }
 
         String tmp; //временное хранение ввода
-        console.write(text);
+        console.write(text.toString());
         while (console.hasNext()) {
             tmp = console.getNextStr();
             if (tmp.equals(stopWorkerInput)) {
@@ -108,7 +108,7 @@ public class InputManager {
             try {
                 return Position.valueOf(tmp);
             } catch (IllegalArgumentException e) {
-                console.write(text);
+                console.write(text.toString());
             }
         }
         throw new EndInputException();
@@ -120,13 +120,13 @@ public class InputManager {
      * @return Status статус работника (может быть null)
      */
     public Status getStatus() throws EndInputException, EndInputWorkerException {
-        String text = "Введите статус работника или пустую строку для null. Варианты: ";
+        StringBuilder text = new StringBuilder("Введите статус работника или пустую строку для null. Варианты: ");
         for (Status el : Status.values()) {
-            text += el + " ";
+            text.append(el).append(" ");
         }
 
         String tmp; //временное хранение ввода
-        console.write(text);
+        console.write(text.toString());
         while (console.hasNext()) {
             tmp = console.getNextStr();
             if (tmp.equals(stopWorkerInput)) {
@@ -138,7 +138,7 @@ public class InputManager {
             try {
                 return Status.valueOf(tmp);
             } catch (IllegalArgumentException e) {
-                console.write(text);
+                console.write(text.toString());
             }
         }
         throw new EndInputException();
@@ -240,19 +240,14 @@ public class InputManager {
             console.write("--------------------------");
             try {
                 String strCommand = console.getNextStr();
-//                Map.Entry<Command, String[]> tmp = commandManager.getCommand(strCommand);
-//                Command command = tmp.getKey();
-//                String[] args = tmp.getValue();
                 Command command = commandManager.getCommand(strCommand);
-                Client.run(command);
-//                commandManager.executeCommand(command);
+                new Client().run(command);
             } catch (NoSuchCommandException | WrongCommandArgsException | NonExistentId e) {
                 console.write(e.toString());
             } catch (NoSuchElementException | EndInputException | EndInputWorkerException e) {
                 console.write("");
             }
             console.write("--------------------------");
-            console.write("");
         }
     }
 }

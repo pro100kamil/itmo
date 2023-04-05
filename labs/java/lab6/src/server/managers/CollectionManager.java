@@ -2,8 +2,8 @@ package server.managers;
 
 import common.models.Worker;
 import common.exceptions.NotUniqueIdException;
-import managers.Console;
-import managers.StandardConsole;
+import common.consoles.Console;
+import common.consoles.StandardConsole;
 
 
 import java.util.Comparator;
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  * Класс для работы с коллекцией
  */
 public class CollectionManager {
-    private final Console console = new StandardConsole();
+    private Console console = new StandardConsole();
     private LinkedList<Worker> linkedList;
     private final TreeMap<Integer, Worker> idWorkerFromCollection = new TreeMap<>();
     private final LocalDateTime creationDate;
@@ -31,6 +31,10 @@ public class CollectionManager {
         //оставляем только корректных работников
         this();
         setWorkers(workers);
+    }
+
+    public void setConsole(Console console) {
+        this.console = console;
     }
 
     public void setWorkers(LinkedList<Worker> workers) {

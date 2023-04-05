@@ -1,7 +1,6 @@
 package server.managers;
 
 import common.commands.*;
-import managers.Console;
 
 import java.util.LinkedList;
 
@@ -9,7 +8,6 @@ import java.util.LinkedList;
  * Класс для запуска команд, для сохранения истории
  */
 public class CommandManager {
-//    private final Console console;
     private final CollectionManager collectionManager;
     private final CollectionHistory collectionHistory;
     private final LinkedList<Command> history = new LinkedList<>();
@@ -17,7 +15,10 @@ public class CommandManager {
     public CommandManager(CollectionManager collectionManager, CollectionHistory collectionHistory) {
         this.collectionManager = collectionManager;
         this.collectionHistory = collectionHistory;
-//        this.console = console;
+    }
+
+    public LinkedList<Command> getHistory() {
+        return history;
     }
 
     /**

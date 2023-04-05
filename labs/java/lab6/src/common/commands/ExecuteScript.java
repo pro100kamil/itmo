@@ -3,8 +3,8 @@ package common.commands;
 import common.exceptions.WrongCommandArgsException;
 import client.managers.InputManager;
 import client.managers.ValidateManager;
-import managers.Console;
-import managers.FileConsole;
+import common.consoles.Console;
+import common.consoles.FileConsole;
 
 /**
  * Команда execute_script file_name.

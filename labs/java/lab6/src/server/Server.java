@@ -1,11 +1,10 @@
 package server;
 
-import managers.StringConsole;
-import server.managers.CommandManager;
 import common.commands.Command;
-import managers.Console;
-import managers.StandardConsole;
 import common.models.Worker;
+import common.consoles.Console;
+import common.consoles.StandardConsole;
+import common.consoles.StringConsole;
 import server.managers.*;
 
 import java.io.IOException;
@@ -14,67 +13,65 @@ import java.io.ObjectOutputStream;
 import java.net.InetSocketAddress;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
-import java.util.Comparator;
 import java.util.LinkedList;
-import java.util.stream.Collectors;
 
 public class Server {
-    private static ServerSocketChannel serv;
-    private static SocketChannel socketChannel;
-    private final static Console console = new StandardConsole();
+    private ServerSocketChannel serv;
+    private SocketChannel socketChannel;
+    private static final Console console = new StandardConsole();
 
-    public static void start(String host, int port) throws IOException {
+    public void start(String host, int port) throws IOException {
         serv = ServerSocketChannel.open();
         serv.bind(new InetSocketAddress(host, port));
-
     }
 
-    public static Object getObject() throws IOException, ClassNotFoundException {
+    public Object getObject() throws IOException, ClassNotFoundException {
         ObjectInputStream ois = new ObjectInputStream(socketChannel.socket().getInputStream());
         return ois.readObject();
     }
 
-    static void writeObject(Object obj) throws IOException {
+    public void writeObject(Object obj) throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(socketChannel.socket().getOutputStream());
         oos.writeObject(obj);
     }
 
-    public static void close() throws IOException {
+    public void close() throws IOException {
         serv.close();
     }
 
-    public static void main(String[] args) {
+    public void run() {
+        String dataFileName = "main.json";
+
         CollectionManager collectionManager = new CollectionManager();
+        LinkedList<Worker> start_ll = JsonManager.getLinkedListWorkerFromStrJson(FileManager.getTextFromFile(dataFileName));
+        collectionManager.setWorkers(start_ll);
+
         CollectionHistory collectionHistory = new CollectionHistory();
         CommandManager commandManager = new CommandManager(collectionManager,collectionHistory);
 
         try {
             start("127.0.0.1", 6969);
+            console.write("Сервер запущен");
             while (true) {
                 try {
                     socketChannel = serv.accept();
                     StringConsole strConsole = new StringConsole();
-                    //получаем команду от клиента
-                    Command command = (Command) getObject();
+
+                    Command command = (Command) getObject(); //получаем команду от клиента
+
+                    collectionManager.sortByName();  //сортируем коллекцию по имени
 
                     command.setConsole(strConsole);
-//                    command.setHistory(h);
+                    collectionManager.setConsole(strConsole);
+
+                    command.setHistory(commandManager.getHistory());
                     command.setCollectionHistory(collectionHistory);
-
-                    //сортируем по имени
-                    collectionManager.sortByName();
-
                     command.setCollectionManager(collectionManager);
-//                    command.setDataFileName(dataFileName);
-                    //выполняем её
-                    commandManager.executeCommand(command);
+                    command.setDataFileName(dataFileName);
+
+                    commandManager.executeCommand(command);  //выполняем её
 
                     String strRes = strConsole.getAllText();
-                    //получаем текущее состояние коллекции
-                    /*LinkedList<Worker> workers = collectionManager.getLinkedList();
-                    //сортируем по имени
-                    workers = workers.stream().sorted(Comparator.comparing(Worker::getName))
-                            .collect(Collectors.toCollection(LinkedList::new));*/
                     try {
                         //отправляем клиенту
                         writeObject(strRes);
@@ -83,10 +80,6 @@ public class Server {
                     catch (IOException e) {
                         console.write("Не получилось передать данные клиенту");
                     }
-//                    close();
-//                    return;
-// утром сделать передачу команд на сервер и ответ на команду
-// пока что принимает один запрос и отправляет ответ на этот запрос
                 } catch (IOException | ClassNotFoundException e) {
                     console.write(e.toString());
                     console.write("Принять данные не получилось");
