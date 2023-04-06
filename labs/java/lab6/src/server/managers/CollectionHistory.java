@@ -88,9 +88,10 @@ public class CollectionHistory {
      * @param stepCollection словарь текущих состояний
      */
     public void save(TreeMap<String, LinkedList<Worker>> stepCollection) {
+        FileManager.writeTextToFile(fileName, JsonManager.getStrJsonFromStepCollection(stepCollection));
         if (getStepCollection().size() > 0) {
+            System.out.println(getCurState());
             FileManager.writeTextToFile(dataFileName, JsonManager.getStrJsonFromLinkedListWorker(getCurState()));
         }
-        FileManager.writeTextToFile(fileName, JsonManager.getStrJsonFromStepCollection(stepCollection));
     }
 }
