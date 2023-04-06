@@ -60,8 +60,10 @@ public class CommandManager {
         Command res = strCommands.get(strCommand);
         res.validateArgs(args);
         if (res instanceof CommandWithWorker) {
-            Worker worker = inputManager.getWorker();
-            ((CommandWithWorker) res).setWorker(worker);
+            if (!(res instanceof Update)) {
+                Worker worker = inputManager.getWorker();
+                ((CommandWithWorker) res).setWorker(worker);
+            }
         }
         if (res instanceof ExecuteScript) {
             //макс глубина рекурсии спрашивается только тогда, когда мы работаем со стандартным вводом

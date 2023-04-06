@@ -1,10 +1,13 @@
 package server;
 
+import com.google.gson.stream.JsonToken;
 import common.commands.Command;
-import common.models.Worker;
+import common.commands.Update;
 import common.consoles.Console;
 import common.consoles.StandardConsole;
 import common.consoles.StringConsole;
+import common.exceptions.NonExistentId;
+import common.models.Worker;
 import server.managers.*;
 
 import java.io.IOException;
@@ -74,8 +77,19 @@ public class Server {
                     command.setCollectionManager(collectionManager);
                     command.setDataFileName(dataFileName);
 
-                    commandManager.executeCommand(command);  //выполняем её
-
+                    //если отправлена команда update без работника, то мы должны провести её серверную валидацию
+                    if (command instanceof Update && ((Update) command).getWorker() == null) {
+                        try {
+                            ((Update) command).serverValidateArgs(command.getArgs());
+                            strConsole.write("Введите информацию о работнике.");
+                        }
+                        catch (NonExistentId e) {
+                            strConsole.write(e.toString());
+                        }
+                    }
+                    else {
+                        commandManager.executeCommand(command);  //выполняем её
+                    }
                     String strRes = strConsole.getAllText();
                     if (strRes.equals("")) strRes = "Команда выполнилась успешно";
                     try {

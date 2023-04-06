@@ -1,30 +1,29 @@
 package common.commands;
 
+import client.managers.ValidateManager;
 import common.exceptions.NonExistentId;
 import common.exceptions.WrongCommandArgsException;
-import client.managers.ValidateManager;
-import common.models.Worker;
 
 /**
  * Команда update.
  * Обновляет работника по id на основе заданного работника.
  */
 public class Update extends CommandWithWorker {
-    private Worker worker;
+    public boolean ready;
 
     public Update() {
         super("update", "обновляет работника по id на основе заданного работника");
-    }
-
-    public void setWorker(Worker worker) {
-        this.worker = worker;
+        ready = false;
     }
 
     @Override
-    public void validateArgs(String[] args) throws WrongCommandArgsException, NonExistentId {
+    public void validateArgs(String[] args) throws WrongCommandArgsException {
         if (args.length != 1 || !ValidateManager.isInteger(args[0])) {
             throw new WrongCommandArgsException();
         }
+    }
+
+    public void serverValidateArgs(String[] args) throws NonExistentId {
         if (!collectionManager.existsId(Integer.parseInt(args[0]))) {
             throw new NonExistentId();
         }
@@ -32,7 +31,14 @@ public class Update extends CommandWithWorker {
 
     @Override
     public void execute(String[] args) {
-        //TODO сделать серверную валидацию
         collectionManager.update(Integer.parseInt(args[0]), worker);
+    }
+
+    public boolean isReady() {
+        return ready;
+    }
+
+    public void setReady(boolean ready) {
+        this.ready = ready;
     }
 }

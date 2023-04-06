@@ -1,21 +1,15 @@
 package common.commands;
 
 import common.exceptions.WrongCommandArgsException;
-import common.models.Worker;
 
 /**
  * Команда remove_greater.
  * Удаляет работников, которые больше заданного.
  */
 public class RemoveGreater extends CommandWithWorker {
-    private Worker worker;
 
     public RemoveGreater() {
         super("remove_greater", "удаляет работников, которые больше заданного");
-    }
-
-    public void setWorker(Worker worker) {
-        this.worker = worker;
     }
 
     @Override

@@ -19,7 +19,7 @@ public class Worker implements Comparable<Worker>, Serializable {
     private Person person; //Поле не может быть null
 
     private static int nextId = 1;  //новому работнику присваивается такой id
-    //TODO нормальная генерация ID
+
     public Worker(String name, Coordinates coordinates, Float salary, Position position, Status status, Person person) {
         this.name = name;
         this.coordinates = coordinates;

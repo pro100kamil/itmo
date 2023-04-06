@@ -1,9 +1,7 @@
 package client.managers;
 
 import client.Client;
-import common.commands.Command;
-import common.commands.ExecuteScript;
-import common.commands.Exit;
+import common.commands.*;
 import common.models.*;
 import common.exceptions.*;
 import common.consoles.Console;
@@ -252,6 +250,15 @@ public class InputManager {
                 }
                 else {
                     new Client().run(command);
+                    //Во время команды update, вначале отправляем команду без работника,
+                    //чтобы проверить, что такой id существует.
+                    //Если всё хорошо, то отправляем с работником.
+                    if (command instanceof Update && ((Update) command).isReady()) {
+                        ((Update) command).setReady(false);
+                        Worker worker = getWorker();
+                        ((CommandWithWorker) command).setWorker(worker);
+                        new Client().run(command);
+                    }
                 }
             } catch (NoSuchCommandException | WrongCommandArgsException | NonExistentId e) {
                 console.write(e.toString());

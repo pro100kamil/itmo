@@ -9,14 +9,9 @@ import common.models.Worker;
  * Добавляет работника в коллекцию.
  */
 public class Add extends CommandWithWorker {
-    private Worker worker;
 
     public Add() {
         super("add", "добавляет элемент в коллекцию");
-    }
-
-    public void setWorker(Worker worker) {
-        this.worker = worker;
     }
 
     @Override

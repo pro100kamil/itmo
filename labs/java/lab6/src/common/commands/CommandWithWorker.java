@@ -8,10 +8,16 @@ import common.models.Worker;
  * А в обычных командах проверка аргументов происходит прямо при выполнении.
  */
 public abstract class CommandWithWorker extends Command {
-
+    protected Worker worker;
     protected CommandWithWorker(String name, String description) {
         super(name, description);
     }
 
-    public abstract void setWorker(Worker worker);
+    public void setWorker(Worker worker) {
+        this.worker = worker;
+    }
+
+    public Worker getWorker() {
+        return worker;
+    }
 }

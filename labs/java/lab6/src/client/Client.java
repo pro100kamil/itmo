@@ -1,8 +1,10 @@
 package client;
 
 import common.commands.Command;
+import common.commands.Update;
 import common.consoles.Console;
 import common.consoles.StandardConsole;
+import common.exceptions.NonExistentId;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -36,6 +38,9 @@ public class Client {
                     String strRes = (String) getObject();  //получаем результат в виде строки
 
                     console.write(strRes);
+                    if (command instanceof Update && !strRes.equals(new NonExistentId().toString())) {
+                        ((Update) command).setReady(true);
+                    }
 
                     close();
                 } catch (IOException | ClassNotFoundException e) {
