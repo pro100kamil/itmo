@@ -11,6 +11,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+/**
+ * Класс клиента, позволяет отправлять запросы на сервер
+ */
 public class Client {
     private Socket sock;
     private static final Console console = new StandardConsole();

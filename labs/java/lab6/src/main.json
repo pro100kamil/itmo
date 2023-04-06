@@ -37,5 +37,18 @@
     "person": {
       "height": 55.0
     }
+  },
+  {
+    "id": 5,
+    "name": "TEST",
+    "coordinates": {
+      "x": 1,
+      "y": 2
+    },
+    "creationDate": "2023-04-06T20:35:27.011487800",
+    "salary": 3.0,
+    "person": {
+      "height": 189.0
+    }
   }
 ]

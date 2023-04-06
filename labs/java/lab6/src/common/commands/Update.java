@@ -23,6 +23,10 @@ public class Update extends CommandWithWorker {
         }
     }
 
+    /**
+     * Часть валидации, которая происходит на сервере.
+     * Потому что на клиенте у нас нет информации по поводу id.
+     */
     public void serverValidateArgs(String[] args) throws NonExistentId {
         if (!collectionManager.existsId(Integer.parseInt(args[0]))) {
             throw new NonExistentId();
@@ -31,13 +35,25 @@ public class Update extends CommandWithWorker {
 
     @Override
     public void execute(String[] args) {
-        collectionManager.update(Integer.parseInt(args[0]), worker);
+        try {
+            validateArgs(args);
+            serverValidateArgs(args);
+            collectionManager.update(Integer.parseInt(args[0]), worker);
+        } catch (WrongCommandArgsException | NonExistentId e) {
+            console.write(e.toString());
+        }
     }
 
+    /**
+     * Возвращает готовность команды к заданию работника.
+     */
     public boolean isReady() {
         return ready;
     }
 
+    /**
+     * Задаёт готовность команды к заданию работника.
+     */
     public void setReady(boolean ready) {
         this.ready = ready;
     }

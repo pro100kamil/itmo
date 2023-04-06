@@ -9,7 +9,8 @@ import common.consoles.StandardConsole;
 import java.util.TreeMap;
 
 /**
- * Класс для запуска команд, для сохранения истории
+ * Реализация класса CommandManager для клиентской части.
+ * Класс для получения команды из её строчного представления.
  */
 public class CommandManager {
     private final Console console;
@@ -42,9 +43,8 @@ public class CommandManager {
      * Получает экземпляр класса команды по строчному представлению команды
      *
      * @param strCommand - строка с командой (команда с аргументами)
-     * @return Map.Entry<Command, String[]> - корректная команда и строковые аргументы команды
+     * @return Command - корректная команда (строковые аргументы команды внутри)
      */
-//    public Map.Entry<Command, String[]> getCommand(String strCommand) throws NoSuchCommandException,
     public Command getCommand(String strCommand) throws NoSuchCommandException,
             WrongCommandArgsException,
             NonExistentId,
@@ -60,6 +60,7 @@ public class CommandManager {
         Command res = strCommands.get(strCommand);
         res.validateArgs(args);
         if (res instanceof CommandWithWorker) {
+            //у update работник запросится только тогда, когда пройдёт серверная проверка
             if (!(res instanceof Update)) {
                 Worker worker = inputManager.getWorker();
                 ((CommandWithWorker) res).setWorker(worker);
@@ -74,6 +75,5 @@ public class CommandManager {
         }
         res.setArgs(args);
         return res;
-//        return new AbstractMap.SimpleEntry<>(res, args);
     }
 }

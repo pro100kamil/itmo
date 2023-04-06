@@ -230,7 +230,7 @@ public class InputManager {
     }
 
     /**
-     * Запускает интерактивный режим
+     * Запускает интерактивный режим (ввод команд)
      */
     public void run() {
         CommandManager commandManager = new CommandManager(this);

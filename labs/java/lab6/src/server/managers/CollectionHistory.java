@@ -90,7 +90,6 @@ public class CollectionHistory {
     public void save(TreeMap<String, LinkedList<Worker>> stepCollection) {
         FileManager.writeTextToFile(fileName, JsonManager.getStrJsonFromStepCollection(stepCollection));
         if (getStepCollection().size() > 0) {
-            System.out.println(getCurState());
             FileManager.writeTextToFile(dataFileName, JsonManager.getStrJsonFromLinkedListWorker(getCurState()));
         }
     }

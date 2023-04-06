@@ -4,7 +4,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
- * Класс для разных проверок (является ли строка числом, командой и тд)
+ * Класс для разных проверок (является ли строка числом, корректным файлом и тд)
  */
 public class ValidateManager {
     /**

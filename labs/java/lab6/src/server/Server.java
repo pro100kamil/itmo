@@ -1,6 +1,5 @@
 package server;
 
-import com.google.gson.stream.JsonToken;
 import common.commands.Command;
 import common.commands.Update;
 import common.consoles.Console;
@@ -18,6 +17,9 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.LinkedList;
 
+/**
+ * Класс сервера, позволяет принимать запросы от клиента
+ */
 public class Server {
     private ServerSocketChannel serv;
     private SocketChannel socketChannel;
