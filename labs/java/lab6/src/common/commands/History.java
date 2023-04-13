@@ -24,11 +24,7 @@ public class History extends Command {
     public void execute(String[] args) {
         try {
             validateArgs(args);
-//            history.stream();
-            //TODO сделать через стримы
-            for (int i = Math.max(0, history.size() - 11); i < history.size(); i++) {
-                console.write(history.get(i).getName());
-            }
+            history.stream().skip(Math.max(0, history.size() - 11)).forEach(command -> console.write(command.getName()));
         } catch (WrongCommandArgsException e) {
             console.write(e.toString());
         }

@@ -48,13 +48,12 @@ public class Server {
     public void run() {
         String dataFileName = "main.json";
 
-        LinkedList<Worker> start_ll = JsonManager.getLinkedListWorkerFromStrJson(FileManager.getTextFromFile(dataFileName));
-
-        CollectionManager collectionManager = new CollectionManager(start_ll);
+        LinkedList<Worker> startWorkers = JsonManager.getLinkedListWorkerFromStrJson(FileManager.getTextFromFile(dataFileName));
+        CollectionManager collectionManager = new CollectionManager(startWorkers);
 
         CollectionHistory collectionHistory = new CollectionHistory();
         CollectionHistory.setDataFileName(dataFileName);
-        collectionHistory.setStart(start_ll);
+        collectionHistory.setStart(startWorkers);
 
         CommandManager commandManager = new CommandManager(collectionManager, collectionHistory);
 
@@ -96,7 +95,6 @@ public class Server {
                     if (strRes.equals("")) strRes = "Команда выполнилась успешно";
                     try {
                         writeObject(strRes);  //отправляем клиенту
-                        socketChannel.close();
                     } catch (IOException e) {
                         console.write("Не получилось передать данные клиенту");
                     }
@@ -106,6 +104,9 @@ public class Server {
                 } catch (ClassCastException e) {
                     console.write(e.toString());
                     console.write("Передан неправильный тип данных");
+                }
+                finally {
+                    if (socketChannel != null) socketChannel.close();
                 }
             }
         } catch (IOException e) {

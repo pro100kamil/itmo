@@ -44,8 +44,6 @@ public class Client {
                     if (command instanceof Update && !strRes.equals(new NonExistentId().toString())) {
                         ((Update) command).setReady(true);
                     }
-
-                    close();
                 } catch (IOException | ClassNotFoundException e) {
                     console.write(e.toString());
                     console.write("Принять данные не получилось");
@@ -55,6 +53,9 @@ public class Client {
                 }
             } catch (IOException e) {
                 console.write("Не получилось передать данные на сервер");
+            }
+            finally {
+                close();
             }
         } catch (IOException e) {
             console.write(e.toString());
