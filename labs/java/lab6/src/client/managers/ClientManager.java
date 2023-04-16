@@ -1,10 +1,12 @@
 package client.managers;
 
+import client.Configuration;
 import common.commands.AbstractCommand;
 import common.consoles.Console;
 import common.consoles.StandardConsole;
 import common.requests.CommandRequest;
 import common.requests.GetAllCommandsRequest;
+import common.requests.ValidationRequest;
 import common.responses.CommandResponse;
 import common.responses.GetAllCommandsResponse;
 import common.responses.ValidationResponse;
@@ -16,10 +18,7 @@ public class ClientManager {
     Client client;
 
     public ClientManager() {
-        client = new Client("127.0.0.1", 6969);
-    }
-    public ClientManager(String host, int port) {
-        client = new Client(host, port);
+        client = new Client(Configuration.getHost(), Configuration.getPort());
     }
 
     public void start() throws IOException {
@@ -29,7 +28,7 @@ public class ClientManager {
     public AbstractCommand[] getAllCommands() throws IOException, ClassNotFoundException {
         client.start();
         writeGetAllCommandsRequest();
-        GetAllCommandsResponse response = (GetAllCommandsResponse)client.getObject();
+        GetAllCommandsResponse response = (GetAllCommandsResponse) client.getObject();
         client.close();
         return response.getCommands();
     }
@@ -39,25 +38,26 @@ public class ClientManager {
     }
 
     public void writeValidationRequest(AbstractCommand command) throws IOException {
-        client.writeObject(new CommandRequest(command));
+        client.writeObject(new ValidationRequest(command));
     }
 
     public void writeCommandRequest(AbstractCommand command) throws IOException {
         client.writeObject(new CommandRequest(command));
     }
 
-    public void commandHandler(AbstractCommand command) throws IOException, ClassNotFoundException {
+    public void commandHandler(AbstractCommand command) throws IOException,
+            ClassNotFoundException, ClassCastException {
         client.start();
-
+        System.out.println(command);
         writeValidationRequest(command);
-        ValidationResponse validationResponse = (ValidationResponse)client.getObject();
+        ValidationResponse validationResponse = (ValidationResponse) client.getObject();
         if (!validationResponse.getStatus()) { //если команда некорректная
             console.write(validationResponse.getErrorMessage());
             return;
         }
 
         writeCommandRequest(command);
-        CommandResponse commandResponse = (CommandResponse)client.getObject();
+        CommandResponse commandResponse = (CommandResponse) client.getObject();
         if (!commandResponse.getStatus()) {
             console.write(commandResponse.getErrorMessage());
             return;

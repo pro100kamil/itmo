@@ -2,6 +2,7 @@ package server.managers;
 
 import common.managers.FileManager;
 import common.models.Worker;
+import server.Configuration;
 
 import java.util.LinkedList;
 import java.util.TreeMap;
@@ -10,8 +11,13 @@ import java.util.TreeMap;
  * Класс, который работает с разными состояниями коллекции.
  */
 public class CollectionHistory {
-    private static String dataFileName = "main.json";   //файл, где хранится текущее состояние коллекции
-    private static final String fileName = "_.json";   //файл, где хранятся данные о состояниях коллекции
+    //файл, где хранится текущее состояние коллекции
+    private static String dataFileName = Configuration.getStartFileName();
+
+    private static final String fileName = Configuration.getHistoryFileName();
+    //файл, где хранятся данные о состояниях коллекции
+
+
     //private TreeMap<String, LinkedList<Worker>> stepCollection = new TreeMap<>();
     //номер команды (шага) в абсолютной нумерации: состояние списка на этот момент
     //нумерация с 0, 0 - начальное состояние коллекции

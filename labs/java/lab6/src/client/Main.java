@@ -11,8 +11,11 @@ public class Main {
         String host = System.getenv("host");
         int port = Integer.parseInt(System.getenv("port"));
 
+        Configuration.setHost(host);
+        Configuration.setPort(port);
+
         InputManager inputManager = new InputManager(console);
 
-        inputManager.run(new ClientManager(host, port));
+        inputManager.run(new ClientManager());
     }
 }

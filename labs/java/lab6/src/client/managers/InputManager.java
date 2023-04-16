@@ -239,6 +239,7 @@ public class InputManager {
             allCommands = clientManager.getAllCommands();
         } catch (IOException | ClassNotFoundException e) {
             console.write(e.toString());
+            console.write("Подключиться к серверу не получилось");
             return;
         }
 

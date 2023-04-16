@@ -11,8 +11,13 @@ public class Main {
         String host = System.getenv("host");
         int port = Integer.parseInt(System.getenv("port"));
 
+        Configuration.setHost(host);
+        Configuration.setPort(port);
+        Configuration.setStartFileName("main.json");
+        Configuration.setHistoryFileName("_.json");
+
         Console console = new StandardConsole();
-        ServerManager serverManager = new ServerManager(host, port);
+        ServerManager serverManager = new ServerManager();
         try {
             serverManager.start();
             console.write("Сервер запущен");

@@ -6,6 +6,7 @@ import common.managers.FileManager;
 import common.models.Worker;
 import common.requests.Request;
 import common.responses.Response;
+import server.Configuration;
 
 import java.io.IOException;
 import java.nio.channels.SocketChannel;
@@ -21,9 +22,9 @@ public class ServerManager {
 
     private final CommandManager commandManager;
 
-    public ServerManager(String host, int port) {
-        server = new Server(host, port);
-        String dataFileName = "main.json";
+    public ServerManager() {
+        server = new Server(Configuration.getHost(), Configuration.getPort());
+        String dataFileName = Configuration.getStartFileName();
 
         LinkedList<Worker> startWorkers = JsonManager.getLinkedListWorkerFromStrJson(FileManager.getTextFromFile(dataFileName));
         CollectionManager collectionManager = new CollectionManager(startWorkers);

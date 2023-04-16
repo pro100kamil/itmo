@@ -1,8 +1,7 @@
 package server.commands;
 
-import common.managers.ValidateManager;
 import common.exceptions.WrongCommandArgsException;
-import server.commands.Command;
+import common.managers.ValidateManager;
 
 /**
  * Команда rollback n.
