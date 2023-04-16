@@ -1,14 +1,14 @@
-package common.commands;
+package server.commands;
 
 import common.exceptions.WrongCommandArgsException;
 
 /**
- * Команда clear.
- * Очищает коллекцию.
+ * Команда exit.
+ * Завершает программу.
  */
-public class Clear extends Command {
-    public Clear() {
-        super("clear", "очищает коллекцию");
+public class Exit extends Command {
+    public Exit() {
+        super("exit", "завершает программу");
     }
 
     @Override
@@ -22,7 +22,7 @@ public class Clear extends Command {
     public void execute(String[] args) {
         try {
             validateArgs(args);
-            collectionManager.clear();
+            System.exit(0);
         } catch (WrongCommandArgsException e) {
             console.write(e.toString());
         }

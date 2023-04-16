@@ -1,22 +1,19 @@
-package common.commands;
+package server.commands;
 
+import common.commands.AbstractCommand;
+import common.consoles.Console;
 import common.exceptions.NonExistentId;
 import common.exceptions.WrongCommandArgsException;
-import common.consoles.Console;
 import server.managers.CollectionHistory;
 import server.managers.CollectionManager;
 
-import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
  * Абстрактный класс команды
  */
-public abstract class Command implements Serializable {
-    private final String name; //название команды
-    private final String description;  //описание команды
+public abstract class Command extends AbstractCommand {
     protected Console console;
-    protected String[] args;  //аргументы при запуске команды
 
     protected CollectionManager collectionManager;
     protected CollectionHistory collectionHistory;
@@ -48,16 +45,15 @@ public abstract class Command implements Serializable {
         this.history = history;
     }
 
-    public String getName() {
-        return name;
-    }
-
     /**
      * Проверяет аргументы на корректность. При неправильных аргументах бросает соответсвующее исключение.
+     * Эта проверка происходит на сервере.
      *
      * @param args - аргументы команды
      */
-    public abstract void validateArgs(String[] args) throws WrongCommandArgsException, NonExistentId;
+    public void serverValidateArgs(String[] args) throws NonExistentId, WrongCommandArgsException {
+        validateArgs(args);
+    }
 
     /**
      * Выполняет команду
@@ -65,17 +61,4 @@ public abstract class Command implements Serializable {
      * @param args - аргументы команды
      */
     public abstract void execute(String[] args);
-
-    public void setArgs(String[] args) {
-        this.args = args;
-    }
-
-    public String[] getArgs() {
-        return args;
-    }
-
-    @Override
-    public String toString() {
-        return name + ": " + description;
-    }
 }

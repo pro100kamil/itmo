@@ -1,6 +1,7 @@
-package common.commands;
+package server.commands;
 
 import common.exceptions.WrongCommandArgsException;
+import server.commands.Command;
 
 /**
  * Команда history.

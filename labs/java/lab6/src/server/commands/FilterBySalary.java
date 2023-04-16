@@ -1,8 +1,8 @@
-package common.commands;
+package server.commands;
 
 
 import common.exceptions.WrongCommandArgsException;
-import client.managers.ValidateManager;
+import common.managers.ValidateManager;
 
 /**
  * Команда filter_by_salary salary.

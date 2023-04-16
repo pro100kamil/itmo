@@ -1,15 +1,16 @@
-package common.commands;
+package server.commands;
 
+import common.exceptions.NotUniqueIdException;
 import common.exceptions.WrongCommandArgsException;
 
 /**
- * Команда info.
- * Выводит информацию о коллекции.
+ * Команда add.
+ * Добавляет работника в коллекцию.
  */
-public class Info extends Command {
+public class Add extends CommandWithWorker {
 
-    public Info() {
-        super("info", "выводит информацию о коллекции");
+    public Add() {
+        super("add", "добавляет элемент в коллекцию");
     }
 
     @Override
@@ -22,9 +23,8 @@ public class Info extends Command {
     @Override
     public void execute(String[] args) {
         try {
-            validateArgs(args);
-            collectionManager.printInfo();
-        } catch (WrongCommandArgsException e) {
+            collectionManager.add(worker);
+        } catch (NotUniqueIdException e) {
             console.write(e.toString());
         }
     }

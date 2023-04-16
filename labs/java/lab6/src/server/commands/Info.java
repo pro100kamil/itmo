@@ -1,14 +1,16 @@
-package common.commands;
+package server.commands;
 
 import common.exceptions.WrongCommandArgsException;
+import server.commands.Command;
 
 /**
- * Команда exit.
- * Завершает программу.
+ * Команда info.
+ * Выводит информацию о коллекции.
  */
-public class Exit extends Command {
-    public Exit() {
-        super("exit", "завершает программу");
+public class Info extends Command {
+
+    public Info() {
+        super("info", "выводит информацию о коллекции");
     }
 
     @Override
@@ -22,7 +24,7 @@ public class Exit extends Command {
     public void execute(String[] args) {
         try {
             validateArgs(args);
-            System.exit(0);
+            collectionManager.printInfo();
         } catch (WrongCommandArgsException e) {
             console.write(e.toString());
         }

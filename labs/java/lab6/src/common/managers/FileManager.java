@@ -1,4 +1,4 @@
-package server.managers;
+package common.managers;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -14,18 +14,17 @@ public class FileManager {
      * Получает текст из файла
      *
      * @param fileName имя файла
-     * @return String текст из файла
      */
     public static String getTextFromFile(String fileName) {
         try {
             InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(fileName));
-            String s = "";
+            StringBuilder s = new StringBuilder();
             int curB = inputStreamReader.read();
             while (curB != -1) {
-                s += String.valueOf((char) curB);
+                s.append((char) curB);
                 curB = inputStreamReader.read();
             }
-            return s;
+            return s.toString();
         } catch (IOException e) {
             return "ошибка ввода-вывода";
         }

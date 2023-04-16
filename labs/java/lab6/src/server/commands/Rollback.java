@@ -1,7 +1,9 @@
-package common.commands;
+package server.commands;
 
-import client.managers.ValidateManager;
+import common.managers.ValidateManager;
 import common.exceptions.WrongCommandArgsException;
+import server.commands.Command;
+
 /**
  * Команда rollback n.
  * Отменяет действие последних n команд.

@@ -1,5 +1,6 @@
 package server.managers;
 
+import common.managers.FileManager;
 import common.models.Worker;
 
 import java.util.LinkedList;
@@ -22,7 +23,7 @@ public class CollectionHistory {
      * 0 или номер последнего шага при прошлом запуске - начальное состояние коллекции
      */
     public TreeMap<String, LinkedList<Worker>> getStepCollection() {
-        return JsonManager.getStepCollectionFromStrJson(FileManager.getTextFromFile(CollectionHistory.getFileName()));
+        return JsonManager.getStepCollectionFromStrJson(common.managers.FileManager.getTextFromFile(CollectionHistory.getFileName()));
     }
 
     public static String getFileName() {
@@ -88,7 +89,7 @@ public class CollectionHistory {
      * @param stepCollection словарь текущих состояний
      */
     public void save(TreeMap<String, LinkedList<Worker>> stepCollection) {
-        FileManager.writeTextToFile(fileName, JsonManager.getStrJsonFromStepCollection(stepCollection));
+        common.managers.FileManager.writeTextToFile(fileName, JsonManager.getStrJsonFromStepCollection(stepCollection));
         if (getStepCollection().size() > 0) {
             FileManager.writeTextToFile(dataFileName, JsonManager.getStrJsonFromLinkedListWorker(getCurState()));
         }

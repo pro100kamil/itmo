@@ -1,8 +1,10 @@
 package common.commands;
 
+import client.managers.ClientManager;
+import server.commands.Command;
 import common.exceptions.WrongCommandArgsException;
 import client.managers.InputManager;
-import client.managers.ValidateManager;
+import common.managers.ValidateManager;
 import common.consoles.Console;
 import common.consoles.FileConsole;
 
@@ -41,7 +43,7 @@ public class ExecuteScript extends Command {
             depth++;
             Console fileConsole = new FileConsole(fileName);
             InputManager newInputManager = new InputManager(fileConsole);
-            newInputManager.run();
+            newInputManager.run(new ClientManager());
             depth--;
         } catch (WrongCommandArgsException e) {
             console.write(e.toString());

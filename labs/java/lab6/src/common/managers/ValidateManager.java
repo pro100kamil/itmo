@@ -1,4 +1,4 @@
-package client.managers;
+package common.managers;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

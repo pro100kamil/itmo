@@ -1,14 +1,15 @@
 package client.managers;
 
-import client.Client;
-import common.commands.*;
-import common.models.*;
-import common.exceptions.*;
+import common.commands.AbstractCommand;
 import common.consoles.Console;
+import common.exceptions.*;
+import common.managers.ValidateManager;
+import common.models.*;
 
-import java.util.NoSuchElementException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.NoSuchElementException;
 
 /**
  * Класс для работы с вводом
@@ -42,7 +43,7 @@ public class InputManager {
             if (tmp.equals(stopWorkerInput)) {
                 throw new EndInputWorkerException();
             }
-            if (ValidateManager.isInteger(tmp)) {
+            if (common.managers.ValidateManager.isInteger(tmp)) {
                 x = Integer.parseInt(tmp);
                 if (x > 0 || (!positive)) {
                     return x;
@@ -232,38 +233,42 @@ public class InputManager {
     /**
      * Запускает интерактивный режим (ввод команд)
      */
-    public void run() {
-        CommandManager commandManager = new CommandManager(this);
+    public void run(ClientManager clientManager) {
+        AbstractCommand[] allCommands;
+        try {
+            allCommands = clientManager.getAllCommands();
+        } catch (IOException | ClassNotFoundException e) {
+            console.write(e.toString());
+            return;
+        }
+
+        CommandManager commandManager = new CommandManager(this, allCommands);
         while (console.hasNext()) {
             String text = "Введите команду (help - чтобы узнать команды):";
             console.write(text);
             console.write("--------------------------");
             try {
                 String strCommand = console.getNextStr();
-                Command command = commandManager.getCommand(strCommand);
-                if (command instanceof Exit) { //команда exit выполняется на стороне клиента
-                    command.execute(command.getArgs());
-                }
-                else if (command instanceof ExecuteScript) {
-                    command.setConsole(console);
-                    command.execute(command.getArgs());
-                }
-                else {
-                    new Client().run(command);
-                    //Во время команды update, вначале отправляем команду без работника,
-                    //чтобы проверить, что такой id существует.
-                    //Если всё хорошо, то отправляем с работником.
-                    if (command instanceof Update && ((Update) command).isReady()) {
-                        ((Update) command).setReady(false);
-                        Worker worker = getWorker();
-                        ((CommandWithWorker) command).setWorker(worker);
-                        new Client().run(command);
-                    }
-                }
+                AbstractCommand command = commandManager.getCommand(strCommand);
+                clientManager.commandHandler(command);
+//                if (command instanceof Exit) { //команда exit выполняется на стороне клиента
+//                    command.execute(command.getArgs());
+//                }
+//                else if (command instanceof ExecuteScript) {
+//                    command.setConsole(console);
+//                    command.execute(command.getArgs());
+//                }
+//                else {
+//                    new Client().run(command);
+//                }
             } catch (NoSuchCommandException | WrongCommandArgsException | NonExistentId e) {
                 console.write(e.toString());
             } catch (NoSuchElementException | EndInputException | EndInputWorkerException e) {
                 console.write("");
+            }
+            catch (IOException | ClassNotFoundException e) {
+                console.write(e.toString());
+                console.write("При работе с сервером произошли проблемы");
             }
             console.write("--------------------------");
         }

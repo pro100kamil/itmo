@@ -1,15 +1,14 @@
-package common.commands;
+package server.commands;
 
 import common.exceptions.WrongCommandArgsException;
 
 /**
- * Команда show.
- * Выводит элементы коллекции.
+ * Команда clear.
+ * Очищает коллекцию.
  */
-public class Show extends Command {
-
-    public Show() {
-        super("show", "выводит элементы коллекции");
+public class Clear extends Command {
+    public Clear() {
+        super("clear", "очищает коллекцию");
     }
 
     @Override
@@ -23,7 +22,7 @@ public class Show extends Command {
     public void execute(String[] args) {
         try {
             validateArgs(args);
-            collectionManager.printElements();
+            collectionManager.clear();
         } catch (WrongCommandArgsException e) {
             console.write(e.toString());
         }

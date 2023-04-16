@@ -1,6 +1,6 @@
 package common.consoles;
 
-import server.managers.FileManager;
+import common.managers.FileManager;
 
 /**
  * Класс для работы с файловым вводом

@@ -1,5 +1,6 @@
-package common.commands;
+package server.commands;
 
+import common.commands.AbstractCommand;
 import common.exceptions.WrongCommandArgsException;
 
 import java.util.Arrays;
@@ -9,9 +10,9 @@ import java.util.Arrays;
  * Выводит описание команд.
  */
 public class Help extends Command {
-    private final Command[] commands;
+    private final AbstractCommand[] commands;
 
-    public Help(Command[] commands) {
+    public Help(AbstractCommand[] commands) {
         super("help", "выводит полную информацию о командах");
         this.commands = commands;
     }
@@ -27,7 +28,7 @@ public class Help extends Command {
     public void execute(String[] args) {
         try {
             validateArgs(args);
-            Arrays.stream(commands).forEach(worker -> console.write(worker.toString()));
+            Arrays.stream(commands).forEach(command -> console.write(command.toString()));
         } catch (WrongCommandArgsException e) {
             console.write(e.toString());
         }

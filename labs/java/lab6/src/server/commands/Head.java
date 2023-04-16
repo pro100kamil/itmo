@@ -1,4 +1,4 @@
-package common.commands;
+package server.commands;
 
 import common.exceptions.WrongCommandArgsException;
 
