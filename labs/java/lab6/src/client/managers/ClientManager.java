@@ -48,21 +48,22 @@ public class ClientManager {
     public void commandHandler(AbstractCommand command) throws IOException,
             ClassNotFoundException, ClassCastException {
         client.start();
-        System.out.println(command);
         writeValidationRequest(command);
         ValidationResponse validationResponse = (ValidationResponse) client.getObject();
+        client.close();
+
+        client.start();
         if (!validationResponse.getStatus()) { //если команда некорректная
             console.write(validationResponse.getErrorMessage());
-            return;
+        } else {
+            writeCommandRequest(command);
+            CommandResponse commandResponse = (CommandResponse) client.getObject();
+            if (!commandResponse.getStatus()) {
+                console.write(commandResponse.getErrorMessage());
+            } else {
+                console.write(commandResponse.getResult());
+            }
         }
-
-        writeCommandRequest(command);
-        CommandResponse commandResponse = (CommandResponse) client.getObject();
-        if (!commandResponse.getStatus()) {
-            console.write(commandResponse.getErrorMessage());
-            return;
-        }
-        console.write(commandResponse.getResult());
         client.close();
     }
 

@@ -10,10 +10,13 @@ import java.util.Arrays;
  * Выводит описание команд.
  */
 public class Help extends Command {
-    private final AbstractCommand[] commands;
+    private AbstractCommand[] commands;
 
-    public Help(AbstractCommand[] commands) {
+    public Help() {
         super("help", "выводит полную информацию о командах");
+    }
+
+    public void setCommands(AbstractCommand[] commands) {
         this.commands = commands;
     }
 

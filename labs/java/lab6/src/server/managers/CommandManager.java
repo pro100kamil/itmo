@@ -8,23 +8,12 @@ import common.exceptions.WrongCommandArgsException;
 import server.commands.*;
 
 import java.util.LinkedList;
-import java.util.TreeMap;
 
 /**
  * Класс для запуска команд, для сохранения истории
  */
 public class CommandManager {
-    private static final AbstractCommand[] allCommands = {new Help(null), new Info(),
-            new Show(), new Add(),
-            new Update(), new Remove(), new Clear(),
-            new ExecuteScript(), new Exit(), new Head(),
-            new RemoveGreater(),
-            new History(), new FilterBySalary(),
-            new PrintDescending(),
-            new PrintFieldDescendingPosition(),
-            new Rollback()
-    };
-
+    private static AbstractCommand[] allCommands;
     private final CollectionManager collectionManager;
     private final CollectionHistory collectionHistory;
     private final String dataFileName;
@@ -36,6 +25,19 @@ public class CommandManager {
         this.collectionManager = collectionManager;
         this.collectionHistory = collectionHistory;
         this.dataFileName = dataFileName;
+
+        Help help = new Help();
+        CommandManager.allCommands = new AbstractCommand[]{help, new Info(),
+                new Show(), new Add(),
+                new Update(), new Remove(), new Clear(),
+                new ExecuteScript(), new Exit(), new Head(),
+                new RemoveGreater(),
+                new History(), new FilterBySalary(),
+                new PrintDescending(),
+                new PrintFieldDescendingPosition(),
+                new Rollback()
+        };
+        help.setCommands(allCommands);
     }
 
     public static AbstractCommand[] getAllCommands() {

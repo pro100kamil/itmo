@@ -23,7 +23,6 @@ public class CommandManager {
         this.inputManager = inputManager;
         console = inputManager.getConsole();
         for (AbstractCommand command : allCommands) {
-            //if (command instanceof Help) strCommands.put(command.getName(), new Help(allCommands));
             strCommands.put(command.getName(), command);
         }
     }

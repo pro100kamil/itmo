@@ -234,6 +234,7 @@ public class InputManager {
      * Запускает интерактивный режим (ввод команд)
      */
     public void run(ClientManager clientManager) {
+        //получаем команды из сервера
         AbstractCommand[] allCommands;
         try {
             allCommands = clientManager.getAllCommands();
