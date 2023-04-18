@@ -1,7 +1,6 @@
 package server.managers;
 
 import common.commands.AbstractCommand;
-import common.commands.ExecuteScript;
 import common.consoles.StringConsole;
 import common.exceptions.NonExistentId;
 import common.exceptions.WrongCommandArgsException;
@@ -10,7 +9,9 @@ import server.commands.*;
 import java.util.LinkedList;
 
 /**
- * Класс для запуска команд, для сохранения истории
+ * Реализация класса CommandManager для серверной части.
+ * Задаёт все команды.
+ * Занимается запуском команды, серверной валидацией сохранением истории.
  */
 public class CommandManager {
     private static AbstractCommand[] allCommands;
@@ -19,25 +20,21 @@ public class CommandManager {
     private final String dataFileName;
     private final LinkedList<Command> history = new LinkedList<>();
 
-
     public CommandManager(CollectionManager collectionManager,
                           CollectionHistory collectionHistory, String dataFileName) {
         this.collectionManager = collectionManager;
         this.collectionHistory = collectionHistory;
         this.dataFileName = dataFileName;
 
-        Help help = new Help();
-        CommandManager.allCommands = new AbstractCommand[]{help, new Info(),
+        CommandManager.allCommands = new AbstractCommand[]{new Info(),
                 new Show(), new Add(),
                 new Update(), new Remove(), new Clear(),
-                new ExecuteScript(), new Exit(), new Head(),
-                new RemoveGreater(),
+                new Head(), new RemoveGreater(),
                 new History(), new FilterBySalary(),
                 new PrintDescending(),
                 new PrintFieldDescendingPosition(),
                 new Rollback()
         };
-        help.setCommands(allCommands);
     }
 
     public static AbstractCommand[] getAllCommands() {
@@ -62,7 +59,15 @@ public class CommandManager {
      * @param command - конкретная команда
      */
     public void serverValidateCommand(Command command) throws NonExistentId, WrongCommandArgsException {
+        command.setCollectionManager(collectionManager);
         command.serverValidateArgs(command.getArgs());
+    }
+
+    /**
+     * Добавить новое состояние в историю коллекции
+     */
+    public void addStateCollection() {
+        collectionHistory.addStateCollection(collectionManager.getLinkedList());
     }
 
     /**
@@ -84,7 +89,7 @@ public class CommandManager {
         if (collectionHistory != null) {
             //откат лишь отменяет команды, при нём не появляется новое состояние
             if (!(command instanceof Rollback)) {
-                collectionHistory.addStateCollection(collectionManager.getLinkedList());
+                addStateCollection();
             }
             history.add(command);
         }

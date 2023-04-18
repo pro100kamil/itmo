@@ -1,7 +1,5 @@
-package common.commands;
+package client.commands;
 
-import client.managers.ClientManager;
-import server.commands.Command;
 import common.exceptions.WrongCommandArgsException;
 import client.managers.InputManager;
 import common.managers.ValidateManager;
@@ -12,7 +10,7 @@ import common.consoles.FileConsole;
  * Команда execute_script file_name.
  * Выполняет команды из файла.
  */
-public class ExecuteScript extends Command {
+public class ExecuteScript extends ClientCommand {
     private static int depth = 0, maxDepth = 5;
 
     public ExecuteScript() {
@@ -43,7 +41,7 @@ public class ExecuteScript extends Command {
             depth++;
             Console fileConsole = new FileConsole(fileName);
             InputManager newInputManager = new InputManager(fileConsole);
-            newInputManager.run(new ClientManager());
+            newInputManager.run();
             depth--;
         } catch (WrongCommandArgsException e) {
             console.write(e.toString());

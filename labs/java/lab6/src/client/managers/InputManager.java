@@ -1,6 +1,7 @@
 package client.managers;
 
 import common.commands.AbstractCommand;
+import client.commands.ClientCommand;
 import common.consoles.Console;
 import common.exceptions.*;
 import common.managers.ValidateManager;
@@ -233,8 +234,9 @@ public class InputManager {
     /**
      * Запускает интерактивный режим (ввод команд)
      */
-    public void run(ClientManager clientManager) {
-        //получаем команды из сервера
+    public void run() {
+        ClientManager clientManager = new ClientManager();
+        //получаем все команды из сервера
         AbstractCommand[] allCommands;
         try {
             allCommands = clientManager.getAllCommands();
@@ -252,17 +254,17 @@ public class InputManager {
             try {
                 String strCommand = console.getNextStr();
                 AbstractCommand command = commandManager.getCommand(strCommand);
-                clientManager.commandHandler(command);
-//                if (command instanceof Exit) { //команда exit выполняется на стороне клиента
-//                    command.execute(command.getArgs());
-//                }
-//                else if (command instanceof ExecuteScript) {
-//                    command.setConsole(console);
-//                    command.execute(command.getArgs());
-//                }
-//                else {
-//                    new Client().run(command);
-//                }
+
+                if (command instanceof ClientCommand) { //наследники ClientCommand выполняются на стороне клиента
+                    ((ClientCommand) command).setConsole(console);
+                    ((ClientCommand) command).execute(command.getArgs());
+
+                    //обновляем историю состояний коллекции
+                    clientManager.writeUpdateCollectionRequest();
+                }
+                else {  //остальные на сервере
+                    clientManager.commandHandler(this, command);
+                }
             } catch (NoSuchCommandException | WrongCommandArgsException | NonExistentId e) {
                 console.write(e.toString());
             } catch (NoSuchElementException | EndInputException | EndInputWorkerException e) {

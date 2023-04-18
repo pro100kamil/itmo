@@ -1,4 +1,4 @@
-package server.commands;
+package client.commands;
 
 import common.commands.AbstractCommand;
 import common.exceptions.WrongCommandArgsException;
@@ -9,7 +9,7 @@ import java.util.Arrays;
  * Команда help.
  * Выводит описание команд.
  */
-public class Help extends Command {
+public class Help extends ClientCommand {
     private AbstractCommand[] commands;
 
     public Help() {

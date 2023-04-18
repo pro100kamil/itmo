@@ -3,9 +3,7 @@ package common.requests;
 import common.commands.AbstractCommand;
 
 /**
- * Запрос, содержащий абстрактную команду.
- * Вначале команда отправляется на валидацию.
- * Потом команда отправляется на выполнение.
+ * Запрос на выполнение команды
  */
 public class CommandRequest extends Request {
     private final AbstractCommand command;

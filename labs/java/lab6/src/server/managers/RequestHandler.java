@@ -4,18 +4,12 @@ import common.commands.AbstractCommand;
 import common.consoles.StringConsole;
 import common.exceptions.NonExistentId;
 import common.exceptions.WrongCommandArgsException;
-import common.requests.CommandRequest;
-import common.requests.GetAllCommandsRequest;
-import common.requests.Request;
-import common.requests.ValidationRequest;
-import common.responses.CommandResponse;
-import common.responses.GetAllCommandsResponse;
-import common.responses.Response;
-import common.responses.ValidationResponse;
+import common.requests.*;
+import common.responses.*;
 import server.commands.Command;
 
 /**
- * Обработчик запросов, которые приходят на сервер
+ * Обработчик запросов, которые приходят на сервер.
  */
 public class RequestHandler {
     private final CommandManager commandManager;
@@ -26,6 +20,11 @@ public class RequestHandler {
     public Response requestHandler(Request request) {
         if (request instanceof GetAllCommandsRequest) {
             return new GetAllCommandsResponse(CommandManager.getAllCommands());
+        }
+        else if (request instanceof UpdateCollectionHistoryRequest) {
+            UpdateCollectionHistoryResponse response = new UpdateCollectionHistoryResponse();
+            commandManager.addStateCollection();
+            return response;
         }
         else if (request instanceof ValidationRequest) {
             AbstractCommand command = ((ValidationRequest) request).getCommand();

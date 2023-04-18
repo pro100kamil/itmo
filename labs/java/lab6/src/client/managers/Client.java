@@ -1,8 +1,5 @@
 package client.managers;
 
-import common.consoles.Console;
-import common.consoles.StandardConsole;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -15,7 +12,6 @@ public class Client {
     private final String host;
     private final int port;
     private Socket sock;
-    private static final Console console = new StandardConsole();
 
     public Client(String host, int port) {
         this.host = host;

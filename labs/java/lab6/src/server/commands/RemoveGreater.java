@@ -1,7 +1,6 @@
 package server.commands;
 
 import common.exceptions.WrongCommandArgsException;
-import server.commands.CommandWithWorker;
 
 /**
  * Команда remove_greater.

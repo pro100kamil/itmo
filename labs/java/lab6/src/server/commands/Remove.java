@@ -2,7 +2,6 @@ package server.commands;
 
 import common.exceptions.WrongCommandArgsException;
 import common.managers.ValidateManager;
-import server.commands.Command;
 
 /**
  * Команда remove_by_id id.

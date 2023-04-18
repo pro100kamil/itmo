@@ -6,6 +6,7 @@ import common.managers.FileManager;
 import common.models.Worker;
 import common.requests.Request;
 import common.responses.Response;
+import common.responses.UpdateCollectionHistoryResponse;
 import server.Configuration;
 
 import java.io.IOException;
@@ -13,7 +14,8 @@ import java.nio.channels.SocketChannel;
 import java.util.LinkedList;
 
 /**
- * Класс сервера, позволяет принимать запросы от клиента
+ * Класс серверного менеджера.
+ * Обрабатывает подключения от клиента. Отправляет ответ на запрос клиенту.
  */
 public class ServerManager {
     private static final Console console = new StandardConsole();
@@ -56,7 +58,10 @@ public class ServerManager {
             //на основе запроса формируем ответ
             Response response = new RequestHandler(commandManager).requestHandler(request);
 
-            writeRes(socketChannel, response);  //отправляем ответ
+            //на UpdateCollectionHistoryRequest ответ не требуется
+            if (!(response instanceof UpdateCollectionHistoryResponse)) {
+                writeRes(socketChannel, response);  //отправляем ответ
+            }
         } catch (IOException | ClassNotFoundException e) {
             console.write(e.toString());
             console.write("Принять данные не получилось");

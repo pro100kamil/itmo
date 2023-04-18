@@ -1,12 +1,12 @@
-package server.commands;
+package client.commands;
 
 import common.exceptions.WrongCommandArgsException;
 
 /**
  * Команда exit.
- * Завершает программу.
+ * Завершает клиентскую программу.
  */
-public class Exit extends Command {
+public class Exit extends ClientCommand {
     public Exit() {
         super("exit", "завершает программу");
     }

@@ -13,7 +13,8 @@ public class FileManager {
     /**
      * Получает текст из файла
      *
-     * @param fileName имя файла
+     * @param fileName - имя файла
+     * @return String - текст из файла
      */
     public static String getTextFromFile(String fileName) {
         try {
@@ -24,6 +25,7 @@ public class FileManager {
                 s.append((char) curB);
                 curB = inputStreamReader.read();
             }
+            inputStreamReader.close();
             return s.toString();
         } catch (IOException e) {
             return "ошибка ввода-вывода";

@@ -1,7 +1,8 @@
 package common.consoles;
 
 /**
- * Интерфейс для "консолей". Первая консоль - это стандартный ввод/вывод. Вторая консоль - это считывание из файл и стандартный вывод.
+ * Интерфейс для "консолей".
+ * У разных консолей разный ввод/вывод.
  */
 public interface Console {
     /**
@@ -9,19 +10,19 @@ public interface Console {
      *
      * @return boolean текст из файла
      */
-    public boolean hasNext();
+    boolean hasNext();
 
     /**
      * Получает следующую строку
      *
      * @return String следующая строка
      */
-    public String getNextStr();
+    String getNextStr();
 
     /**
      * Делает запись текста
      *
      * @param text текст
      */
-    public void write(String text);
+    void write(String text);
 }

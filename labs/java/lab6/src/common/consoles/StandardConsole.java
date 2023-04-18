@@ -1,7 +1,5 @@
 package common.consoles;
 
-import common.consoles.Console;
-
 import java.util.Scanner;
 
 /**

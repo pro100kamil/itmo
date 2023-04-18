@@ -18,6 +18,11 @@ public abstract class AbstractCommand implements Serializable {
     protected boolean withWorker = false;  //нужен ли экземпляр работника для выполнения команды
     protected Worker worker;
 
+    protected AbstractCommand(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
     public String getName() {
         return name;
     }

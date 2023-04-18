@@ -21,8 +21,7 @@ public abstract class Command extends AbstractCommand {
     protected LinkedList<Command> history;
 
     protected Command(String name, String description) {
-        this.name = name;
-        this.description = description;
+        super(name, description);
     }
 
     public void setConsole(Console console) {

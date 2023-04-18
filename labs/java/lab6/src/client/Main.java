@@ -1,6 +1,5 @@
 package client;
 
-import client.managers.ClientManager;
 import client.managers.InputManager;
 import common.consoles.StandardConsole;
 
@@ -16,6 +15,6 @@ public class Main {
 
         InputManager inputManager = new InputManager(console);
 
-        inputManager.run(new ClientManager());
+        inputManager.run();
     }
 }

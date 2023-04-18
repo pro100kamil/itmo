@@ -5,7 +5,6 @@ import common.exceptions.NotUniqueIdException;
 import common.consoles.Console;
 import common.consoles.StandardConsole;
 
-
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.TreeMap;
@@ -47,7 +46,8 @@ public class CollectionManager {
                 try {
                     add(worker);
                     maxId = Math.max(maxId, worker.getId());
-                } catch (NotUniqueIdException ignored) {}
+                } catch (NotUniqueIdException ignored) {
+                }
             }
         }
         Worker.moveNextId(maxId + 1);
@@ -166,11 +166,13 @@ public class CollectionManager {
      * @param worker заданный работник
      */
     public void removeGreater(Worker worker) {
-        //other > worker => удаляем other
-        linkedList.stream().filter(other -> other.compareTo(worker) > 0).forEach(other -> {
-            idWorkerFromCollection.remove(other.getId());
-            linkedList.remove(other);
-        });
+        for (Worker other : new LinkedList<>(linkedList)) {
+            //other > worker => удаляем other
+            if (other.compareTo(worker) > 0) {
+                idWorkerFromCollection.remove(other.getId());
+                linkedList.remove(other);
+            }
+        }
     }
 
     /**

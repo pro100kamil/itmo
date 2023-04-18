@@ -6,12 +6,10 @@ import common.managers.FileManager;
  * Класс для работы с файловым вводом
  */
 public class FileConsole implements Console {
-    private String fileName;
     private final String[] lines;
     private int curInd = 0;
 
     public FileConsole(String fileName) {
-        this.fileName = fileName;
         String text = FileManager.getTextFromFile(fileName);
         lines = text.split("\n");
     }

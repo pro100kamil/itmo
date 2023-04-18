@@ -1,7 +1,7 @@
 package common.responses;
 
 /**
- * Ответ на запрос о валидации.
+ * Ответ на запрос о валидации
  */
 public class ValidationResponse extends Response {
     private boolean status;
