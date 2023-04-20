@@ -45,7 +45,8 @@ public class CollectionHistory {
      */
     public LinkedList<Worker> getCurState() {
         TreeMap<String, LinkedList<Worker>> stepCollection = getStepCollection();
-        return stepCollection.get(stepCollection.lastKey());
+//        return stepCollection.get(stepCollection.lastKey());
+        return stepCollection.get(String.valueOf(stepCollection.size() - 1));
     }
 
     /**
@@ -95,7 +96,7 @@ public class CollectionHistory {
      * @param stepCollection словарь текущих состояний
      */
     public void save(TreeMap<String, LinkedList<Worker>> stepCollection) {
-        common.managers.FileManager.writeTextToFile(fileName, JsonManager.getStrJsonFromStepCollection(stepCollection));
+        FileManager.writeTextToFile(fileName, JsonManager.getStrJsonFromStepCollection(stepCollection));
         if (getStepCollection().size() > 0) {
             FileManager.writeTextToFile(dataFileName, JsonManager.getStrJsonFromLinkedListWorker(getCurState()));
         }

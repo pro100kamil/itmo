@@ -10,24 +10,6 @@ public class Interlayer {
             new ServerConfiguration("127.0.0.1", 1313),
             new ServerConfiguration("127.0.0.1", 6969)};
 
-    private Object getObject() throws IOException, ClassNotFoundException {
-        SocketChannel socketChannel;
-        Server server = new Server(host, port);
-        server.start();
-        socketChannel = server.getSocketChannel();
-        if (socketChannel == null) return null;
-        Object obj = server.getObject(socketChannel);
-        server.close();
-        return obj;
-    }
-
-    private void writeObject(Object obj, String host, int port) throws IOException {
-        Client client = new Client(host, port);
-        client.start();
-        client.writeObject(obj);
-        client.close();
-    }
-
     public void run() {
         Server server;
         try {
@@ -58,15 +40,16 @@ public class Interlayer {
                         Object response = client.getObject();
                         server.writeObject(socketChannel, response);
                         client.close();
+                        break;
                     }
                     catch (IOException e) {
-                        System.out.println(e.toString());
+                        continue;
                     }
                 }
                 socketChannel.close();
             } catch (IOException | ClassNotFoundException e) {
                 System.out.println(e.toString());
-                continue;
+//                continue;
             }
         }
     }

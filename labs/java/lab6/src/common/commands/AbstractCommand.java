@@ -14,7 +14,6 @@ public abstract class AbstractCommand implements Serializable {
     protected String description;  //описание команды
 
     protected String[] args;  //аргументы при запуске команды
-
     protected boolean withWorker = false;  //нужен ли экземпляр работника для выполнения команды
     protected Worker worker;
 
