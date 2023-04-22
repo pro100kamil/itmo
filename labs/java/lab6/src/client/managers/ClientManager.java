@@ -67,8 +67,7 @@ public class ClientManager {
             console.write(validationResponse.getErrorMessage());
         } else {
             try {
-                if (command.isWithWorker()) {
-                    //запрашиваем работника
+                if (command.isWithWorker()) {  //запрашиваем работника
                     Worker worker = inputManager.getWorker();
                     command.setWorker(worker);
                 }

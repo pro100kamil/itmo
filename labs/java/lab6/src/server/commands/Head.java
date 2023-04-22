@@ -6,7 +6,7 @@ import common.exceptions.WrongCommandArgsException;
  * Команда head.
  * Выводит первый элемент коллекции.
  */
-public class Head extends Command {
+public class Head extends ServerCommand {
 
     public Head() {
         super("head", "выводит первый элемент коллекции");

@@ -7,7 +7,7 @@ import common.exceptions.WrongCommandArgsException;
  * Выводит последние 11 команд (внизу самая последняя).
  * Тут учитываются все команды (кроме команд внутри файла), даже если они были отменены и даже сама команда rollback.
  */
-public class History extends Command {
+public class History extends ServerCommand {
 
     public History() {
         super("history", "выводит последние 11 команд");

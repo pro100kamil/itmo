@@ -8,7 +8,7 @@ import common.managers.ValidateManager;
  * Команда filter_by_salary salary.
  * Выводит работников с заданной зарплатой.
  */
-public class FilterBySalary extends Command {
+public class FilterBySalary extends ServerCommand {
 
     public FilterBySalary() {
         super("filter_by_salary", "выводит работников с заданной зарплатой");

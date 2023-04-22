@@ -7,7 +7,7 @@ import common.managers.ValidateManager;
  * Команда remove_by_id id.
  * Удаляет работника по id из коллекции.
  */
-public class Remove extends Command {
+public class Remove extends ServerCommand {
 
     public Remove() {
         super("remove_by_id", "удаляет работника по id из коллекции");

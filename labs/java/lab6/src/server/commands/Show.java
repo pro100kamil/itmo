@@ -6,7 +6,7 @@ import common.exceptions.WrongCommandArgsException;
  * Команда show.
  * Выводит элементы коллекции.
  */
-public class Show extends Command {
+public class Show extends ServerCommand {
 
     public Show() {
         super("show", "выводит элементы коллекции");

@@ -1,7 +1,5 @@
 package common.commands;
 
-import common.exceptions.NonExistentId;
-import common.exceptions.WrongCommandArgsException;
 import common.models.Worker;
 
 import java.io.Serializable;
@@ -9,7 +7,7 @@ import java.io.Serializable;
 /**
  * Класс абстрактной команды. Тут содержится общие поля и методы для серверных и клиентских команд
  */
-public class AbstractCommand implements Serializable {
+public class CommandDescription implements Serializable {
     protected String name; //название команды
     protected String description;  //описание команды
 
@@ -17,14 +15,9 @@ public class AbstractCommand implements Serializable {
     protected boolean withWorker = false;  //нужен ли экземпляр работника для выполнения команды
     protected Worker worker;
 
-    public AbstractCommand(String name, String description) {
+    public CommandDescription(String name, String description) {
         this.name = name;
         this.description = description;
-    }
-
-    public AbstractCommand(String name, String description, boolean withWorker) {
-        this(name, description);
-        this.withWorker = withWorker;
     }
 
     public String getName() {
@@ -58,15 +51,6 @@ public class AbstractCommand implements Serializable {
     public void setWorker(Worker worker) {
         this.worker = worker;
     }
-
-    /**
-     * Проверяет аргументы на корректность. При неправильных аргументах бросает соответсвующее исключение.
-     *
-     * @param args - аргументы команды
-     */
-    public void validateArgs(String[] args) throws WrongCommandArgsException, NonExistentId {
-
-    };
 
     @Override
     public String toString() {

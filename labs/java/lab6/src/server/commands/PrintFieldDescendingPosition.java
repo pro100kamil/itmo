@@ -6,7 +6,7 @@ import common.exceptions.WrongCommandArgsException;
  * Команда printFieldDescendingPosition.
  * Выводит значения поля position всех элементов в порядке убывания.
  */
-public class PrintFieldDescendingPosition extends Command {
+public class PrintFieldDescendingPosition extends ServerCommand {
 
     public PrintFieldDescendingPosition() {
         super("print_field_descending_position", "выводит значения поля position всех элементов в порядке убывания");

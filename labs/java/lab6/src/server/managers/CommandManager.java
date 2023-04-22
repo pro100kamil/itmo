@@ -6,7 +6,10 @@ import common.exceptions.NonExistentId;
 import common.exceptions.WrongCommandArgsException;
 import server.commands.*;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.TreeMap;
 
 /**
  * Реализация класса CommandManager для серверной части.
@@ -14,11 +17,15 @@ import java.util.LinkedList;
  * Занимается запуском команды, серверной валидацией сохранением истории.
  */
 public class CommandManager {
-    private static AbstractCommand[] allCommands;
+    private static ServerCommand[] serverCommands;
+
+    private final static TreeMap<String, ServerCommand> strCommands = new TreeMap<>();
+    //название команды, объект класса этой команды
+
     private final CollectionManager collectionManager;
     private final CollectionHistory collectionHistory;
     private final String dataFileName;
-    private final LinkedList<Command> history = new LinkedList<>();
+    private final LinkedList<ServerCommand> history = new LinkedList<>();
 
     public CommandManager(CollectionManager collectionManager,
                           CollectionHistory collectionHistory, String dataFileName) {
@@ -26,7 +33,7 @@ public class CommandManager {
         this.collectionHistory = collectionHistory;
         this.dataFileName = dataFileName;
 
-        CommandManager.allCommands = new AbstractCommand[]{new Info(),
+        CommandManager.serverCommands = new ServerCommand[]{new Info(),
                 new Show(), new Add(),
                 new Update(), new Remove(), new Clear(),
                 new Head(), new RemoveGreater(),
@@ -35,10 +42,29 @@ public class CommandManager {
                 new PrintFieldDescendingPosition(),
                 new Rollback()
         };
+
+        for (ServerCommand command : serverCommands) {
+            strCommands.put(command.getName(), command);
+        }
     }
 
-    public static AbstractCommand[] getAllCommands() {
-        return allCommands;
+    public static AbstractCommand[] getServerCommands() {
+        return serverCommands;
+    }
+
+    public static AbstractCommand[] getAbstractCommands() {
+        return Arrays.stream(serverCommands)
+                .map(command -> new AbstractCommand(command.getName(),
+                        command.getDescription(), command.isWithWorker()))
+                .toArray(AbstractCommand[]::new);
+    }
+
+    public static ServerCommand getServerCommandFromAbstractCommand(AbstractCommand command) {
+        ServerCommand serverCommand = strCommands.get(command.getName());
+        serverCommand.setArgs(command.getArgs());
+        serverCommand.setWithWorker(command.isWithWorker());
+        serverCommand.setWorker(command.getWorker());
+        return serverCommand;
     }
 
     public CollectionManager getCollectionManager() {
@@ -49,7 +75,7 @@ public class CommandManager {
         return collectionHistory;
     }
 
-    public LinkedList<Command> getHistory() {
+    public LinkedList<ServerCommand> getHistory() {
         return history;
     }
 
@@ -58,7 +84,7 @@ public class CommandManager {
      *
      * @param command - конкретная команда
      */
-    public void serverValidateCommand(Command command) throws NonExistentId, WrongCommandArgsException {
+    public void serverValidateCommand(ServerCommand command) throws NonExistentId, WrongCommandArgsException {
         command.setCollectionManager(collectionManager);
         command.serverValidateArgs(command.getArgs());
     }
@@ -75,7 +101,7 @@ public class CommandManager {
      *
      * @param command - конкретная команда
      */
-    public void executeCommand(Command command, StringConsole strConsole) {
+    public void executeCommand(ServerCommand command, StringConsole strConsole) {
         command.setConsole(strConsole);
         command.setHistory(getHistory());
         command.setCollectionHistory(collectionHistory);

@@ -6,7 +6,7 @@ import common.exceptions.WrongCommandArgsException;
  * Команда info.
  * Выводит информацию о коллекции.
  */
-public class Info extends Command {
+public class Info extends ServerCommand {
 
     public Info() {
         super("info", "выводит информацию о коллекции");

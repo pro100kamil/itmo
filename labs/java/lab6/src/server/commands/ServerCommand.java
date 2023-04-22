@@ -10,17 +10,17 @@ import server.managers.CollectionManager;
 import java.util.LinkedList;
 
 /**
- * Абстрактный класс команды
+ * Абстрактный класс команды, которая выполняется на сервере.
  */
-public abstract class Command extends AbstractCommand {
+public abstract class ServerCommand extends AbstractCommand {
     protected Console console;
 
     protected CollectionManager collectionManager;
     protected CollectionHistory collectionHistory;
     protected String dataFileName;
-    protected LinkedList<Command> history;
+    protected LinkedList<ServerCommand> history;
 
-    protected Command(String name, String description) {
+    protected ServerCommand(String name, String description) {
         super(name, description);
     }
 
@@ -40,7 +40,7 @@ public abstract class Command extends AbstractCommand {
         this.dataFileName = dataFileName;
     }
 
-    public void setHistory(LinkedList<Command> history) {
+    public void setHistory(LinkedList<ServerCommand> history) {
         this.history = history;
     }
 

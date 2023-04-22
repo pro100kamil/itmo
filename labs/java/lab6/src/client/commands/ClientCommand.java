@@ -4,7 +4,7 @@ import common.commands.AbstractCommand;
 import common.consoles.Console;
 
 /**
- * Класс команды, которая выполняется на клиенте
+ * Абстрактный класс команды, которая выполняется на клиенте.
  * Например, exit, execute_script, help.
  */
 public abstract class ClientCommand extends AbstractCommand {

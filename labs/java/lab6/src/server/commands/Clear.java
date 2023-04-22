@@ -6,7 +6,7 @@ import common.exceptions.WrongCommandArgsException;
  * Команда clear.
  * Очищает коллекцию.
  */
-public class Clear extends Command {
+public class Clear extends ServerCommand {
     public Clear() {
         super("clear", "очищает коллекцию");
     }

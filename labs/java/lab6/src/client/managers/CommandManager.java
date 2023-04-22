@@ -1,5 +1,6 @@
 package client.managers;
 
+import client.commands.ClientCommand;
 import client.commands.Exit;
 import client.commands.Help;
 import common.commands.AbstractCommand;
@@ -35,11 +36,6 @@ public class CommandManager {
         help.setCommands(strCommands.values().toArray(new AbstractCommand[0]));
     }
 
-    public void setWorker(AbstractCommand command) throws EndInputWorkerException, EndInputException {
-        Worker worker = inputManager.getWorker();
-        command.setWorker(worker);
-    }
-
     /**
      * Получает экземпляр класса команды по строчному представлению команды.
      * Если аргументы команды некорректные - бросаются соответствующие исключения.
@@ -60,10 +56,9 @@ public class CommandManager {
             throw new NoSuchCommandException();
         }
         AbstractCommand command = strCommands.get(strCommand);
-        command.validateArgs(args);  //клиентская валидация
-//        if (command.isWithWorker()) {
-//            setWorker(command);
-//        }
+        if (command instanceof ClientCommand) {
+            ((ClientCommand)command).validateArgs(args);  //клиентская валидация
+        }
         if (command instanceof ExecuteScript) {
             //макс глубина рекурсии спрашивается только тогда, когда мы работаем со стандартным вводом
             if (console instanceof StandardConsole) {

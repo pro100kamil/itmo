@@ -6,7 +6,7 @@ import common.exceptions.NonExistentId;
 import common.exceptions.WrongCommandArgsException;
 import common.requests.*;
 import common.responses.*;
-import server.commands.Command;
+import server.commands.ServerCommand;
 
 /**
  * Обработчик запросов, которые приходят на сервер.
@@ -19,7 +19,7 @@ public class RequestHandler {
     }
     public Response requestHandler(Request request) {
         if (request instanceof GetAllCommandsRequest) {
-            return new GetAllCommandsResponse(CommandManager.getAllCommands());
+            return new GetAllCommandsResponse(CommandManager.getAbstractCommands());
         }
         else if (request instanceof UpdateCollectionHistoryRequest) {
             UpdateCollectionHistoryResponse response = new UpdateCollectionHistoryResponse();
@@ -27,10 +27,11 @@ public class RequestHandler {
             return response;
         }
         else if (request instanceof ValidationRequest) {
-            AbstractCommand command = ((ValidationRequest) request).getCommand();
+            ServerCommand command = CommandManager.getServerCommandFromAbstractCommand(
+                    ((ValidationRequest) request).getCommand());
             ValidationResponse response = new ValidationResponse();
             try {
-                commandManager.serverValidateCommand((Command) command);
+                commandManager.serverValidateCommand(command);
                 response.setStatus(true);
             }
             catch (NonExistentId | WrongCommandArgsException e) {
@@ -40,16 +41,17 @@ public class RequestHandler {
             return response;
         }
         else { // if (request instanceof CommandRequest)
-            AbstractCommand command = ((CommandRequest) request).getCommand();
+            ServerCommand command = CommandManager.getServerCommandFromAbstractCommand(
+                    ((CommandRequest) request).getCommand());
             CommandResponse response = new CommandResponse();
             try {
-                commandManager.serverValidateCommand((Command) command);
+                commandManager.serverValidateCommand((ServerCommand) command);
                 StringConsole strConsole = new StringConsole();
 
                 commandManager.getCollectionManager().sortByName();  //сортируем коллекцию по имени
                 commandManager.getCollectionManager().setConsole(strConsole);
 
-                commandManager.executeCommand((Command) command, strConsole);
+                commandManager.executeCommand((ServerCommand) command, strConsole);
                 response.setStatus(true);
                 response.setResult(strConsole.getAllText());
             }

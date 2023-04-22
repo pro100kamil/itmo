@@ -6,7 +6,7 @@ import common.exceptions.WrongCommandArgsException;
  * Команда print_descending.
  * Выводит элементы коллекции в порядке убывания (работники сортируются по размеру зарплаты).
  */
-public class PrintDescending extends Command {
+public class PrintDescending extends ServerCommand {
 
     public PrintDescending() {
         super("print_descending", "выводит элементы коллекции в порядке убывания");
