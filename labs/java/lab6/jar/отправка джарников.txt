@@ -1,0 +1,1 @@
+scp -P -r 2222 jar s367149@helios.cs.ifmo.ru:~/labs/lab6
