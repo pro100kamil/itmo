@@ -1,0 +1,2 @@
+java -jar client_jar/client.jar
+java -jar server_jar/server.jar

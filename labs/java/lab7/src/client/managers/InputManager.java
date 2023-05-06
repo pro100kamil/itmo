@@ -261,14 +261,16 @@ public class InputManager {
 
                     //обновляем историю состояний коллекции
                     clientManager.writeUpdateCollectionRequest();
-                } else {  //остальные на сервере
+                }
+                else {  //остальные на сервере
                     clientManager.commandHandler(this, command);
                 }
             } catch (NoSuchCommandException | WrongCommandArgsException | NonExistentId e) {
                 console.write(e.toString());
             } catch (NoSuchElementException | EndInputException | EndInputWorkerException e) {
                 console.write("");
-            } catch (IOException | ClassNotFoundException e) {
+            }
+            catch (IOException | ClassNotFoundException e) {
                 console.write(e.toString());
                 console.write("При работе с сервером произошли проблемы");
             }
