@@ -1,4 +1,4 @@
-package common.responses;
+package common.network.responses;
 
 /**
  * Ответ на запрос об обновлении коллекции.

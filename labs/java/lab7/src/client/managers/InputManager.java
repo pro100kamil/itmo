@@ -232,27 +232,36 @@ public class InputManager {
     }
 
     /**
+     * Печатает разделитель между командами
+     */
+    public void writeSeparator() {
+        console.write("--------------------------");
+    }
+
+    /**
      * Запускает интерактивный режим (ввод команд)
      */
     public void run() {
         ClientManager clientManager = new ClientManager();
-        //получаем все команды из сервера
-        AbstractCommand[] allCommands;
-        try {
-            allCommands = clientManager.getAllCommands();
-        } catch (IOException | ClassNotFoundException e) {
-            console.write(e.toString());
-            console.write("Подключиться к серверу не получилось");
-            return;
-        }
-
-        CommandManager commandManager = new CommandManager(this, allCommands);
+        AbstractCommand[] serverCommands = {};
+        CommandManager commandManager = new CommandManager(this, serverCommands);
         while (console.hasNext()) {
             String text = "Введите команду (help - чтобы узнать команды):";
             console.write(text);
-            console.write("--------------------------");
+            writeSeparator();
             try {
                 String strCommand = console.getNextStr();
+
+                //получаем все команды из сервера
+                try {
+                    serverCommands = clientManager.getAllCommands();
+                    commandManager.setCommands(serverCommands);
+                } catch (IOException | ClassNotFoundException e) {
+                    console.write(e.toString());
+                    console.write("Подключиться к серверу не получилось");
+                    continue;
+                }
+
                 AbstractCommand command = commandManager.getCommand(strCommand);
 
                 if (command instanceof ClientCommand) { //наследники ClientCommand выполняются на стороне клиента
@@ -261,20 +270,18 @@ public class InputManager {
 
                     //обновляем историю состояний коллекции
                     clientManager.writeUpdateCollectionRequest();
-                }
-                else {  //остальные на сервере
+                } else {  //остальные на сервере
                     clientManager.commandHandler(this, command);
                 }
             } catch (NoSuchCommandException | WrongCommandArgsException | NonExistentId e) {
                 console.write(e.toString());
             } catch (NoSuchElementException | EndInputException | EndInputWorkerException e) {
                 console.write("");
-            }
-            catch (IOException | ClassNotFoundException e) {
+            } catch (IOException | ClassNotFoundException e) {
                 console.write(e.toString());
                 console.write("При работе с сервером произошли проблемы");
             }
-            console.write("--------------------------");
+            writeSeparator();
         }
     }
 }

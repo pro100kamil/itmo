@@ -2,21 +2,28 @@ package server;
 
 import common.consoles.Console;
 import common.consoles.StandardConsole;
+import common.managers.ValidateManager;
 import server.managers.ServerManager;
 
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
+        Console console = new StandardConsole();
+
         String host = System.getenv("host");
-        int port = Integer.parseInt(System.getenv("port"));
+        String strPort = System.getenv("port");
+        if (host == null || strPort == null || !ValidateManager.isInteger(strPort)) {
+            console.write("Неправильные переменные окружения");
+            return;
+        }
+        int port = Integer.parseInt(strPort);
 
         Configuration.setHost(host);
         Configuration.setPort(port);
         Configuration.setStartFileName("main.json");
         Configuration.setHistoryFileName("_.json");
 
-        Console console = new StandardConsole();
         ServerManager serverManager = new ServerManager();
         try {
             serverManager.start();

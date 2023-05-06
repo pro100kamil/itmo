@@ -27,7 +27,12 @@ public class CommandManager {
     public CommandManager(InputManager inputManager, AbstractCommand[] allCommands) {
         this.inputManager = inputManager;
         console = inputManager.getConsole();
-        for (AbstractCommand command : allCommands) {
+        setCommands(allCommands);
+    }
+
+    public void setCommands(AbstractCommand[] serverCommands) {
+        strCommands.clear();
+        for (AbstractCommand command : serverCommands) {
             strCommands.put(command.getName(), command);
         }
         for (AbstractCommand command : clientCommands) {

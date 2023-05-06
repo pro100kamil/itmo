@@ -1,11 +1,10 @@
 package server.managers;
 
-import common.commands.AbstractCommand;
 import common.consoles.StringConsole;
 import common.exceptions.NonExistentId;
 import common.exceptions.WrongCommandArgsException;
-import common.requests.*;
-import common.responses.*;
+import common.network.requests.*;
+import common.network.responses.*;
 import server.commands.ServerCommand;
 
 /**

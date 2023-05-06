@@ -7,13 +7,13 @@ import common.consoles.StandardConsole;
 import common.exceptions.EndInputException;
 import common.exceptions.EndInputWorkerException;
 import common.models.Worker;
-import common.requests.CommandRequest;
-import common.requests.GetAllCommandsRequest;
-import common.requests.UpdateCollectionHistoryRequest;
-import common.requests.ValidationRequest;
-import common.responses.CommandResponse;
-import common.responses.GetAllCommandsResponse;
-import common.responses.ValidationResponse;
+import common.network.requests.CommandRequest;
+import common.network.requests.GetAllCommandsRequest;
+import common.network.requests.UpdateCollectionHistoryRequest;
+import common.network.requests.ValidationRequest;
+import common.network.responses.CommandResponse;
+import common.network.responses.GetAllCommandsResponse;
+import common.network.responses.ValidationResponse;
 
 import java.io.IOException;
 

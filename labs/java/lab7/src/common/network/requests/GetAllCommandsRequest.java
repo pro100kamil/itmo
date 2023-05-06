@@ -1,4 +1,4 @@
-package common.requests;
+package common.network.requests;
 
 /**
  * Запрос на получение всех команд с сервера

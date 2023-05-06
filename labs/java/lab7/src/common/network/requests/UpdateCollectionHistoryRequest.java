@@ -1,4 +1,4 @@
-package common.requests;
+package common.network.requests;
 
 /**
  * Запрос на обновление истории состояний коллекции

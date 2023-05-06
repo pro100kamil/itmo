@@ -1,4 +1,4 @@
-package common.responses;
+package common.network.responses;
 
 import java.io.Serializable;
 

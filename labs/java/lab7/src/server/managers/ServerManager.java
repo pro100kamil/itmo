@@ -4,9 +4,9 @@ import common.consoles.Console;
 import common.consoles.StandardConsole;
 import common.managers.FileManager;
 import common.models.Worker;
-import common.requests.Request;
-import common.responses.Response;
-import common.responses.UpdateCollectionHistoryResponse;
+import common.network.requests.Request;
+import common.network.responses.Response;
+import common.network.responses.UpdateCollectionHistoryResponse;
 import server.Configuration;
 
 import java.io.IOException;

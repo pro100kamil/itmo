@@ -1,9 +1,6 @@
-package common.responses;
+package common.network.responses;
 
 import common.commands.AbstractCommand;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Ответ на запрос о получении всех команд

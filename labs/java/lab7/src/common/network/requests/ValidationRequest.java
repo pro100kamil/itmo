@@ -1,4 +1,4 @@
-package common.requests;
+package common.network.requests;
 
 import common.commands.AbstractCommand;
 
