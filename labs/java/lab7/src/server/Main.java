@@ -9,6 +9,13 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            System.err.println("Не найден драйвер!");
+            System.exit(1);
+        }
+
         Console console = new StandardConsole();
 
         String host = System.getenv("host");

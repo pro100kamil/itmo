@@ -18,6 +18,8 @@ public class Worker implements Comparable<Worker>, Serializable {
 
     private Person person; //Поле не может быть null
 
+    private int creatorId;
+
     private static int nextId = 1;  //новому работнику присваивается такой id
 
     public Worker(String name, Coordinates coordinates, Float salary, Position position, Status status, Person person) {
@@ -88,6 +90,14 @@ public class Worker implements Comparable<Worker>, Serializable {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public int getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(int creatorId) {
+        this.creatorId = creatorId;
     }
 
     /**
