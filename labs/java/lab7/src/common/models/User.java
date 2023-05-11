@@ -1,12 +1,11 @@
 package common.models;
 
 public class User {
-    private final int id;
+    private int id;
     private final String name;
     private final String password;
 
-    public User(int id, String name, String password) {
-        this.id = id;
+    public User(String name, String password) {
         this.name = name;
         this.password = password;
     }
@@ -15,12 +14,12 @@ public class User {
         return getName().length() < 40;
     }
 
-    public User copy(int id) {
-        return new User(id, getName(), getPassword());
-    }
-
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

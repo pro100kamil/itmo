@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS persons
     birthday   DATE,
     height     FLOAT NOT NULL
         CONSTRAINT positive_height CHECK (height > 0),
-    passportID TEXT  NOT NULL
+    passportID TEXT
         CONSTRAINT length CHECK (length(passportID) >= 7),
     creator_id INT   NOT NULL REFERENCES users (id) ON DELETE CASCADE
 );
@@ -34,12 +34,12 @@ CREATE TABLE IF NOT EXISTS workers
         CONSTRAINT not_empty_name CHECK (length(name) > 0),
     x             INTEGER            NOT NULL,
     y             INTEGER            NOT NULL,
-    creation_date DATE DEFAULT NOW() NOT NULL,
+    creation_date TIMESTAMP DEFAULT NOW() NOT NULL,
     salary        FLOAT             NOT NULL
         CONSTRAINT positive_salary CHECK (salary > 0),
     pos      pos,
     status        status,
-    person_id     INT REFERENCES persons (id) ON DELETE CASCADE,
+    person_id     INT UNIQUE REFERENCES persons (id) ON DELETE CASCADE,
     creator_id    INT                NOT NULL REFERENCES users (id) ON DELETE CASCADE
 );
 

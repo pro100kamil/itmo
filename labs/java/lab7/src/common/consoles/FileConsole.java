@@ -14,14 +14,21 @@ public class FileConsole implements Console {
         lines = text.split("\n");
     }
 
+    public String[] getLines() {
+        return lines;
+    }
+
+    @Override
     public boolean hasNext() {
         return curInd < lines.length;
     }
 
+    @Override
     public String getNextStr() {
         return lines[curInd++].strip();
     }
 
+    @Override
     public void write(String text) {
         System.out.println(text);
     }

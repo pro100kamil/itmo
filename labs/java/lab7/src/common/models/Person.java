@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Person implements Serializable {
+    private Integer id = 0; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    //id = 0 изначально, чтоб понимать, что ему не задали значение на сервере
     private final LocalDate birthday; //Поле может быть null
     private final float height; //Значение поля должно быть больше 0
     private final String passportID;
@@ -25,6 +27,14 @@ public class Person implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public int getCreatorId() {
@@ -50,9 +60,11 @@ public class Person implements Serializable {
     @Override
     public String toString() {
         return "Person{" +
-                "birthday=" + birthday +
-                ", height=" + height +
-                ", passportID='" + passportID + '\'' +
-                '}';
+               "id=" + id +
+               ", birthday=" + birthday +
+               ", height=" + height +
+               ", passportID='" + passportID + '\'' +
+               ", creatorId=" + creatorId +
+               '}';
     }
 }

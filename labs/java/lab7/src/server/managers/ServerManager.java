@@ -3,6 +3,7 @@ package server.managers;
 import common.consoles.Console;
 import common.consoles.StandardConsole;
 import common.managers.FileManager;
+import common.models.User;
 import common.models.Worker;
 import common.network.requests.Request;
 import common.network.responses.Response;
@@ -11,6 +12,7 @@ import server.Configuration;
 
 import java.io.IOException;
 import java.nio.channels.SocketChannel;
+import java.sql.SQLException;
 import java.util.LinkedList;
 
 /**
@@ -22,14 +24,35 @@ public class ServerManager {
 
     private final Server server;
 
-    private final CommandManager commandManager;
+    private CommandManager commandManager;
 
     public ServerManager() {
         server = new Server(Configuration.getHost(), Configuration.getPort());
         String dataFileName = Configuration.getStartFileName();
 
-        LinkedList<Worker> startWorkers = JsonManager.getLinkedListWorkerFromStrJson(FileManager.getTextFromFile(dataFileName));
-        CollectionManager collectionManager = new CollectionManager(startWorkers);
+        // из файла:
+//        LinkedList<Worker> startWorkers = JsonManager.getLinkedListWorkerFromStrJson(FileManager.getTextFromFile(dataFileName));
+        // из бд:
+        DatabaseManager databaseManager = new DatabaseManager(Configuration.getDbUrl(),
+                Configuration.getDbLogin(),
+                Configuration.getDbPass());  //pgpass
+        LinkedList<Worker> startWorkers;
+        try {
+            startWorkers = (LinkedList<Worker>) databaseManager.loadWorkers();
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            System.out.println("Загрузить коллекцию из базы данных не получилось");
+            return;
+        }
+        User user = new User("user1", "user1");
+        try {
+            databaseManager.dropTables();
+            databaseManager.createTables();
+            databaseManager.addUser(user);
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        CollectionManager collectionManager = new CollectionManager(databaseManager, user, startWorkers);
 
         CollectionHistory collectionHistory = new CollectionHistory();
         CollectionHistory.setDataFileName(dataFileName);

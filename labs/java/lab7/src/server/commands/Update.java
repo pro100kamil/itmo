@@ -21,10 +21,6 @@ public class Update extends CommandWithWorker {
         }
     }
 
-    /**
-     * Часть валидации, которая происходит на сервере.
-     * Потому что на клиенте у нас нет информации по поводу id.
-     */
     @Override
     public void serverValidateArgs(String[] args) throws NonExistentId, WrongCommandArgsException {
         validateArgs(args);

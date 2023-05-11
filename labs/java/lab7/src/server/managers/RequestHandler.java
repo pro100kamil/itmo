@@ -16,6 +16,7 @@ public class RequestHandler {
     public RequestHandler(CommandManager commandManager) {
         this.commandManager = commandManager;
     }
+
     public Response requestHandler(Request request) {
         if (request instanceof GetAllCommandsRequest) {
             return new GetAllCommandsResponse(CommandManager.getAbstractCommands());
@@ -25,6 +26,7 @@ public class RequestHandler {
             commandManager.addStateCollection();
             return response;
         }
+
         else if (request instanceof ValidationRequest) {
             ServerCommand command = CommandManager.getServerCommandFromAbstractCommand(
                     ((ValidationRequest) request).getCommand());

@@ -2,6 +2,7 @@ package client;
 
 import client.managers.InputManager;
 import common.consoles.Console;
+import common.consoles.FileConsole;
 import common.consoles.StandardConsole;
 import common.managers.ValidateManager;
 
@@ -9,16 +10,14 @@ public class Main {
     public static void main(String[] args) {
         Console console = new StandardConsole();
 
-        String host = System.getenv("host");
-        String strPort = System.getenv("port");
-        if (host == null || strPort == null || !ValidateManager.isInteger(strPort)) {
-            console.write("Неправильные переменные окружения");
+        String[] lines = new FileConsole("client_host_port.txt").getLines();
+        if (lines.length != 2) {
+            console.write("Некорректный файл client_host_port.txt");
             return;
         }
-        int port = Integer.parseInt(strPort);
 
-        Configuration.setHost(host);
-        Configuration.setPort(port);
+        Configuration.setHost(lines[0].trim());
+        Configuration.setPort(Integer.parseInt(lines[1].trim()));
 
         InputManager inputManager = new InputManager(console);
 

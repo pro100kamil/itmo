@@ -1,29 +1,34 @@
 [
   {
     "id": 1,
-    "name": "Andrey",
+    "name": "gdgd",
     "coordinates": {
-      "x": 56,
-      "y": 65
+      "x": 5,
+      "y": 5
     },
-    "creationDate": "2023-03-11T02:50:42.568977200",
-    "salary": 1000.0,
-    "status": "FIRED",
+    "creationDate": "2023-05-11T12:33:19.434653800",
+    "salary": 5.0,
     "person": {
-      "height": 189.0
-    }
+      "id": 0,
+      "height": 5.0,
+      "creatorId": 0
+    },
+    "creatorId": 0
   },
   {
-    "id": 2,
-    "name": "Bob",
+    "id": 1,
+    "name": "sfd4",
     "coordinates": {
-      "x": 54,
-      "y": 666
+      "x": 4,
+      "y": 4
     },
-    "creationDate": "2023-03-11T03:06:51.141141200",
-    "salary": 999.0,
+    "creationDate": "2023-05-11T12:26:46.029580",
+    "salary": 4.0,
     "person": {
-      "height": 55.0
-    }
+      "id": 1,
+      "height": 4.0,
+      "creatorId": 1
+    },
+    "creatorId": 1
   }
 ]

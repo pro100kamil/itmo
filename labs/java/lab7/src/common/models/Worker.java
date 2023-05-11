@@ -1,6 +1,7 @@
 package common.models;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -15,12 +16,8 @@ public class Worker implements Comparable<Worker>, Serializable {
     private Float salary; //Поле может быть null, Значение поля должно быть больше 0
     private Position position; //Поле может быть null
     private Status status; //Поле может быть null
-
     private Person person; //Поле не может быть null
-
     private int creatorId;
-
-    private static int nextId = 1;  //новому работнику присваивается такой id
 
     public Worker(String name, Coordinates coordinates, Float salary, Position position, Status status, Person person) {
         this.name = name;
@@ -32,12 +29,24 @@ public class Worker implements Comparable<Worker>, Serializable {
         this.person = person;
     }
 
-    public void setId() {
-        id = nextId++;
+    public Worker(Integer id, String name, Coordinates coordinates, LocalDateTime creationDate, Float salary,
+                  Position position, Status status, Person person) {
+        this.id = id;
+        this.name = name;
+        this.coordinates = coordinates;
+        this.creationDate = creationDate;
+        this.salary = salary;
+        this.position = position;
+        this.status = status;
+        this.person = person;
     }
 
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -98,14 +107,6 @@ public class Worker implements Comparable<Worker>, Serializable {
 
     public void setCreatorId(int creatorId) {
         this.creatorId = creatorId;
-    }
-
-    /**
-     * Сдвигает id следующего работника
-     */
-    public static void moveNextId(Integer newId) {
-        if (newId.compareTo(nextId) > 0)
-            nextId = newId;
     }
 
     /**
@@ -172,14 +173,15 @@ public class Worker implements Comparable<Worker>, Serializable {
     @Override
     public String toString() {
         return "Worker{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", coordinates=" + coordinates +
-                ", creationDate=" + creationDate +
-                ", salary=" + salary +
-                ", position=" + position +
-                ", status=" + status +
-                ", person=" + person +
-                '}';
+               "id=" + id +
+               ", name='" + name + '\'' +
+               ", coordinates=" + coordinates +
+               ", creationDate=" + creationDate +
+               ", salary=" + salary +
+               ", position=" + position +
+               ", status=" + status +
+               ", person=" + person +
+               ", creatorId=" + creatorId +
+               '}';
     }
 }
