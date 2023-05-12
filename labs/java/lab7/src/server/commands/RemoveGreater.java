@@ -6,10 +6,11 @@ import common.exceptions.WrongCommandArgsException;
  * Команда remove_greater.
  * Удаляет работников, которые больше заданного.
  */
-public class RemoveGreater extends CommandWithWorker {
+public class RemoveGreater extends ServerCommand {
 
     public RemoveGreater() {
-        super("remove_greater", "удаляет работников, которые больше заданного");
+        super("remove_greater", "удаляет работников, которые больше заданного",
+        true, true);
     }
 
     @Override
@@ -20,6 +21,11 @@ public class RemoveGreater extends CommandWithWorker {
     }
 
     public void execute(String[] args) {
-        collectionManager.removeGreater(worker);
+        try {
+            validateArgs(args);
+            collectionManager.removeGreater(worker);
+        } catch (WrongCommandArgsException e) {
+            console.write(e.toString());
+        }
     }
 }

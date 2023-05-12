@@ -8,7 +8,7 @@ import common.exceptions.WrongCommandArgsException;
  */
 public class Exit extends ClientCommand {
     public Exit() {
-        super("exit", "завершает программу");
+        super("exit", "завершает программу", false, false);
     }
 
     @Override

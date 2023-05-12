@@ -9,7 +9,8 @@ import common.exceptions.WrongCommandArgsException;
 public class PrintDescending extends ServerCommand {
 
     public PrintDescending() {
-        super("print_descending", "выводит элементы коллекции в порядке убывания");
+        super("print_descending",
+                "выводит элементы коллекции в порядке убывания", false, true);
     }
 
     @Override

@@ -14,7 +14,7 @@ public class ExecuteScript extends ClientCommand {
     private static int depth = 0, maxDepth = 5;
 
     public ExecuteScript() {
-        super("execute_script", "выполняет команды из файла");
+        super("execute_script", "выполняет команды из файла", false, true);
     }
 
     public static void setMaxDepth(int maxDepth) {

@@ -7,10 +7,10 @@ import common.exceptions.WrongCommandArgsException;
  * Команда add.
  * Добавляет работника в коллекцию.
  */
-public class Add extends CommandWithWorker {
+public class Add extends ServerCommand {
 
     public Add() {
-        super("add", "добавляет элемент в коллекцию");
+        super("add", "добавляет элемент в коллекцию", true, true);
     }
 
     @Override
@@ -23,8 +23,9 @@ public class Add extends CommandWithWorker {
     @Override
     public void execute(String[] args) {
         try {
+            validateArgs(args);
             collectionManager.add(worker);
-        } catch (NotUniqueIdException e) {
+        } catch (NotUniqueIdException | WrongCommandArgsException e) {
             console.write(e.toString());
         }
     }

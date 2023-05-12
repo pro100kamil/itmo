@@ -7,7 +7,7 @@ import server.managers.AuthManager;
 public class Auth extends ServerCommand {
     private AuthManager authManager;
     public Auth() {
-        super("auth", "производит вход пользователя");
+        super("auth", "производит вход пользователя", false, false);
     }
 
     public AuthManager getAuthManager() {
@@ -23,11 +23,6 @@ public class Auth extends ServerCommand {
         if (args.length != 2) {
             throw new WrongCommandArgsException();
         }
-    }
-
-    @Override
-    public void serverValidateArgs(String[] args) throws WrongCommandArgsException {
-        validateArgs(args);
         if (!authManager.checkUserPass(args[0], args[1])) {//если такого логина и пароля не существует
             throw new WrongCredentialsException();
         }
@@ -36,7 +31,7 @@ public class Auth extends ServerCommand {
     @Override
     public void execute(String[] args) {
         try {
-            serverValidateArgs(args);
+            validateArgs(args);
             authManager.auth(args[0], args[1]);
         } catch (WrongCommandArgsException e) {
             console.write(e.toString());

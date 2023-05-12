@@ -7,7 +7,7 @@ import server.managers.AuthManager;
 public class Register extends ServerCommand {
     private AuthManager authManager = new AuthManager();
     public Register() {
-        super("register", "производит регистрацию пользователя");
+        super("register", "производит регистрацию пользователя", false, false);
     }
 
     public AuthManager getAuthManager() {
@@ -23,11 +23,6 @@ public class Register extends ServerCommand {
         if (args.length != 2) {
             throw new WrongCommandArgsException();
         }
-    }
-
-    @Override
-    public void serverValidateArgs(String[] args) throws WrongCommandArgsException {
-        validateArgs(args);
         if (!authManager.checkUserName(args[0])) {//если такого логина не существует
             throw new WrongCredentialsException();
         }
@@ -36,7 +31,7 @@ public class Register extends ServerCommand {
     @Override
     public void execute(String[] args) {
         try {
-            serverValidateArgs(args);
+            validateArgs(args);
             boolean flag = authManager.register(args[0], args[1]);
             System.out.println(flag);
         } catch (WrongCommandArgsException e) {

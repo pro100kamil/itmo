@@ -7,7 +7,6 @@ import common.exceptions.WrongCommandArgsException;
 import server.commands.*;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.TreeMap;
 
@@ -24,14 +23,12 @@ public class CommandManager {
 
     private final CollectionManager collectionManager;
     private final CollectionHistory collectionHistory;
-    private final String dataFileName;
     private final LinkedList<ServerCommand> history = new LinkedList<>();
 
     public CommandManager(CollectionManager collectionManager,
-                          CollectionHistory collectionHistory, String dataFileName) {
+                          CollectionHistory collectionHistory) {
         this.collectionManager = collectionManager;
         this.collectionHistory = collectionHistory;
-        this.dataFileName = dataFileName;
 
         CommandManager.serverCommands = new ServerCommand[]{new Info(),
                 new Show(), new Add(),
@@ -56,7 +53,7 @@ public class CommandManager {
     public static AbstractCommand[] getAbstractCommands() {
         return Arrays.stream(serverCommands)
                 .map(command -> new AbstractCommand(command.getName(),
-                        command.getDescription(), command.isWithWorker()))
+                        command.getDescription(), command.isWithWorker(), command.isOnlyUsers()))
                 .toArray(AbstractCommand[]::new);
     }
 
@@ -81,13 +78,13 @@ public class CommandManager {
     }
 
     /**
-     * Проводит серверную валидацию команды (обычная валидация + проверка id, если надо)
+     * Проводит валидацию серверной команды
      *
      * @param command - конкретная команда
      */
     public void serverValidateCommand(ServerCommand command) throws NonExistentId, WrongCommandArgsException {
         command.setCollectionManager(collectionManager);
-        command.serverValidateArgs(command.getArgs());
+        command.validateArgs(command.getArgs());
     }
 
     /**
@@ -107,7 +104,6 @@ public class CommandManager {
         command.setHistory(getHistory());
         command.setCollectionHistory(collectionHistory);
         command.setCollectionManager(collectionManager);
-        command.setDataFileName(dataFileName);
 
         String[] args = command.getArgs();
         //выполнение команды

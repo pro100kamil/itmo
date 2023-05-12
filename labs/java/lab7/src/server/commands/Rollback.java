@@ -9,7 +9,7 @@ import common.managers.ValidateManager;
  */
 public class Rollback extends ServerCommand {
     public Rollback() {
-        super("rollback", "отменяет действие последних n команд");
+        super("rollback", "отменяет действие последних n команд", false, true);
     }
 
     @Override

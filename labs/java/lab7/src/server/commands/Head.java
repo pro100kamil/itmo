@@ -9,7 +9,7 @@ import common.exceptions.WrongCommandArgsException;
 public class Head extends ServerCommand {
 
     public Head() {
-        super("head", "выводит первый элемент коллекции");
+        super("head", "выводит первый элемент коллекции", false, true);
     }
 
     @Override

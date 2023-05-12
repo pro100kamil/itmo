@@ -11,7 +11,7 @@ import common.managers.ValidateManager;
 public class FilterBySalary extends ServerCommand {
 
     public FilterBySalary() {
-        super("filter_by_salary", "выводит работников с заданной зарплатой");
+        super("filter_by_salary", "выводит работников с заданной зарплатой", false, true);
     }
 
     @Override

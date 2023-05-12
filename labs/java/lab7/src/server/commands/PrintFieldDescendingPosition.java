@@ -9,7 +9,8 @@ import common.exceptions.WrongCommandArgsException;
 public class PrintFieldDescendingPosition extends ServerCommand {
 
     public PrintFieldDescendingPosition() {
-        super("print_field_descending_position", "выводит значения поля position всех элементов в порядке убывания");
+        super("print_field_descending_position",
+                "выводит значения поля position всех элементов в порядке убывания", false, true);
     }
 
     @Override

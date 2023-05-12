@@ -17,11 +17,10 @@ public abstract class ServerCommand extends AbstractCommand {
 
     protected CollectionManager collectionManager;
     protected CollectionHistory collectionHistory;
-    protected String dataFileName;
     protected LinkedList<ServerCommand> history;
 
-    protected ServerCommand(String name, String description) {
-        super(name, description);
+    public ServerCommand(String name, String description, boolean withWorker, boolean onlyUsers) {
+        super(name, description, withWorker, onlyUsers);
     }
 
     public void setConsole(Console console) {
@@ -36,22 +35,8 @@ public abstract class ServerCommand extends AbstractCommand {
         this.collectionHistory = collectionHistory;
     }
 
-    public void setDataFileName(String dataFileName) {
-        this.dataFileName = dataFileName;
-    }
-
     public void setHistory(LinkedList<ServerCommand> history) {
         this.history = history;
-    }
-
-    /**
-     * Проверяет аргументы на корректность. При неправильных аргументах бросает соответсвующее исключение.
-     * Эта проверка происходит на сервере.
-     *
-     * @param args - аргументы команды
-     */
-    public void serverValidateArgs(String[] args) throws NonExistentId, WrongCommandArgsException {
-        validateArgs(args);
     }
 
     /**

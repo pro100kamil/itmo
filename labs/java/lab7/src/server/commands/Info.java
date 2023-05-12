@@ -9,7 +9,7 @@ import common.exceptions.WrongCommandArgsException;
 public class Info extends ServerCommand {
 
     public Info() {
-        super("info", "выводит информацию о коллекции");
+        super("info", "выводит информацию о коллекции", false, true);
     }
 
     @Override

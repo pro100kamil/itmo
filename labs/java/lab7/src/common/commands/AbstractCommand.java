@@ -17,14 +17,13 @@ public class AbstractCommand implements Serializable {
     protected boolean withWorker = false;  //нужен ли экземпляр работника для выполнения команды
     protected Worker worker;
 
-    public AbstractCommand(String name, String description) {
+    protected boolean onlyUsers = true;  //команду могут выполнять только зарегистрированные пользователи
+
+    public AbstractCommand(String name, String description, boolean withWorker, boolean onlyUsers) {
         this.name = name;
         this.description = description;
-    }
-
-    public AbstractCommand(String name, String description, boolean withWorker) {
-        this(name, description);
         this.withWorker = withWorker;
+        this.onlyUsers = onlyUsers;
     }
 
     public String getName() {
@@ -57,6 +56,10 @@ public class AbstractCommand implements Serializable {
 
     public void setWorker(Worker worker) {
         this.worker = worker;
+    }
+
+    public boolean isOnlyUsers() {
+        return onlyUsers;
     }
 
     /**

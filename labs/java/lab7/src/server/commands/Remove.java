@@ -11,19 +11,15 @@ import common.managers.ValidateManager;
 public class Remove extends ServerCommand {
 
     public Remove() {
-        super("remove_by_id", "удаляет работника по id из коллекции");
+        super("remove_by_id", "удаляет работника по id из коллекции",
+                false, true);
     }
 
     @Override
-    public void validateArgs(String[] args) throws WrongCommandArgsException {
+    public void validateArgs(String[] args) throws NonExistentId, WrongCommandArgsException {
         if (args.length != 1 || !ValidateManager.isInteger(args[0])) {
             throw new WrongCommandArgsException();
         }
-    }
-
-    @Override
-    public void serverValidateArgs(String[] args) throws NonExistentId, WrongCommandArgsException {
-        validateArgs(args);
         if (!collectionManager.existsId(Integer.parseInt(args[0]))) {
             throw new NonExistentId();
         }
@@ -34,7 +30,7 @@ public class Remove extends ServerCommand {
         try {
             validateArgs(args);
             collectionManager.remove(Integer.parseInt(args[0]));
-        } catch (WrongCommandArgsException e) {
+        } catch (WrongCommandArgsException | NonExistentId e) {
             console.write(e.toString());
         }
     }

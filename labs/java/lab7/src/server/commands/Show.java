@@ -9,7 +9,7 @@ import common.exceptions.WrongCommandArgsException;
 public class Show extends ServerCommand {
 
     public Show() {
-        super("show", "выводит элементы коллекции");
+        super("show", "выводит элементы коллекции", false, true);
     }
 
     @Override

@@ -8,7 +8,7 @@ import common.exceptions.WrongCommandArgsException;
  */
 public class Clear extends ServerCommand {
     public Clear() {
-        super("clear", "очищает коллекцию");
+        super("clear", "очищает коллекцию", false, true);
     }
 
     @Override

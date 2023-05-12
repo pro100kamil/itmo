@@ -10,7 +10,7 @@ import common.exceptions.WrongCommandArgsException;
 public class History extends ServerCommand {
 
     public History() {
-        super("history", "выводит последние 11 команд");
+        super("history", "выводит последние 11 команд", false, true);
     }
 
     @Override

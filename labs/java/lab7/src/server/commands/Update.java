@@ -8,22 +8,18 @@ import common.managers.ValidateManager;
  * Команда update.
  * Обновляет работника по id на основе заданного работника.
  */
-public class Update extends CommandWithWorker {
+public class Update extends ServerCommand {
 
     public Update() {
-        super("update", "обновляет работника по id на основе заданного работника");
+        super("update", "обновляет работника по id на основе заданного работника",
+                true, true);
     }
 
     @Override
-    public void validateArgs(String[] args) throws WrongCommandArgsException {
+    public void validateArgs(String[] args) throws NonExistentId, WrongCommandArgsException {
         if (args.length != 1 || !ValidateManager.isInteger(args[0])) {
             throw new WrongCommandArgsException();
         }
-    }
-
-    @Override
-    public void serverValidateArgs(String[] args) throws NonExistentId, WrongCommandArgsException {
-        validateArgs(args);
         if (!collectionManager.existsId(Integer.parseInt(args[0]))) {
             throw new NonExistentId();
         }
@@ -33,7 +29,6 @@ public class Update extends CommandWithWorker {
     public void execute(String[] args) {
         try {
             validateArgs(args);
-            serverValidateArgs(args);
             collectionManager.update(Integer.parseInt(args[0]), worker);
         } catch (WrongCommandArgsException | NonExistentId e) {
             console.write(e.toString());

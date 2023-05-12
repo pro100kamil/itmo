@@ -13,7 +13,7 @@ public class Help extends ClientCommand {
     private AbstractCommand[] commands;
 
     public Help() {
-        super("help", "выводит полную информацию о командах");
+        super("help", "выводит полную информацию о командах", false, false);
     }
 
     public void setCommands(AbstractCommand[] commands) {

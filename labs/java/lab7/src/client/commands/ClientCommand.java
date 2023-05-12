@@ -10,8 +10,8 @@ import common.consoles.Console;
 public abstract class ClientCommand extends AbstractCommand {
     protected Console console;
 
-    protected ClientCommand(String name, String description) {
-        super(name, description);
+    public ClientCommand(String name, String description, boolean withWorker, boolean onlyUsers) {
+        super(name, description, withWorker, onlyUsers);
     }
 
     public void setConsole(Console console) {

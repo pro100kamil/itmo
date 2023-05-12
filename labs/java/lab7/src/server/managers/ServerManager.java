@@ -2,7 +2,6 @@ package server.managers;
 
 import common.consoles.Console;
 import common.consoles.StandardConsole;
-import common.managers.FileManager;
 import common.models.User;
 import common.models.Worker;
 import common.network.requests.Request;
@@ -58,7 +57,7 @@ public class ServerManager {
         CollectionHistory.setDataFileName(dataFileName);
         collectionHistory.setStart(startWorkers);
 
-        commandManager = new CommandManager(collectionManager, collectionHistory, dataFileName);
+        commandManager = new CommandManager(collectionManager, collectionHistory);
     }
 
     public void start() throws IOException {

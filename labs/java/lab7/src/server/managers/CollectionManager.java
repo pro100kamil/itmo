@@ -1,5 +1,7 @@
 package server.managers;
 
+import common.loggers.Logger;
+import common.loggers.StandardLogger;
 import common.models.User;
 import common.models.Worker;
 import common.exceptions.NotUniqueIdException;
@@ -18,6 +20,7 @@ import java.util.stream.Collectors;
  */
 public class CollectionManager {
     private Console console = new StandardConsole();
+    private final Logger logger = new StandardLogger();
 
     private final DatabaseManager databaseManager;
     private final User user;
@@ -57,7 +60,6 @@ public class CollectionManager {
                 }
             }
         }
-//        Worker.moveNextId(maxId + 1);
     }
 
     /**
@@ -72,9 +74,8 @@ public class CollectionManager {
                 worker.setId(id);
             } catch (SQLException e) {
                 console.write("Добавить работника не получилось");
-                console.write(e.toString());
-                throw new RuntimeException(e);
-//                return;
+                logger.writeError("Добавить работника не получилось: " + e);
+                return;
             }
         }
         //добавляем в коллекции
@@ -98,6 +99,7 @@ public class CollectionManager {
             databaseManager.updateWorker(user, worker);
         } catch (SQLException e) {
             console.write("Обновить работника не получилось");
+            logger.writeError("Обновить работника не получилось: " + e);
             return;
         }
 
@@ -118,6 +120,7 @@ public class CollectionManager {
             databaseManager.removeWorker(user, idWorkerFromCollection.get(id));
         } catch (SQLException e) {
             console.write("Удалить работника не получилось");
+            logger.writeError("Удалить работника не получилось: " + e);
             return;
         }
         linkedList.remove(idWorkerFromCollection.get(id));
@@ -128,11 +131,11 @@ public class CollectionManager {
      * Очистка коллекции
      */
     public void clear() {
-//        TODO clear
         try {
             databaseManager.clearWorkers(user);
         } catch (SQLException e) {
             console.write("Очистить коллекцию не получилось");
+            logger.writeError("Очистить коллекцию не получилось: " + e);
             return;
         }
         idWorkerFromCollection.clear();
