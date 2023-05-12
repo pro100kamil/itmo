@@ -40,7 +40,8 @@ public class CommandManager {
                 new History(), new FilterBySalary(),
                 new PrintDescending(),
                 new PrintFieldDescendingPosition(),
-                new Rollback()
+                new Rollback(),
+                new Auth(), new Register()
         };
 
         for (ServerCommand command : serverCommands) {

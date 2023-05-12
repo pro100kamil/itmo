@@ -1,16 +1,16 @@
 package server;
 
-import common.consoles.Console;
 import common.consoles.FileConsole;
-import common.consoles.StandardConsole;
-import common.managers.ValidateManager;
-import server.managers.PasswordManager;
+import common.loggers.Logger;
+import common.loggers.StandardLogger;
 import server.managers.ServerManager;
 
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
+        Logger logger = new StandardLogger();
+        logger.write("Логгер запущен");
 //        System.out.println(PasswordManager.getHash("1"));
 //        System.out.println(PasswordManager.getHash("2"));
 //        System.out.println(PasswordManager.getHash("3"));
@@ -18,15 +18,15 @@ public class Main {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
-            System.err.println("Не найден драйвер!");
+            logger.writeError("Не найден драйвер!");
             System.exit(1);
         }
 
-        Console console = new StandardConsole();
+//        Console console = new StandardConsole();
 
         String[] lines = new FileConsole("server_host_port.txt").getLines();
         if (lines.length != 2) {
-            console.write("Некорректный файл server_host_port.txt");
+            logger.write("Некорректный файл server_host_port.txt");
             return;
         }
 
@@ -52,7 +52,7 @@ public class Main {
 
         String[] strings = new FileConsole("credentials.txt").getLines();
         if (strings.length != 3) {
-            console.write("Некорректный файл credentials.txt");
+            logger.write("Некорректный файл credentials.txt");
             return;
         }
 
@@ -63,10 +63,10 @@ public class Main {
         ServerManager serverManager = new ServerManager();
         try {
             serverManager.start();
-            console.write("Сервер запущен");
+            logger.write("Сервер запущен");
         } catch (IOException e) {
-            console.write(e.toString());
-            console.write("Не получилось запустить сервер");
+            logger.write(e.toString());
+            logger.write("Не получилось запустить сервер");
             return;
         }
         serverManager.run();

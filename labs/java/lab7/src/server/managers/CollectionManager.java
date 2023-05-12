@@ -19,8 +19,8 @@ import java.util.stream.Collectors;
 public class CollectionManager {
     private Console console = new StandardConsole();
 
-    private DatabaseManager databaseManager;
-    private User user;
+    private final DatabaseManager databaseManager;
+    private final User user;
     private LinkedList<Worker> linkedList;
     private final TreeMap<Integer, Worker> idWorkerFromCollection = new TreeMap<>();
     private final LocalDateTime creationDate;
@@ -129,12 +129,12 @@ public class CollectionManager {
      */
     public void clear() {
 //        TODO clear
-//        try {
-//            databaseManager.clearWorkers(user);
-//        } catch (SQLException e) {
-//            console.write("Очистить коллекцию не получилось");
-//            return;
-//        }
+        try {
+            databaseManager.clearWorkers(user);
+        } catch (SQLException e) {
+            console.write("Очистить коллекцию не получилось");
+            return;
+        }
         idWorkerFromCollection.clear();
         linkedList.clear();
     }
