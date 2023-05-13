@@ -23,7 +23,7 @@ public class ServerManager {
 
     private final Server server;
 
-    private CommandManager commandManager;
+    private final CommandManager commandManager;
 
     public ServerManager() {
         server = new Server(Configuration.getHost(), Configuration.getPort());
@@ -32,13 +32,13 @@ public class ServerManager {
         DatabaseManager databaseManager = new DatabaseManager(Configuration.getDbUrl(),
                 Configuration.getDbLogin(),
                 Configuration.getDbPass());  //pgpass
-        LinkedList<Worker> startWorkers;
+        LinkedList<Worker> startWorkers = null;
         try {
             startWorkers = (LinkedList<Worker>) databaseManager.loadWorkers();
         } catch (SQLException e) {
-            System.out.println(e.toString());
-            System.out.println("Загрузить коллекцию из базы данных не получилось");
-            return;
+            logger.write("Загрузить коллекцию из базы данных не получилось");
+            logger.writeError(e.toString());
+            System.exit(1);
         }
         User user = new User("user1", "user1");
 //        user.setId(1);

@@ -52,6 +52,7 @@ public class AuthManager {
                 return true;
             }
         } catch (SQLException e) {
+            logger.write("Не получилось зарегистрироваться");
             logger.writeError(e.toString());
             return false;
         }
@@ -62,9 +63,12 @@ public class AuthManager {
         try {
             if (databaseManager.checkUserPass(user.getName(), user.getPassword())) {
                 //вход успешный
+                logger.write("Вход прошёл успешно");
                 return true;
             }
         } catch (SQLException e) {
+            logger.write("Не получилось войти");
+            logger.writeError(e.toString());
             return false;
         }
         return false;

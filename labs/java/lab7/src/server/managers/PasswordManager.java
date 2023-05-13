@@ -1,78 +1,54 @@
 package server.managers;
 
-import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.util.Arrays;
-import java.util.Base64;
+import java.util.Random;
 
+/**
+ * Класс для генерации хэша для пароля.
+ */
 public class PasswordManager {
     private static final String algorithmName = "SHA-384";
-    public static final int saltLength = 2;
+    private static final int hashLength = 96;
 
-    public static final String pepper = "*63&^mVLC(#";
+    private static final String pepper = "*63&^mVLC(#";
 
+    /**
+     * Генерирует соль для пароля
+     *
+     * @return String - соль (случайное шестнадцатеричное число)
+     */
     public static String getSalt() {
-        return "5555";
-//        SecureRandom random = new SecureRandom();
-//        byte[] salt = new byte[saltLength];
-//        random.nextBytes(salt);
-//        StringBuilder res = new StringBuilder();
-//        for (Byte b : salt) {
-//            res.append((char) (b + 128));
-//        }
-//        return res.toString();
-//        return Arrays.toString(salt);
-//        return new String(salt);
-//        return Base64.getEncoder().encodeToString(salt);
-//        return String.valueOf(salt);
+        return Integer.toHexString(new Random().nextInt());
     }
 
+    /**
+     * Генерирует хэш пароля
+     *
+     * @param password - пароль
+     * @param salt - соль для каждого пользователя своя
+     * @return String - хэш из соли, пароля, перца
+     */
     public static String getHash(String password, String salt) {
-        MessageDigest md = null;
+        MessageDigest md;
         try {
             md = MessageDigest.getInstance(algorithmName);
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
-//        String salt = getSalt();
-        try {
-//            byte[] hash = md.digest((pepper + password + salt).getBytes("UTF-8"));
-            byte[] hash = md.digest((password).getBytes("UTF-8"));
-            for (byte c : hash) {
-                System.out.print((char)c);
-            }
-            System.out.println();
-            System.out.println("----------------");
-            return hash.toString();
-        } catch (UnsupportedEncodingException e) {
-            return ";";
+
+        byte[] hash = md.digest((salt + password + pepper).getBytes(StandardCharsets.UTF_8));
+
+        BigInteger bigInt = new BigInteger(1, hash);
+
+        StringBuilder strHash = new StringBuilder(bigInt.toString(16));
+
+        while (strHash.length() < hashLength) {
+            strHash.insert(0, "0");
         }
 
-    }
-
-    public static String getHash(String password) {
-        MessageDigest md = null;
-        try {
-            md = MessageDigest.getInstance(algorithmName);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
-//        String salt = getSalt();
-        try {
-//            byte[] hash = md.digest((pepper + password + salt).getBytes("UTF-8"));
-            byte[] hash = md.digest((password).getBytes("UTF-8"));
-            for (byte c : hash) {
-                System.out.print((char)c);
-            }
-            System.out.println();
-            System.out.println("----------------");
-            return hash.toString();
-        } catch (UnsupportedEncodingException e) {
-            return  ";";
-        }
-
+        return strHash.toString();
     }
 }

@@ -3,6 +3,7 @@ package server;
 import common.consoles.FileConsole;
 import common.loggers.Logger;
 import common.loggers.StandardLogger;
+import server.managers.PasswordManager;
 import server.managers.ServerManager;
 
 import java.io.IOException;
@@ -12,10 +13,13 @@ public class Main {
         Logger logger = new StandardLogger();
 
         logger.write("Логгер запущен");
-//        System.out.println(PasswordManager.getHash("1"));
-//        System.out.println(PasswordManager.getHash("2"));
-//        System.out.println(PasswordManager.getHash("3"));
+
+        System.out.println(PasswordManager.getSalt());
+        System.out.println(PasswordManager.getSalt());
+        System.out.println(PasswordManager.getSalt());
+        System.out.println(PasswordManager.getSalt());
 //        System.exit(228);
+
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {

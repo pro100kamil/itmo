@@ -15,6 +15,6 @@ public class StandardLogger implements Logger {
 
     @Override
     public void writeSeparator() {
-        System.out.println("--------------------------------------");
+        System.out.println("-".repeat(50));
     }
 }

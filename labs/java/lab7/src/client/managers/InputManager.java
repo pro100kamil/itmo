@@ -235,7 +235,7 @@ public class InputManager {
      * Печатает разделитель между командами
      */
     public void writeSeparator() {
-        console.write("--------------------------");
+        console.write("-".repeat(50));
     }
 
     /**
@@ -248,7 +248,7 @@ public class InputManager {
         while (console.hasNext()) {
             String text = "Введите команду (help - чтобы узнать команды):";
             console.write(text);
-            writeSeparator();
+//            writeSeparator();
             try {
                 String strCommand = console.getNextStr();
 
@@ -257,8 +257,9 @@ public class InputManager {
                     serverCommands = clientManager.getAllCommands();
                     commandManager.setCommands(serverCommands);
                 } catch (IOException | ClassNotFoundException e) {
-                    console.write(e.toString());
+//                    console.write(e.toString());
                     console.write("Подключиться к серверу не получилось");
+                    writeSeparator();
                     continue;
                 }
 
