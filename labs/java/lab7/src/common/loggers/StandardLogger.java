@@ -9,6 +9,12 @@ public class StandardLogger implements Logger {
 
     @Override
     public void writeError(String text) {
-        System.err.println(text);
+        System.out.println("Error: " + text);
+//        System.err.println(text);
+    }
+
+    @Override
+    public void writeSeparator() {
+        System.out.println("--------------------------------------");
     }
 }

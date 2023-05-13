@@ -23,7 +23,7 @@ public class CollectionManager {
     private final Logger logger = new StandardLogger();
 
     private final DatabaseManager databaseManager;
-    private final User user;
+    private User user;
     private LinkedList<Worker> linkedList;
     private final TreeMap<Integer, Worker> idWorkerFromCollection = new TreeMap<>();
     private final LocalDateTime creationDate;
@@ -40,6 +40,14 @@ public class CollectionManager {
         //оставляем только корректных работников
         this(databaseManager, user);
         setWorkers(workers);
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setConsole(Console console) {

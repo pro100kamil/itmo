@@ -2,6 +2,7 @@ package server.commands;
 
 import common.exceptions.NotUniqueIdException;
 import common.exceptions.WrongCommandArgsException;
+import common.exceptions.WrongModelsException;
 
 /**
  * Команда add.
@@ -17,6 +18,10 @@ public class Add extends ServerCommand {
     public void validateArgs(String[] args) throws WrongCommandArgsException {
         if (args.length != 0) {
             throw new WrongCommandArgsException();
+        }
+        //валидация моделек
+        if (worker == null || !worker.validate()) {
+            throw new WrongModelsException();
         }
     }
 

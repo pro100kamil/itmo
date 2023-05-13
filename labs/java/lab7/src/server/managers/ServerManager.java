@@ -1,7 +1,7 @@
 package server.managers;
 
-import common.consoles.Console;
-import common.consoles.StandardConsole;
+import common.loggers.Logger;
+import common.loggers.StandardLogger;
 import common.models.User;
 import common.models.Worker;
 import common.network.requests.Request;
@@ -19,7 +19,7 @@ import java.util.LinkedList;
  * Обрабатывает подключения от клиента. Отправляет ответ на запрос клиенту.
  */
 public class ServerManager {
-    private static final Console console = new StandardConsole();
+    private static final Logger logger = new StandardLogger();
 
     private final Server server;
 
@@ -29,9 +29,6 @@ public class ServerManager {
         server = new Server(Configuration.getHost(), Configuration.getPort());
         String dataFileName = Configuration.getStartFileName();
 
-        // из файла:
-//        LinkedList<Worker> startWorkers = JsonManager.getLinkedListWorkerFromStrJson(FileManager.getTextFromFile(dataFileName));
-        // из бд:
         DatabaseManager databaseManager = new DatabaseManager(Configuration.getDbUrl(),
                 Configuration.getDbLogin(),
                 Configuration.getDbPass());  //pgpass
@@ -44,13 +41,17 @@ public class ServerManager {
             return;
         }
         User user = new User("user1", "user1");
+//        user.setId(1);
+
         try {
             databaseManager.dropTables();
             databaseManager.createTables();
-            databaseManager.addUser(user);
+//            databaseManager.addUser(user);
+            new AuthManager().register(user);
         } catch (SQLException e) {
             System.out.println(e);
         }
+
         CollectionManager collectionManager = new CollectionManager(databaseManager, user, startWorkers);
 
         CollectionHistory collectionHistory = new CollectionHistory();
@@ -68,33 +69,33 @@ public class ServerManager {
         try {
             server.writeObject(socketChannel, response);  //отправляем клиенту
         } catch (IOException e) {
-            console.write("Не получилось передать данные клиенту");
+            logger.write("Не получилось передать данные клиенту");
+            logger.writeError(e.toString());
         }
     }
 
     public void handlerSocketChannel(SocketChannel socketChannel) throws IOException {
         Request request;
-        try {
+        try (socketChannel) {
             request = (Request) server.getObject(socketChannel); //получаем запрос от клиента
+
+            logger.write("Получен запрос: " + request.getClass().getName());
 
             //на основе запроса формируем ответ
             Response response = new RequestHandler(commandManager).requestHandler(request);
+
+            logger.write("Сформирован ответ на запрос: " + response.getClass().getName());
 
             //на UpdateCollectionHistoryRequest ответ не требуется
             if (!(response instanceof UpdateCollectionHistoryResponse)) {
                 writeRes(socketChannel, response);  //отправляем ответ
             }
         } catch (IOException | ClassNotFoundException e) {
-            console.write(e.toString());
-            console.write("Принять данные не получилось");
-            socketChannel.close();
-        }
-        catch (ClassCastException e) {
-            console.write(e.toString());
-            console.write("Передан неправильный тип данных");
-        }
-        finally {
-            socketChannel.close();
+            logger.write("Принять данные не получилось");
+            logger.writeError(e.toString());
+        } catch (ClassCastException e) {
+            logger.write("Передан неправильный тип данных");
+            logger.writeError(e.toString());
         }
     }
 
@@ -104,9 +105,11 @@ public class ServerManager {
             try {
                 socketChannel = server.getSocketChannel();
                 if (socketChannel == null) continue;
+                logger.write("Новое подключение");
                 handlerSocketChannel(socketChannel);
+                logger.writeSeparator();
             } catch (IOException e) {
-                console.write(e.toString());
+                logger.writeError(e.toString());
             }
         }
     }

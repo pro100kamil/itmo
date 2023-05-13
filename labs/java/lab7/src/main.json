@@ -1,18 +1,1 @@
-[
-  {
-    "id": 1,
-    "name": "r6tyuiop",
-    "coordinates": {
-      "x": 5,
-      "y": 4
-    },
-    "creationDate": "2023-05-12T21:57:06.715818900",
-    "salary": 4.0,
-    "person": {
-      "id": 0,
-      "height": 4.0,
-      "creatorId": 0
-    },
-    "creatorId": 0
-  }
-]
+[]

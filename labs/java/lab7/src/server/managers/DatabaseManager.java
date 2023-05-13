@@ -39,8 +39,12 @@ public class DatabaseManager {
         ResultSet result = statement.executeQuery();
 
         connection.close();
-
-        return !result.isLast();
+        System.out.println(result.getFetchSize());
+//        System.out.println("last: " + result.last());
+//        System.out.println("after last: " + result.isAfterLast());
+//        result.next();
+        return result.getFetchSize() != 0;
+//        return !result.isLast();
     }
 
     /**
@@ -64,8 +68,11 @@ public class DatabaseManager {
         ResultSet result = statement.executeQuery();
 
         connection.close();
+//        System.out.println("next: " + result.next());
+//        System.out.println("last: " + result.last());
+//        System.out.println("after last: " + result.isAfterLast());
 
-        return !result.isLast();
+        return result.getFetchSize() != 0;
     }
 
     public String getUserSalt(String name) throws SQLException {
@@ -84,7 +91,7 @@ public class DatabaseManager {
         return result.getString("salt");
     }
 
-    public void addUser(User user) throws SQLException {
+    public int addUser(User user) throws SQLException {
         Connection connection = getConnection();
         PreparedStatement statement = connection.prepareStatement(
                 "INSERT INTO USERS(name, password_digest, salt)" +
@@ -96,9 +103,12 @@ public class DatabaseManager {
         statement.setString(3, salt);
 
         ResultSet result = statement.executeQuery();
-        result.next();
-        user.setId(result.getInt(1));
+
         connection.close();
+
+        result.next();
+
+        return result.getInt(1);
     }
 
     /**

@@ -46,13 +46,13 @@ public class RequestHandler {
                     ((CommandRequest) request).getCommand());
             CommandResponse response = new CommandResponse();
             try {
-                commandManager.serverValidateCommand((ServerCommand) command);
+                commandManager.serverValidateCommand(command);
                 StringConsole strConsole = new StringConsole();
 
                 commandManager.getCollectionManager().sortByName();  //сортируем коллекцию по имени
                 commandManager.getCollectionManager().setConsole(strConsole);
 
-                commandManager.executeCommand((ServerCommand) command, strConsole);
+                commandManager.executeCommand(command, strConsole);
                 response.setStatus(true);
                 response.setResult(strConsole.getAllText());
             }

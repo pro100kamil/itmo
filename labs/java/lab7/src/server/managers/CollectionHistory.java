@@ -45,7 +45,6 @@ public class CollectionHistory {
      */
     public LinkedList<Worker> getCurState() {
         TreeMap<String, LinkedList<Worker>> stepCollection = getStepCollection();
-//        return stepCollection.get(stepCollection.lastKey());
         return stepCollection.get(String.valueOf(stepCollection.size() - 1));
     }
 

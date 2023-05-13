@@ -2,12 +2,14 @@ package server.commands;
 
 import common.exceptions.WrongCommandArgsException;
 import common.exceptions.WrongCredentialsException;
+import common.models.User;
 import server.managers.AuthManager;
 
 public class Register extends ServerCommand {
     private AuthManager authManager = new AuthManager();
     public Register() {
-        super("register", "производит регистрацию пользователя", false, false);
+        super("register", "производит регистрацию пользователя",
+                false, false);
     }
 
     public AuthManager getAuthManager() {
@@ -23,7 +25,7 @@ public class Register extends ServerCommand {
         if (args.length != 2) {
             throw new WrongCommandArgsException();
         }
-        if (!authManager.checkUserName(args[0])) {//если такого логина не существует
+        if (authManager.checkUserName(args[0])) {//если такой логин существует
             throw new WrongCredentialsException();
         }
     }
@@ -32,8 +34,16 @@ public class Register extends ServerCommand {
     public void execute(String[] args) {
         try {
             validateArgs(args);
-            boolean flag = authManager.register(args[0], args[1]);
-            System.out.println(flag);
+            User user = new User(args[0], args[1]);
+            boolean success = authManager.register(user);
+            if (success) {
+                collectionManager.setUser(user);
+                System.out.println(user.getId());
+                console.write("Регистрация прошла успешно");
+            }
+            else {
+                console.write("Не получилось зарегистрироваться");
+            }
         } catch (WrongCommandArgsException e) {
             console.write(e.toString());
         }

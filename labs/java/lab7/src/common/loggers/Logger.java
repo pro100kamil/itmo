@@ -14,4 +14,9 @@ public interface Logger {
      * @param text текст ошибки
      */
     void writeError(String text);
+
+    /**
+     * Печатает разделитель
+     */
+    void writeSeparator();
 }

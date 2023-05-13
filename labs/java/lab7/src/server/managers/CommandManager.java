@@ -4,6 +4,7 @@ import common.commands.AbstractCommand;
 import common.consoles.StringConsole;
 import common.exceptions.NonExistentId;
 import common.exceptions.WrongCommandArgsException;
+import common.exceptions.WrongModelsException;
 import server.commands.*;
 
 import java.util.Arrays;
@@ -38,7 +39,7 @@ public class CommandManager {
                 new PrintDescending(),
                 new PrintFieldDescendingPosition(),
                 new Rollback(),
-                new Auth(), new Register()
+                new Auth(), new Register(), new Logout()
         };
 
         for (ServerCommand command : serverCommands) {
@@ -60,8 +61,9 @@ public class CommandManager {
     public static ServerCommand getServerCommandFromAbstractCommand(AbstractCommand command) {
         ServerCommand serverCommand = strCommands.get(command.getName());
         serverCommand.setArgs(command.getArgs());
-        serverCommand.setWithWorker(command.isWithWorker());
+//        serverCommand.setWithWorker(command.isWithWorker());
         serverCommand.setWorker(command.getWorker());
+//        serverCommand.
         return serverCommand;
     }
 
@@ -104,6 +106,14 @@ public class CommandManager {
         command.setHistory(getHistory());
         command.setCollectionHistory(collectionHistory);
         command.setCollectionManager(collectionManager);
+
+        //если команда только для зарегистрированных пользователей, а текущий пользователь не вошёл в аккаунт,
+        //то не даём ему выполнить команду
+        if (command.isOnlyUsers() && collectionManager.getUser() == null) {
+            strConsole.write("Эта команда только для зарегистрированных пользователей");
+            return;
+        }
+
 
         String[] args = command.getArgs();
         //выполнение команды

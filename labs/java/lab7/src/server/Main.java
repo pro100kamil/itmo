@@ -10,6 +10,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
         Logger logger = new StandardLogger();
+
         logger.write("Логгер запущен");
 //        System.out.println(PasswordManager.getHash("1"));
 //        System.out.println(PasswordManager.getHash("2"));
@@ -18,11 +19,9 @@ public class Main {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
-            logger.writeError("Не найден драйвер!");
-            System.exit(1);
+            logger.write("Не найден драйвер!");
+            return;
         }
-
-//        Console console = new StandardConsole();
 
         String[] lines = new FileConsole("server_host_port.txt").getLines();
         if (lines.length != 2) {
@@ -32,20 +31,6 @@ public class Main {
 
         Configuration.setHost(lines[0].trim());
         Configuration.setPort(Integer.parseInt(lines[1].trim()));
-
-//        String host = System.getenv("host");
-//        String strPort = System.getenv("port");
-//        if (host == null || strPort == null || !ValidateManager.isInteger(strPort)) {
-//            console.write("Неправильные переменные окружения");
-//            return;
-//        }
-//        int port = Integer.parseInt(strPort);
-//
-//        Configuration.setHost(host);
-//        Configuration.setPort(port);
-//        Configuration.setHost("127.0.0.1");
-//        Configuration.setPort(6969);
-
 
         Configuration.setStartFileName("main.json");
         Configuration.setHistoryFileName("_.json");
@@ -64,6 +49,7 @@ public class Main {
         try {
             serverManager.start();
             logger.write("Сервер запущен");
+            logger.writeSeparator();
         } catch (IOException e) {
             logger.write(e.toString());
             logger.write("Не получилось запустить сервер");

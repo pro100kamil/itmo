@@ -1,14 +1,14 @@
 package server.managers;
 
+import common.loggers.Logger;
+import common.loggers.StandardLogger;
 import common.models.User;
 import server.Configuration;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AuthManager {
+    private static final Logger logger = new StandardLogger();
     public DatabaseManager databaseManager = new DatabaseManager(Configuration.getDbUrl(),
             Configuration.getDbLogin(), Configuration.getDbPass());
 
@@ -42,25 +42,25 @@ public class AuthManager {
         }
     }
 
-    public boolean register(String name, String password) {
-        User user = new User(name, password);
+    public boolean register(User user) {
         try {
-            if (!databaseManager.checkUserName(name)) {
+            if (!databaseManager.checkUserName(user.getName())) {
                 // если имя не занято, то создаём пользователя
-                databaseManager.addUser(user);
+                int id = databaseManager.addUser(user);
+                user.setId(id);
+                logger.write("Регистрация прошла успешно");
                 return true;
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            logger.writeError(e.toString());
             return false;
         }
         return false;
     }
 
-    public boolean auth(String name, String password) {
-        User user = new User(name, password);
+    public boolean auth(User user) {
         try {
-            if (databaseManager.checkUserPass(name, password)) {
+            if (databaseManager.checkUserPass(user.getName(), user.getPassword())) {
                 //вход успешный
                 return true;
             }

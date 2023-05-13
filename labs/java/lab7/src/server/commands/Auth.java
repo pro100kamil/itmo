@@ -2,10 +2,11 @@ package server.commands;
 
 import common.exceptions.WrongCommandArgsException;
 import common.exceptions.WrongCredentialsException;
+import common.models.User;
 import server.managers.AuthManager;
 
 public class Auth extends ServerCommand {
-    private AuthManager authManager;
+    private AuthManager authManager = new AuthManager();
     public Auth() {
         super("auth", "производит вход пользователя", false, false);
     }
@@ -32,7 +33,16 @@ public class Auth extends ServerCommand {
     public void execute(String[] args) {
         try {
             validateArgs(args);
-            authManager.auth(args[0], args[1]);
+            User user = new User(args[0], args[1]);
+            boolean success = authManager.auth(user);;
+            if (success) {
+                collectionManager.setUser(user);
+                console.write("Вы вошли в свой аккаунт");
+            }
+            else {
+                console.write("Не получилось войти");
+            }
+
         } catch (WrongCommandArgsException e) {
             console.write(e.toString());
         }

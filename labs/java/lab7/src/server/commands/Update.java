@@ -2,6 +2,7 @@ package server.commands;
 
 import common.exceptions.NonExistentId;
 import common.exceptions.WrongCommandArgsException;
+import common.exceptions.WrongModelsException;
 import common.managers.ValidateManager;
 
 /**
@@ -22,6 +23,10 @@ public class Update extends ServerCommand {
         }
         if (!collectionManager.existsId(Integer.parseInt(args[0]))) {
             throw new NonExistentId();
+        }
+        //валидация моделек
+        if (worker == null || !worker.validate()) {
+            throw new WrongModelsException();
         }
     }
 

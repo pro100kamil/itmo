@@ -27,8 +27,6 @@ public class Server {
     public void start() throws IOException {
         serv = ServerSocketChannel.open();
         serv.configureBlocking(false);
-        System.out.println(host);
-        System.out.println(port);
         serv.bind(new InetSocketAddress(host, port));
     }
 
