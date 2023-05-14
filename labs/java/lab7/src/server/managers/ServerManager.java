@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.nio.channels.SocketChannel;
 import java.sql.SQLException;
 import java.util.LinkedList;
+import java.util.concurrent.ForkJoinPool;
 
 /**
  * Класс серверного менеджера.
@@ -64,41 +65,13 @@ public class ServerManager {
         server.start();
     }
 
-    public void writeRes(SocketChannel socketChannel, Response response) {
-        try {
-            server.writeObject(socketChannel, response);  //отправляем клиенту
-        } catch (IOException e) {
-            logger.write("Не получилось передать данные клиенту");
-            logger.writeError(e.toString());
-        }
-    }
-
     public void handlerSocketChannel(SocketChannel socketChannel) throws IOException {
-        Request request;
         try (socketChannel) {
-            request = (Request) server.getObject(socketChannel); //получаем запрос от клиента
+            //многопоточка 1
+            ReadRequestTask task = new ReadRequestTask(server, socketChannel, commandManager);
 
-            commandManager.getCollectionManager().setUser(request.getUser());
-
-            logger.write("Получен запрос: " + request.getClass().getName());
-
-            //на основе запроса формируем ответ
-            Response response = new RequestHandler(commandManager).requestHandler(request);
-
-            response.setUser(commandManager.getCollectionManager().getUser());
-
-            logger.write("Сформирован ответ на запрос: " + response.getClass().getName());
-
-            //на UpdateCollectionHistoryRequest ответ не требуется
-            if (!(response instanceof UpdateCollectionHistoryResponse)) {
-                writeRes(socketChannel, response);  //отправляем ответ
-            }
-        } catch (IOException | ClassNotFoundException e) {
-            logger.write("Принять данные не получилось");
-            logger.writeError(e.toString());
-        } catch (ClassCastException e) {
-            logger.write("Передан неправильный тип данных");
-            logger.writeError(e.toString());
+            ForkJoinPool pool = ForkJoinPool.commonPool();
+            pool.invoke(task);
         }
     }
 

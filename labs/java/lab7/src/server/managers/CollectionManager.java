@@ -13,6 +13,8 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.TreeMap;
 import java.time.LocalDateTime;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Collectors;
 
 /**
@@ -21,12 +23,13 @@ import java.util.stream.Collectors;
 public class CollectionManager {
     private Console console = new StandardConsole();
     private final Logger logger = new StandardLogger();
-
     private final DatabaseManager databaseManager;
     private User user;
     private LinkedList<Worker> linkedList;
     private final TreeMap<Integer, Worker> idWorkerFromCollection = new TreeMap<>();
     private final LocalDateTime creationDate;
+
+    private final Lock lock = new ReentrantLock();
 
     public CollectionManager(DatabaseManager databaseManager) {
         this.databaseManager = databaseManager;
