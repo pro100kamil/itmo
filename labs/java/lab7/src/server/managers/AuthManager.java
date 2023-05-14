@@ -63,6 +63,8 @@ public class AuthManager {
         try {
             if (databaseManager.checkUserPass(user.getName(), user.getPassword())) {
                 //вход успешный
+                int id = databaseManager.getUserId(user.getName());
+                user.setId(id);
                 logger.write("Вход прошёл успешно");
                 return true;
             }

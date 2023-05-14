@@ -1,5 +1,6 @@
 package client.managers;
 
+import client.commands.UserInfo;
 import common.commands.AbstractCommand;
 import client.commands.ClientCommand;
 import common.consoles.Console;
@@ -265,7 +266,15 @@ public class InputManager {
 
                 AbstractCommand command = commandManager.getCommand(strCommand);
 
+                if (command.isOnlyUsers() && clientManager.getUser() == null) {
+                    System.out.println("no root");
+                    throw new UnavailableCommandException();
+                }
+
                 if (command instanceof ClientCommand) { //наследники ClientCommand выполняются на стороне клиента
+                    if (command instanceof UserInfo) {
+                        ((UserInfo) command).setUser(clientManager.getUser());
+                    }
                     ((ClientCommand) command).setConsole(console);
                     ((ClientCommand) command).execute(command.getArgs());
 
@@ -274,7 +283,8 @@ public class InputManager {
                 } else {  //остальные на сервере
                     clientManager.commandHandler(this, command);
                 }
-            } catch (NoSuchCommandException | WrongCommandArgsException | NonExistentId e) {
+            } catch (NoSuchCommandException | WrongCommandArgsException | NonExistentId
+                     | UnavailableCommandException e) {
                 console.write(e.toString());
             } catch (NoSuchElementException | EndInputException | EndInputWorkerException e) {
                 console.write("");

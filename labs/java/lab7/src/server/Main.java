@@ -14,12 +14,6 @@ public class Main {
 
         logger.write("Логгер запущен");
 
-        System.out.println(PasswordManager.getSalt());
-        System.out.println(PasswordManager.getSalt());
-        System.out.println(PasswordManager.getSalt());
-        System.out.println(PasswordManager.getSalt());
-//        System.exit(228);
-
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {

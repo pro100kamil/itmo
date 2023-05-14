@@ -1,14 +1,10 @@
 package client.managers;
 
-import client.commands.ClientCommand;
-import client.commands.Exit;
-import client.commands.Help;
+import client.commands.*;
 import common.commands.AbstractCommand;
-import client.commands.ExecuteScript;
 import common.consoles.Console;
-import common.exceptions.*;
-import common.models.Worker;
 import common.consoles.StandardConsole;
+import common.exceptions.*;
 
 import java.util.TreeMap;
 
@@ -20,7 +16,10 @@ public class CommandManager {
     private final InputManager inputManager;
     private final Console console;
     private static final Help help = new Help();
-    private static final AbstractCommand[] clientCommands = {new Exit(), new ExecuteScript(), help};
+    private static final AbstractCommand[] clientCommands = {new Exit(),
+            new ExecuteScript(),
+            new UserInfo(),
+            help};
     private final TreeMap<String, AbstractCommand> strCommands = new TreeMap<>();
     //название команды, объект класса этой команды
 
@@ -62,7 +61,7 @@ public class CommandManager {
         }
         AbstractCommand command = strCommands.get(strCommand);
         if (command instanceof ClientCommand) {
-            ((ClientCommand)command).validateArgs(args);  //клиентская валидация
+            command.validateArgs(args);  //клиентская валидация
         }
         if (command instanceof ExecuteScript) {
             //макс глубина рекурсии спрашивается только тогда, когда мы работаем со стандартным вводом

@@ -2,7 +2,6 @@ package server.managers;
 
 import common.loggers.Logger;
 import common.loggers.StandardLogger;
-import common.models.User;
 import common.models.Worker;
 import common.network.requests.Request;
 import common.network.responses.Response;
@@ -40,19 +39,19 @@ public class ServerManager {
             logger.writeError(e.toString());
             System.exit(1);
         }
-        User user = new User("user1", "user1");
+//        User user = new User("user1", "user1");
 //        user.setId(1);
 
-        try {
-            databaseManager.dropTables();
-            databaseManager.createTables();
-//            databaseManager.addUser(user);
-            new AuthManager().register(user);
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
+//        try {
+//            databaseManager.dropTables();
+//            databaseManager.createTables();
+////            databaseManager.addUser(user);
+//            new AuthManager().register(user);
+//        } catch (SQLException e) {
+//            System.out.println(e);
+//        }
 
-        CollectionManager collectionManager = new CollectionManager(databaseManager, user, startWorkers);
+        CollectionManager collectionManager = new CollectionManager(databaseManager, startWorkers);
 
         CollectionHistory collectionHistory = new CollectionHistory();
         CollectionHistory.setDataFileName(dataFileName);
@@ -79,10 +78,14 @@ public class ServerManager {
         try (socketChannel) {
             request = (Request) server.getObject(socketChannel); //получаем запрос от клиента
 
+            commandManager.getCollectionManager().setUser(request.getUser());
+
             logger.write("Получен запрос: " + request.getClass().getName());
 
             //на основе запроса формируем ответ
             Response response = new RequestHandler(commandManager).requestHandler(request);
+
+            response.setUser(commandManager.getCollectionManager().getUser());
 
             logger.write("Сформирован ответ на запрос: " + response.getClass().getName());
 

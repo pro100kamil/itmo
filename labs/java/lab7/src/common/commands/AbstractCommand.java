@@ -73,6 +73,7 @@ public class AbstractCommand implements Serializable {
 
     @Override
     public String toString() {
-        return name + ": " + description;
+        if (onlyUsers) return name + ": " + description + " (только для зарегистрированных пользователей)";
+        else return name + ": " + description;
     }
 }

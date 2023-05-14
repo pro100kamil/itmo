@@ -8,6 +8,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Класс для взаимодействий с базой данных.
+ */
 public class DatabaseManager {
     private final String url;
     private final String login;
@@ -68,6 +71,12 @@ public class DatabaseManager {
         return result.next();
     }
 
+    /**
+     * Получает соль по имени пользователя
+     *
+     * @param name - имя пользователя
+     * @return String - соль пользователя
+     */
     public String getUserSalt(String name) throws SQLException {
         Connection connection = getConnection();
         PreparedStatement statement = connection.prepareStatement(
@@ -82,6 +91,28 @@ public class DatabaseManager {
         result.next();
 
         return result.getString("salt");
+    }
+
+    /**
+     * Получает id по имени пользователя
+     *
+     * @param name - имя пользователя
+     * @return int - id пользователя
+     */
+    public int getUserId(String name) throws SQLException {
+        Connection connection = getConnection();
+        PreparedStatement statement = connection.prepareStatement(
+                "SELECT id FROM users WHERE name = ?");
+
+        statement.setString(1, name);
+
+        ResultSet result = statement.executeQuery();
+
+        connection.close();
+
+        result.next();
+
+        return result.getInt("id");
     }
 
     public int addUser(User user) throws SQLException {

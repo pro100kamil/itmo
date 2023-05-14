@@ -3,8 +3,8 @@ package server.managers;
 import common.commands.AbstractCommand;
 import common.consoles.StringConsole;
 import common.exceptions.NonExistentId;
+import common.exceptions.UnavailableCommandException;
 import common.exceptions.WrongCommandArgsException;
-import common.exceptions.WrongModelsException;
 import server.commands.*;
 
 import java.util.Arrays;
@@ -61,9 +61,8 @@ public class CommandManager {
     public static ServerCommand getServerCommandFromAbstractCommand(AbstractCommand command) {
         ServerCommand serverCommand = strCommands.get(command.getName());
         serverCommand.setArgs(command.getArgs());
-//        serverCommand.setWithWorker(command.isWithWorker());
         serverCommand.setWorker(command.getWorker());
-//        serverCommand.
+
         return serverCommand;
     }
 
@@ -80,20 +79,26 @@ public class CommandManager {
     }
 
     /**
-     * Проводит валидацию серверной команды
-     *
-     * @param command - конкретная команда
-     */
-    public void serverValidateCommand(ServerCommand command) throws NonExistentId, WrongCommandArgsException {
-        command.setCollectionManager(collectionManager);
-        command.validateArgs(command.getArgs());
-    }
-
-    /**
      * Добавить новое состояние в историю коллекции
      */
     public void addStateCollection() {
         collectionHistory.addStateCollection(collectionManager.getLinkedList());
+    }
+
+    /**
+     * Проводит валидацию серверной команды
+     *
+     * @param command - конкретная команда
+     */
+    public void serverValidateCommand(ServerCommand command) throws NonExistentId, WrongCommandArgsException,
+            UnavailableCommandException {
+        //если команда только для зарегистрированных пользователей, а текущий пользователь не вошёл в аккаунт,
+        //то не даём ему провести валидацию и выполнить команду
+        if (command.isOnlyUsers() && collectionManager.getUser() == null) {
+            throw new UnavailableCommandException();
+        }
+        command.setCollectionManager(collectionManager);
+        command.validateArgs(command.getArgs());
     }
 
     /**
@@ -106,14 +111,6 @@ public class CommandManager {
         command.setHistory(getHistory());
         command.setCollectionHistory(collectionHistory);
         command.setCollectionManager(collectionManager);
-
-        //если команда только для зарегистрированных пользователей, а текущий пользователь не вошёл в аккаунт,
-        //то не даём ему выполнить команду
-        if (command.isOnlyUsers() && collectionManager.getUser() == null) {
-            strConsole.write("Эта команда только для зарегистрированных пользователей");
-            return;
-        }
-
 
         String[] args = command.getArgs();
         //выполнение команды

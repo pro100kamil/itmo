@@ -2,6 +2,7 @@ package server.managers;
 
 import common.consoles.StringConsole;
 import common.exceptions.NonExistentId;
+import common.exceptions.UnavailableCommandException;
 import common.exceptions.WrongCommandArgsException;
 import common.network.requests.*;
 import common.network.responses.*;
@@ -35,7 +36,7 @@ public class RequestHandler {
                 commandManager.serverValidateCommand(command);
                 response.setStatus(true);
             }
-            catch (NonExistentId | WrongCommandArgsException e) {
+            catch (NonExistentId | WrongCommandArgsException | UnavailableCommandException e) {
                 response.setStatus(false);
                 response.setErrorMessage(e.toString());
             }
@@ -56,7 +57,7 @@ public class RequestHandler {
                 response.setStatus(true);
                 response.setResult(strConsole.getAllText());
             }
-            catch (NonExistentId | WrongCommandArgsException e) {
+            catch (NonExistentId | WrongCommandArgsException | UnavailableCommandException e) {
                 response.setStatus(false);
                 response.setErrorMessage(e.toString());
             }

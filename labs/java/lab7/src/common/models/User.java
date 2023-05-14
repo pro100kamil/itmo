@@ -1,6 +1,8 @@
 package common.models;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private int id;
     private final String name;
     private final String password;
@@ -33,9 +35,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+               "id=" + id +
+               ", name='" + name + '\'' +
+               '}';
     }
 }

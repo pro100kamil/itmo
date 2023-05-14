@@ -6,11 +6,9 @@ import common.consoles.Console;
 import common.consoles.StandardConsole;
 import common.exceptions.EndInputException;
 import common.exceptions.EndInputWorkerException;
+import common.models.User;
 import common.models.Worker;
-import common.network.requests.CommandRequest;
-import common.network.requests.GetAllCommandsRequest;
-import common.network.requests.UpdateCollectionHistoryRequest;
-import common.network.requests.ValidationRequest;
+import common.network.requests.*;
 import common.network.responses.CommandResponse;
 import common.network.responses.GetAllCommandsResponse;
 import common.network.responses.ValidationResponse;
@@ -23,10 +21,16 @@ import java.io.IOException;
  */
 public class ClientManager {
     private static final Console console = new StandardConsole();
-    Client client;
+    private final Client client;
+
+    private User user;
 
     public ClientManager() {
         client = new Client(Configuration.getHost(), Configuration.getPort());
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public AbstractCommand[] getAllCommands() throws IOException, ClassNotFoundException {
@@ -37,19 +41,25 @@ public class ClientManager {
         return response.getCommands();
     }
 
+    public void writeRequest(Request request) throws IOException {
+        request.setUser(user);
+        client.writeObject(request);
+    }
+
     public void writeGetAllCommandsRequest() throws IOException {
-        client.writeObject(new GetAllCommandsRequest());
+        writeRequest(new GetAllCommandsRequest());
     }
 
     public void writeValidationRequest(AbstractCommand command) throws IOException {
-        client.writeObject(new ValidationRequest(command));
+        writeRequest(new ValidationRequest(command));
     }
 
     public void writeCommandRequest(AbstractCommand command) throws IOException {
-        client.writeObject(new CommandRequest(command));
+        writeRequest(new CommandRequest(command));
     }
 
     public void writeUpdateCollectionRequest() throws IOException {
+//        writeRequest(new UpdateCollectionHistoryRequest());
         client.start();
         client.writeObject(new UpdateCollectionHistoryRequest());
         client.close();
@@ -77,6 +87,9 @@ public class ClientManager {
             }
             writeCommandRequest(command);  //отправляем запрос на выполнение команды
             CommandResponse commandResponse = (CommandResponse) client.getObject();
+
+            user = commandResponse.getUser();
+
             if (!commandResponse.getStatus()) {
                 console.write(commandResponse.getErrorMessage());
             } else {

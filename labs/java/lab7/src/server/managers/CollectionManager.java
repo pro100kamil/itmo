@@ -28,17 +28,16 @@ public class CollectionManager {
     private final TreeMap<Integer, Worker> idWorkerFromCollection = new TreeMap<>();
     private final LocalDateTime creationDate;
 
-    public CollectionManager(DatabaseManager databaseManager, User user) {
+    public CollectionManager(DatabaseManager databaseManager) {
         this.databaseManager = databaseManager;
-        this.user = user;
         creationDate = LocalDateTime.now();
         linkedList = new LinkedList<>();
     }
 
-    public CollectionManager(DatabaseManager databaseManager, User user, LinkedList<Worker> workers) {
+    public CollectionManager(DatabaseManager databaseManager, LinkedList<Worker> workers) {
         //если несколько одинаковых id, оставляем первый встречный
         //оставляем только корректных работников
-        this(databaseManager, user);
+        this(databaseManager);
         setWorkers(workers);
     }
 
@@ -57,7 +56,8 @@ public class CollectionManager {
     public void setWorkers(LinkedList<Worker> workers) {
         //если несколько одинаковых id, оставляем первый встречный
         //оставляем только корректных работников
-        clear();
+        idWorkerFromCollection.clear();
+        linkedList.clear();
         int maxId = 0;
         for (Worker worker : workers) {
             if (worker != null && worker.validate()) {
