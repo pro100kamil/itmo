@@ -52,7 +52,7 @@ public class ServerManager {
 //            System.out.println(e);
 //        }
 
-        CollectionManager collectionManager = new CollectionManager(databaseManager, startWorkers);
+        CollectionManager collectionManager = new BlockingCollectionManager(databaseManager, startWorkers);
 
         CollectionHistory collectionHistory = new CollectionHistory();
         CollectionHistory.setDataFileName(dataFileName);
@@ -66,13 +66,12 @@ public class ServerManager {
     }
 
     public void handlerSocketChannel(SocketChannel socketChannel) throws IOException {
-        try (socketChannel) {
-            //многопоточка 1
-            ReadRequestTask task = new ReadRequestTask(server, socketChannel, commandManager);
+        //многопоточка 1
+        ReadRequestTask task = new ReadRequestTask(server, socketChannel, commandManager);
 
-            ForkJoinPool pool = ForkJoinPool.commonPool();
-            pool.invoke(task);
-        }
+        ForkJoinPool pool = ForkJoinPool.commonPool();
+        pool.invoke(task);
+
     }
 
     public void run() {

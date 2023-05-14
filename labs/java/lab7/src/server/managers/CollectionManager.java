@@ -79,19 +79,24 @@ public class CollectionManager {
      * @param worker работник, которого мы добавляем
      */
     public void add(Worker worker) throws NotUniqueIdException {
-        if (worker.getId() == 0) {  //добавляем в бд
-            try {
-                int id = databaseManager.addWorker(user, worker);
-                worker.setId(id);
-            } catch (SQLException e) {
-                console.write("Добавить работника не получилось");
-                logger.writeError("Добавить работника не получилось: " + e);
-                return;
+        lock.lock();
+        try {
+            if (worker.getId() == 0) {  //добавляем в бд
+                try {
+                    int id = databaseManager.addWorker(user, worker);
+                    worker.setId(id);
+                } catch (SQLException e) {
+                    console.write("Добавить работника не получилось");
+                    logger.writeError("Добавить работника не получилось: " + e);
+                    return;
+                }
             }
+            //добавляем в коллекции
+            idWorkerFromCollection.put(worker.getId(), worker);
+            linkedList.add(worker);
+        } finally {
+            lock.unlock();
         }
-        //добавляем в коллекции
-        idWorkerFromCollection.put(worker.getId(), worker);
-        linkedList.add(worker);
     }
 
     /**
@@ -257,7 +262,7 @@ public class CollectionManager {
     public LinkedList<Worker> getFilterBySalary(Float salary) {
         return linkedList.stream().filter(worker ->
                 (worker.getSalary() == null && salary == null)
-                        || (worker.getSalary() != null && worker.getSalary().equals(salary))
+                || (worker.getSalary() != null && worker.getSalary().equals(salary))
         ).collect(Collectors.toCollection(LinkedList::new));
     }
 

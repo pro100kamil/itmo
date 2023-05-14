@@ -26,7 +26,7 @@ public class WriteResponseTask implements Runnable {
 
         //на UpdateCollectionHistoryRequest ответ не требуется
         if (!(response instanceof UpdateCollectionHistoryResponse)) {
-            try {
+            try (socketChannel) {
                 server.writeObject(socketChannel, response);  //отправляем клиенту
                 logger.write("Отправлен ответ: " + response.getClass().getName());
             } catch (IOException e) {
