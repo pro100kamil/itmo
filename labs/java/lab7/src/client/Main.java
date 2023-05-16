@@ -1,5 +1,6 @@
 package client;
 
+import client.managers.ClientManager;
 import client.managers.InputManager;
 import common.consoles.Console;
 import common.consoles.FileConsole;
@@ -19,7 +20,9 @@ public class Main {
         Configuration.setHost(lines[0].trim());
         Configuration.setPort(Integer.parseInt(lines[1].trim()));
 
-        InputManager inputManager = new InputManager(console);
+        ClientManager clientManager = new ClientManager();
+
+        InputManager inputManager = new InputManager(console, clientManager);
 
         inputManager.run();
     }

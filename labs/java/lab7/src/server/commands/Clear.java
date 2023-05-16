@@ -22,7 +22,7 @@ public class Clear extends ServerCommand {
     public void execute(String[] args) {
         try {
             validateArgs(args);
-            collectionManager.clear();
+            collectionManager.clear(user);
         } catch (WrongCommandArgsException e) {
             console.write(e.toString());
         }

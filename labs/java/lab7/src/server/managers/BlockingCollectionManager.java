@@ -1,20 +1,39 @@
 package server.managers;
 
+import common.consoles.Console;
 import common.exceptions.NotUniqueIdException;
+import common.models.User;
 import common.models.Worker;
 
-import java.sql.SQLException;
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.stream.Collectors;
 
 public class BlockingCollectionManager extends CollectionManager {
-    private final Lock lock = new ReentrantLock();
+    private final Lock lock;
 
     public BlockingCollectionManager(DatabaseManager databaseManager, LinkedList<Worker> workers) {
-        super(databaseManager, workers);
+        super(databaseManager);
+        lock = new ReentrantLock();
+        super.setWorkers(workers);
+    }
+
+    public void setConsole(Console console) {
+        lock.lock();
+        try {
+            super.setConsole(console);
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public void setWorkers(LinkedList<Worker> workers) {
+        lock.lock();
+        try {
+            super.setWorkers(workers);
+        } finally {
+            lock.unlock();
+        }
     }
 
     /**
@@ -22,11 +41,10 @@ public class BlockingCollectionManager extends CollectionManager {
      *
      * @param worker работник, которого мы добавляем
      */
-    @Override
-    public void add(Worker worker) throws NotUniqueIdException {
+    public void add(Worker worker, User user) throws NotUniqueIdException {
         lock.lock();
         try {
-            super.add(worker);
+            super.add(worker, user);
         } finally {
             lock.unlock();
         }
@@ -38,10 +56,10 @@ public class BlockingCollectionManager extends CollectionManager {
      * @param id     работника
      * @param worker заданный работник
      */
-    public void update(int id, Worker worker) {
+    public void update(int id, Worker worker, User user) {
         lock.lock();
         try {
-            super.update(id, worker);
+            super.update(id, worker, user);
         } finally {
             lock.unlock();
         }
@@ -52,10 +70,10 @@ public class BlockingCollectionManager extends CollectionManager {
      *
      * @param id работника
      */
-    public void remove(int id) {
+    public void remove(int id, User user) {
         lock.lock();
         try {
-            super.remove(id);
+            super.remove(id, user);
         } finally {
             lock.unlock();
         }
@@ -64,10 +82,24 @@ public class BlockingCollectionManager extends CollectionManager {
     /**
      * Очистка коллекции
      */
-    public void clear() {
+    public void clear(User user) {
         lock.lock();
         try {
-            super.clear();
+            super.clear(user);
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    /**
+     * Пустая ли коллекция
+     *
+     * @return boolean true - коллекция пуста,false - в ней есть элементы
+     */
+    public boolean isEmpty() {
+        lock.lock();
+        try {
+            return super.isEmpty();
         } finally {
             lock.unlock();
         }
@@ -121,6 +153,15 @@ public class BlockingCollectionManager extends CollectionManager {
         }
     }
 
+    public boolean existsId(int id) {
+        lock.lock();
+        try {
+            return super.existsId(id);
+        } finally {
+            lock.unlock();
+        }
+    }
+
     /**
      * Удаляет работников, которые больше (по зарплате) заданного
      *
@@ -165,4 +206,16 @@ public class BlockingCollectionManager extends CollectionManager {
         }
     }
 
+    /**
+     * Сортирует работников по имени
+     */
+    public void sortByName() {
+        lock.lock();
+        try {
+            super.sortByName();
+        }
+        finally {
+            lock.unlock();
+        }
+    }
 }

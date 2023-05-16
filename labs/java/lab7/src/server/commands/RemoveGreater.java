@@ -19,15 +19,15 @@ public class RemoveGreater extends ServerCommand {
         if (args.length != 0) {
             throw new WrongCommandArgsException();
         }
-        //валидация моделек
-        if (worker == null || !worker.validate()) {
-            throw new WrongModelsException();
-        }
     }
 
     public void execute(String[] args) {
         try {
             validateArgs(args);
+            //валидация моделек
+            if (worker == null || !worker.validate()) {
+                throw new WrongModelsException();
+            }
             collectionManager.removeGreater(worker);
         } catch (WrongCommandArgsException e) {
             console.write(e.toString());

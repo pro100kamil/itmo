@@ -113,9 +113,6 @@ public class Worker implements Comparable<Worker>, Serializable {
      * Проверка корректности всех полей
      */
     public boolean validate() {
-        if (id <= 0) {
-            return false;
-        }
         if (name == null || name.isBlank()) {
             return false;
         }

@@ -4,6 +4,7 @@ import common.commands.AbstractCommand;
 import common.consoles.Console;
 import common.exceptions.NonExistentId;
 import common.exceptions.WrongCommandArgsException;
+import common.models.User;
 import server.managers.CollectionHistory;
 import server.managers.CollectionManager;
 
@@ -19,8 +20,18 @@ public abstract class ServerCommand extends AbstractCommand {
     protected CollectionHistory collectionHistory;
     protected LinkedList<ServerCommand> history;
 
+    protected User user;
+
     public ServerCommand(String name, String description, boolean withWorker, boolean onlyUsers) {
         super(name, description, withWorker, onlyUsers);
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setConsole(Console console) {

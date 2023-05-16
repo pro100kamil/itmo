@@ -7,6 +7,7 @@ import common.exceptions.UnavailableCommandException;
 import common.exceptions.WrongCommandArgsException;
 import server.commands.*;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.TreeMap;
@@ -38,7 +39,7 @@ public class CommandManager {
                 new History(), new FilterBySalary(),
                 new PrintDescending(),
                 new PrintFieldDescendingPosition(),
-                new Rollback(),
+//                new Rollback(),
                 new Auth(), new Register(), new Logout()
         };
 
@@ -59,7 +60,13 @@ public class CommandManager {
     }
 
     public static ServerCommand getServerCommandFromAbstractCommand(AbstractCommand command) {
-        ServerCommand serverCommand = strCommands.get(command.getName());
+        ServerCommand serverCommand;
+        //каждый раз создаём новый экземпляр
+        try {
+            serverCommand = strCommands.get(command.getName()).getClass().getDeclaredConstructor().newInstance();
+        } catch (InvocationTargetException | InstantiationException | IllegalAccessException | NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
         serverCommand.setArgs(command.getArgs());
         serverCommand.setWorker(command.getWorker());
 
@@ -94,7 +101,7 @@ public class CommandManager {
             UnavailableCommandException {
         //если команда только для зарегистрированных пользователей, а текущий пользователь не вошёл в аккаунт,
         //то не даём ему провести валидацию и выполнить команду
-        if (command.isOnlyUsers() && collectionManager.getUser() == null) {
+        if (command.isOnlyUsers() && command.getUser() == null) {
             throw new UnavailableCommandException();
         }
         command.setCollectionManager(collectionManager);

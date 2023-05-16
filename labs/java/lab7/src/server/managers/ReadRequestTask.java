@@ -28,9 +28,8 @@ public class ReadRequestTask extends RecursiveAction {
             //чтение
             Request request = (Request) server.getObject(socketChannel); //получаем запрос от клиента
 
-            commandManager.getCollectionManager().setUser(request.getUser());
-
-            logger.write("Получен запрос: " + request.getClass().getName());
+            logger.write("Получен запрос: " + request.getClass().getName() +
+                         ". От: " + request.getUser());
 
             //многопоточка 2
             HandlerRequestTask task = new HandlerRequestTask(request, server, socketChannel, commandManager);

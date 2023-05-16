@@ -28,8 +28,6 @@ public class HandlerRequestTask implements Runnable {
         //обработка (на основе запроса формируем ответ)
         Response response = new RequestHandler(commandManager).requestHandler(request);
 
-        response.setUser(commandManager.getCollectionManager().getUser());
-
         logger.write("Сформирован ответ на запрос: " + response.getClass().getName());
 
         //многопоточка 3

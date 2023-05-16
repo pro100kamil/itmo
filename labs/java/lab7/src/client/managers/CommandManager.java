@@ -50,7 +50,8 @@ public class CommandManager {
     public AbstractCommand getCommand(String strCommand) throws NoSuchCommandException,
             WrongCommandArgsException,
             NonExistentId,
-            EndInputException, EndInputWorkerException {
+            EndInputException, EndInputWorkerException,
+            UnavailableCommandException {
         String[] subsCommand = strCommand.split("\\s+");
         strCommand = subsCommand[0];
         String[] args = new String[subsCommand.length - 1];  //args = subsCommand[1:]
@@ -60,6 +61,11 @@ public class CommandManager {
             throw new NoSuchCommandException();
         }
         AbstractCommand command = strCommands.get(strCommand);
+
+        if (command.isOnlyUsers() && inputManager.getClientManager().getUser() == null) {
+            throw new UnavailableCommandException();
+        }
+
         if (command instanceof ClientCommand) {
             command.validateArgs(args);  //клиентская валидация
         }
@@ -68,6 +74,7 @@ public class CommandManager {
             if (console instanceof StandardConsole) {
                 int maxDepth = inputManager.getInteger("Введите максимальную глубину рекурсии: ", true);
                 ExecuteScript.setMaxDepth(maxDepth);
+                ((ExecuteScript) command).setClientManager(inputManager.getClientManager());
             }
         }
         command.setArgs(args);

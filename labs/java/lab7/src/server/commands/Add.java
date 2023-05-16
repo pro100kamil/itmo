@@ -19,17 +19,17 @@ public class Add extends ServerCommand {
         if (args.length != 0) {
             throw new WrongCommandArgsException();
         }
-        //валидация моделек
-        if (worker == null || !worker.validate()) {
-            throw new WrongModelsException();
-        }
     }
 
     @Override
     public void execute(String[] args) {
         try {
             validateArgs(args);
-            collectionManager.add(worker);
+            //валидация моделек
+            if (worker == null || !worker.validate()) {
+                throw new WrongModelsException();
+            }
+            collectionManager.add(worker, user);
         } catch (NotUniqueIdException | WrongCommandArgsException e) {
             console.write(e.toString());
         }

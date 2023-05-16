@@ -1,5 +1,6 @@
 package client.commands;
 
+import client.managers.ClientManager;
 import common.exceptions.WrongCommandArgsException;
 import client.managers.InputManager;
 import common.managers.ValidateManager;
@@ -12,6 +13,7 @@ import common.consoles.FileConsole;
  */
 public class ExecuteScript extends ClientCommand {
     private static int depth = 0, maxDepth = 5;
+    private ClientManager clientManager;
 
     public ExecuteScript() {
         super("execute_script", "выполняет команды из файла", false, true);
@@ -19,6 +21,14 @@ public class ExecuteScript extends ClientCommand {
 
     public static void setMaxDepth(int maxDepth) {
         ExecuteScript.maxDepth = maxDepth;
+    }
+
+    public ClientManager getClientManager() {
+        return clientManager;
+    }
+
+    public void setClientManager(ClientManager clientManager) {
+        this.clientManager = clientManager;
     }
 
     @Override
@@ -40,7 +50,7 @@ public class ExecuteScript extends ClientCommand {
             console.write("Начинаем обработку файла с командами");
             depth++;
             Console fileConsole = new FileConsole(fileName);
-            InputManager newInputManager = new InputManager(fileConsole);
+            InputManager newInputManager = new InputManager(fileConsole, clientManager);
             newInputManager.run();
             depth--;
         } catch (WrongCommandArgsException e) {

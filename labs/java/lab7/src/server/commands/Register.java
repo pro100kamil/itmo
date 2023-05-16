@@ -37,7 +37,7 @@ public class Register extends ServerCommand {
             User user = new User(args[0], args[1]);
             boolean success = authManager.register(user);
             if (success) {
-                collectionManager.setUser(user);
+                this.user = user;
                 System.out.println(user.getId());
                 console.write("Регистрация прошла успешно");
             }

@@ -31,6 +31,7 @@ public class RequestHandler {
         else if (request instanceof ValidationRequest) {
             ServerCommand command = CommandManager.getServerCommandFromAbstractCommand(
                     ((ValidationRequest) request).getCommand());
+            command.setUser(request.getUser());
             ValidationResponse response = new ValidationResponse();
             try {
                 commandManager.serverValidateCommand(command);
@@ -40,11 +41,13 @@ public class RequestHandler {
                 response.setStatus(false);
                 response.setErrorMessage(e.toString());
             }
+            response.setUser(command.getUser());
             return response;
         }
         else { // if (request instanceof CommandRequest)
             ServerCommand command = CommandManager.getServerCommandFromAbstractCommand(
                     ((CommandRequest) request).getCommand());
+            command.setUser(request.getUser());
             CommandResponse response = new CommandResponse();
             try {
                 commandManager.serverValidateCommand(command);
@@ -61,6 +64,7 @@ public class RequestHandler {
                 response.setStatus(false);
                 response.setErrorMessage(e.toString());
             }
+            response.setUser(command.getUser());
             return response;
         }
     }

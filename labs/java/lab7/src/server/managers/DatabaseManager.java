@@ -239,6 +239,8 @@ public class DatabaseManager {
         else statement.setString(6, worker.getStatus().toString());
 
         int person_id = addPerson(user, worker.getPerson());
+        worker.getPerson().setId(person_id);
+
         statement.setInt(7, person_id);
 
         statement.setString(8, user.getName());
@@ -252,7 +254,7 @@ public class DatabaseManager {
         return result.getInt(1);
     }
 
-    public void updatePerson(User user, Person person) throws SQLException {
+    public int updatePerson(User user, Person person) throws SQLException {
         Connection connection = getConnection();
         PreparedStatement statement = connection.prepareStatement(
                 "UPDATE persons SET birthday = ?, height = ?," +
@@ -270,11 +272,12 @@ public class DatabaseManager {
         statement.setInt(4, person.getId());
         statement.setInt(5, user.getId());
 
-        statement.execute();
+        int res = statement.executeUpdate();
         connection.close();
+        return res;
     }
 
-    public void updateWorker(User user, Worker worker) throws SQLException {
+    public int updateWorker(User user, Worker worker) throws SQLException {
         Connection connection = getConnection();
         PreparedStatement statement = connection.prepareStatement(
                 "UPDATE workers SET name = ?, x = ?, y = ?, salary = ?, " +
@@ -301,11 +304,12 @@ public class DatabaseManager {
         statement.setInt(8, worker.getId());
         statement.setInt(9, user.getId());
 
-        statement.execute();
+        int res = statement.executeUpdate();
         connection.close();
+        return res;
     }
 
-    public void clearWorkers(User user) throws SQLException {
+    public int clearWorkers(User user) throws SQLException {
         Connection connection = getConnection();
 
         PreparedStatement statement_workers = connection.prepareStatement(
@@ -318,20 +322,22 @@ public class DatabaseManager {
                 "DELETE FROM persons WHERE creator_id = ?"
         );
         statement_persons.setInt(1, user.getId());
-        statement_persons.executeUpdate();
+        int res = statement_persons.executeUpdate();
 
         connection.close();
+        return res;
     }
 
-    public void removeWorker(User user, Worker worker) throws SQLException {
+    public int removeWorker(User user, Worker worker) throws SQLException {
         Connection connection = getConnection();
 
         PreparedStatement statement_worker = connection.prepareStatement(
                 "DELETE FROM workers WHERE creator_id = ? AND id = ?"
         );
+
         statement_worker.setInt(1, user.getId());
         statement_worker.setInt(2, worker.getId());
-        statement_worker.executeUpdate();
+        int res = statement_worker.executeUpdate();
 
         PreparedStatement statement_person = connection.prepareStatement(
                 "DELETE FROM persons WHERE creator_id = ? AND id = ?"
@@ -341,6 +347,7 @@ public class DatabaseManager {
         statement_person.executeUpdate();
 
         connection.close();
+        return res;
     }
 
 
@@ -401,7 +408,7 @@ public class DatabaseManager {
                     x             INTEGER            NOT NULL,
                     y             INTEGER            NOT NULL,
                     creation_date TIMESTAMP DEFAULT NOW() NOT NULL,
-                    salary        FLOAT             NOT NULL
+                    salary        FLOAT
                         CONSTRAINT positive_salary CHECK (salary > 0),
                     pos      pos,
                     status        status,

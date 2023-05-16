@@ -29,7 +29,7 @@ public class Logout extends ServerCommand {
     public void execute(String[] args) {
         try {
             validateArgs(args);
-            collectionManager.setUser(null);
+            this.user = null;
             console.write("Вы вышли из аккаунта");
         } catch (WrongCommandArgsException e) {
             console.write(e.toString());

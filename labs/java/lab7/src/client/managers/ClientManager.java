@@ -61,7 +61,9 @@ public class ClientManager {
     public void writeUpdateCollectionRequest() throws IOException {
 //        writeRequest(new UpdateCollectionHistoryRequest());
         client.start();
-        client.writeObject(new UpdateCollectionHistoryRequest());
+        UpdateCollectionHistoryRequest request = new UpdateCollectionHistoryRequest();
+        request.setUser(user);
+        client.writeObject(request);
         client.close();
     }
 

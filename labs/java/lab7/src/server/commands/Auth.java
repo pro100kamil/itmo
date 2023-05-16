@@ -36,7 +36,7 @@ public class Auth extends ServerCommand {
             User user = new User(args[0], args[1]);
             boolean success = authManager.auth(user);;
             if (success) {
-                collectionManager.setUser(user);
+                this.user = user;
                 console.write("Вы вошли в свой аккаунт");
             }
             else {

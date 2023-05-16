@@ -21,20 +21,21 @@ public class Update extends ServerCommand {
         if (args.length != 1 || !ValidateManager.isInteger(args[0])) {
             throw new WrongCommandArgsException();
         }
-        if (!collectionManager.existsId(Integer.parseInt(args[0]))) {
+        if (collectionManager.existsId(Integer.parseInt(args[0]))) {
             throw new NonExistentId();
         }
-        //валидация моделек
-        if (worker == null || !worker.validate()) {
-            throw new WrongModelsException();
-        }
+        //валидация что юзер удаляет свой
     }
 
     @Override
     public void execute(String[] args) {
         try {
             validateArgs(args);
-            collectionManager.update(Integer.parseInt(args[0]), worker);
+            //валидация моделек
+            if (worker == null || !worker.validate()) {
+                throw new WrongModelsException();
+            }
+            collectionManager.update(Integer.parseInt(args[0]), worker, user);
         } catch (WrongCommandArgsException | NonExistentId e) {
             console.write(e.toString());
         }

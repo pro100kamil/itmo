@@ -18,11 +18,17 @@ import java.util.NoSuchElementException;
  */
 public class InputManager {
     private final Console console;
+    private final ClientManager clientManager;
 
     private static final String stopWorkerInput = "EXIT";  //слово, при котором обрывается ввод работника
 
-    public InputManager(Console console) {
+    public InputManager(Console console, ClientManager clientManager) {
         this.console = console;
+        this.clientManager = clientManager;
+    }
+
+    public ClientManager getClientManager() {
+        return clientManager;
     }
 
     public Console getConsole() {
@@ -243,7 +249,6 @@ public class InputManager {
      * Запускает интерактивный режим (ввод команд)
      */
     public void run() {
-        ClientManager clientManager = new ClientManager();
         AbstractCommand[] serverCommands = {};
         CommandManager commandManager = new CommandManager(this, serverCommands);
         while (console.hasNext()) {
@@ -265,11 +270,6 @@ public class InputManager {
                 }
 
                 AbstractCommand command = commandManager.getCommand(strCommand);
-
-                if (command.isOnlyUsers() && clientManager.getUser() == null) {
-                    System.out.println("no root");
-                    throw new UnavailableCommandException();
-                }
 
                 if (command instanceof ClientCommand) { //наследники ClientCommand выполняются на стороне клиента
                     if (command instanceof UserInfo) {

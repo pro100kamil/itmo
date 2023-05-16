@@ -20,7 +20,7 @@ public class Remove extends ServerCommand {
         if (args.length != 1 || !ValidateManager.isInteger(args[0])) {
             throw new WrongCommandArgsException();
         }
-        if (!collectionManager.existsId(Integer.parseInt(args[0]))) {
+        if (collectionManager.existsId(Integer.parseInt(args[0]))) {
             throw new NonExistentId();
         }
     }
@@ -29,7 +29,7 @@ public class Remove extends ServerCommand {
     public void execute(String[] args) {
         try {
             validateArgs(args);
-            collectionManager.remove(Integer.parseInt(args[0]));
+            collectionManager.remove(Integer.parseInt(args[0]), user);
         } catch (WrongCommandArgsException | NonExistentId e) {
             console.write(e.toString());
         }

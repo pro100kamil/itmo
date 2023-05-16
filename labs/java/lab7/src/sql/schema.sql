@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS workers
     x             INTEGER            NOT NULL,
     y             INTEGER            NOT NULL,
     creation_date TIMESTAMP DEFAULT NOW() NOT NULL,
-    salary        FLOAT             NOT NULL
+    salary        FLOAT
         CONSTRAINT positive_salary CHECK (salary > 0),
     pos      pos,
     status        status,
