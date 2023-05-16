@@ -1,6 +1,7 @@
 package common.commands;
 
 import common.exceptions.NonExistentId;
+import common.exceptions.UnavailableModelException;
 import common.exceptions.WrongCommandArgsException;
 import common.models.Worker;
 
@@ -67,7 +68,7 @@ public class AbstractCommand implements Serializable {
      *
      * @param args - аргументы команды
      */
-    public void validateArgs(String[] args) throws WrongCommandArgsException, NonExistentId {
+    public void validateArgs(String[] args) throws WrongCommandArgsException, NonExistentId, UnavailableModelException {
 
     };
 

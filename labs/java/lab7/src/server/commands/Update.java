@@ -1,9 +1,11 @@
 package server.commands;
 
 import common.exceptions.NonExistentId;
+import common.exceptions.UnavailableModelException;
 import common.exceptions.WrongCommandArgsException;
 import common.exceptions.WrongModelsException;
 import common.managers.ValidateManager;
+import common.models.Worker;
 
 /**
  * Команда update.
@@ -17,14 +19,17 @@ public class Update extends ServerCommand {
     }
 
     @Override
-    public void validateArgs(String[] args) throws NonExistentId, WrongCommandArgsException {
+    public void validateArgs(String[] args) throws NonExistentId, WrongCommandArgsException, UnavailableModelException {
         if (args.length != 1 || !ValidateManager.isInteger(args[0])) {
             throw new WrongCommandArgsException();
         }
-        if (collectionManager.existsId(Integer.parseInt(args[0]))) {
+        if (!collectionManager.existsId(Integer.parseInt(args[0]))) {
             throw new NonExistentId();
         }
-        //валидация что юзер удаляет свой
+        Worker oldWorker = collectionManager.getWorkerById(Integer.parseInt(args[0]));
+        if (oldWorker.getCreatorId() != user.getId()) { //если у модельки другой создатель
+            throw new UnavailableModelException();
+        }
     }
 
     @Override
@@ -36,7 +41,7 @@ public class Update extends ServerCommand {
                 throw new WrongModelsException();
             }
             collectionManager.update(Integer.parseInt(args[0]), worker, user);
-        } catch (WrongCommandArgsException | NonExistentId e) {
+        } catch (WrongCommandArgsException | NonExistentId | UnavailableModelException e) {
             console.write(e.toString());
         }
     }

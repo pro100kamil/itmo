@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": 2,
+    "name": "5",
+    "coordinates": {
+      "x": 5,
+      "y": 5
+    },
+    "creationDate": "2023-05-16T00:15:39.382578",
+    "salary": 5.0,
+    "person": {
+      "id": 2,
+      "height": 5.0,
+      "creatorId": 1
+    },
+    "creatorId": 1
+  }
+]

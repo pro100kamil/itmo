@@ -4,6 +4,7 @@ import common.commands.AbstractCommand;
 import common.consoles.StringConsole;
 import common.exceptions.NonExistentId;
 import common.exceptions.UnavailableCommandException;
+import common.exceptions.UnavailableModelException;
 import common.exceptions.WrongCommandArgsException;
 import server.commands.*;
 
@@ -98,7 +99,7 @@ public class CommandManager {
      * @param command - конкретная команда
      */
     public void serverValidateCommand(ServerCommand command) throws NonExistentId, WrongCommandArgsException,
-            UnavailableCommandException {
+            UnavailableCommandException, UnavailableModelException {
         //если команда только для зарегистрированных пользователей, а текущий пользователь не вошёл в аккаунт,
         //то не даём ему провести валидацию и выполнить команду
         if (command.isOnlyUsers() && command.getUser() == null) {

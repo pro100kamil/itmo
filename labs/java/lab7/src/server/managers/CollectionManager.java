@@ -155,8 +155,17 @@ public class CollectionManager {
             logger.writeError("Очистить коллекцию не получилось: " + e);
             return;
         }
-        idWorkerFromCollection.clear();
-        linkedList.clear();
+        //не всё удалять
+        for (Integer id : (new TreeMap<>(idWorkerFromCollection)).keySet()) {
+            Worker worker = idWorkerFromCollection.get(id);
+            if (worker.getCreatorId() == user.getId()) {
+                linkedList.remove(worker);
+                idWorkerFromCollection.remove(id);
+            }
+        }
+
+//        idWorkerFromCollection.clear();
+//        linkedList.clear();
     }
 
     /**
@@ -205,7 +214,7 @@ public class CollectionManager {
     }
 
     public boolean existsId(int id) {
-        return !idWorkerFromCollection.containsKey(id);
+        return idWorkerFromCollection.containsKey(id);
     }
 
     /**
@@ -239,6 +248,10 @@ public class CollectionManager {
      */
     public LinkedList<Worker> getLinkedList() {
         return linkedList;
+    }
+
+    public Worker getWorkerById(int id) {
+        return idWorkerFromCollection.get(id);
     }
 
     /**

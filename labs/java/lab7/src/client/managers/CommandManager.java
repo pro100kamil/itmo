@@ -51,7 +51,7 @@ public class CommandManager {
             WrongCommandArgsException,
             NonExistentId,
             EndInputException, EndInputWorkerException,
-            UnavailableCommandException {
+            UnavailableCommandException, UnavailableModelException {
         String[] subsCommand = strCommand.split("\\s+");
         strCommand = subsCommand[0];
         String[] args = new String[subsCommand.length - 1];  //args = subsCommand[1:]

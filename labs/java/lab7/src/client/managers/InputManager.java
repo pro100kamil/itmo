@@ -284,7 +284,7 @@ public class InputManager {
                     clientManager.commandHandler(this, command);
                 }
             } catch (NoSuchCommandException | WrongCommandArgsException | NonExistentId
-                     | UnavailableCommandException e) {
+                     | UnavailableCommandException | UnavailableModelException e) {
                 console.write(e.toString());
             } catch (NoSuchElementException | EndInputException | EndInputWorkerException e) {
                 console.write("");

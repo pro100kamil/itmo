@@ -1,9 +1,13 @@
-package server.managers;
+package server.managers.tasks;
 
 import common.loggers.Logger;
 import common.loggers.StandardLogger;
 import common.network.requests.Request;
 import common.network.responses.Response;
+import server.managers.CommandManager;
+import server.managers.RequestHandler;
+import server.managers.Server;
+import server.managers.tasks.WriteResponseTask;
 
 import java.nio.channels.SocketChannel;
 import java.util.concurrent.ExecutorService;

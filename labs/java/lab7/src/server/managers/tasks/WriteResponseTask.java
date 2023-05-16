@@ -1,9 +1,10 @@
-package server.managers;
+package server.managers.tasks;
 
 import common.loggers.Logger;
 import common.loggers.StandardLogger;
 import common.network.responses.Response;
 import common.network.responses.UpdateCollectionHistoryResponse;
+import server.managers.Server;
 
 import java.io.IOException;
 import java.nio.channels.SocketChannel;
