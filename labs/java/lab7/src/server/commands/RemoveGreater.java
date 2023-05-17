@@ -28,7 +28,7 @@ public class RemoveGreater extends ServerCommand {
             if (worker == null || !worker.validate()) {
                 throw new WrongModelsException();
             }
-            collectionManager.removeGreater(worker);
+            collectionManager.removeGreater(worker, user);
         } catch (WrongCommandArgsException e) {
             console.write(e.toString());
         }

@@ -167,10 +167,10 @@ public class BlockingCollectionManager extends CollectionManager {
      *
      * @param worker заданный работник
      */
-    public void removeGreater(Worker worker) {
+    public void removeGreater(Worker worker, User user) {
         lock.lock();
         try {
-            super.removeGreater(worker);
+            super.removeGreater(worker, user);
         } finally {
             lock.unlock();
         }

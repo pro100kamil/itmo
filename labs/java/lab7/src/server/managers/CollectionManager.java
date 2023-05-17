@@ -125,8 +125,8 @@ public class CollectionManager {
      * @param id работника
      */
     public void remove(int id, User user) {
-        if (!idWorkerFromCollection.containsKey(id)) { //если нет пользователя с таким id
-            console.write("Нет пользователя с таким id!");
+        if (!idWorkerFromCollection.containsKey(id)) { //если нет работника с таким id
+            console.write("Нет работника с таким id!");
             return;
         }
         try {
@@ -163,9 +163,6 @@ public class CollectionManager {
                 idWorkerFromCollection.remove(id);
             }
         }
-
-//        idWorkerFromCollection.clear();
-//        linkedList.clear();
     }
 
     /**
@@ -222,12 +219,13 @@ public class CollectionManager {
      *
      * @param worker заданный работник
      */
-    public void removeGreater(Worker worker) {
+    public void removeGreater(Worker worker, User user) {
         for (Worker other : new LinkedList<>(linkedList)) {
-            //other > worker => удаляем other
-            if (other.compareTo(worker) > 0) {
-                idWorkerFromCollection.remove(other.getId());
-                linkedList.remove(other);
+            //other > worker и other принадлежит текущему юзеру => удаляем other
+            if (other.getCreatorId() == user.getId() && other.compareTo(worker) > 0) {
+                remove(other.getId(), user);
+//                idWorkerFromCollection.remove(other.getId());
+//                linkedList.remove(other);
             }
         }
     }
