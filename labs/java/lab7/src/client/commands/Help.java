@@ -1,6 +1,6 @@
 package client.commands;
 
-import common.commands.AbstractCommand;
+import common.commands.CommandDescription;
 import common.exceptions.WrongCommandArgsException;
 
 import java.util.Arrays;
@@ -10,13 +10,13 @@ import java.util.Arrays;
  * Выводит описание команд.
  */
 public class Help extends ClientCommand {
-    private AbstractCommand[] commands;
+    private CommandDescription[] commands;
 
     public Help() {
         super("help", "выводит полную информацию о командах", false, false);
     }
 
-    public void setCommands(AbstractCommand[] commands) {
+    public void setCommands(CommandDescription[] commands) {
         this.commands = commands;
     }
 

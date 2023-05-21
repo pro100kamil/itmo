@@ -1,23 +1,18 @@
 package common.network.responses;
 
-import common.commands.AbstractCommand;
+import common.commands.CommandDescription;
 
 /**
  * Ответ на запрос о получении всех команд
  */
 public class GetAllCommandsResponse extends Response {
-    private final AbstractCommand[] commands;
+    private final CommandDescription[] commands;
 
-    public GetAllCommandsResponse(AbstractCommand[] commands) {
+    public GetAllCommandsResponse(CommandDescription[] commands) {
         this.commands = commands;
-//        ArrayList<AbstractCommand> tmp = new ArrayList<>();
-//        for ()
-//        this.commands = Arrays.stream(commands)
-//                .map(command -> new AbstractCommand(command.getName(), command.getDescription()))
-//                .toArray(AbstractCommand[]::new);
     }
 
-    public AbstractCommand[] getCommands() {
+    public CommandDescription[] getCommands() {
         return commands;
     }
 }

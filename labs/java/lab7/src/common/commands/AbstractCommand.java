@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * Класс абстрактной команды. Тут содержится общие поля и методы для серверных и клиентских команд
  */
-public class AbstractCommand implements Serializable {
+public abstract class AbstractCommand implements Serializable {
     protected String name; //название команды
     protected String description;  //описание команды
 
@@ -68,9 +68,8 @@ public class AbstractCommand implements Serializable {
      *
      * @param args - аргументы команды
      */
-    public void validateArgs(String[] args) throws WrongCommandArgsException, NonExistentId, UnavailableModelException {
-
-    };
+    public abstract void validateArgs(String[] args) throws WrongCommandArgsException,
+            NonExistentId, UnavailableModelException;
 
     @Override
     public String toString() {

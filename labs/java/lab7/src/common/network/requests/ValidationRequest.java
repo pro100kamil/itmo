@@ -1,18 +1,19 @@
 package common.network.requests;
 
 import common.commands.AbstractCommand;
+import common.commands.CommandDescription;
 
 /**
  * Запрос на валидацию аргументов команды
  */
 public class ValidationRequest extends Request{
-    private final AbstractCommand command;
+    private final CommandDescription command;
 
-    public ValidationRequest(AbstractCommand command) {
+    public ValidationRequest(CommandDescription command) {
         this.command = command;
     }
 
-    public AbstractCommand getCommand() {
+    public CommandDescription getCommand() {
         return command;
     }
 }

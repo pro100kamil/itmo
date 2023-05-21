@@ -21,7 +21,10 @@ public class RequestHandler {
 
     public Response requestHandler(Request request) {
         if (request instanceof GetAllCommandsRequest) {
-            return new GetAllCommandsResponse(CommandManager.getAbstractCommands());
+            if (request.getUser() == null)
+                return new GetAllCommandsResponse(commandManager.getCommandDescriptionsForUnauthorizedUser());
+            else
+                return new GetAllCommandsResponse(commandManager.getCommandDescriptions());
         }
         else if (request instanceof UpdateCollectionHistoryRequest) {
             UpdateCollectionHistoryResponse response = new UpdateCollectionHistoryResponse();
@@ -30,7 +33,7 @@ public class RequestHandler {
         }
 
         else if (request instanceof ValidationRequest) {
-            ServerCommand command = CommandManager.getServerCommandFromAbstractCommand(
+            ServerCommand command = commandManager.getServerCommandFromCommandDescription(
                     ((ValidationRequest) request).getCommand());
             command.setUser(request.getUser());
             ValidationResponse response = new ValidationResponse();
@@ -47,7 +50,7 @@ public class RequestHandler {
             return response;
         }
         else { // if (request instanceof CommandRequest)
-            ServerCommand command = CommandManager.getServerCommandFromAbstractCommand(
+            ServerCommand command = commandManager.getServerCommandFromCommandDescription(
                     ((CommandRequest) request).getCommand());
             command.setUser(request.getUser());
             CommandResponse response = new CommandResponse();

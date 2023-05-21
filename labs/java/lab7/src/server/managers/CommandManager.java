@@ -1,6 +1,7 @@
 package server.managers;
 
-import common.commands.AbstractCommand;
+import common.commands.CommandDescription;
+import common.commands.ServerCommandDescription;
 import common.consoles.StringConsole;
 import common.exceptions.NonExistentId;
 import common.exceptions.UnavailableCommandException;
@@ -19,53 +20,66 @@ import java.util.TreeMap;
  * Занимается запуском команды, серверной валидацией сохранением истории.
  */
 public class CommandManager {
-    private static ServerCommand[] serverCommands;
+    private final ServerCommand[] serverCommands;
 
-    private final static TreeMap<String, ServerCommand> strCommands = new TreeMap<>();
+    private final TreeMap<String, ServerCommand> strToCommands = new TreeMap<>();
     //название команды, объект класса этой команды
 
     private final CollectionManager collectionManager;
     private final CollectionHistory collectionHistory;
     private final LinkedList<ServerCommand> history = new LinkedList<>();
+    //история команд общая для всех пользователей
 
     public CommandManager(CollectionManager collectionManager,
                           CollectionHistory collectionHistory) {
         this.collectionManager = collectionManager;
         this.collectionHistory = collectionHistory;
 
-        CommandManager.serverCommands = new ServerCommand[]{new Info(),
+        serverCommands = new ServerCommand[]{new Info(),
                 new Show(), new Add(),
                 new Update(), new Remove(), new Clear(),
                 new Head(), new RemoveGreater(),
                 new History(), new FilterBySalary(),
                 new PrintDescending(),
                 new PrintFieldDescendingPosition(),
-//                new Rollback(),
+                new Rollback(),
                 new Auth(), new Register(), new Logout()
         };
 
         for (ServerCommand command : serverCommands) {
-            strCommands.put(command.getName(), command);
+            strToCommands.put(command.getName(), command);
         }
     }
 
-    public static AbstractCommand[] getServerCommands() {
-        return serverCommands;
-    }
-
-    public static AbstractCommand[] getAbstractCommands() {
+    /**
+     * Получает описания всех серверных команд
+     *
+     * @return CommandDescription[] - массив описаний всех серверных команд
+     */
+    public CommandDescription[] getCommandDescriptions() {
         return Arrays.stream(serverCommands)
-                .map(command -> new AbstractCommand(command.getName(),
-                        command.getDescription(), command.isWithWorker(), command.isOnlyUsers()))
-                .toArray(AbstractCommand[]::new);
+                .map(ServerCommandDescription::new)
+                .toArray(CommandDescription[]::new);
     }
 
-    public static ServerCommand getServerCommandFromAbstractCommand(AbstractCommand command) {
+    /**
+     * Получает описания серверных команд, которые доступны неавторизованному пользователю
+     *
+     * @return CommandDescription[] - массив описаний серверных команд
+     */
+    public CommandDescription[] getCommandDescriptionsForUnauthorizedUser() {
+        return Arrays.stream(serverCommands).filter(command -> !command.isOnlyUsers())
+                .map(ServerCommandDescription::new)
+                .toArray(CommandDescription[]::new);
+    }
+
+    public ServerCommand getServerCommandFromCommandDescription(CommandDescription command) {
         ServerCommand serverCommand;
         //каждый раз создаём новый экземпляр
         try {
-            serverCommand = strCommands.get(command.getName()).getClass().getDeclaredConstructor().newInstance();
-        } catch (InvocationTargetException | InstantiationException | IllegalAccessException | NoSuchMethodException e) {
+            serverCommand = strToCommands.get(command.getName()).getClass().getDeclaredConstructor().newInstance();
+        } catch (InvocationTargetException | InstantiationException | IllegalAccessException |
+                 NoSuchMethodException e) {
             throw new RuntimeException(e);
         }
         serverCommand.setArgs(command.getArgs());

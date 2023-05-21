@@ -1,8 +1,9 @@
 package client.managers;
 
 import client.commands.UserInfo;
-import common.commands.AbstractCommand;
 import client.commands.ClientCommand;
+import common.commands.ClientCommandDescription;
+import common.commands.CommandDescription;
 import common.consoles.Console;
 import common.exceptions.*;
 import common.managers.ValidateManager;
@@ -249,39 +250,31 @@ public class InputManager {
      * Запускает интерактивный режим (ввод команд)
      */
     public void run() {
-        AbstractCommand[] serverCommands = {};
-        CommandManager commandManager = new CommandManager(this, serverCommands);
+        CommandDescription[] serverCommands;
+        CommandManager commandManager = new CommandManager(this);
         while (console.hasNext()) {
             String text = "Введите команду (help - чтобы узнать команды):";
             console.write(text);
-//            writeSeparator();
             try {
                 String strCommand = console.getNextStr();
 
-                //получаем все команды из сервера
+                //получаем все команды от сервера
                 try {
                     serverCommands = clientManager.getAllCommands();
                     commandManager.setCommands(serverCommands);
                 } catch (IOException | ClassNotFoundException e) {
-//                    console.write(e.toString());
                     console.write("Подключиться к серверу не получилось");
                     writeSeparator();
                     continue;
                 }
 
-                AbstractCommand command = commandManager.getCommand(strCommand);
+                CommandDescription commandDescription = commandManager.getCommandDescription(strCommand);
 
-                if (command instanceof ClientCommand) { //наследники ClientCommand выполняются на стороне клиента
-                    if (command instanceof UserInfo) {
-                        ((UserInfo) command).setUser(clientManager.getUser());
-                    }
-                    ((ClientCommand) command).setConsole(console);
-                    ((ClientCommand) command).execute(command.getArgs());
-
-                    //обновляем историю состояний коллекции
-                    clientManager.writeUpdateCollectionRequest();
+                if (commandDescription instanceof ClientCommandDescription) {
+                    //наследники ClientCommand выполняются на стороне клиента
+                    commandManager.executeCommand((ClientCommandDescription) commandDescription);
                 } else {  //остальные на сервере
-                    clientManager.commandHandler(this, command);
+                    clientManager.commandHandler(this, commandDescription);
                 }
             } catch (NoSuchCommandException | WrongCommandArgsException | NonExistentId
                      | UnavailableCommandException | UnavailableModelException e) {

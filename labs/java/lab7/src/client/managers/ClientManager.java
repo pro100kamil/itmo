@@ -1,7 +1,7 @@
 package client.managers;
 
 import client.Configuration;
-import common.commands.AbstractCommand;
+import common.commands.CommandDescription;
 import common.consoles.Console;
 import common.consoles.StandardConsole;
 import common.exceptions.EndInputException;
@@ -33,7 +33,7 @@ public class ClientManager {
         return user;
     }
 
-    public AbstractCommand[] getAllCommands() throws IOException, ClassNotFoundException {
+    public CommandDescription[] getAllCommands() throws IOException, ClassNotFoundException {
         client.start();
         writeGetAllCommandsRequest();
         GetAllCommandsResponse response = (GetAllCommandsResponse) client.getObject();
@@ -50,11 +50,11 @@ public class ClientManager {
         writeRequest(new GetAllCommandsRequest());
     }
 
-    public void writeValidationRequest(AbstractCommand command) throws IOException {
+    public void writeValidationRequest(CommandDescription command) throws IOException {
         writeRequest(new ValidationRequest(command));
     }
 
-    public void writeCommandRequest(AbstractCommand command) throws IOException {
+    public void writeCommandRequest(CommandDescription command) throws IOException {
         writeRequest(new CommandRequest(command));
     }
 
@@ -67,7 +67,7 @@ public class ClientManager {
         client.close();
     }
 
-    public void commandHandler(InputManager inputManager, AbstractCommand command) throws IOException,
+    public void commandHandler(InputManager inputManager, CommandDescription command) throws IOException,
             ClassNotFoundException, ClassCastException {
         client.start();
         writeValidationRequest(command);  //отправляем запрос на валидацию

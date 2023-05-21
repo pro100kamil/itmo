@@ -1,2 +1,4 @@
+ssh -p 2222 s367149@helios.cs.ifmo.ru
+
 java -jar client_jar/client.jar
 java -jar server_jar/server.jar

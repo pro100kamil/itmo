@@ -1,17 +1,17 @@
 package common.network.requests;
 
-import common.commands.AbstractCommand;
+import common.commands.CommandDescription;
 
 /**
  * Запрос на выполнение команды
  */
 public class CommandRequest extends Request {
-    private final AbstractCommand command;
-    public CommandRequest(AbstractCommand abstractCommand) {
+    private final CommandDescription command;
+    public CommandRequest(CommandDescription abstractCommand) {
         this.command = abstractCommand;
     }
 
-    public AbstractCommand getCommand() {
+    public CommandDescription getCommand() {
         return command;
     }
 }

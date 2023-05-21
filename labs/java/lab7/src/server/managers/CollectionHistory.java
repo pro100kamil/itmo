@@ -11,9 +11,6 @@ import java.util.TreeMap;
  * Класс, который работает с разными состояниями коллекции.
  */
 public class CollectionHistory {
-    //файл, где хранится текущее состояние коллекции
-    private static String dataFileName = Configuration.getStartFileName();
-
     private static final String fileName = Configuration.getHistoryFileName();
     //файл, где хранятся данные о состояниях коллекции
 
@@ -34,10 +31,6 @@ public class CollectionHistory {
 
     public static String getFileName() {
         return fileName;
-    }
-
-    public static void setDataFileName(String newDataFileName) {
-        dataFileName = newDataFileName;
     }
 
     /**
@@ -96,8 +89,5 @@ public class CollectionHistory {
      */
     public void save(TreeMap<String, LinkedList<Worker>> stepCollection) {
         FileManager.writeTextToFile(fileName, JsonManager.getStrJsonFromStepCollection(stepCollection));
-        if (getStepCollection().size() > 0) {
-            FileManager.writeTextToFile(dataFileName, JsonManager.getStrJsonFromLinkedListWorker(getCurState()));
-        }
     }
 }

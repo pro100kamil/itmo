@@ -2,11 +2,16 @@ package client.managers;
 
 import client.commands.*;
 import common.commands.AbstractCommand;
+import common.commands.ClientCommandDescription;
+import common.commands.CommandDescription;
 import common.consoles.Console;
 import common.consoles.StandardConsole;
 import common.exceptions.*;
 
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 /**
  * Реализация класса CommandManager для клиентской части.
@@ -16,28 +21,36 @@ public class CommandManager {
     private final InputManager inputManager;
     private final Console console;
     private static final Help help = new Help();
-    private static final AbstractCommand[] clientCommands = {new Exit(),
+    private final ClientCommand[] clientCommands = {new Exit(),
             new ExecuteScript(),
             new UserInfo(),
             help};
-    private final TreeMap<String, AbstractCommand> strCommands = new TreeMap<>();
-    //название команды, объект класса этой команды
 
-    public CommandManager(InputManager inputManager, AbstractCommand[] allCommands) {
+    private final TreeMap<String, ClientCommand> strToClientCommand = new TreeMap<>(
+            Arrays.stream(clientCommands).collect(Collectors.toMap(ClientCommand::getName, command -> command)));
+
+    private final TreeMap<String, CommandDescription> strToCommandDescription = new TreeMap<>();
+    //название команды: объект класса обёртки этой команды
+
+    public CommandManager(InputManager inputManager) {
         this.inputManager = inputManager;
         console = inputManager.getConsole();
-        setCommands(allCommands);
+
+        for (AbstractCommand command : clientCommands) {
+            strToCommandDescription.put(command.getName(), new ClientCommandDescription(command));
+        }
+        help.setCommands(strToCommandDescription.values().toArray(new CommandDescription[0]));
     }
 
-    public void setCommands(AbstractCommand[] serverCommands) {
-        strCommands.clear();
-        for (AbstractCommand command : serverCommands) {
-            strCommands.put(command.getName(), command);
+    public void setCommands(CommandDescription[] serverCommandDescriptions) {
+        strToCommandDescription.clear();
+        for (CommandDescription command : serverCommandDescriptions) {
+            strToCommandDescription.put(command.getName(), command);
         }
         for (AbstractCommand command : clientCommands) {
-            strCommands.put(command.getName(), command);
+            strToCommandDescription.put(command.getName(), new ClientCommandDescription(command));
         }
-        help.setCommands(strCommands.values().toArray(new AbstractCommand[0]));
+        help.setCommands(strToCommandDescription.values().toArray(new CommandDescription[0]));
     }
 
     /**
@@ -45,9 +58,9 @@ public class CommandManager {
      * Если аргументы команды некорректные - бросаются соответствующие исключения.
      *
      * @param strCommand - строка с командой (команда с аргументами)
-     * @return AbstractCommand - корректная команда (строковые аргументы команды внутри)
+     * @return CommandDescription - корректная команда (строковые аргументы команды внутри)
      */
-    public AbstractCommand getCommand(String strCommand) throws NoSuchCommandException,
+    public CommandDescription getCommandDescription(String strCommand) throws NoSuchCommandException,
             WrongCommandArgsException,
             NonExistentId,
             EndInputException, EndInputWorkerException,
@@ -57,27 +70,48 @@ public class CommandManager {
         String[] args = new String[subsCommand.length - 1];  //args = subsCommand[1:]
         System.arraycopy(subsCommand, 1, args, 0, subsCommand.length - 1);
 
-        if (!strCommands.containsKey(strCommand)) { //если нет такой команды
+        if (!strToCommandDescription.containsKey(strCommand)) { //если нет такой команды
             throw new NoSuchCommandException();
         }
-        AbstractCommand command = strCommands.get(strCommand);
+        CommandDescription commandDescription = strToCommandDescription.get(strCommand);
 
-        if (command.isOnlyUsers() && inputManager.getClientManager().getUser() == null) {
+        if (commandDescription.isOnlyUsers() && inputManager.getClientManager().getUser() == null) {
             throw new UnavailableCommandException();
         }
 
-        if (command instanceof ClientCommand) {
+        if (commandDescription instanceof ClientCommandDescription) {
+            ClientCommand command = strToClientCommand.get(commandDescription.getName());
             command.validateArgs(args);  //клиентская валидация
-        }
-        if (command instanceof ExecuteScript) {
-            //макс глубина рекурсии спрашивается только тогда, когда мы работаем со стандартным вводом
-            if (console instanceof StandardConsole) {
-                int maxDepth = inputManager.getInteger("Введите максимальную глубину рекурсии: ", true);
-                ExecuteScript.setMaxDepth(maxDepth);
-                ((ExecuteScript) command).setClientManager(inputManager.getClientManager());
+
+            if (command instanceof ExecuteScript) {
+                //макс глубина рекурсии спрашивается только тогда, когда мы работаем со стандартным вводом
+                if (console instanceof StandardConsole) {
+                    int maxDepth = inputManager.getInteger("Введите максимальную глубину рекурсии: ", true);
+                    ExecuteScript.setMaxDepth(maxDepth);
+                    ((ExecuteScript) command).setClientManager(inputManager.getClientManager());
+                }
             }
         }
-        command.setArgs(args);
-        return command;
+
+        commandDescription.setArgs(args);
+        return commandDescription;
+    }
+
+    /**
+     * Выполняет клиентскую команду (аргументы уже хранятся внутри описания команды)
+     *
+     * @param commandDescription - описание клиентской команды
+     */
+    public void executeCommand(ClientCommandDescription commandDescription) throws IOException {
+        ClientCommand command = strToClientCommand.get(commandDescription.getName());
+        command.setArgs(commandDescription.getArgs());
+        if (command instanceof UserInfo) {
+            ((UserInfo) command).setUser(inputManager.getClientManager().getUser());
+        }
+        command.setConsole(console);
+        command.execute(command.getArgs());
+
+        //обновляем историю состояний коллекции
+        inputManager.getClientManager().writeUpdateCollectionRequest();
     }
 }

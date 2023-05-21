@@ -67,7 +67,7 @@ public class JsonManager {
     }
 
     /**
-     * Получает из связанный список работников из json-строки
+     * Получает связанный список работников из json-строки
      */
     public static TreeMap<String, LinkedList<Worker>> getStepCollectionFromStrJson(String json) {
         try {

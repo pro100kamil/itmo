@@ -53,7 +53,7 @@ public class ServerManager {
         CollectionManager collectionManager = new BlockingCollectionManager(databaseManager, startWorkers);
 
         CollectionHistory collectionHistory = new CollectionHistory();
-        CollectionHistory.setDataFileName(dataFileName);
+//        CollectionHistory.setDataFileName(dataFileName);
         collectionHistory.setStart(startWorkers);
 
         commandManager = new CommandManager(collectionManager, collectionHistory);
