@@ -8,6 +8,7 @@ import common.models.Worker;
 import common.exceptions.NotUniqueIdException;
 import common.consoles.Console;
 import common.consoles.StandardConsole;
+import server.managers.databaseManagers.WorkerDatabaseManager;
 
 import java.sql.SQLException;
 import java.util.Comparator;
@@ -24,14 +25,14 @@ import java.util.stream.Collectors;
 public class CollectionManager {
     private Console console = new StandardConsole();
     private final Logger logger = new StandardLogger();
-    private final DatabaseManager databaseManager;
+    private final WorkerDatabaseManager databaseManager;
     private LinkedList<Worker> linkedList;
     private final TreeMap<Integer, Worker> idWorkerFromCollection = new TreeMap<>();
     private final LocalDateTime creationDate;
 
     private final Lock lock = new ReentrantLock();
 
-    protected CollectionManager(DatabaseManager databaseManager) {
+    protected CollectionManager(WorkerDatabaseManager databaseManager) {
         this.databaseManager = databaseManager;
         creationDate = LocalDateTime.now();
         linkedList = new LinkedList<>();

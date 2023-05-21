@@ -4,6 +4,7 @@ import common.loggers.Logger;
 import common.loggers.StandardLogger;
 import common.models.Worker;
 import server.Configuration;
+import server.managers.databaseManagers.WorkerDatabaseManager;
 import server.managers.tasks.ReadRequestTask;
 
 import java.io.IOException;
@@ -27,7 +28,7 @@ public class ServerManager {
         server = new Server(Configuration.getHost(), Configuration.getPort());
         String dataFileName = Configuration.getStartFileName();
 
-        DatabaseManager databaseManager = new DatabaseManager(Configuration.getDbUrl(),
+        WorkerDatabaseManager databaseManager = new WorkerDatabaseManager(Configuration.getDbUrl(),
                 Configuration.getDbLogin(),
                 Configuration.getDbPass());  //pgpass
         LinkedList<Worker> startWorkers = null;

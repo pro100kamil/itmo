@@ -1,4 +1,4 @@
-package server.managers;
+package server.managers.databaseManagers;
 
 import common.models.*;
 
@@ -11,128 +11,15 @@ import java.util.Map;
 /**
  * Класс для взаимодействий с базой данных.
  */
-public class DatabaseManager {
-    private final String url;
-    private final String login;
-    private final String password;
+public class WorkerDatabaseManager {
+    ConnectionManager connectionManager;
 
-    public DatabaseManager(String url, String login, String password) {
-        this.url = url;
-        this.login = login;
-        this.password = password;
+    public WorkerDatabaseManager(String url, String login, String password) {
+        connectionManager = new ConnectionManager(url, login, password);
     }
 
     Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(url, login, password);
-    }
-
-    /**
-     * Проверяет, есть ли пользователь с таким именем
-     *
-     * @param name - имя пользователя, которое проверяем
-     * @return - true - есть, false - нет
-     */
-    public boolean checkUserName(String name) throws SQLException {
-        Connection connection = getConnection();
-        PreparedStatement statement = connection.prepareStatement(
-                "SELECT * FROM users WHERE name = ?");
-
-        statement.setString(1, name);
-
-        ResultSet result = statement.executeQuery();
-
-        connection.close();
-
-        return result.next();
-    }
-
-    /**
-     * Проверяет, есть ли пользователь с таким именем и паролем
-     *
-     * @param name - имя пользователя, которое проверяем
-     * @param password - пароль пользователя, который проверяем
-     * @return - true - есть (авторизация прошла успешно), false - нет
-     */
-    public boolean checkUserPass(String name, String password) throws SQLException {
-        String salt = getUserSalt(name);
-        String password_digest = PasswordManager.getHash(password, salt);
-
-        Connection connection = getConnection();
-        PreparedStatement statement = connection.prepareStatement(
-                "SELECT * FROM users WHERE name = ? AND password_digest = ?");
-
-        statement.setString(1, name);
-        statement.setString(2, password_digest);
-
-        ResultSet result = statement.executeQuery();
-
-        connection.close();
-
-        return result.next();
-    }
-
-    /**
-     * Получает соль по имени пользователя
-     *
-     * @param name - имя пользователя
-     * @return String - соль пользователя
-     */
-    public String getUserSalt(String name) throws SQLException {
-        Connection connection = getConnection();
-        PreparedStatement statement = connection.prepareStatement(
-                "SELECT salt FROM users WHERE name = ?");
-
-        statement.setString(1, name);
-
-        ResultSet result = statement.executeQuery();
-
-        connection.close();
-
-        result.next();
-
-        return result.getString("salt");
-    }
-
-    /**
-     * Получает id по имени пользователя
-     *
-     * @param name - имя пользователя
-     * @return int - id пользователя
-     */
-    public int getUserId(String name) throws SQLException {
-        Connection connection = getConnection();
-        PreparedStatement statement = connection.prepareStatement(
-                "SELECT id FROM users WHERE name = ?");
-
-        statement.setString(1, name);
-
-        ResultSet result = statement.executeQuery();
-
-        connection.close();
-
-        result.next();
-
-        return result.getInt("id");
-    }
-
-    public int addUser(User user) throws SQLException {
-        Connection connection = getConnection();
-        PreparedStatement statement = connection.prepareStatement(
-                "INSERT INTO USERS(name, password_digest, salt)" +
-                "VALUES (?, ?, ?) RETURNING id");
-
-        statement.setString(1, user.getName());
-        String salt = PasswordManager.getSalt();
-        statement.setString(2, PasswordManager.getHash(user.getPassword(), salt));
-        statement.setString(3, salt);
-
-        ResultSet result = statement.executeQuery();
-
-        connection.close();
-
-        result.next();
-
-        return result.getInt(1);
+        return connectionManager.getConnection();
     }
 
     /**
@@ -348,80 +235,5 @@ public class DatabaseManager {
 
         connection.close();
         return res;
-    }
-
-
-    public void dropTables() throws SQLException {
-        String query = "BEGIN;\n" +
-                       "\n" +
-                       "DROP TABLE IF EXISTS workers;\n" +
-                       "DROP TABLE IF EXISTS persons;\n" +
-                       "DROP TABLE IF EXISTS users;\n" +
-                       "\n" +
-                       "DROP TYPE IF EXISTS status;\n" +
-                       "DROP TYPE IF EXISTS pos;\n" +
-                       "\n" +
-                       "END;";
-        Connection connection = getConnection();
-        Statement statement = connection.createStatement();
-        statement.executeUpdate(query);
-        connection.close();
-        System.out.println("Таблицы удалены");
-    }
-
-    public void createTables() throws SQLException {
-        String query = """
-                BEGIN;
-
-                CREATE TYPE status AS ENUM (
-                    'FIRED', 'RECOMMENDED_FOR_PROMOTION', 'REGULAR', 'PROBATION'
-                    );
-
-                CREATE TYPE pos AS ENUM (
-                    'MANAGER', 'HUMAN_RESOURCES', 'HEAD_OF_DEPARTMENT', 'LEAD_DEVELOPER', 'BAKER'
-                    );
-
-                CREATE TABLE IF NOT EXISTS users
-                (
-                    id              SERIAL PRIMARY KEY,
-                    name            VARCHAR(40) UNIQUE NOT NULL,
-                    password_digest VARCHAR(96)        NOT NULL,
-                    salt            VARCHAR(10)        NOT NULL
-                );
-
-                CREATE TABLE IF NOT EXISTS persons
-                (
-                    id         SERIAL PRIMARY KEY,
-                    birthday   DATE,
-                    height     FLOAT NOT NULL
-                        CONSTRAINT positive_height CHECK (height > 0),
-                    passportID TEXT
-                        CONSTRAINT length CHECK (length(passportID) >= 7),
-                    creator_id INT   NOT NULL REFERENCES users (id) ON DELETE CASCADE
-                );
-
-                CREATE TABLE IF NOT EXISTS workers
-                (
-                    id            SERIAL PRIMARY KEY,
-                    name          TEXT               NOT NULL
-                        CONSTRAINT not_empty_name CHECK (length(name) > 0),
-                    x             INTEGER            NOT NULL,
-                    y             INTEGER            NOT NULL,
-                    creation_date TIMESTAMP DEFAULT NOW() NOT NULL,
-                    salary        FLOAT
-                        CONSTRAINT positive_salary CHECK (salary > 0),
-                    pos      pos,
-                    status        status,
-                    person_id     INT UNIQUE REFERENCES persons (id) ON DELETE CASCADE,
-                    creator_id    INT                NOT NULL REFERENCES users (id) ON DELETE CASCADE
-                );
-
-                END;
-                """;
-        Connection connection = getConnection();
-        Statement statement = connection.createStatement();
-        statement.executeUpdate(query);
-        connection.close();
-        System.out.println("Таблицы созданы");
     }
 }

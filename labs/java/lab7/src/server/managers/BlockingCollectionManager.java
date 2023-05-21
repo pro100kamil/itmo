@@ -4,6 +4,7 @@ import common.consoles.Console;
 import common.exceptions.NotUniqueIdException;
 import common.models.User;
 import common.models.Worker;
+import server.managers.databaseManagers.WorkerDatabaseManager;
 
 import java.util.LinkedList;
 import java.util.concurrent.locks.Lock;
@@ -12,7 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class BlockingCollectionManager extends CollectionManager {
     private final Lock lock;
 
-    public BlockingCollectionManager(DatabaseManager databaseManager, LinkedList<Worker> workers) {
+    public BlockingCollectionManager(WorkerDatabaseManager databaseManager, LinkedList<Worker> workers) {
         super(databaseManager);
         lock = new ReentrantLock();
         super.setWorkers(workers);

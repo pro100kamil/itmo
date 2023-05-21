@@ -217,21 +217,65 @@
   ],
   "14": [
     {
-      "id": 2,
-      "name": "5",
+      "id": 59,
+      "name": "Andrey",
       "coordinates": {
-        "x": 5,
-        "y": 5
+        "x": 56,
+        "y": 65
       },
-      "creationDate": "2023-05-16T00:15:39.382578",
-      "salary": 5.0,
+      "creationDate": "2023-05-17T01:18:01.215630",
+      "salary": 1000.0,
+      "position": "MANAGER",
+      "status": "RECOMMENDED_FOR_PROMOTION",
       "person": {
-        "id": 2,
-        "height": 5.0,
-        "creatorId": 1
+        "id": 59,
+        "height": 168.0,
+        "creatorId": 8
       },
-      "creatorId": 1
-    },
+      "creatorId": 8
+    }
+  ],
+  "15": [
+    {
+      "id": 59,
+      "name": "Andrey",
+      "coordinates": {
+        "x": 56,
+        "y": 65
+      },
+      "creationDate": "2023-05-17T01:18:01.215630",
+      "salary": 1000.0,
+      "position": "MANAGER",
+      "status": "RECOMMENDED_FOR_PROMOTION",
+      "person": {
+        "id": 59,
+        "height": 168.0,
+        "creatorId": 8
+      },
+      "creatorId": 8
+    }
+  ],
+  "16": [
+    {
+      "id": 59,
+      "name": "Andrey",
+      "coordinates": {
+        "x": 56,
+        "y": 65
+      },
+      "creationDate": "2023-05-17T01:18:01.215630",
+      "salary": 1000.0,
+      "position": "MANAGER",
+      "status": "RECOMMENDED_FOR_PROMOTION",
+      "person": {
+        "id": 59,
+        "height": 168.0,
+        "creatorId": 8
+      },
+      "creatorId": 8
+    }
+  ],
+  "17": [
     {
       "id": 59,
       "name": "Andrey",

@@ -4,12 +4,13 @@ import common.loggers.Logger;
 import common.loggers.StandardLogger;
 import common.models.User;
 import server.Configuration;
+import server.managers.databaseManagers.UserDatabaseManager;
 
 import java.sql.SQLException;
 
 public class AuthManager {
     private static final Logger logger = new StandardLogger();
-    public DatabaseManager databaseManager = new DatabaseManager(Configuration.getDbUrl(),
+    public UserDatabaseManager databaseManager = new UserDatabaseManager(Configuration.getDbUrl(),
             Configuration.getDbLogin(), Configuration.getDbPass());
 
     /**
