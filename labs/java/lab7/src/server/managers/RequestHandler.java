@@ -19,59 +19,75 @@ public class RequestHandler {
         this.commandManager = commandManager;
     }
 
-    public Response requestHandler(Request request) {
+    public GetAllCommandsResponse handleGetAllCommandsRequest(GetAllCommandsRequest request) {
+        if (request.getUser() == null)
+            return new GetAllCommandsResponse(commandManager.getCommandDescriptionsForUnauthorizedUser());
+        else
+            return new GetAllCommandsResponse(commandManager.getCommandDescriptions());
+    }
+
+    public UpdateCollectionHistoryResponse handleUpdateCollectionHistoryRequest(UpdateCollectionHistoryRequest request) {
+        UpdateCollectionHistoryResponse response = new UpdateCollectionHistoryResponse();
+        commandManager.addStateCollection();
+        return response;
+    }
+
+    public ValidationResponse handleValidationRequest(ValidationRequest request) {
+        ServerCommand command = commandManager.getServerCommandFromCommandDescription(
+                request.getCommand());
+        command.setUser(request.getUser());
+        ValidationResponse response = new ValidationResponse();
+        try {
+            commandManager.serverValidateCommand(command);
+            response.setStatus(true);
+        }
+        catch (NonExistentId | WrongCommandArgsException |
+               UnavailableCommandException | UnavailableModelException e) {
+            response.setStatus(false);
+            response.setErrorMessage(e.toString());
+        }
+        response.setUser(command.getUser());
+        return response;
+    }
+
+    public CommandResponse handleCommandRequest(CommandRequest request) {
+        ServerCommand command = commandManager.getServerCommandFromCommandDescription(
+                request.getCommand());
+        command.setUser(request.getUser());
+        CommandResponse response = new CommandResponse();
+        try {
+            commandManager.serverValidateCommand(command);
+            StringConsole strConsole = new StringConsole();
+
+            commandManager.getCollectionManager().sortByName();  //сортируем коллекцию по имени
+            commandManager.getCollectionManager().setConsole(strConsole);
+
+            commandManager.executeCommand(command, strConsole);
+            response.setStatus(true);
+            response.setResult(strConsole.getAllText());
+        }
+        catch (NonExistentId | WrongCommandArgsException |
+               UnavailableCommandException | UnavailableModelException e) {
+            response.setStatus(false);
+            response.setErrorMessage(e.toString());
+        }
+        response.setUser(command.getUser());
+        return response;
+    }
+
+    public Response handleRequest(Request request) {
         if (request instanceof GetAllCommandsRequest) {
-            if (request.getUser() == null)
-                return new GetAllCommandsResponse(commandManager.getCommandDescriptionsForUnauthorizedUser());
-            else
-                return new GetAllCommandsResponse(commandManager.getCommandDescriptions());
+            return handleGetAllCommandsRequest((GetAllCommandsRequest) request);
         }
         else if (request instanceof UpdateCollectionHistoryRequest) {
-            UpdateCollectionHistoryResponse response = new UpdateCollectionHistoryResponse();
-            commandManager.addStateCollection();
-            return response;
+            return handleUpdateCollectionHistoryRequest((UpdateCollectionHistoryRequest) request);
         }
 
         else if (request instanceof ValidationRequest) {
-            ServerCommand command = commandManager.getServerCommandFromCommandDescription(
-                    ((ValidationRequest) request).getCommand());
-            command.setUser(request.getUser());
-            ValidationResponse response = new ValidationResponse();
-            try {
-                commandManager.serverValidateCommand(command);
-                response.setStatus(true);
-            }
-            catch (NonExistentId | WrongCommandArgsException |
-                   UnavailableCommandException | UnavailableModelException e) {
-                response.setStatus(false);
-                response.setErrorMessage(e.toString());
-            }
-            response.setUser(command.getUser());
-            return response;
+            return handleValidationRequest((ValidationRequest) request);
         }
         else { // if (request instanceof CommandRequest)
-            ServerCommand command = commandManager.getServerCommandFromCommandDescription(
-                    ((CommandRequest) request).getCommand());
-            command.setUser(request.getUser());
-            CommandResponse response = new CommandResponse();
-            try {
-                commandManager.serverValidateCommand(command);
-                StringConsole strConsole = new StringConsole();
-
-                commandManager.getCollectionManager().sortByName();  //сортируем коллекцию по имени
-                commandManager.getCollectionManager().setConsole(strConsole);
-
-                commandManager.executeCommand(command, strConsole);
-                response.setStatus(true);
-                response.setResult(strConsole.getAllText());
-            }
-            catch (NonExistentId | WrongCommandArgsException |
-                   UnavailableCommandException | UnavailableModelException e) {
-                response.setStatus(false);
-                response.setErrorMessage(e.toString());
-            }
-            response.setUser(command.getUser());
-            return response;
+            return handleCommandRequest((CommandRequest) request);
         }
     }
 }

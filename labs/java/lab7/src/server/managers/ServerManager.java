@@ -22,12 +22,13 @@ public class ServerManager {
 
     private final Server server;
 
-    private final CommandManager commandManager;
+    private CommandManager commandManager;
 
     public ServerManager() {
         server = new Server(Configuration.getHost(), Configuration.getPort());
-        String dataFileName = Configuration.getStartFileName();
+    }
 
+    public void start() throws IOException {
         WorkerDatabaseManager databaseManager = new WorkerDatabaseManager(Configuration.getDbUrl(),
                 Configuration.getDbLogin(),
                 Configuration.getDbPass());  //pgpass
@@ -39,17 +40,6 @@ public class ServerManager {
             logger.writeError(e.toString());
             System.exit(1);
         }
-//        User user = new User("user1", "user1");
-//        user.setId(1);
-
-//        try {
-//            databaseManager.dropTables();
-//            databaseManager.createTables();
-////            databaseManager.addUser(user);
-//            new AuthManager().register(user);
-//        } catch (SQLException e) {
-//            System.out.println(e);
-//        }
 
         CollectionManager collectionManager = new BlockingCollectionManager(databaseManager, startWorkers);
 
@@ -58,9 +48,7 @@ public class ServerManager {
         collectionHistory.setStart(startWorkers);
 
         commandManager = new CommandManager(collectionManager, collectionHistory);
-    }
 
-    public void start() throws IOException {
         server.start();
     }
 

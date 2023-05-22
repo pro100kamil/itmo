@@ -1,22 +1,20 @@
 package server.managers;
 
+import common.consoles.Console;
+import common.consoles.StandardConsole;
+import common.exceptions.NotUniqueIdException;
 import common.exceptions.UnavailableModelException;
 import common.loggers.Logger;
 import common.loggers.StandardLogger;
 import common.models.User;
 import common.models.Worker;
-import common.exceptions.NotUniqueIdException;
-import common.consoles.Console;
-import common.consoles.StandardConsole;
 import server.managers.databaseManagers.WorkerDatabaseManager;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.TreeMap;
-import java.time.LocalDateTime;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Collectors;
 
 /**
@@ -30,20 +28,11 @@ public class CollectionManager {
     private final TreeMap<Integer, Worker> idWorkerFromCollection = new TreeMap<>();
     private final LocalDateTime creationDate;
 
-    private final Lock lock = new ReentrantLock();
-
     protected CollectionManager(WorkerDatabaseManager databaseManager) {
         this.databaseManager = databaseManager;
         creationDate = LocalDateTime.now();
         linkedList = new LinkedList<>();
     }
-
-//    protected CollectionManager(DatabaseManager databaseManager, LinkedList<Worker> workers) {
-//        //если несколько одинаковых id, оставляем первый встречный
-//        //оставляем только корректных работников
-//        this(databaseManager);
-//        this.setWorkers(workers);
-//    }
 
     public void setConsole(Console console) {
         this.console = console;
@@ -68,26 +57,22 @@ public class CollectionManager {
      * @param worker работник, которого мы добавляем
      */
     public void add(Worker worker, User user) throws NotUniqueIdException {
-        lock.lock();
-        try {
-            if (worker.getId() == 0) {  //добавляем в бд
-                try {
-                    int id = databaseManager.addWorker(user, worker);
-                    worker.setId(id);
-                    worker.setCreatorId(user.getId());
-                    worker.getPerson().setCreatorId(user.getId());
-                } catch (SQLException e) {
-                    console.write("Добавить работника не получилось");
-                    logger.writeError("Добавить работника не получилось: " + e);
-                    return;
-                }
+
+        if (worker.getId() == 0) {  //добавляем в бд
+            try {
+                int id = databaseManager.addWorker(user, worker);
+                worker.setId(id);
+                worker.setCreatorId(user.getId());
+                worker.getPerson().setCreatorId(user.getId());
+            } catch (SQLException e) {
+                console.write("Добавить работника не получилось");
+                logger.writeError("Добавить работника не получилось: " + e);
+                return;
             }
-            //добавляем в коллекции
-            idWorkerFromCollection.put(worker.getId(), worker);
-            linkedList.add(worker);
-        } finally {
-            lock.unlock();
         }
+        //добавляем в коллекции
+        idWorkerFromCollection.put(worker.getId(), worker);
+        linkedList.add(worker);
     }
 
     /**
@@ -107,8 +92,8 @@ public class CollectionManager {
         worker.getPerson().setId(oldWorker.getId());
 
         try {
-            int kol = databaseManager.updateWorker(user, worker);
-            if (kol == 0) {
+            int count = databaseManager.updateWorker(user, worker);
+            if (count == 0) {
                 throw new UnavailableModelException();
             }
         } catch (SQLException | UnavailableModelException e) {
@@ -131,8 +116,8 @@ public class CollectionManager {
             return;
         }
         try {
-            int kol = databaseManager.removeWorker(user, idWorkerFromCollection.get(id));
-            if (kol == 0) {
+            int count = databaseManager.removeWorker(user, idWorkerFromCollection.get(id));
+            if (count == 0) {
                 throw new UnavailableModelException();
             }
         } catch (SQLException | UnavailableModelException e) {
@@ -149,8 +134,8 @@ public class CollectionManager {
      */
     public void clear(User user) {
         try {
-            int kol = databaseManager.clearWorkers(user);
-            console.write("Удалено работников: " + kol);
+            int count = databaseManager.clearWorkers(user);
+            console.write("Удалено работников: " + count);
         } catch (SQLException e) {
             console.write("Очистить коллекцию не получилось");
             logger.writeError("Очистить коллекцию не получилось: " + e);

@@ -1,5 +1,8 @@
 package server.managers.databaseManagers;
 
+import common.consoles.Console;
+import common.consoles.StandardConsole;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,6 +12,7 @@ import java.sql.Statement;
  */
 public class DDLManager {
     ConnectionManager connectionManager;
+    Console console = new StandardConsole();
 
     public DDLManager(String url, String login, String password) {
         connectionManager = new ConnectionManager(url, login, password);
@@ -32,7 +36,7 @@ public class DDLManager {
         Statement statement = connection.createStatement();
         statement.executeUpdate(query);
         connection.close();
-        System.out.println("Таблицы удалены");
+        console.write("Таблицы удалены");
     }
 
     public void createTables() throws SQLException {
@@ -90,6 +94,6 @@ public class DDLManager {
         Statement statement = connection.createStatement();
         statement.executeUpdate(query);
         connection.close();
-        System.out.println("Таблицы созданы");
+        console.write("Таблицы созданы");
     }
 }

@@ -7,7 +7,6 @@ import common.network.responses.Response;
 import server.managers.CommandManager;
 import server.managers.RequestHandler;
 import server.managers.Server;
-import server.managers.tasks.WriteResponseTask;
 
 import java.nio.channels.SocketChannel;
 import java.util.concurrent.ExecutorService;
@@ -30,7 +29,7 @@ public class HandlerRequestTask implements Runnable {
     @Override
     public void run() {
         //обработка (на основе запроса формируем ответ)
-        Response response = new RequestHandler(commandManager).requestHandler(request);
+        Response response = new RequestHandler(commandManager).handleRequest(request);
 
         logger.write("Сформирован ответ на запрос: " + response.getClass().getName());
 
