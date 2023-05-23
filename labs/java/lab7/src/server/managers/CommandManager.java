@@ -7,11 +7,16 @@ import common.exceptions.NonExistentId;
 import common.exceptions.UnavailableCommandException;
 import common.exceptions.UnavailableModelException;
 import common.exceptions.WrongCommandArgsException;
+import common.loggers.Logger;
+import common.loggers.StandardLogger;
 import server.commands.*;
+import server.managers.databaseManagers.CommandDatabaseManager;
 
 import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.TreeMap;
 
 /**
@@ -28,12 +33,18 @@ public class CommandManager {
     private final CollectionManager collectionManager;
     private final CollectionHistory collectionHistory;
     private final LinkedList<ServerCommand> history = new LinkedList<>();
+
+    private final CommandDatabaseManager commandDatabaseManager;
     //история команд общая для всех пользователей
 
+    Logger logger = new StandardLogger();
+
     public CommandManager(CollectionManager collectionManager,
-                          CollectionHistory collectionHistory) {
+                          CollectionHistory collectionHistory,
+                          CommandDatabaseManager commandDatabaseManager) {
         this.collectionManager = collectionManager;
         this.collectionHistory = collectionHistory;
+        this.commandDatabaseManager = commandDatabaseManager;
 
         serverCommands = new ServerCommand[]{new Info(),
                 new Show(), new Add(),
@@ -52,12 +63,37 @@ public class CommandManager {
     }
 
     /**
+     * Задаёт всем командам минимальную роль, начиная с которой пользователь может выполнять команду.
+     */
+    public void setMinUserRoles() {
+        for (ServerCommand command : serverCommands) {
+            try {
+                String minUserRole = commandDatabaseManager.getMinUserRole(command.getName());
+                command.setMinUserRole(minUserRole);
+            } catch (SQLException e) {
+                logger.write("Нет информация о минимальной роли для команды " + command.getName());
+            }
+        }
+    }
+
+    /**
      * Получает описания всех серверных команд
      *
      * @return CommandDescription[] - массив описаний всех серверных команд
      */
     public CommandDescription[] getCommandDescriptions() {
         return Arrays.stream(serverCommands)
+                .map(ServerCommandDescription::new)
+                .toArray(CommandDescription[]::new);
+    }
+
+    /**
+     * Получает описания всех серверных команд
+     *
+     * @return CommandDescription[] - массив описаний всех серверных команд
+     */
+    public CommandDescription[] getCommandDescriptions(String min_user_role) {
+        return Arrays.stream(serverCommands).filter(command -> Objects.equals(command.getMinUserRole(), min_user_role))
                 .map(ServerCommandDescription::new)
                 .toArray(CommandDescription[]::new);
     }

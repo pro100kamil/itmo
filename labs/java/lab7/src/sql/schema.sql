@@ -11,11 +11,18 @@ CREATE TYPE pos AS ENUM (
 CREATE TABLE IF NOT EXISTS users
 (
     id              SERIAL PRIMARY KEY,
-    name            VARCHAR(40) UNIQUE NOT NULL,
-    password_digest VARCHAR(96)        NOT NULL,
-    salt            VARCHAR(10)        NOT NULL,
-    role            VARCHAR(25)        NOT NULL,
-    creation_date TIMESTAMP DEFAULT NOW() NOT NULL
+    name            VARCHAR(40) UNIQUE      NOT NULL,
+    password_digest VARCHAR(96)             NOT NULL,
+    salt            VARCHAR(10)             NOT NULL,
+    role            VARCHAR(25)             NOT NULL,
+    creation_date   TIMESTAMP DEFAULT NOW() NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS commands
+(
+    id            SERIAL PRIMARY KEY,
+    name          VARCHAR(40) UNIQUE NOT NULL,
+    min_user_role VARCHAR(40) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS persons

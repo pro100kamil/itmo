@@ -4,6 +4,8 @@ import common.loggers.Logger;
 import common.loggers.StandardLogger;
 import common.models.Worker;
 import server.Configuration;
+import server.managers.databaseManagers.CommandDatabaseManager;
+import server.managers.databaseManagers.ConnectionManager;
 import server.managers.databaseManagers.WorkerDatabaseManager;
 import server.managers.tasks.ReadRequestTask;
 
@@ -29,9 +31,13 @@ public class ServerManager {
     }
 
     public void start() throws IOException {
-        WorkerDatabaseManager databaseManager = new WorkerDatabaseManager(Configuration.getDbUrl(),
+        ConnectionManager connectionManager = new ConnectionManager(Configuration.getDbUrl(),
                 Configuration.getDbLogin(),
-                Configuration.getDbPass());  //pgpass
+                Configuration.getDbPass()  //pgpass
+        );
+        WorkerDatabaseManager databaseManager = new WorkerDatabaseManager(connectionManager);
+        CommandDatabaseManager commandDatabaseManager = new CommandDatabaseManager(connectionManager);
+
         LinkedList<Worker> startWorkers = null;
         try {
             startWorkers = (LinkedList<Worker>) databaseManager.loadWorkers();
@@ -47,7 +53,8 @@ public class ServerManager {
 //        CollectionHistory.setDataFileName(dataFileName);
         collectionHistory.setStart(startWorkers);
 
-        commandManager = new CommandManager(collectionManager, collectionHistory);
+        commandManager = new CommandManager(collectionManager, collectionHistory, commandDatabaseManager);
+        commandManager.setMinUserRoles();
 
         server.start();
     }

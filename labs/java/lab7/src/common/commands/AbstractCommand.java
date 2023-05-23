@@ -6,6 +6,7 @@ import common.exceptions.WrongCommandArgsException;
 import common.models.Worker;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  * Класс абстрактной команды. Тут содержится общие поля и методы для серверных и клиентских команд
@@ -19,6 +20,7 @@ public abstract class AbstractCommand implements Serializable {
     protected Worker worker;
 
     protected boolean onlyUsers = true;  //команду могут выполнять только зарегистрированные пользователи
+    protected String minUserRole;
 
     public AbstractCommand(String name, String description, boolean withWorker, boolean onlyUsers) {
         this.name = name;
@@ -63,6 +65,14 @@ public abstract class AbstractCommand implements Serializable {
         return onlyUsers;
     }
 
+    public String getMinUserRole() {
+        return minUserRole;
+    }
+
+    public void setMinUserRole(String minUserRole) {
+        this.minUserRole = minUserRole;
+    }
+
     /**
      * Проверяет аргументы на корректность. При неправильных аргументах бросает соответсвующее исключение.
      *
@@ -71,9 +81,21 @@ public abstract class AbstractCommand implements Serializable {
     public abstract void validateArgs(String[] args) throws WrongCommandArgsException,
             NonExistentId, UnavailableModelException;
 
+//    @Override
+//    public String toString() {
+//        if (onlyUsers) return name + ": " + description + " (только для зарегистрированных пользователей)";
+//        else return name + ": " + description;
+//    }
+
     @Override
     public String toString() {
-        if (onlyUsers) return name + ": " + description + " (только для зарегистрированных пользователей)";
-        else return name + ": " + description;
+        return "AbstractCommand{" +
+               "name='" + name + '\'' +
+               ", description='" + description + '\'' +
+               ", withWorker=" + withWorker +
+               ", worker=" + worker +
+               ", onlyUsers=" + onlyUsers +
+               ", minUserRole='" + minUserRole + '\'' +
+               '}';
     }
 }

@@ -5,15 +5,23 @@ import common.exceptions.NonExistentId;
 import common.exceptions.UnavailableCommandException;
 import common.exceptions.UnavailableModelException;
 import common.exceptions.WrongCommandArgsException;
+import common.models.User;
 import common.network.requests.*;
 import common.network.responses.*;
+import server.Configuration;
 import server.commands.ServerCommand;
+import server.managers.databaseManagers.UserDatabaseManager;
+import server.models.ServerUser;
+
+import java.sql.SQLException;
 
 /**
  * Обработчик запросов, которые приходят на сервер.
  */
 public class RequestHandler {
     private final CommandManager commandManager;
+    public UserDatabaseManager databaseManager = new UserDatabaseManager(Configuration.getDbUrl(),
+            Configuration.getDbLogin(), Configuration.getDbPass());
 
     public RequestHandler(CommandManager commandManager) {
         this.commandManager = commandManager;
@@ -32,10 +40,21 @@ public class RequestHandler {
         return response;
     }
 
+    public User handleUser(User user) {
+        try {
+            ServerUser serverUser = databaseManager.getUser(user.getName(), user.getPassword());
+            if (serverUser == null) return null;
+            user.setRole(serverUser.getRole());
+            return user;
+        } catch (SQLException e) {
+            return null;
+        }
+    }
+
     public ValidationResponse handleValidationRequest(ValidationRequest request) {
         ServerCommand command = commandManager.getServerCommandFromCommandDescription(
                 request.getCommand());
-        command.setUser(request.getUser());
+        command.setUser(handleUser(request.getUser()));
         ValidationResponse response = new ValidationResponse();
         try {
             commandManager.serverValidateCommand(command);
@@ -53,7 +72,7 @@ public class RequestHandler {
     public CommandResponse handleCommandRequest(CommandRequest request) {
         ServerCommand command = commandManager.getServerCommandFromCommandDescription(
                 request.getCommand());
-        command.setUser(request.getUser());
+        command.setUser(handleUser(request.getUser()));
         CommandResponse response = new CommandResponse();
         try {
             commandManager.serverValidateCommand(command);

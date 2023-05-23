@@ -3,6 +3,7 @@ package common.commands;
 import common.models.Worker;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class CommandDescription implements Serializable {
     protected String name; //название команды
@@ -13,16 +14,20 @@ public class CommandDescription implements Serializable {
     protected Worker worker;
 
     protected boolean onlyUsers = true;  //команду могут выполнять только зарегистрированные пользователи
+    protected String minUserRole;
 
-    public CommandDescription(String name, String description, boolean withWorker, boolean onlyUsers) {
+    public CommandDescription(String name, String description, boolean withWorker,
+                              boolean onlyUsers, String minUserRole) {
         this.name = name;
         this.description = description;
         this.withWorker = withWorker;
         this.onlyUsers = onlyUsers;
+        this.minUserRole = minUserRole;
     }
 
     public CommandDescription(AbstractCommand command) {
-        this(command.getName(), command.getDescription(), command.isWithWorker(), command.isOnlyUsers());
+        this(command.getName(), command.getDescription(), command.isWithWorker(),
+                command.isOnlyUsers(), command.getMinUserRole());
     }
 
     public String getName() {
@@ -57,9 +62,31 @@ public class CommandDescription implements Serializable {
         this.worker = worker;
     }
 
+    public String getMinUserRole() {
+        return minUserRole;
+    }
+
+    public void setMinUserRole(String minUserRole) {
+        this.minUserRole = minUserRole;
+    }
+
+//    @Override
+//    public String toString() {
+//        if (onlyUsers) return name + ": " + description + " (только для зарегистрированных пользователей)";
+//        else return name + ": " + description;
+//    }
+
+
     @Override
     public String toString() {
-        if (onlyUsers) return name + ": " + description + " (только для зарегистрированных пользователей)";
-        else return name + ": " + description;
+        return "CommandDescription{" +
+               "name='" + name + '\'' +
+               ", description='" + description + '\'' +
+               ", args=" + Arrays.toString(args) +
+               ", withWorker=" + withWorker +
+               ", worker=" + worker +
+               ", onlyUsers=" + onlyUsers +
+               ", minUserRole='" + minUserRole + '\'' +
+               '}';
     }
 }

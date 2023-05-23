@@ -2,6 +2,7 @@ package server.managers.databaseManagers;
 
 import common.models.User;
 import server.managers.PasswordManager;
+import server.models.ServerUser;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,6 +21,42 @@ public class UserDatabaseManager {
 
     Connection getConnection() throws SQLException {
         return connectionManager.getConnection();
+    }
+
+    /**
+     * Получает пользователя по имени
+     *
+     * @param name - имя пользователя
+     * @return - true - есть, false - нет
+     */
+    public ServerUser getUser(String name) throws SQLException {
+        Connection connection = getConnection();
+        PreparedStatement statement = connection.prepareStatement(
+                "SELECT * FROM users WHERE name = ?");
+
+        statement.setString(1, name);
+
+        ResultSet result = statement.executeQuery();
+
+        connection.close();
+
+        int id = result.getInt("id");
+        String password_digest = result.getString("password_digest");
+        String salt = result.getString("salt");
+        String role = result.getString("role");
+
+
+        return new ServerUser(id, name, password_digest, salt, role);
+    }
+
+    public ServerUser getUser(String name, String password) throws SQLException {
+        ServerUser user = getUser(name);
+        String salt = user.getSalt();
+        String password_digest = PasswordManager.getHash(password, salt);
+        if (password_digest.equals(user.getPasswordDigest())) {
+            return user;
+        }
+        return null;
     }
 
     /**

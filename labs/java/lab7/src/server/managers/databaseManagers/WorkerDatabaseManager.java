@@ -18,6 +18,10 @@ public class WorkerDatabaseManager {
         connectionManager = new ConnectionManager(url, login, password);
     }
 
+    public WorkerDatabaseManager(ConnectionManager connectionManager) {
+        this.connectionManager = connectionManager;
+    }
+
     Connection getConnection() throws SQLException {
         return connectionManager.getConnection();
     }

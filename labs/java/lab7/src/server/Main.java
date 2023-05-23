@@ -5,8 +5,10 @@ import common.loggers.Logger;
 import common.loggers.StandardLogger;
 import server.managers.PasswordManager;
 import server.managers.ServerManager;
+import server.managers.databaseManagers.DDLManager;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) {
@@ -42,6 +44,14 @@ public class Main {
         Configuration.setDbUrl(strings[0].trim());
         Configuration.setDbLogin(strings[1].trim());
         Configuration.setDbPass(strings[2].trim());
+
+//        try {
+//            DDLManager ddlmn = new DDLManager(Configuration.getDbUrl(), Configuration.getDbLogin(), Configuration.getDbPass());
+//            ddlmn.dropTables();
+//            ddlmn.createTables();
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
 
         ServerManager serverManager = new ServerManager();
         try {

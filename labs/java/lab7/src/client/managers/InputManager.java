@@ -1,7 +1,5 @@
 package client.managers;
 
-import client.commands.UserInfo;
-import client.commands.ClientCommand;
 import common.commands.ClientCommandDescription;
 import common.commands.CommandDescription;
 import common.consoles.Console;
@@ -264,6 +262,7 @@ public class InputManager {
                     commandManager.setCommands(serverCommands);
                 } catch (IOException | ClassNotFoundException e) {
                     console.write("Подключиться к серверу не получилось");
+                    console.write(e.toString());
                     writeSeparator();
                     continue;
                 }

@@ -13,10 +13,6 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public boolean validate() {
-        return getName().length() < 40;
-    }
-
     public int getId() {
         return id;
     }
