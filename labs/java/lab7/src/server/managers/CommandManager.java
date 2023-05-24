@@ -54,7 +54,8 @@ public class CommandManager {
                 new PrintDescending(),
                 new PrintFieldDescendingPosition(),
                 new Rollback(),
-                new Auth(), new Register(), new Logout()
+                new Auth(), new Register(), new Logout(),
+                new ChangeUserRole()
         };
 
         for (ServerCommand command : serverCommands) {

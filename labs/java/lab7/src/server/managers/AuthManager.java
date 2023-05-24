@@ -10,8 +10,7 @@ import java.sql.SQLException;
 
 public class AuthManager {
     private static final Logger logger = new StandardLogger();
-    public UserDatabaseManager databaseManager = new UserDatabaseManager(Configuration.getDbUrl(),
-            Configuration.getDbLogin(), Configuration.getDbPass());
+    public UserDatabaseManager databaseManager = new UserDatabaseManager();
 
     /**
      * Проверяет, есть ли пользователь с таким именем

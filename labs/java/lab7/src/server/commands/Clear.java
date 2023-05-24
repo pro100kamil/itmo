@@ -2,6 +2,8 @@ package server.commands;
 
 import common.exceptions.WrongCommandArgsException;
 
+import java.sql.SQLException;
+
 /**
  * Команда clear.
  * Очищает коллекцию.
@@ -22,9 +24,15 @@ public class Clear extends ServerCommand {
     public void execute(String[] args) {
         try {
             validateArgs(args);
-            collectionManager.clear(user);
+            //очищаем в бд
+            int count = workerDatabaseManager.clearWorkers(user);
+            console.write("Удалено работников: " + count);
+            //очищаем в коллекции
+            collectionManager.clear(user.getId());
         } catch (WrongCommandArgsException e) {
             console.write(e.toString());
+        } catch (SQLException e) {
+            console.write("Очистить коллекцию не получилось");
         }
     }
 }

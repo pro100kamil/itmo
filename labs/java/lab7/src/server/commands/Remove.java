@@ -6,6 +6,8 @@ import common.exceptions.WrongCommandArgsException;
 import common.managers.ValidateManager;
 import common.models.Worker;
 
+import java.sql.SQLException;
+
 /**
  * Команда remove_by_id id.
  * Удаляет работника по id из коллекции.
@@ -35,9 +37,17 @@ public class Remove extends ServerCommand {
     public void execute(String[] args) {
         try {
             validateArgs(args);
-            collectionManager.remove(Integer.parseInt(args[0]), user);
+            //удаляем в бд
+            int count = workerDatabaseManager.removeWorker(user, collectionManager.getWorkerById(Integer.parseInt(args[0])));
+            if (count == 0) {
+                throw new UnavailableModelException();
+            }
+            //удаляем в коллекции
+            collectionManager.remove(Integer.parseInt(args[0]));
         } catch (WrongCommandArgsException | NonExistentId | UnavailableModelException e) {
             console.write(e.toString());
+        } catch (SQLException e) {
+            console.write("Удалить работника не получилось");
         }
     }
 }

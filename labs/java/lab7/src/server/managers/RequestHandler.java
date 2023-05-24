@@ -20,8 +20,7 @@ import java.sql.SQLException;
  */
 public class RequestHandler {
     private final CommandManager commandManager;
-    public UserDatabaseManager databaseManager = new UserDatabaseManager(Configuration.getDbUrl(),
-            Configuration.getDbLogin(), Configuration.getDbPass());
+    private final UserDatabaseManager databaseManager = new UserDatabaseManager();
 
     public RequestHandler(CommandManager commandManager) {
         this.commandManager = commandManager;
@@ -42,6 +41,7 @@ public class RequestHandler {
 
     public User handleUser(User user) {
         try {
+            if (user == null) return null;
             ServerUser serverUser = databaseManager.getUser(user.getName(), user.getPassword());
             if (serverUser == null) return null;
             user.setRole(serverUser.getRole());

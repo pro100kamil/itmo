@@ -7,6 +7,8 @@ import common.exceptions.WrongModelsException;
 import common.managers.ValidateManager;
 import common.models.Worker;
 
+import java.sql.SQLException;
+
 /**
  * Команда update.
  * Обновляет работника по id на основе заданного работника.
@@ -40,9 +42,17 @@ public class Update extends ServerCommand {
             if (worker == null || !worker.validate()) {
                 throw new WrongModelsException();
             }
-            collectionManager.update(Integer.parseInt(args[0]), worker, user);
+            //обновляем в бд
+            int count = workerDatabaseManager.updateWorker(user, Integer.parseInt(args[0]), worker);
+            if (count == 0) {
+                throw new UnavailableModelException();
+            }
+            //обновляем в коллекции
+            collectionManager.update(Integer.parseInt(args[0]), worker);
         } catch (WrongCommandArgsException | NonExistentId | UnavailableModelException e) {
             console.write(e.toString());
+        }catch (SQLException e) {
+            console.write("Обновить работника не получилось");
         }
     }
 }

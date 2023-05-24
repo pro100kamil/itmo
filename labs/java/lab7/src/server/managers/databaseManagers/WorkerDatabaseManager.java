@@ -145,7 +145,7 @@ public class WorkerDatabaseManager {
         return result.getInt(1);
     }
 
-    public int updatePerson(User user, Person person) throws SQLException {
+    public int updatePerson(User user, int personId, Person newPerson) throws SQLException {
         Connection connection = getConnection();
         PreparedStatement statement = connection.prepareStatement(
                 "UPDATE persons SET birthday = ?, height = ?," +
@@ -153,14 +153,14 @@ public class WorkerDatabaseManager {
                 "WHERE id = ? AND creator_id = ?"
         );
 
-        if (person.getBirthday() == null) statement.setNull(1, Types.DATE);
-        else statement.setDate(1, Date.valueOf(person.getBirthday()));
+        if (newPerson.getBirthday() == null) statement.setNull(1, Types.DATE);
+        else statement.setDate(1, Date.valueOf(newPerson.getBirthday()));
 
-        statement.setFloat(2, person.getHeight());
+        statement.setFloat(2, newPerson.getHeight());
 
-        statement.setString(3, person.getPassportID());
+        statement.setString(3, newPerson.getPassportID());
 
-        statement.setInt(4, person.getId());
+        statement.setInt(4, personId);
         statement.setInt(5, user.getId());
 
         int res = statement.executeUpdate();
@@ -168,7 +168,7 @@ public class WorkerDatabaseManager {
         return res;
     }
 
-    public int updateWorker(User user, Worker worker) throws SQLException {
+    public int updateWorker(User user, int workerId, Worker newWorker) throws SQLException {
         Connection connection = getConnection();
         PreparedStatement statement = connection.prepareStatement(
                 "UPDATE workers SET name = ?, x = ?, y = ?, salary = ?, " +
@@ -176,23 +176,23 @@ public class WorkerDatabaseManager {
                 "WHERE id = ? AND creator_id = ?"
         );
 
-        statement.setString(1, worker.getName());
-        statement.setInt(2, worker.getCoordinates().getX());
-        statement.setInt(3, worker.getCoordinates().getY());
+        statement.setString(1, newWorker.getName());
+        statement.setInt(2, newWorker.getCoordinates().getX());
+        statement.setInt(3, newWorker.getCoordinates().getY());
 
-        if (worker.getSalary() == null) statement.setNull(4, Types.FLOAT);
-        else statement.setFloat(4, worker.getSalary());
+        if (newWorker.getSalary() == null) statement.setNull(4, Types.FLOAT);
+        else statement.setFloat(4, newWorker.getSalary());
 
-        if (worker.getPosition() == null) statement.setNull(5, Types.VARCHAR);
-        else statement.setString(5, worker.getPosition().toString());
+        if (newWorker.getPosition() == null) statement.setNull(5, Types.VARCHAR);
+        else statement.setString(5, newWorker.getPosition().toString());
 
-        if (worker.getStatus() == null) statement.setNull(6, Types.VARCHAR);
-        else statement.setString(6, worker.getStatus().toString());
+        if (newWorker.getStatus() == null) statement.setNull(6, Types.VARCHAR);
+        else statement.setString(6, newWorker.getStatus().toString());
 
-        updatePerson(user, worker.getPerson());
-        statement.setInt(7, worker.getPerson().getId());
+        updatePerson(user, workerId, newWorker.getPerson());
+        statement.setInt(7, newWorker.getPerson().getId());
 
-        statement.setInt(8, worker.getId());
+        statement.setInt(8, workerId);
         statement.setInt(9, user.getId());
 
         int res = statement.executeUpdate();

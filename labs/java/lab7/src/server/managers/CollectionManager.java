@@ -3,14 +3,10 @@ package server.managers;
 import common.consoles.Console;
 import common.consoles.StandardConsole;
 import common.exceptions.NotUniqueIdException;
-import common.exceptions.UnavailableModelException;
 import common.loggers.Logger;
 import common.loggers.StandardLogger;
-import common.models.User;
 import common.models.Worker;
-import server.managers.databaseManagers.WorkerDatabaseManager;
 
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -23,13 +19,11 @@ import java.util.stream.Collectors;
 public class CollectionManager {
     private Console console = new StandardConsole();
     private final Logger logger = new StandardLogger();
-    private final WorkerDatabaseManager databaseManager;
     private LinkedList<Worker> linkedList;
     private final TreeMap<Integer, Worker> idWorkerFromCollection = new TreeMap<>();
     private final LocalDateTime creationDate;
 
-    protected CollectionManager(WorkerDatabaseManager databaseManager) {
-        this.databaseManager = databaseManager;
+    protected CollectionManager() {
         creationDate = LocalDateTime.now();
         linkedList = new LinkedList<>();
     }
@@ -56,51 +50,25 @@ public class CollectionManager {
      *
      * @param worker работник, которого мы добавляем
      */
-    public void add(Worker worker, User user) throws NotUniqueIdException {
-
-        if (worker.getId() == 0) {  //добавляем в бд
-            try {
-                int id = databaseManager.addWorker(user, worker);
-                worker.setId(id);
-                worker.setCreatorId(user.getId());
-                worker.getPerson().setCreatorId(user.getId());
-            } catch (SQLException e) {
-                console.write("Добавить работника не получилось");
-                logger.writeError("Добавить работника не получилось: " + e);
-                return;
-            }
-        }
-        //добавляем в коллекции
+    public void add(Worker worker) throws NotUniqueIdException {
         idWorkerFromCollection.put(worker.getId(), worker);
         linkedList.add(worker);
     }
 
     /**
-     * Обновляет работника по id на основе заданное работника
+     * Обновляет работника по id на основе заданного работника
      *
      * @param id     работника
      * @param worker заданный работник
      */
-    public void update(int id, Worker worker, User user) {
+    public void update(int id, Worker worker) {
         if (!idWorkerFromCollection.containsKey(id)) { //если нет работника с таким id
             console.write("Нет работника с таким id!");
             return;
         }
         Worker oldWorker = idWorkerFromCollection.get(id);
 
-        worker.setId(id);
         worker.getPerson().setId(oldWorker.getId());
-
-        try {
-            int count = databaseManager.updateWorker(user, worker);
-            if (count == 0) {
-                throw new UnavailableModelException();
-            }
-        } catch (SQLException | UnavailableModelException e) {
-            console.write("Обновить работника не получилось");
-            logger.writeError("Обновить работника не получилось: " + e);
-            return;
-        }
 
         oldWorker.update(worker);
     }
@@ -108,43 +76,27 @@ public class CollectionManager {
     /**
      * Удаляет работника из коллекции
      *
-     * @param id работника
+     * @param id id работника
      */
-    public void remove(int id, User user) {
+    public void remove(int id) {
         if (!idWorkerFromCollection.containsKey(id)) { //если нет работника с таким id
             console.write("Нет работника с таким id!");
             return;
         }
-        try {
-            int count = databaseManager.removeWorker(user, idWorkerFromCollection.get(id));
-            if (count == 0) {
-                throw new UnavailableModelException();
-            }
-        } catch (SQLException | UnavailableModelException e) {
-            console.write("Удалить работника не получилось");
-            logger.writeError("Удалить работника не получилось: " + e);
-            return;
-        }
+
         linkedList.remove(idWorkerFromCollection.get(id));
         idWorkerFromCollection.remove(id);
     }
 
     /**
-     * Очистка коллекции
+     * Очистка коллекции (удаляются работники конкретного пользователя)
+     *
+     * @param userId id конкретного пользователя
      */
-    public void clear(User user) {
-        try {
-            int count = databaseManager.clearWorkers(user);
-            console.write("Удалено работников: " + count);
-        } catch (SQLException e) {
-            console.write("Очистить коллекцию не получилось");
-            logger.writeError("Очистить коллекцию не получилось: " + e);
-            return;
-        }
-        //не всё удалять
+    public void clear(int userId) {
         for (Integer id : (new TreeMap<>(idWorkerFromCollection)).keySet()) {
             Worker worker = idWorkerFromCollection.get(id);
-            if (worker.getCreatorId() == user.getId()) {
+            if (worker.getCreatorId() == userId) {
                 linkedList.remove(worker);
                 idWorkerFromCollection.remove(id);
             }
@@ -201,17 +153,15 @@ public class CollectionManager {
     }
 
     /**
-     * Удаляет работников, которые больше (по зарплате) заданного
-     *
-     * @param worker заданный работник
+     * Удаляет работников, которые больше (по зарплате) заданного (удаляются работники конкретного пользователя)
+     *      *
+     *      * @param userId id конкретного пользователя
      */
-    public void removeGreater(Worker worker, User user) {
+    public void removeGreater(Worker worker, int userId) {
         for (Worker other : new LinkedList<>(linkedList)) {
             //other > worker и other принадлежит текущему юзеру => удаляем other
-            if (other.getCreatorId() == user.getId() && other.compareTo(worker) > 0) {
-                remove(other.getId(), user);
-//                idWorkerFromCollection.remove(other.getId());
-//                linkedList.remove(other);
+            if (other.getCreatorId() == userId && other.compareTo(worker) > 0) {
+                remove(other.getId());
             }
         }
     }

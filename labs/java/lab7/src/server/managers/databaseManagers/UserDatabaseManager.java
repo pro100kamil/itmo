@@ -1,13 +1,12 @@
 package server.managers.databaseManagers;
 
 import common.models.User;
+import common.models.UserRole;
+import server.Configuration;
 import server.managers.PasswordManager;
 import server.models.ServerUser;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Класс, отвечающий
@@ -17,6 +16,11 @@ public class UserDatabaseManager {
 
     public UserDatabaseManager(String url, String login, String password) {
         connectionManager = new ConnectionManager(url, login, password);
+    }
+
+    public UserDatabaseManager() {
+        this(Configuration.getDbUrl(),
+                Configuration.getDbLogin(), Configuration.getDbPass());
     }
 
     Connection getConnection() throws SQLException {
@@ -57,6 +61,21 @@ public class UserDatabaseManager {
             return user;
         }
         return null;
+    }
+
+    public int changeUserRole(int userId, UserRole userRole) throws SQLException {
+        Connection connection = getConnection();
+        PreparedStatement statement = connection.prepareStatement(
+                "UPDATE users SET role = ? " +
+                "WHERE id = ?"
+        );
+
+        statement.setString(1, userRole.toString());
+        statement.setInt(2, userId);
+
+        int res = statement.executeUpdate();
+        connection.close();
+        return res;
     }
 
     /**

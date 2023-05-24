@@ -47,7 +47,7 @@ public class ServerManager {
             System.exit(1);
         }
 
-        CollectionManager collectionManager = new BlockingCollectionManager(databaseManager, startWorkers);
+        CollectionManager collectionManager = new BlockingCollectionManager(startWorkers);
 
         CollectionHistory collectionHistory = new CollectionHistory();
 //        CollectionHistory.setDataFileName(dataFileName);
