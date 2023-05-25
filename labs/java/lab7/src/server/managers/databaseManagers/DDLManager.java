@@ -11,14 +11,14 @@ import java.sql.Statement;
  * Класс для работы с ddl-запросами по типу создания таблиц и удаления таблиц.
  */
 public class DDLManager {
-    ConnectionManager connectionManager;
+    private final ConnectionManager connectionManager;
     Console console = new StandardConsole();
 
     public DDLManager(String url, String login, String password) {
         connectionManager = new ConnectionManager(url, login, password);
     }
 
-    Connection getConnection() throws SQLException {
+    public Connection getConnection() throws SQLException {
         return connectionManager.getConnection();
     }
     public void dropTables() throws SQLException {

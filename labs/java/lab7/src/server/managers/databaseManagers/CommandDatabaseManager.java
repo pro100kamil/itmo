@@ -9,7 +9,7 @@ import java.sql.SQLException;
  * Класс для взаимодействий с таблицей команд из базы данных.
  */
 public class CommandDatabaseManager {
-    ConnectionManager connectionManager;
+    private final ConnectionManager connectionManager;
 
     public CommandDatabaseManager(String url, String login, String password) {
         connectionManager = new ConnectionManager(url, login, password);
@@ -19,7 +19,7 @@ public class CommandDatabaseManager {
         this.connectionManager = connectionManager;
     }
 
-    Connection getConnection() throws SQLException {
+    public Connection getConnection() throws SQLException {
         return connectionManager.getConnection();
     }
 

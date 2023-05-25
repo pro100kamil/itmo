@@ -4,13 +4,15 @@ import common.loggers.Logger;
 import common.loggers.StandardLogger;
 import common.models.User;
 import server.Configuration;
+import server.managers.databaseManagers.ConnectionManager;
 import server.managers.databaseManagers.UserDatabaseManager;
 
 import java.sql.SQLException;
 
 public class AuthManager {
     private static final Logger logger = new StandardLogger();
-    public UserDatabaseManager databaseManager = new UserDatabaseManager();
+    private final UserDatabaseManager databaseManager = new UserDatabaseManager(
+            new ConnectionManager(Configuration.getDbUrl(), Configuration.getDbLogin(), Configuration.getDbPass()));
 
     /**
      * Проверяет, есть ли пользователь с таким именем
@@ -19,18 +21,14 @@ public class AuthManager {
      * @return - true - есть, false - нет
      */
     public boolean checkUserName(String name) {
-        try {
-            return databaseManager.checkUserName(name);
-        } catch (SQLException e) {
-            return false;
-        }
+        return databaseManager.checkUserName(name);
     }
 
 
     /**
      * Проверяет, есть ли пользователь с таким именем и паролем
      *
-     * @param name - имя пользователя, которое проверяем
+     * @param name     - имя пользователя, которое проверяем
      * @param password - пароль пользователя, который проверяем
      * @return - true - есть (авторизация прошла успешно), false - нет
      */

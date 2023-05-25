@@ -19,7 +19,20 @@ public class ChangeUserRole extends ServerCommand {
 
     @Override
     public void validateArgs(String[] args) throws WrongCommandArgsException, NonExistentId {
+        //2 аргумента, первый аргумент число
         if (args.length != 2 || !ValidateManager.isInteger(args[0])) {
+            throw new WrongCommandArgsException();
+        }
+        //второй аргумент роль, но не админ
+        if (!ValidateManager.isEnum(args[1], UserRole.class) || args[1].equals(UserRole.ADMIN.toString())) {
+            throw new WrongCommandArgsException();
+        }
+        //пользователь с таким id не существует
+        if (!userDatabaseManager.checkUserId(Integer.parseInt(args[0]))) {
+            throw new WrongCommandArgsException();
+        }
+        //пользователь, которому назначается роль - админ
+        if (userDatabaseManager.isAdmin(Integer.parseInt(args[0]))) {
             throw new WrongCommandArgsException();
         }
     }

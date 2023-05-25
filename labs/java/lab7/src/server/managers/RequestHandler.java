@@ -8,7 +8,9 @@ import common.exceptions.WrongCommandArgsException;
 import common.models.User;
 import common.network.requests.*;
 import common.network.responses.*;
+import server.Configuration;
 import server.commands.ServerCommand;
+import server.managers.databaseManagers.ConnectionManager;
 import server.managers.databaseManagers.UserDatabaseManager;
 import server.models.ServerUser;
 
@@ -19,7 +21,8 @@ import java.sql.SQLException;
  */
 public class RequestHandler {
     private final CommandManager commandManager;
-    private final UserDatabaseManager databaseManager = new UserDatabaseManager();
+    private final UserDatabaseManager databaseManager = new UserDatabaseManager(
+            new ConnectionManager(Configuration.getDbUrl(), Configuration.getDbLogin(), Configuration.getDbPass()));
 
     public RequestHandler(CommandManager commandManager) {
         this.commandManager = commandManager;

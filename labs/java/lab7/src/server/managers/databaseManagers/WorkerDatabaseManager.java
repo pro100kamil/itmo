@@ -12,7 +12,7 @@ import java.util.Map;
  * Класс для взаимодействий с таблицей работников и людей из базы данных.
  */
 public class WorkerDatabaseManager {
-    ConnectionManager connectionManager;
+    private final ConnectionManager connectionManager;
 
     public WorkerDatabaseManager(String url, String login, String password) {
         connectionManager = new ConnectionManager(url, login, password);
@@ -22,7 +22,7 @@ public class WorkerDatabaseManager {
         this.connectionManager = connectionManager;
     }
 
-    Connection getConnection() throws SQLException {
+    public Connection getConnection() throws SQLException {
         return connectionManager.getConnection();
     }
 

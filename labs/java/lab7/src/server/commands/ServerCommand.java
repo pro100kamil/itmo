@@ -6,7 +6,6 @@ import common.models.User;
 import server.Configuration;
 import server.managers.CollectionHistory;
 import server.managers.CollectionManager;
-import server.managers.databaseManagers.CommandDatabaseManager;
 import server.managers.databaseManagers.ConnectionManager;
 import server.managers.databaseManagers.UserDatabaseManager;
 import server.managers.databaseManagers.WorkerDatabaseManager;
@@ -28,8 +27,7 @@ public abstract class ServerCommand extends AbstractCommand {
             Configuration.getDbPass()  //pgpass
     );
     protected WorkerDatabaseManager workerDatabaseManager = new WorkerDatabaseManager(connectionManager);
-    protected CommandDatabaseManager commandDatabaseManager = new CommandDatabaseManager(connectionManager);
-    protected UserDatabaseManager userDatabaseManager = new UserDatabaseManager();
+    protected UserDatabaseManager userDatabaseManager = new UserDatabaseManager(connectionManager);
 
     protected User user;
 

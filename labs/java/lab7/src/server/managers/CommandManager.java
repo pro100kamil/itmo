@@ -9,7 +9,6 @@ import common.exceptions.UnavailableModelException;
 import common.exceptions.WrongCommandArgsException;
 import common.loggers.Logger;
 import common.loggers.StandardLogger;
-import common.models.User;
 import common.models.UserRole;
 import server.commands.*;
 import server.managers.databaseManagers.CommandDatabaseManager;
@@ -18,7 +17,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.Objects;
 import java.util.TreeMap;
 
 /**
@@ -91,9 +89,11 @@ public class CommandManager {
     }
 
     /**
-     * Получает описания всех серверных команд
+     * Получает описания серверных команд, которые доступны для конкретной роли.
+     * То есть роль команды либо меньше, либо такая же, как у пользователя.
      *
-     * @return CommandDescription[] - массив описаний всех серверных команд
+     * @param userRole роль конкретного пользователя
+     * @return CommandDescription[] массив описаний всех серверных команд
      */
     public CommandDescription[] getCommandDescriptions(UserRole userRole) {
         return Arrays.stream(serverCommands).filter(command -> command.getMinUserRole().ordinal() <= userRole.ordinal())
