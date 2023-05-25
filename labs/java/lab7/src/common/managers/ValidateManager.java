@@ -7,6 +7,15 @@ import java.nio.file.Path;
  * Класс для разных проверок (является ли строка числом, корректным файлом и тд)
  */
 public class ValidateManager {
+//    public static <T extends Enum> boolean isEnum(String value, Class<T>) {
+//        try {
+//            String s = T.valueOf(value);
+//        } catch (IllegalArgumentException e) {
+//            return false;
+//        }
+//        return true;
+//    }
+
     /**
      * Проверяет, является ли строка действительным числом
      *

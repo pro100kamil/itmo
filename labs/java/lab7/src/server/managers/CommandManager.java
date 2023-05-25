@@ -9,6 +9,8 @@ import common.exceptions.UnavailableModelException;
 import common.exceptions.WrongCommandArgsException;
 import common.loggers.Logger;
 import common.loggers.StandardLogger;
+import common.models.User;
+import common.models.UserRole;
 import server.commands.*;
 import server.managers.databaseManagers.CommandDatabaseManager;
 
@@ -70,7 +72,7 @@ public class CommandManager {
         for (ServerCommand command : serverCommands) {
             try {
                 String minUserRole = commandDatabaseManager.getMinUserRole(command.getName());
-                command.setMinUserRole(minUserRole);
+                command.setMinUserRole(UserRole.valueOf(minUserRole));
             } catch (SQLException e) {
                 logger.write("Нет информация о минимальной роли для команды " + command.getName());
             }
@@ -93,8 +95,8 @@ public class CommandManager {
      *
      * @return CommandDescription[] - массив описаний всех серверных команд
      */
-    public CommandDescription[] getCommandDescriptions(String min_user_role) {
-        return Arrays.stream(serverCommands).filter(command -> Objects.equals(command.getMinUserRole(), min_user_role))
+    public CommandDescription[] getCommandDescriptions(UserRole userRole) {
+        return Arrays.stream(serverCommands).filter(command -> command.getMinUserRole().ordinal() <= userRole.ordinal())
                 .map(ServerCommandDescription::new)
                 .toArray(CommandDescription[]::new);
     }

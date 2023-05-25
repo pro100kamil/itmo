@@ -1,5 +1,6 @@
 package server.commands;
 
+import common.exceptions.NonUniqueLoginException;
 import common.exceptions.WrongCommandArgsException;
 import common.exceptions.WrongCredentialsException;
 import common.models.User;
@@ -26,7 +27,7 @@ public class Register extends ServerCommand {
             throw new WrongCommandArgsException();
         }
         if (authManager.checkUserName(args[0])) {//если такой логин существует
-            throw new WrongCredentialsException();
+            throw new NonUniqueLoginException();
         }
     }
 
@@ -38,7 +39,6 @@ public class Register extends ServerCommand {
             boolean success = authManager.register(user);
             if (success) {
                 this.user = user;
-                System.out.println(user.getId());
                 console.write("Регистрация прошла успешно");
             }
             else {

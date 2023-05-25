@@ -3,10 +3,10 @@ package common.commands;
 import common.exceptions.NonExistentId;
 import common.exceptions.UnavailableModelException;
 import common.exceptions.WrongCommandArgsException;
+import common.models.UserRole;
 import common.models.Worker;
 
 import java.io.Serializable;
-import java.util.Arrays;
 
 /**
  * Класс абстрактной команды. Тут содержится общие поля и методы для серверных и клиентских команд
@@ -20,7 +20,7 @@ public abstract class AbstractCommand implements Serializable {
     protected Worker worker;
 
     protected boolean onlyUsers = true;  //команду могут выполнять только зарегистрированные пользователи
-    protected String minUserRole;
+    protected UserRole minUserRole;
 
     public AbstractCommand(String name, String description, boolean withWorker, boolean onlyUsers) {
         this.name = name;
@@ -65,11 +65,11 @@ public abstract class AbstractCommand implements Serializable {
         return onlyUsers;
     }
 
-    public String getMinUserRole() {
+    public UserRole getMinUserRole() {
         return minUserRole;
     }
 
-    public void setMinUserRole(String minUserRole) {
+    public void setMinUserRole(UserRole minUserRole) {
         this.minUserRole = minUserRole;
     }
 

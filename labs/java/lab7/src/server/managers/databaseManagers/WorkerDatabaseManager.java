@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Класс для взаимодействий с базой данных.
+ * Класс для взаимодействий с таблицей работников и людей из базы данных.
  */
 public class WorkerDatabaseManager {
     ConnectionManager connectionManager;

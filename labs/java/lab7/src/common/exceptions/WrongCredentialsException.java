@@ -1,7 +1,7 @@
 package common.exceptions;
 
 /**
- * Исключение выбрасывается, когда происходит ошибка при регистрации или авторизации
+ * Исключение выбрасывается, когда происходит ошибка при входе (неправильный логин или пароль)
  */
 public class WrongCredentialsException extends WrongCommandArgsException {
     @Override

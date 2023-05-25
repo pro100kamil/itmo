@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Класс, который работает с таблицей commands из базы данных.
+ * Класс для взаимодействий с таблицей команд из базы данных.
  */
 public class CommandDatabaseManager {
     ConnectionManager connectionManager;

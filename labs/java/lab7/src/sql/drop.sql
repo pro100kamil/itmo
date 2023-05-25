@@ -7,5 +7,6 @@ DROP TABLE IF EXISTS commands;
 
 DROP TYPE IF EXISTS status;
 DROP TYPE IF EXISTS pos;
+DROP TYPE IF EXISTS user_role;
 
 END;

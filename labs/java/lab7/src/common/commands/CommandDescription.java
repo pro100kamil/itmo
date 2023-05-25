@@ -1,5 +1,6 @@
 package common.commands;
 
+import common.models.UserRole;
 import common.models.Worker;
 
 import java.io.Serializable;
@@ -14,10 +15,10 @@ public class CommandDescription implements Serializable {
     protected Worker worker;
 
     protected boolean onlyUsers = true;  //команду могут выполнять только зарегистрированные пользователи
-    protected String minUserRole;
+    protected UserRole minUserRole;
 
     public CommandDescription(String name, String description, boolean withWorker,
-                              boolean onlyUsers, String minUserRole) {
+                              boolean onlyUsers, UserRole minUserRole) {
         this.name = name;
         this.description = description;
         this.withWorker = withWorker;
@@ -62,11 +63,11 @@ public class CommandDescription implements Serializable {
         this.worker = worker;
     }
 
-    public String getMinUserRole() {
+    public UserRole getMinUserRole() {
         return minUserRole;
     }
 
-    public void setMinUserRole(String minUserRole) {
+    public void setMinUserRole(UserRole minUserRole) {
         this.minUserRole = minUserRole;
     }
 

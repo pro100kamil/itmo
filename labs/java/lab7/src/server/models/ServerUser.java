@@ -1,13 +1,15 @@
 package server.models;
 
+import common.models.UserRole;
+
 public class ServerUser {
     private final int id;
     private final String name;
     private final String passwordDigest;
     private final String salt;
-    private final String role;
+    private final UserRole role;
 
-    public ServerUser(int id, String name, String passwordDigest, String salt, String role) {
+    public ServerUser(int id, String name, String passwordDigest, String salt, UserRole role) {
         this.id = id;
         this.name = name;
         this.passwordDigest = passwordDigest;
@@ -31,7 +33,7 @@ public class ServerUser {
         return salt;
     }
 
-    public String getRole() {
+    public UserRole getRole() {
         return role;
     }
 }

@@ -9,7 +9,7 @@ import server.models.ServerUser;
 import java.sql.*;
 
 /**
- * Класс, отвечающий
+ * Класс для взаимодействий с таблицей пользователей из базы данных.
  */
 public class UserDatabaseManager {
     ConnectionManager connectionManager;
@@ -44,13 +44,15 @@ public class UserDatabaseManager {
 
         connection.close();
 
+        result.next();
+
         int id = result.getInt("id");
         String password_digest = result.getString("password_digest");
         String salt = result.getString("salt");
         String role = result.getString("role");
 
 
-        return new ServerUser(id, name, password_digest, salt, role);
+        return new ServerUser(id, name, password_digest, salt, UserRole.valueOf(role));
     }
 
     public ServerUser getUser(String name, String password) throws SQLException {
@@ -171,7 +173,7 @@ public class UserDatabaseManager {
         Connection connection = getConnection();
         PreparedStatement statement = connection.prepareStatement(
                 "INSERT INTO USERS(name, password_digest, salt, role)" +
-                "VALUES (?, ?, ?, 'user_min') RETURNING id");
+                "VALUES (?, ?, ?, 'USER_MIN') RETURNING id");
 
         statement.setString(1, user.getName());
         String salt = PasswordManager.getSalt();

@@ -6,6 +6,7 @@ import client.managers.InputManager;
 import common.managers.ValidateManager;
 import common.consoles.Console;
 import common.consoles.FileConsole;
+import common.models.UserRole;
 
 /**
  * Команда execute_script file_name.
@@ -17,6 +18,7 @@ public class ExecuteScript extends ClientCommand {
 
     public ExecuteScript() {
         super("execute_script", "выполняет команды из файла", false, true);
+        minUserRole = UserRole.ADMIN;
     }
 
     public static void setMaxDepth(int maxDepth) {
