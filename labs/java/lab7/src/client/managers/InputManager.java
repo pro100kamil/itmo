@@ -259,7 +259,12 @@ public class InputManager {
                 //получаем все команды от сервера
                 try {
                     serverCommands = clientManager.getAllCommands();
-                    commandManager.setCommands(serverCommands);
+                    if (clientManager.getUser() == null) {
+                        commandManager.setCommandsForUnauthorizedUser(serverCommands);
+                    }
+                    else {
+                        commandManager.setCommands(serverCommands, clientManager.getUser().getRole());
+                    }
                 } catch (IOException | ClassNotFoundException e) {
                     console.write("Подключиться к серверу не получилось");
                     console.write(e.toString());

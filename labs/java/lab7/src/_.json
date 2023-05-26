@@ -888,6 +888,42 @@
       "creatorId": 1
     }
   ],
+  "74": [
+    {
+      "id": 1,
+      "name": "dfdfs",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-25T03:19:18.030057",
+      "salary": 555.0,
+      "person": {
+        "id": 1,
+        "height": 5.0,
+        "creatorId": 1
+      },
+      "creatorId": 1
+    }
+  ],
+  "75": [
+    {
+      "id": 1,
+      "name": "dfdfs",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-25T03:19:18.030057",
+      "salary": 555.0,
+      "person": {
+        "id": 1,
+        "height": 5.0,
+        "creatorId": 1
+      },
+      "creatorId": 1
+    }
+  ],
   "8": [
     {
       "id": 2,

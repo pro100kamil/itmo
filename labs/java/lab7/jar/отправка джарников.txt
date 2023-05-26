@@ -1,1 +1,1 @@
-scp -rP 2222 jar s367149@helios.cs.ifmo.ru:~/labs/lab7
+scp -rP 2222 jar s367149@helios.cs.ifmo.ru:~/labs/lab7/lab7

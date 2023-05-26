@@ -7,6 +7,7 @@ import common.commands.CommandDescription;
 import common.consoles.Console;
 import common.consoles.StandardConsole;
 import common.exceptions.*;
+import common.models.UserRole;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -42,13 +43,28 @@ public class CommandManager {
         help.setCommands(strToCommandDescription.values().toArray(new CommandDescription[0]));
     }
 
-    public void setCommands(CommandDescription[] serverCommandDescriptions) {
+    public void setCommands(CommandDescription[] serverCommandDescriptions, UserRole userRole) {
         strToCommandDescription.clear();
         for (CommandDescription command : serverCommandDescriptions) {
             strToCommandDescription.put(command.getName(), command);
         }
         for (AbstractCommand command : clientCommands) {
-            strToCommandDescription.put(command.getName(), new ClientCommandDescription(command));
+            if (command.getMinUserRole().ordinal() <= userRole.ordinal()) {
+                strToCommandDescription.put(command.getName(), new ClientCommandDescription(command));
+            }
+        }
+        help.setCommands(strToCommandDescription.values().toArray(new CommandDescription[0]));
+    }
+
+    public void setCommandsForUnauthorizedUser(CommandDescription[] serverCommandDescriptions) {
+        strToCommandDescription.clear();
+        for (CommandDescription command : serverCommandDescriptions) {
+            strToCommandDescription.put(command.getName(), command);
+        }
+        for (AbstractCommand command : clientCommands) {
+            if (!command.isOnlyUsers()) {
+                strToCommandDescription.put(command.getName(), new ClientCommandDescription(command));
+            }
         }
         help.setCommands(strToCommandDescription.values().toArray(new CommandDescription[0]));
     }
