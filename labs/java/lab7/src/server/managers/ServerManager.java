@@ -27,6 +27,7 @@ public class ServerManager {
     private CommandManager commandManager;
 
     public ServerManager() {
+
         server = new Server(Configuration.getHost(), Configuration.getPort());
     }
 

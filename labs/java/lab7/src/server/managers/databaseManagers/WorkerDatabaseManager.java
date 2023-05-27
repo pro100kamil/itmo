@@ -44,6 +44,7 @@ public class WorkerDatabaseManager {
                     result.getDate("birthday") == null ? null : result.getDate("birthday").toLocalDate(),
                     result.getFloat("height"), result.getString("passportID"));
             person.setId(id);
+
             person.setCreatorId(result.getInt("creator_id"));
             persons.put(id, person);
         }
@@ -63,7 +64,14 @@ public class WorkerDatabaseManager {
             int personId = result.getInt("person_id");
             Person person = persons.get(personId);
 
-            Worker worker = new Worker(result.getInt("id"), result.getString("name"), new Coordinates(result.getInt("x"), result.getInt("y")), result.getTimestamp("creation_date").toLocalDateTime(), result.getFloat("salary"), result.getString("pos") == null ? null : Position.valueOf(result.getString("pos")), result.getString("status") == null ? null : Status.valueOf(result.getString("status")), person);
+            Float salary = result.getFloat("salary");
+            if (result.wasNull()) salary = null;
+
+            Worker worker = new Worker(result.getInt("id"), result.getString("name"),
+                    new Coordinates(result.getInt("x"), result.getInt("y")),
+                    result.getTimestamp("creation_date").toLocalDateTime(),
+                    salary,
+                    result.getString("pos") == null ? null : Position.valueOf(result.getString("pos")), result.getString("status") == null ? null : Status.valueOf(result.getString("status")), person);
             worker.setCreatorId(result.getInt("creator_id"));
             workers.add(worker);
         }
@@ -190,7 +198,8 @@ public class WorkerDatabaseManager {
         else statement.setString(6, newWorker.getStatus().toString());
 
         updatePerson(user, workerId, newWorker.getPerson());
-        statement.setInt(7, newWorker.getPerson().getId());
+//        statement.setInt(7, newWorker.getPerson().getId());
+        statement.setInt(7, workerId);
 
         statement.setInt(8, workerId);
         statement.setInt(9, user.getId());

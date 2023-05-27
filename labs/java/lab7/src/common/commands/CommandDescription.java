@@ -71,23 +71,22 @@ public class CommandDescription implements Serializable {
         this.minUserRole = minUserRole;
     }
 
-//    @Override
-//    public String toString() {
-//        if (onlyUsers) return name + ": " + description + " (только для зарегистрированных пользователей)";
-//        else return name + ": " + description;
-//    }
-
-
     @Override
     public String toString() {
-        return "CommandDescription{" +
-               "name='" + name + '\'' +
-               ", description='" + description + '\'' +
-               ", args=" + Arrays.toString(args) +
-               ", withWorker=" + withWorker +
-               ", worker=" + worker +
-               ", onlyUsers=" + onlyUsers +
-               ", minUserRole='" + minUserRole + '\'' +
-               '}';
+        return name + ": " + description;
     }
+
+//
+//    @Override
+//    public String toString() {
+//        return "CommandDescription{" +
+//               "name='" + name + '\'' +
+//               ", description='" + description + '\'' +
+//               ", args=" + Arrays.toString(args) +
+//               ", withWorker=" + withWorker +
+//               ", worker=" + worker +
+//               ", onlyUsers=" + onlyUsers +
+//               ", minUserRole='" + minUserRole + '\'' +
+//               '}';
+//    }
 }

@@ -38,7 +38,7 @@ public class UserDatabaseManager {
     public int changeUserRole(int userId, UserRole userRole) throws SQLException {
         Connection connection = getConnection();
         PreparedStatement statement = connection.prepareStatement(
-                "UPDATE users SET role = ? " +
+                "UPDATE users SET role = ?::user_role " +
                 "WHERE id = ?"
         );
 
@@ -76,12 +76,11 @@ public class UserDatabaseManager {
         return result.getInt(1);
     }
 
-    //TODO переделать структуру методов
     /**
      * Получает пользователя по имени
      *
      * @param id id пользователя
-     * @return true - есть, false - нет
+     * @return ServerUser полученный пользователь
      */
     public ServerUser getUser(int id) throws SQLException {
         Connection connection = getConnection();
@@ -110,7 +109,7 @@ public class UserDatabaseManager {
      * Получает пользователя по имени
      *
      * @param name - имя пользователя
-     * @return - true - есть, false - нет
+     * @return ServerUser полученный пользователь
      */
     public ServerUser getUser(String name) throws SQLException {
         Connection connection = getConnection();
@@ -164,7 +163,6 @@ public class UserDatabaseManager {
      */
     public int getUserId(String name) throws SQLException {
         ServerUser user = getUser(name);
-
         return user.getId();
     }
 
@@ -196,29 +194,25 @@ public class UserDatabaseManager {
      * @return - true - есть, false - нет
      */
     public boolean checkUserName(String name) {
-        ServerUser user = null;
         try {
-            user = getUser(name);
+            return getUser(name) != null;
         } catch (SQLException e) {
             return false;
         }
-        return user != null;
     }
 
     /**
-     * Проверяет, есть ли пользователь с таким именем
+     * Проверяет, есть ли пользователь с таким id
      *
-     * @param id - имя пользователя, которое проверяем
+     * @param id - id пользователя, которое проверяем
      * @return - true - есть, false - нет
      */
     public boolean checkUserId(int id) {
-        ServerUser user = null;
         try {
-            user = getUser(id);
+            return getUser(id) != null;
         } catch (SQLException e) {
             return false;
         }
-        return user != null;
     }
 
     /**
@@ -228,8 +222,11 @@ public class UserDatabaseManager {
      * @param password - пароль пользователя, который проверяем
      * @return - true - есть (авторизация прошла успешно), false - нет
      */
-    public boolean checkUserPass(String name, String password) throws SQLException {
-        ServerUser user = getUser(name, password);
-        return user != null;
+    public boolean checkUserPass(String name, String password) {
+        try {
+            return getUser(name, password) != null;
+        } catch (SQLException e) {
+            return false;
+        }
     }
 }

@@ -52,6 +52,7 @@ public class Update extends ServerCommand {
         } catch (WrongCommandArgsException | NonExistentId | UnavailableModelException e) {
             console.write(e.toString());
         }catch (SQLException e) {
+            console.write(e.toString());
             console.write("Обновить работника не получилось");
         }
     }

@@ -30,7 +30,6 @@ public class RequestHandler {
 
     public GetAllCommandsResponse handleGetAllCommandsRequest(GetAllCommandsRequest request) {
         User user = handleUser(request.getUser());
-        System.out.println(user);
         if (user == null)
             return new GetAllCommandsResponse(commandManager.getCommandDescriptionsForUnauthorizedUser());
         else
@@ -47,12 +46,10 @@ public class RequestHandler {
         try {
             if (user == null) return null;
             ServerUser serverUser = databaseManager.getUser(user.getName(), user.getPassword());
-            System.out.println(serverUser);
             if (serverUser == null) return null;
             user.setRole(serverUser.getRole());
             return user;
         } catch (SQLException e) {
-            System.out.println(e.toString());
             return null;
         }
     }

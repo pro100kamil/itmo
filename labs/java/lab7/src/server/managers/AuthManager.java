@@ -3,6 +3,7 @@ package server.managers;
 import common.loggers.Logger;
 import common.loggers.StandardLogger;
 import common.models.User;
+import common.models.UserRole;
 import server.Configuration;
 import server.managers.databaseManagers.ConnectionManager;
 import server.managers.databaseManagers.UserDatabaseManager;
@@ -33,11 +34,7 @@ public class AuthManager {
      * @return - true - есть (авторизация прошла успешно), false - нет
      */
     public boolean checkUserPass(String name, String password) {
-        try {
-            return databaseManager.checkUserPass(name, password);
-        } catch (SQLException e) {
-            return false;
-        }
+        return databaseManager.checkUserPass(name, password);
     }
 
     public boolean register(User user) {
@@ -62,7 +59,9 @@ public class AuthManager {
             if (databaseManager.checkUserPass(user.getName(), user.getPassword())) {
                 //вход успешный
                 int id = databaseManager.getUserId(user.getName());
+                UserRole role = databaseManager.getUserRole(user.getName());
                 user.setId(id);
+                user.setRole(role);
                 logger.write("Вход прошёл успешно");
                 return true;
             }

@@ -20,7 +20,7 @@ public abstract class AbstractCommand implements Serializable {
     protected Worker worker;
 
     protected boolean onlyUsers = true;  //команду могут выполнять только зарегистрированные пользователи
-    protected UserRole minUserRole;
+    protected UserRole minUserRole = UserRole.USER_MIN;
 
     public AbstractCommand(String name, String description, boolean withWorker, boolean onlyUsers) {
         this.name = name;

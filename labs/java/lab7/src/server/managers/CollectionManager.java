@@ -33,7 +33,6 @@ public class CollectionManager {
     }
 
     public void setWorkers(LinkedList<Worker> workers) {
-        //если несколько одинаковых id, оставляем первый встречный
         //оставляем только корректных работников
         idWorkerFromCollection.clear();
         linkedList.clear();

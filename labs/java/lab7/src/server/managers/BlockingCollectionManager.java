@@ -55,11 +55,6 @@ public class BlockingCollectionManager extends CollectionManager {
         }
     }
 
-    /**
-     * Удаляет работника из коллекции
-     *
-     * @param id работника
-     */
     public void remove(int id) {
         lock.lock();
         try {
@@ -69,9 +64,6 @@ public class BlockingCollectionManager extends CollectionManager {
         }
     }
 
-    /**
-     * Очистка коллекции
-     */
     public void clear(int userId) {
         lock.lock();
         try {
@@ -81,11 +73,6 @@ public class BlockingCollectionManager extends CollectionManager {
         }
     }
 
-    /**
-     * Пустая ли коллекция
-     *
-     * @return boolean true - коллекция пуста,false - в ней есть элементы
-     */
     public boolean isEmpty() {
         lock.lock();
         try {
@@ -95,9 +82,6 @@ public class BlockingCollectionManager extends CollectionManager {
         }
     }
 
-    /**
-     * Выводит информацию о коллекции
-     */
     public void printInfo() {
         lock.lock();
         try {
@@ -119,9 +103,6 @@ public class BlockingCollectionManager extends CollectionManager {
         }
     }
 
-    /**
-     * Выводит элементы коллекции в порядке убывания
-     */
     public void printDescending() {
         lock.lock();
         try {
@@ -131,9 +112,6 @@ public class BlockingCollectionManager extends CollectionManager {
         }
     }
 
-    /**
-     * Выводит позиции работников, работники идут по убыванию
-     */
     public void printFieldDescendingPosition() {
         lock.lock();
         try {
@@ -152,11 +130,6 @@ public class BlockingCollectionManager extends CollectionManager {
         }
     }
 
-    /**
-     * Удаляет работников, которые больше (по зарплате) заданного
-     *
-     * @param worker заданный работник
-     */
     public void removeGreater(Worker worker, int userId) {
         lock.lock();
         try {
@@ -166,11 +139,6 @@ public class BlockingCollectionManager extends CollectionManager {
         }
     }
 
-    /**
-     * Возвращает первый элемент коллекции (существует метод isEmpty, чтобы не допускать случая пустой коллекции)
-     *
-     * @return Worker первый работник в коллекции
-     */
     public Worker getHead() {
         lock.lock();
         try {
@@ -180,13 +148,6 @@ public class BlockingCollectionManager extends CollectionManager {
         }
     }
 
-
-    /**
-     * Возвращает связанный список работников с заданной зарплатой
-     *
-     * @param salary заданная зарплата
-     * @return LinkedList<Worker> работники с заданной зарплатой
-     */
     public LinkedList<Worker> getFilterBySalary(Float salary) {
         lock.lock();
         try {
@@ -196,9 +157,6 @@ public class BlockingCollectionManager extends CollectionManager {
         }
     }
 
-    /**
-     * Сортирует работников по имени
-     */
     public void sortByName() {
         lock.lock();
         try {
