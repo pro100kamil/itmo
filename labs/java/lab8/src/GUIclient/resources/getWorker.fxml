@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="450.0" minWidth="200.0" prefHeight="450.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controllers.GetWorkerController">
+   <children>
+      <Label fx:id="mainLabel" text="Введите данные о работнике" />
+      <Label fx:id="nameLabel" text="Имя" />
+      <TextField fx:id="nameField" />
+      <Label fx:id="coordinateXLabel" text="Координата X" />
+      <TextField fx:id="coordinateXField" />
+      <Label fx:id="coordinateYLabel" text="Координата Y" />
+      <TextField fx:id="coordinateYField" />
+      <Label fx:id="salaryLabel" text="Зарплата" />
+      <TextField fx:id="salaryField" />
+      <Label fx:id="positionLabel" text="Позиция" />
+      <TextField fx:id="positionField" />
+      <Label fx:id="statusLabel" text="Статус" />
+      <TextField fx:id="statusField" />
+      <Label fx:id="birthdayLabel" text="Дата рождения" />
+      <TextField fx:id="birthdayField" />
+      <Label fx:id="heightLabel" text="Рост" />
+      <TextField fx:id="heightField" />
+      <Label fx:id="passportLabel" text="Id паспорта " />
+      <TextField fx:id="passportField" />
+      <Label fx:id="errorLabel" />
+      <Button fx:id="button" mnemonicParsing="false" text="Отправить" />
+   </children>
+</VBox>

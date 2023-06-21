@@ -1,0 +1,29 @@
+Роли:
+user_min - только просмотр
+user_middle - просмотр и добавление
+user_senior - просмотр, добавление, редактирование и удаление своих моделек
+
+admin - просмотр, добавление, редактирование, удаление любых моделек, назначение ролей другим пользователям
+
+Минимальная роль для команды:
+add: user_middle
+auth: user_min
+clear: user_senior
+execute_script: user_senior
+exit: user_min
+filter_by_salary: user_min
+head: user_min
+help: user_min
+history: admin
+info: admin
+logout: user_min
+print_descending: user_min
+print_field_descending_position: user_min
+register: user_min
+remove_by_id: user_senior
+remove_greater: user_senior
+rollback: admin
+show: user_min
+update: user_senior
+user_info: user_min
+change_role: admin
