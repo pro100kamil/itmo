@@ -1,7 +1,9 @@
 package UI.controllers;
 
-import client.managers.ClientManager;
+import client.commands.ExecuteScript;
 import common.commands.CommandDescription;
+import common.consoles.StringConsole;
+import common.managers.FileManager;
 import common.models.*;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -162,7 +164,8 @@ public class MainController extends BaseController {
 
 
     public void initialize() {
-
+        usersButton.setVisible(false);
+//        System.out.println("user " + clientManager.getUser());
         if (clientManager.getUser().getRole() == UserRole.ADMIN) {
             usersButton.setVisible(true);
         }
@@ -189,7 +192,6 @@ public class MainController extends BaseController {
         createFilterButton.setOnAction((event -> filter()));
 
         usersButton.setOnAction((event -> handleUsersButton()));
-        usersButton.setVisible(false);
 
         initializeColumns();
     }
@@ -202,76 +204,17 @@ public class MainController extends BaseController {
             throw new RuntimeException(e);
         }
         new SceneSwitcher().switchScene(currentStage, "/resources/users.fxml", "Пользователи");
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/users.fxml"));
-//        Parent root;
-//        try {
-//            root = fxmlLoader.load();
-//        } catch (IOException e) {
-//            System.out.println("errrorrr");
-//            throw new RuntimeException(e);
-//        }
-//        UsersController controller = fxmlLoader.getController();
-//
-//        controller.setCurrentStage(currentStage);
-//
-//        currentStage.setScene(new Scene(root));
-//        currentStage.setTitle("Пользователи");
-//        System.out.println(users);
     }
 
     private void filter() {
-        new SceneSwitcher().switchScene(currentStage, "/resources/users.fxml", "Фильтр");
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/Filter.fxml"));
-//        Parent root;
-//        try {
-//            root = fxmlLoader.load();
-//        } catch (IOException e) {
-//            System.out.println(e.toString());
-//            System.out.println("errrorrr");
-//            throw new RuntimeException(e);
-//        }
-////        Visualizer controller = fxmlLoader.getController();
-////        controller.setClientManager(clientManager);
-////
-////        controller.setCurrentStage(currentStage);
-//
-//        currentStage.setScene(new Scene(root));
-//        currentStage.setTitle("Фильтр");
+        new SceneSwitcher().switchScene(currentStage, "/resources/Filter.fxml", "Фильтр");
     }
     private void visualize() {
         new SceneSwitcher().switchScene(currentStage, "/resources/VisualizerForm.fxml", "Визуализация");
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/VisualizerForm.fxml"));
-//        Parent root;
-//        try {
-//            root = fxmlLoader.load();
-//        } catch (IOException e) {
-//            System.out.println("errrorrr");
-//            throw new RuntimeException(e);
-//        }
-//        Visualizer controller = fxmlLoader.getController();
-//
-//        controller.setCurrentStage(currentStage);
-//
-//        currentStage.setScene(new Scene(root));
-//        currentStage.setTitle("Визуализация");
     }
 
     private void logout() {
         new SceneSwitcher().switchScene(currentStage, "/resources/Register.fxml", "Вход и регистрация");
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/Register.fxml"));
-//        Parent root;
-//        try {
-//            root = fxmlLoader.load();
-//        } catch (IOException e) {
-//            System.out.println("errrorrr");
-//            throw new RuntimeException(e);
-//        }
-//
-//        RegisterController controller = fxmlLoader.getController();
-//        controller.setCurrentStage(currentStage);
-//
-//        currentStage.setScene(new Scene(root));
-//        currentStage.setTitle("Вход и регистрация");
     }
 
     public Worker getWorker() {
@@ -297,25 +240,13 @@ public class MainController extends BaseController {
     }
 
     public Worker getWorker(Worker oldWorker) {
+        Stage stage = new Stage();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/getWorker.fxml"));
-        Parent root = null;
-        try {
-            root = fxmlLoader.load();
-        } catch (IOException e) {
-            System.out.println("errrorrr");
-            throw new RuntimeException(e);
-        }
-        GetWorkerController controller = fxmlLoader.getController();
+        GetWorkerController controller = (GetWorkerController) new SceneSwitcher().switchSceneAndGetController(stage,
+                "/resources/getWorker.fxml", "Введите данные о работнике");
 
         controller.setFields(oldWorker);
 
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-
-        controller.setCurrentStage(stage);
-
-        stage.setScene(scene);
         stage.showAndWait();
 
         return controller.getWorker();
@@ -422,6 +353,18 @@ public class MainController extends BaseController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Выберете файл для скрипта");
         File selectedFile = fileChooser.showOpenDialog(currentStage);
-        System.out.println(selectedFile);
+        if (selectedFile == null) return;
+        String text = FileManager.getTextFromFile(selectedFile.getName());
+
+        ExecuteScript executeScript = new ExecuteScript();
+        executeScript.setClientManager(clientManager);
+        StringConsole stringConsole = new StringConsole();
+        executeScript.setConsole(stringConsole);
+        executeScript.execute(new String[]{selectedFile.getName()});
+
+        Stage stage = new Stage();
+        ExecuteScriptResultController controller = (ExecuteScriptResultController) new SceneSwitcher().switchSceneAndGetController(stage, "/resources/ExecuteScriptResult.fxml", "Результат скрипта");
+        controller.setText(stringConsole.getAllText());
+        stage.showAndWait();
     }
 }

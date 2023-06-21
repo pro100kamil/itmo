@@ -2,13 +2,14 @@ package client.commands;
 
 import common.commands.AbstractCommand;
 import common.consoles.Console;
+import common.consoles.StandardConsole;
 
 /**
  * Абстрактный класс команды, которая выполняется на клиенте.
  * Например, exit, execute_script, help.
  */
 public abstract class ClientCommand extends AbstractCommand {
-    protected Console console;
+    protected Console console = new StandardConsole();
 
     public ClientCommand(String name, String description, boolean withWorker, boolean onlyUsers) {
         super(name, description, withWorker, onlyUsers);

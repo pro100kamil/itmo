@@ -53,7 +53,6 @@ public class Visualizer extends BaseController {
     }
 
     public void initialize() {
-        System.out.println("visualizer");
 
         backToTableButton.setOnAction((event -> handleBackButton()));
 
@@ -61,19 +60,6 @@ public class Visualizer extends BaseController {
     }
 
     public void handleBackButton() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/Main.fxml"));
-        Parent root;
-        try {
-            root = fxmlLoader.load();
-        } catch (IOException e) {
-            System.out.println("errrorrr");
-            throw new RuntimeException(e);
-        }
-        MainController controller = fxmlLoader.getController();
-
-        controller.setCurrentStage(currentStage);
-
-        currentStage.setScene(new Scene(root));
-        currentStage.setTitle("Главное окно");
+        new SceneSwitcher().switchScene(currentStage, "/resources/Main.fxml", "Главное окно");
     }
 }

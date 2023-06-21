@@ -1,6 +1,7 @@
 package client.commands;
 
 import client.managers.ClientManager;
+import common.consoles.FileStringConsole;
 import common.exceptions.WrongCommandArgsException;
 import client.managers.InputManager;
 import common.managers.ValidateManager;
@@ -51,7 +52,7 @@ public class ExecuteScript extends ClientCommand {
             }
             console.write("Начинаем обработку файла с командами");
             depth++;
-            Console fileConsole = new FileConsole(fileName);
+            Console fileConsole = new FileStringConsole(fileName);
             InputManager newInputManager = new InputManager(fileConsole, clientManager);
             newInputManager.run();
             depth--;

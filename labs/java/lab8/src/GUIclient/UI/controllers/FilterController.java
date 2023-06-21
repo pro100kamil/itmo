@@ -122,9 +122,6 @@ public class FilterController extends BaseController {
     @FXML
     private Label yLabel;
 
-    //    private final ComboBox[] comboBoxes = new ComboBox[]{birthdayComboBox, creationDateComboBox,
-//            creatorIdComboBox, heightComboBox, idComboBox, nameComboBox, passportIdComboBox,
-//            positionComboBox, salaryComboBox, statusComboBox, xComboBox, yComboBox};
     private final ArrayList<ComboBox<String>> comboBoxes = new ArrayList<>();
     private ArrayList<TextField> textFields;
 

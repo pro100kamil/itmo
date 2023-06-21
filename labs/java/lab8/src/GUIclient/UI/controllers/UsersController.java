@@ -37,6 +37,7 @@ public class UsersController extends BaseController {
 
     @FXML
     private TableColumn<User, UserRole> roleColumn;
+
     public void initializeColumns() {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -52,6 +53,9 @@ public class UsersController extends BaseController {
 
 
     public void initialize() {
+        backToTableButton.setOnAction((event ->
+                new SceneSwitcher().switchScene(currentStage,
+                        "/resources/Main.fxml", "Главное окно")));
         initializeColumns();
 
         // TODO сделать смену роли
