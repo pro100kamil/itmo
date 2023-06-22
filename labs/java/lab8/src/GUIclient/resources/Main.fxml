@@ -32,7 +32,7 @@
             <TableColumn fx:id="nameColumn" prefWidth="50.0" text="name" />
             <TableColumn fx:id="coordinateXColumn" prefWidth="32.0" text="X" />
             <TableColumn fx:id="coordinateYColumn" prefWidth="35.0" text="Y" />
-            <TableColumn fx:id="creationDateColumn" prefWidth="84.0" text="Creation Date" />
+            <TableColumn fx:id="creationDateColumn" prefWidth="84.0" text="creation date" />
             <TableColumn fx:id="salaryColumn" prefWidth="61.0" text="salary" />
             <TableColumn fx:id="positionColumn" prefWidth="51.0" text="position" />
             <TableColumn fx:id="statusColumn" prefWidth="56.0" text="status" />
@@ -75,11 +75,11 @@
                     <children>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                             <children>
-                                <Button fx:id="createFilterButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Create Filter" />
-                                <Button fx:id="removeFilterButton" mnemonicParsing="false" text="Remove Filter" />
+                                <Button fx:id="createFilterButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="create filter" />
+                                <Button fx:id="removeFilterButton" mnemonicParsing="false" text="remove filter" />
                             </children>
                         </HBox>
-                        <Button fx:id="visualizeButton" mnemonicParsing="false" text="Visualize" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+                        <Button fx:id="visualizeButton" mnemonicParsing="false" text="visualize" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
                     </children>
                 </GridPane>
             </children>
@@ -115,6 +115,6 @@
             <Button fx:id="executeScriptButton" mnemonicParsing="false" prefWidth="129.0" text="execute script" textAlignment="CENTER" wrapText="true" />
             </children>
         </VBox>
-      <Button fx:id="usersButton" mnemonicParsing="false" text="Users" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Button fx:id="usersButton" mnemonicParsing="false" text="users" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     </children>
 </GridPane>

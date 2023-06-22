@@ -1,7 +1,10 @@
 package UI.controllers;
 
 import client.commands.ExecuteScript;
+import client.commands.Help;
+import client.managers.ClientManager;
 import common.commands.CommandDescription;
+import common.consoles.Console;
 import common.consoles.StringConsole;
 import common.managers.FileManager;
 import common.models.Position;
@@ -14,12 +17,15 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import localizations.CurrentLanguage;
+import localizations.Languages;
 import utils.FilterCondition;
 import utils.MyAlerts;
 import utils.SceneSwitcher;
@@ -30,6 +36,7 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class MainController extends BaseController {
 
@@ -134,6 +141,31 @@ public class MainController extends BaseController {
         this.currentStage = currentStage;
     }
 
+    public void changeLocale() {
+        ResourceBundle resourceBundle = CurrentLanguage.getCurrentResourceBundle();
+        idColumn.setText(resourceBundle.getString("id"));
+        nameColumn.setText(resourceBundle.getString("name"));
+        creationDateColumn.setText(resourceBundle.getString("creationDate"));
+        salaryColumn.setText(resourceBundle.getString("salary"));
+        positionColumn.setText(resourceBundle.getString("position"));
+        statusColumn.setText(resourceBundle.getString("status"));
+        birthdayColumn.setText(resourceBundle.getString("birthday"));
+        heightColumn.setText(resourceBundle.getString("height"));
+        passportIdColumn.setText(resourceBundle.getString("passportId"));
+        creatorIdColumn.setText(resourceBundle.getString("creatorId"));
+
+        createFilterButton.setText(resourceBundle.getString("createFilter"));
+        removeFilterButton.setText(resourceBundle.getString("removeFilter"));
+
+        visualizeButton.setText(resourceBundle.getString("visualize"));
+
+        usersButton.setText(resourceBundle.getString("users"));
+
+        for (String commandName : commandsToButtons.keySet()) {
+            commandsToButtons.get(commandName).setText(commandName);
+        }
+    }
+
     public void initializeColumns() {
 //        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -159,6 +191,7 @@ public class MainController extends BaseController {
         commandsToButtons.put("remove_by_id", removeByIdButton);
         commandsToButtons.put("remove_greater", removeGreaterButton);
         commandsToButtons.put("update", updateButton);
+        commandsToButtons.put("executeScript", executeScriptButton);
 
         CommandDescription[] commandDescriptions;
         try {
@@ -190,7 +223,6 @@ public class MainController extends BaseController {
         }
         //        TODO кнопки в зависимости от роли
         usersButton.setVisible(false);
-        executeScriptButton.setVisible(false);
         if (clientManager.getUser().getRole() == UserRole.ADMIN) {
             usersButton.setVisible(true);
             executeScriptButton.setVisible(true);
@@ -224,6 +256,26 @@ public class MainController extends BaseController {
         infoButton.setOnAction((event -> showResultSimpleCommandInInformationAlert("info")));
         historyButton.setOnAction((event -> showResultSimpleCommandInInformationAlert("history")));
 
+        helpButton.setOnAction((event -> {
+            StringConsole stringConsole = new StringConsole();
+            Help help = new Help();
+            try {
+                CommandDescription[] serverDescriptions = clientManager.getAllCommands();
+                CommandDescription[] clientDescriptions = {
+                        new CommandDescription(new ExecuteScript()),
+                        new CommandDescription(new Help())
+                };
+                CommandDescription[] allDescriptions = new CommandDescription[serverDescriptions.length + clientDescriptions.length];
+                System.arraycopy(serverDescriptions, 0, allDescriptions, 0, serverDescriptions.length);
+                System.arraycopy(clientDescriptions, 0, allDescriptions, serverDescriptions.length, clientDescriptions.length);
+                help.setCommands(allDescriptions);
+            } catch (IOException | ClassNotFoundException e) {
+                return;
+            }
+            help.setConsole(stringConsole);
+            help.execute(new String[0]);
+            MyAlerts.showInformationAlert("help", stringConsole.getAllText());
+        }));
     }
 
     public void setCollection(List<Worker> workers) {
@@ -251,6 +303,11 @@ public class MainController extends BaseController {
     public void initialize() {
         initializeButtons();
         initializeColumns();
+
+        CurrentLanguage.setCurrentResourceBundle(Languages.ru);
+
+        changeLocale();
+
     }
 
     private void updateCollection() {

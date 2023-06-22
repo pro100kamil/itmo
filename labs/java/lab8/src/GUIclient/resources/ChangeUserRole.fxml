@@ -19,6 +19,6 @@
   </rowConstraints>
    <children>
       <ComboBox fx:id="comboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-      <Button fx:id="button" mnemonicParsing="false" text="Изменить роль" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <Button fx:id="button" mnemonicParsing="false" text="change role" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
    </children>
 </GridPane>

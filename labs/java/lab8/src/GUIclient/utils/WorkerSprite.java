@@ -10,39 +10,44 @@ import java.util.List;
 public class WorkerSprite {
     private final Worker worker;
 
-    private double targetX;
+    private double targetX;  //к какому x идём
 
     private double targetY;
 
-    private double x;
+    private double x;  //текущий x
 
     private double y;
 
     private final Canvas canvas;
 
-    private double velX;
+    private double velX;  //скорость по x
 
     private double velY;
 
-    private static final int HEIGHT = 113;
+//    private static final int HEIGHT = 113;
+    private static final int HEIGHT = 96;
 
-    private static final int WIDTH = 79;
+//    private static final int WIDTH = 79;
+    private static final int WIDTH = 96;
 
     private static final int VELOCITY = 1; // pixels per frame
 
 //    private static final String IMAGE_LOC = "animation/frame_%02d_delay-0.03s.gif";
-    private static final String IMAGE_LOC = "resources/animation/frame_%02d_delay-0.03s.gif";
+//    private static final String IMAGE_LOC = "resources/animation/frame_%02d_delay-0.03s.gif";
+    private static final String IMAGE_LOC = "resources/animation2/lДuft e%04d.bmp";
 
     //    private static final Image images = new Image(IMAGE_LOC, HEIGHT, WIDTH, false, false);
     private static final List<Image> images = new ArrayList<>();
 
-    private static final int FRAMES = 31;
+//    private static final int FRAMES = 31;
+    private static final int FRAMES = 9;
 
     private int frameNumber = 0;
 
     static {
         for (int i = 0; i < FRAMES; i++) {
             images.add(new Image(IMAGE_LOC.formatted(i)));
+            System.out.println(IMAGE_LOC.formatted(i));
         }
     }
 

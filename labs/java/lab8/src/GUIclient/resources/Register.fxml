@@ -10,17 +10,17 @@
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="155.0" minWidth="200.0" prefHeight="155.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controllers.RegisterController">
    <children>
       <Label fx:id="mainLabel" text="Вход и регистрация" />
-      <Label fx:id="loginLabel" text="Логин" />
+      <Label fx:id="loginLabel" text="login" />
       <TextField fx:id="loginField" />
-      <Label fx:id="passwordLabel" text="Пароль" />
+      <Label fx:id="passwordLabel" text="password" />
       <PasswordField fx:id="passwordField" />
       <Label fx:id="errorLabel" />
       <BorderPane prefHeight="63.0" prefWidth="300.0">
          <left>
-            <Button fx:id="authButton" mnemonicParsing="false" text="Вход" BorderPane.alignment="CENTER" />
+            <Button fx:id="authButton" mnemonicParsing="false" text="auth" BorderPane.alignment="CENTER" />
          </left>
          <right>
-            <Button fx:id="registerButton" mnemonicParsing="false" text="Регистрация" BorderPane.alignment="CENTER" />
+            <Button fx:id="registerButton" mnemonicParsing="false" text="register" BorderPane.alignment="CENTER" />
          </right>
       </BorderPane>
    </children>
