@@ -1,6 +1,12 @@
+package utils;
+
+import common.managers.WorkerValidateManager;
 import common.models.Worker;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class FilterCondition {
     private final String birthdaySign;
@@ -55,9 +61,38 @@ public class FilterCondition {
         this.yValue = yValue;
     }
 
-//    public Collection<Worker> filter(Collection<Worker> collection) {
+    public boolean compareBirthdays(Worker worker, String sign, String value) {
+        //если данные некорректные, то не обращаем на них внимание
+        if (!WorkerValidateManager.isBirthday(value)) return true;
+        if (sign.equals("")) return true;
+        if (sign.equals("=")) {
+            if (worker.getPerson().getBirthday() == null) return WorkerValidateManager.getBirthday(value) == null;
+            else return worker.getPerson().getBirthday().equals(WorkerValidateManager.getBirthday(value));
+        }
+        if (sign.equals("<")) {
+            if (worker.getPerson().getBirthday() == null) return false;
+            return worker.getPerson().getBirthday().isBefore(WorkerValidateManager.getBirthday(value));
+        }
+        if (sign.equals(">")) {
+            if (worker.getPerson().getBirthday() == null) return false;
+            return worker.getPerson().getBirthday().isAfter(WorkerValidateManager.getBirthday(value));
+        }
+        return false;
+}
+
+    public List<Worker> birthdayFilter(List<Worker> collection) {
+//        return collection.stream().filter((worker ->
+//        if (birthdaySign.equals("")) return true;
+//        else if (birthdaySign.equals("<")) return false;
+//        else return false;
+//                ))
+        return collection.stream().filter(worker -> compareBirthdays(worker, birthdaySign, birthdayValue)).collect(Collectors.toList());
+    }
+
+    public List<Worker> filter(List<Worker> collection) {
+        return collection.stream().filter(worker -> compareBirthdays(worker, birthdaySign, birthdayValue)).collect(Collectors.toList());
 //        return collection.stream().filter((Worker worker -> (
 //                if (birthdaySign.equals())
 //                )));
-//    }
+    }
 }

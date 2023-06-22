@@ -4,21 +4,23 @@ import client.commands.ExecuteScript;
 import common.commands.CommandDescription;
 import common.consoles.StringConsole;
 import common.managers.FileManager;
-import common.models.*;
+import common.models.Position;
+import common.models.Status;
+import common.models.UserRole;
+import common.models.Worker;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import utils.FilterCondition;
+import utils.SceneSwitcher;
 
 import java.io.File;
 import java.io.IOException;
@@ -164,6 +166,7 @@ public class MainController extends BaseController {
 
 
     public void initialize() {
+//        TODO кнопки в зависимости от роли
         usersButton.setVisible(false);
 //        System.out.println("user " + clientManager.getUser());
         if (clientManager.getUser().getRole() == UserRole.ADMIN) {
@@ -171,13 +174,9 @@ public class MainController extends BaseController {
         }
 
         userMenu.setText(clientManager.getUser().getName());
-        try {
-            collection = (List<Worker>) clientManager.getCollection();
-            setCollection(collection);
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-//        чекать здесь текущего юзера
+
+        updateCollection();
+
         logOutMenuItem.setOnAction((event -> logout()));
 
         addButton.setOnAction((event -> handleAddButton()));
@@ -189,26 +188,39 @@ public class MainController extends BaseController {
         executeScriptButton.setOnAction((event -> handleExecuteScriptButton()));
         
         visualizeButton.setOnAction((event -> visualize()));
+
         createFilterButton.setOnAction((event -> filter()));
+        removeFilterButton.setOnAction((event -> updateCollection()));
 
         usersButton.setOnAction((event -> handleUsersButton()));
 
         initializeColumns();
     }
 
+    private void updateCollection() {
+        setCollection((List<Worker>) clientManager.getCollection());
+    }
+
     private void handleUsersButton() {
-        List<User> users;
-        try {
-            users = clientManager.getUsers();
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
         new SceneSwitcher().switchScene(currentStage, "/resources/users.fxml", "Пользователи");
     }
 
     private void filter() {
-        new SceneSwitcher().switchScene(currentStage, "/resources/Filter.fxml", "Фильтр");
+        Stage stage = new Stage();
+
+        FilterController controller = (FilterController) new SceneSwitcher().switchSceneAndGetController(stage,
+                "/resources/Filter.fxml", "Фильтр");
+
+        stage.showAndWait();
+
+        FilterCondition filterCondition = controller.getFilterCondition();
+
+        collection = (List<Worker>) clientManager.getCollection();
+        setCollection(filterCondition.filter(collection));
+
+
     }
+
     private void visualize() {
         new SceneSwitcher().switchScene(currentStage, "/resources/VisualizerForm.fxml", "Визуализация");
     }
@@ -218,22 +230,11 @@ public class MainController extends BaseController {
     }
 
     public Worker getWorker() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/getWorker.fxml"));
-        Parent root = null;
-        try {
-            root = fxmlLoader.load();
-        } catch (IOException e) {
-            System.out.println("errrorrr");
-            throw new RuntimeException(e);
-        }
-        GetWorkerController controller = fxmlLoader.getController();
-
-        Scene scene = new Scene(root);
         Stage stage = new Stage();
 
-        controller.setCurrentStage(stage);
+        GetWorkerController controller = (GetWorkerController) new SceneSwitcher().switchSceneAndGetController(stage,
+                "/resources/getWorker.fxml", "Введите данные о работнике");
 
-        stage.setScene(scene);
         stage.showAndWait();
 
         return controller.getWorker();

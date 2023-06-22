@@ -52,9 +52,10 @@ public class ExecuteScript extends ClientCommand {
             }
             console.write("Начинаем обработку файла с командами");
             depth++;
-            Console fileConsole = new FileStringConsole(fileName);
+            FileStringConsole fileConsole = new FileStringConsole(fileName);
             InputManager newInputManager = new InputManager(fileConsole, clientManager);
             newInputManager.run();
+            console.write(fileConsole.getAllText());
             depth--;
         } catch (WrongCommandArgsException e) {
             console.write(e.toString());

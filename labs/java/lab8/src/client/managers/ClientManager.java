@@ -13,6 +13,7 @@ import common.network.responses.*;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -41,12 +42,16 @@ public class ClientManager {
         return response.getCommands();
     }
 
-    public Collection<Worker> getCollection() throws IOException, ClassNotFoundException {
-        client.start();
-        writeGetCollectionRequest();
-        GetCollectionResponse response = (GetCollectionResponse) client.getObject();
-        client.close();
-        return response.getCollection();
+    public Collection<Worker> getCollection() {
+        try {
+            client.start();
+            writeGetCollectionRequest();
+            GetCollectionResponse response = (GetCollectionResponse) client.getObject();
+            client.close();
+            return response.getCollection();
+        } catch (IOException | ClassNotFoundException e) {
+            return new LinkedList<>();
+        }
     }
 
     public List<User> getUsers() throws IOException, ClassNotFoundException {

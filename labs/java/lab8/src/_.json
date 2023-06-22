@@ -16867,7 +16867,7 @@
         "x": 74,
         "y": 22
       },
-      "creationDate": "2023-06-22T02:19:29.876719700",
+      "creationDate": "2023-06-22T02:19:36.639830",
       "salary": 999.0,
       "position": "HEAD_OF_DEPARTMENT",
       "person": {
@@ -16884,7 +16884,7 @@
         "x": 74,
         "y": 22
       },
-      "creationDate": "2023-06-22T02:21:49.076780200",
+      "creationDate": "2023-06-22T02:21:56.202111",
       "salary": 999.0,
       "position": "HEAD_OF_DEPARTMENT",
       "person": {
@@ -16901,7 +16901,7 @@
         "x": 74,
         "y": 22
       },
-      "creationDate": "2023-06-22T02:26:16.544686500",
+      "creationDate": "2023-06-22T02:26:23.805743",
       "salary": 999.0,
       "position": "HEAD_OF_DEPARTMENT",
       "person": {
@@ -16918,7 +16918,7 @@
         "x": 74,
         "y": 22
       },
-      "creationDate": "2023-06-22T02:32:03.844085700",
+      "creationDate": "2023-06-22T02:32:10.680107",
       "salary": 999.0,
       "position": "HEAD_OF_DEPARTMENT",
       "person": {
@@ -16935,7 +16935,790 @@
         "x": 74,
         "y": 22
       },
-      "creationDate": "2023-06-22T02:38:01.798162700",
+      "creationDate": "2023-06-22T02:38:08.543997",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 39,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    }
+  ],
+  "238": [
+    {
+      "id": 2,
+      "name": "fdsfds",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T15:54:40.041115",
+      "person": {
+        "id": 2,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 4,
+      "name": "545",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T16:49:26.958754",
+      "person": {
+        "id": 4,
+        "height": 5.0,
+        "creatorId": 7
+      },
+      "creatorId": 7
+    },
+    {
+      "id": 7,
+      "name": "kamil",
+      "coordinates": {
+        "x": 1,
+        "y": 2
+      },
+      "creationDate": "2023-06-20T15:42:46.797085",
+      "person": {
+        "id": 7,
+        "height": 2.0,
+        "creatorId": 13
+      },
+      "creatorId": 13
+    },
+    {
+      "id": 8,
+      "name": "a",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-06-20T15:45:12.007009",
+      "person": {
+        "id": 8,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 19,
+      "name": "u",
+      "coordinates": {
+        "x": 9,
+        "y": 8
+      },
+      "creationDate": "2023-06-21T13:15:37.492647",
+      "person": {
+        "id": 19,
+        "height": 9.0,
+        "creatorId": 16
+      },
+      "creatorId": 16
+    },
+    {
+      "id": 21,
+      "name": "Test0",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:25.784207",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 21,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 22,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:27.462144",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 22,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 23,
+      "name": "Test2",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:28.936890",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 23,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 24,
+      "name": "Test3",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:32.385775",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 24,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 25,
+      "name": "Test4",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:35.027699",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 25,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 26,
+      "name": "Test5",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:36.996949",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 26,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 27,
+      "name": "Test6",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:41.048667",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 27,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 28,
+      "name": "Test7",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:42.808615",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 28,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 29,
+      "name": "Test8",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:44.886857",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 29,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 30,
+      "name": "Test9",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:50.029772",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 30,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 31,
+      "name": "Test10",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:51.314841",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 31,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 32,
+      "name": "Test11",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:52.937877",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 32,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 33,
+      "name": "Test12",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:54.323895",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 33,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 34,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:50:07.224973",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 34,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 35,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:19:36.639830",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 35,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 36,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:21:56.202111",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 36,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 37,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:26:23.805743",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 37,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 38,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:32:10.680107",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 38,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 39,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:38:08.543997",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 39,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    }
+  ],
+  "239": [
+    {
+      "id": 2,
+      "name": "fdsfds",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T15:54:40.041115",
+      "person": {
+        "id": 2,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 4,
+      "name": "545",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T16:49:26.958754",
+      "person": {
+        "id": 4,
+        "height": 5.0,
+        "creatorId": 7
+      },
+      "creatorId": 7
+    },
+    {
+      "id": 7,
+      "name": "kamil",
+      "coordinates": {
+        "x": 1,
+        "y": 2
+      },
+      "creationDate": "2023-06-20T15:42:46.797085",
+      "person": {
+        "id": 7,
+        "height": 2.0,
+        "creatorId": 13
+      },
+      "creatorId": 13
+    },
+    {
+      "id": 8,
+      "name": "a",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-06-20T15:45:12.007009",
+      "person": {
+        "id": 8,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 19,
+      "name": "u",
+      "coordinates": {
+        "x": 9,
+        "y": 8
+      },
+      "creationDate": "2023-06-21T13:15:37.492647",
+      "person": {
+        "id": 19,
+        "height": 9.0,
+        "creatorId": 16
+      },
+      "creatorId": 16
+    },
+    {
+      "id": 21,
+      "name": "Test0",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:25.784207",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 21,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 22,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:27.462144",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 22,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 23,
+      "name": "Test2",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:28.936890",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 23,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 24,
+      "name": "Test3",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:32.385775",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 24,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 25,
+      "name": "Test4",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:35.027699",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 25,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 26,
+      "name": "Test5",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:36.996949",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 26,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 27,
+      "name": "Test6",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:41.048667",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 27,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 28,
+      "name": "Test7",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:42.808615",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 28,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 29,
+      "name": "Test8",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:44.886857",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 29,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 30,
+      "name": "Test9",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:50.029772",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 30,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 31,
+      "name": "Test10",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:51.314841",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 31,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 32,
+      "name": "Test11",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:52.937877",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 32,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 33,
+      "name": "Test12",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:54.323895",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 33,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 35,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:19:36.639830",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 35,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 36,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:21:56.202111",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 36,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 37,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:26:23.805743",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 37,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 38,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:32:10.680107",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 38,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 39,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:38:08.543997",
       "salary": 999.0,
       "position": "HEAD_OF_DEPARTMENT",
       "person": {
@@ -16947,7 +17730,4801 @@
     }
   ],
   "24": [],
+  "240": [
+    {
+      "id": 2,
+      "name": "fdsfds",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T15:54:40.041115",
+      "person": {
+        "id": 2,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 4,
+      "name": "545",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T16:49:26.958754",
+      "person": {
+        "id": 4,
+        "height": 5.0,
+        "creatorId": 7
+      },
+      "creatorId": 7
+    },
+    {
+      "id": 7,
+      "name": "kamil",
+      "coordinates": {
+        "x": 1,
+        "y": 2
+      },
+      "creationDate": "2023-06-20T15:42:46.797085",
+      "person": {
+        "id": 7,
+        "height": 2.0,
+        "creatorId": 13
+      },
+      "creatorId": 13
+    },
+    {
+      "id": 8,
+      "name": "a",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-06-20T15:45:12.007009",
+      "person": {
+        "id": 8,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 19,
+      "name": "u",
+      "coordinates": {
+        "x": 9,
+        "y": 8
+      },
+      "creationDate": "2023-06-21T13:15:37.492647",
+      "person": {
+        "id": 19,
+        "height": 9.0,
+        "creatorId": 16
+      },
+      "creatorId": 16
+    },
+    {
+      "id": 21,
+      "name": "Test0",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:25.784207",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 21,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 22,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:27.462144",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 22,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 23,
+      "name": "Test2",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:28.936890",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 23,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 24,
+      "name": "Test3",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:32.385775",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 24,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 25,
+      "name": "Test4",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:35.027699",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 25,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 26,
+      "name": "Test5",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:36.996949",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 26,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 27,
+      "name": "Test6",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:41.048667",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 27,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 28,
+      "name": "Test7",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:42.808615",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 28,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 29,
+      "name": "Test8",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:44.886857",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 29,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 30,
+      "name": "Test9",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:50.029772",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 30,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 31,
+      "name": "Test10",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:51.314841",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 31,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 32,
+      "name": "Test11",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:52.937877",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 32,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 33,
+      "name": "Test12",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:54.323895",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 33,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 35,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:19:36.639830",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 35,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 36,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:21:56.202111",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 36,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 37,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:26:23.805743",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 37,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 38,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:32:10.680107",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 38,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 39,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:38:08.543997",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 39,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    }
+  ],
+  "241": [
+    {
+      "id": 2,
+      "name": "fdsfds",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T15:54:40.041115",
+      "person": {
+        "id": 2,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 4,
+      "name": "545",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T16:49:26.958754",
+      "person": {
+        "id": 4,
+        "height": 5.0,
+        "creatorId": 7
+      },
+      "creatorId": 7
+    },
+    {
+      "id": 7,
+      "name": "kamil",
+      "coordinates": {
+        "x": 1,
+        "y": 2
+      },
+      "creationDate": "2023-06-20T15:42:46.797085",
+      "person": {
+        "id": 7,
+        "height": 2.0,
+        "creatorId": 13
+      },
+      "creatorId": 13
+    },
+    {
+      "id": 8,
+      "name": "a",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-06-20T15:45:12.007009",
+      "person": {
+        "id": 8,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 19,
+      "name": "u",
+      "coordinates": {
+        "x": 9,
+        "y": 8
+      },
+      "creationDate": "2023-06-21T13:15:37.492647",
+      "person": {
+        "id": 19,
+        "height": 9.0,
+        "creatorId": 16
+      },
+      "creatorId": 16
+    },
+    {
+      "id": 21,
+      "name": "Test0",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:25.784207",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 21,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 22,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:27.462144",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 22,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 23,
+      "name": "Test2",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:28.936890",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 23,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 24,
+      "name": "Test3",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:32.385775",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 24,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 25,
+      "name": "Test4",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:35.027699",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 25,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 26,
+      "name": "Test5",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:36.996949",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 26,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 27,
+      "name": "Test6",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:41.048667",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 27,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 28,
+      "name": "Test7",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:42.808615",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 28,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 29,
+      "name": "Test8",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:44.886857",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 29,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 30,
+      "name": "Test9",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:50.029772",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 30,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 31,
+      "name": "Test10",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:51.314841",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 31,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 32,
+      "name": "Test11",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:52.937877",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 32,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 33,
+      "name": "Test12",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:54.323895",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 33,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 35,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:19:36.639830",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 35,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 36,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:21:56.202111",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 36,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 37,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:26:23.805743",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 37,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 38,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:32:10.680107",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 38,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 39,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:38:08.543997",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 39,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    }
+  ],
+  "242": [
+    {
+      "id": 2,
+      "name": "fdsfds",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T15:54:40.041115",
+      "person": {
+        "id": 2,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 4,
+      "name": "545",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T16:49:26.958754",
+      "person": {
+        "id": 4,
+        "height": 5.0,
+        "creatorId": 7
+      },
+      "creatorId": 7
+    },
+    {
+      "id": 7,
+      "name": "kamil",
+      "coordinates": {
+        "x": 1,
+        "y": 2
+      },
+      "creationDate": "2023-06-20T15:42:46.797085",
+      "person": {
+        "id": 7,
+        "height": 2.0,
+        "creatorId": 13
+      },
+      "creatorId": 13
+    },
+    {
+      "id": 8,
+      "name": "a",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-06-20T15:45:12.007009",
+      "person": {
+        "id": 8,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 19,
+      "name": "u",
+      "coordinates": {
+        "x": 9,
+        "y": 8
+      },
+      "creationDate": "2023-06-21T13:15:37.492647",
+      "person": {
+        "id": 19,
+        "height": 9.0,
+        "creatorId": 16
+      },
+      "creatorId": 16
+    },
+    {
+      "id": 21,
+      "name": "Test0",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:25.784207",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 21,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 22,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:27.462144",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 22,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 23,
+      "name": "Test2",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:28.936890",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 23,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 24,
+      "name": "Test3",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:32.385775",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 24,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 25,
+      "name": "Test4",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:35.027699",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 25,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 26,
+      "name": "Test5",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:36.996949",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 26,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 27,
+      "name": "Test6",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:41.048667",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 27,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 28,
+      "name": "Test7",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:42.808615",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 28,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 29,
+      "name": "Test8",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:44.886857",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 29,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 30,
+      "name": "Test9",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:50.029772",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 30,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 31,
+      "name": "Test10",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:51.314841",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 31,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 32,
+      "name": "Test11",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:52.937877",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 32,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 33,
+      "name": "Test12",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:54.323895",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 33,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 35,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:19:36.639830",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 35,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 36,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:21:56.202111",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 36,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 37,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:26:23.805743",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 37,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 38,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:32:10.680107",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 38,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 39,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:38:08.543997",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 39,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    }
+  ],
+  "243": [
+    {
+      "id": 2,
+      "name": "fdsfds",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T15:54:40.041115",
+      "person": {
+        "id": 2,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 4,
+      "name": "545",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T16:49:26.958754",
+      "person": {
+        "id": 4,
+        "height": 5.0,
+        "creatorId": 7
+      },
+      "creatorId": 7
+    },
+    {
+      "id": 7,
+      "name": "kamil",
+      "coordinates": {
+        "x": 1,
+        "y": 2
+      },
+      "creationDate": "2023-06-20T15:42:46.797085",
+      "person": {
+        "id": 7,
+        "height": 2.0,
+        "creatorId": 13
+      },
+      "creatorId": 13
+    },
+    {
+      "id": 8,
+      "name": "a",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-06-20T15:45:12.007009",
+      "person": {
+        "id": 8,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 19,
+      "name": "u",
+      "coordinates": {
+        "x": 9,
+        "y": 8
+      },
+      "creationDate": "2023-06-21T13:15:37.492647",
+      "person": {
+        "id": 19,
+        "height": 9.0,
+        "creatorId": 16
+      },
+      "creatorId": 16
+    },
+    {
+      "id": 21,
+      "name": "Test0",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:25.784207",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 21,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 22,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:27.462144",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 22,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 23,
+      "name": "Test2",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:28.936890",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 23,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 24,
+      "name": "Test3",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:32.385775",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 24,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 25,
+      "name": "Test4",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:35.027699",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 25,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 26,
+      "name": "Test5",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:36.996949",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 26,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 27,
+      "name": "Test6",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:41.048667",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 27,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 28,
+      "name": "Test7",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:42.808615",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 28,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 29,
+      "name": "Test8",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:44.886857",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 29,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 30,
+      "name": "Test9",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:50.029772",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 30,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 31,
+      "name": "Test10",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:51.314841",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 31,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 32,
+      "name": "Test11",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:52.937877",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 32,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 33,
+      "name": "Test12",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:54.323895",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 33,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 35,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:19:36.639830",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 35,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 36,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:21:56.202111",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 36,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 37,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:26:23.805743",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 37,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 38,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:32:10.680107",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 38,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 39,
+      "name": "ooo",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:38:08.543997",
+      "salary": 999.999,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 39,
+        "height": 5.0,
+        "passportID": "9999999999",
+        "creatorId": 4
+      },
+      "creatorId": 4
+    }
+  ],
+  "244": [
+    {
+      "id": 2,
+      "name": "fdsfds",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T15:54:40.041115",
+      "person": {
+        "id": 2,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 4,
+      "name": "545",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T16:49:26.958754",
+      "person": {
+        "id": 4,
+        "height": 5.0,
+        "creatorId": 7
+      },
+      "creatorId": 7
+    },
+    {
+      "id": 7,
+      "name": "kamil",
+      "coordinates": {
+        "x": 1,
+        "y": 2
+      },
+      "creationDate": "2023-06-20T15:42:46.797085",
+      "person": {
+        "id": 7,
+        "height": 2.0,
+        "creatorId": 13
+      },
+      "creatorId": 13
+    },
+    {
+      "id": 8,
+      "name": "a",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-06-20T15:45:12.007009",
+      "person": {
+        "id": 8,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 19,
+      "name": "u",
+      "coordinates": {
+        "x": 9,
+        "y": 8
+      },
+      "creationDate": "2023-06-21T13:15:37.492647",
+      "person": {
+        "id": 19,
+        "height": 9.0,
+        "creatorId": 16
+      },
+      "creatorId": 16
+    },
+    {
+      "id": 21,
+      "name": "Test0",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:25.784207",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 21,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 22,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:27.462144",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 22,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 23,
+      "name": "Test2",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:28.936890",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 23,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 24,
+      "name": "Test3",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:32.385775",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 24,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 25,
+      "name": "Test4",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:35.027699",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 25,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 26,
+      "name": "Test5",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:36.996949",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 26,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 27,
+      "name": "Test6",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:41.048667",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 27,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 28,
+      "name": "Test7",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:42.808615",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 28,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 29,
+      "name": "Test8",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:44.886857",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 29,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 30,
+      "name": "Test9",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:50.029772",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 30,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 31,
+      "name": "Test10",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:51.314841",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 31,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 32,
+      "name": "Test11",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:52.937877",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 32,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 33,
+      "name": "Test12",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:54.323895",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 33,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 35,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:19:36.639830",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 35,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 36,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:21:56.202111",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 36,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 37,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:26:23.805743",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 37,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 38,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:32:10.680107",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 38,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 39,
+      "name": "ooo",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:38:08.543997",
+      "salary": 999.999,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 39,
+        "height": 5.0,
+        "passportID": "9999999999",
+        "creatorId": 4
+      },
+      "creatorId": 4
+    }
+  ],
+  "245": [
+    {
+      "id": 2,
+      "name": "fdsfds",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T15:54:40.041115",
+      "person": {
+        "id": 2,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 4,
+      "name": "545",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T16:49:26.958754",
+      "person": {
+        "id": 4,
+        "height": 5.0,
+        "creatorId": 7
+      },
+      "creatorId": 7
+    },
+    {
+      "id": 7,
+      "name": "kamil",
+      "coordinates": {
+        "x": 1,
+        "y": 2
+      },
+      "creationDate": "2023-06-20T15:42:46.797085",
+      "person": {
+        "id": 7,
+        "height": 2.0,
+        "creatorId": 13
+      },
+      "creatorId": 13
+    },
+    {
+      "id": 8,
+      "name": "a",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-06-20T15:45:12.007009",
+      "person": {
+        "id": 8,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 19,
+      "name": "u",
+      "coordinates": {
+        "x": 9,
+        "y": 8
+      },
+      "creationDate": "2023-06-21T13:15:37.492647",
+      "person": {
+        "id": 19,
+        "height": 9.0,
+        "creatorId": 16
+      },
+      "creatorId": 16
+    },
+    {
+      "id": 21,
+      "name": "Test0",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:25.784207",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 21,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 22,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:27.462144",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 22,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 23,
+      "name": "Test2",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:28.936890",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 23,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 24,
+      "name": "Test3",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:32.385775",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 24,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 25,
+      "name": "Test4",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:35.027699",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 25,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 26,
+      "name": "Test5",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:36.996949",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 26,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 27,
+      "name": "Test6",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:41.048667",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 27,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 28,
+      "name": "Test7",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:42.808615",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 28,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 29,
+      "name": "Test8",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:44.886857",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 29,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 30,
+      "name": "Test9",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:50.029772",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 30,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 31,
+      "name": "Test10",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:51.314841",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 31,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 32,
+      "name": "Test11",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:52.937877",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 32,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 33,
+      "name": "Test12",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:54.323895",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 33,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 35,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:19:36.639830",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 35,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 36,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:21:56.202111",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 36,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 37,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:26:23.805743",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 37,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 38,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:32:10.680107",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 38,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 39,
+      "name": "ooo",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:38:08.543997",
+      "salary": 999.999,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 39,
+        "height": 5.0,
+        "passportID": "9999999999",
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 40,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T12:22:56.718673500",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 40,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    }
+  ],
+  "246": [
+    {
+      "id": 2,
+      "name": "fdsfds",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T15:54:40.041115",
+      "person": {
+        "id": 2,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 4,
+      "name": "545",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T16:49:26.958754",
+      "person": {
+        "id": 4,
+        "height": 5.0,
+        "creatorId": 7
+      },
+      "creatorId": 7
+    },
+    {
+      "id": 7,
+      "name": "kamil",
+      "coordinates": {
+        "x": 1,
+        "y": 2
+      },
+      "creationDate": "2023-06-20T15:42:46.797085",
+      "person": {
+        "id": 7,
+        "height": 2.0,
+        "creatorId": 13
+      },
+      "creatorId": 13
+    },
+    {
+      "id": 8,
+      "name": "a",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-06-20T15:45:12.007009",
+      "person": {
+        "id": 8,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 19,
+      "name": "u",
+      "coordinates": {
+        "x": 9,
+        "y": 8
+      },
+      "creationDate": "2023-06-21T13:15:37.492647",
+      "person": {
+        "id": 19,
+        "height": 9.0,
+        "creatorId": 16
+      },
+      "creatorId": 16
+    },
+    {
+      "id": 21,
+      "name": "Test0",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:25.784207",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 21,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 22,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:27.462144",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 22,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 23,
+      "name": "Test2",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:28.936890",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 23,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 24,
+      "name": "Test3",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:32.385775",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 24,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 25,
+      "name": "Test4",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:35.027699",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 25,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 26,
+      "name": "Test5",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:36.996949",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 26,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 27,
+      "name": "Test6",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:41.048667",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 27,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 28,
+      "name": "Test7",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:42.808615",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 28,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 29,
+      "name": "Test8",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:44.886857",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 29,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 30,
+      "name": "Test9",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:50.029772",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 30,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 31,
+      "name": "Test10",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:51.314841",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 31,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 32,
+      "name": "Test11",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:52.937877",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 32,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 33,
+      "name": "Test12",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:54.323895",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 33,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 35,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:19:36.639830",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 35,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 36,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:21:56.202111",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 36,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 37,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:26:23.805743",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 37,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 38,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:32:10.680107",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 38,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 39,
+      "name": "ooo",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:38:08.543997",
+      "salary": 999.999,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 39,
+        "height": 5.0,
+        "passportID": "9999999999",
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 40,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T12:23:05.151474",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 40,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    }
+  ],
+  "247": [
+    {
+      "id": 2,
+      "name": "fdsfds",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T15:54:40.041115",
+      "person": {
+        "id": 2,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 4,
+      "name": "545",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T16:49:26.958754",
+      "person": {
+        "id": 4,
+        "height": 5.0,
+        "creatorId": 7
+      },
+      "creatorId": 7
+    },
+    {
+      "id": 7,
+      "name": "kamil",
+      "coordinates": {
+        "x": 1,
+        "y": 2
+      },
+      "creationDate": "2023-06-20T15:42:46.797085",
+      "person": {
+        "id": 7,
+        "height": 2.0,
+        "creatorId": 13
+      },
+      "creatorId": 13
+    },
+    {
+      "id": 8,
+      "name": "a",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-06-20T15:45:12.007009",
+      "person": {
+        "id": 8,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 19,
+      "name": "u",
+      "coordinates": {
+        "x": 9,
+        "y": 8
+      },
+      "creationDate": "2023-06-21T13:15:37.492647",
+      "person": {
+        "id": 19,
+        "height": 9.0,
+        "creatorId": 16
+      },
+      "creatorId": 16
+    },
+    {
+      "id": 21,
+      "name": "Test0",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:25.784207",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 21,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 22,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:27.462144",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 22,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 23,
+      "name": "Test2",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:28.936890",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 23,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 24,
+      "name": "Test3",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:32.385775",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 24,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 25,
+      "name": "Test4",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:35.027699",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 25,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 26,
+      "name": "Test5",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:36.996949",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 26,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 27,
+      "name": "Test6",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:41.048667",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 27,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 28,
+      "name": "Test7",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:42.808615",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 28,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 29,
+      "name": "Test8",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:44.886857",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 29,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 30,
+      "name": "Test9",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:50.029772",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 30,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 31,
+      "name": "Test10",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:51.314841",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 31,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 32,
+      "name": "Test11",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:52.937877",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 32,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 33,
+      "name": "Test12",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:54.323895",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 33,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 35,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:19:36.639830",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 35,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 36,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:21:56.202111",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 36,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 37,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:26:23.805743",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 37,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 38,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:32:10.680107",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 38,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 39,
+      "name": "ooo",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:38:08.543997",
+      "salary": 999.999,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 39,
+        "height": 5.0,
+        "passportID": "9999999999",
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 40,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T12:23:05.151474",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 40,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    }
+  ],
+  "248": [
+    {
+      "id": 2,
+      "name": "fdsfds",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T15:54:40.041115",
+      "person": {
+        "id": 2,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 4,
+      "name": "545",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T16:49:26.958754",
+      "person": {
+        "id": 4,
+        "height": 5.0,
+        "creatorId": 7
+      },
+      "creatorId": 7
+    },
+    {
+      "id": 7,
+      "name": "kamil",
+      "coordinates": {
+        "x": 1,
+        "y": 2
+      },
+      "creationDate": "2023-06-20T15:42:46.797085",
+      "person": {
+        "id": 7,
+        "height": 2.0,
+        "creatorId": 13
+      },
+      "creatorId": 13
+    },
+    {
+      "id": 8,
+      "name": "a",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-06-20T15:45:12.007009",
+      "person": {
+        "id": 8,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 19,
+      "name": "u",
+      "coordinates": {
+        "x": 9,
+        "y": 8
+      },
+      "creationDate": "2023-06-21T13:15:37.492647",
+      "person": {
+        "id": 19,
+        "height": 9.0,
+        "creatorId": 16
+      },
+      "creatorId": 16
+    },
+    {
+      "id": 21,
+      "name": "Test0",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:25.784207",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 21,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 22,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:27.462144",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 22,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 23,
+      "name": "Test2",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:28.936890",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 23,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 24,
+      "name": "Test3",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:32.385775",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 24,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 25,
+      "name": "Test4",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:35.027699",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 25,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 26,
+      "name": "Test5",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:36.996949",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 26,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 27,
+      "name": "Test6",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:41.048667",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 27,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 28,
+      "name": "Test7",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:42.808615",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 28,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 29,
+      "name": "Test8",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:44.886857",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 29,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 30,
+      "name": "Test9",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:50.029772",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 30,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 31,
+      "name": "Test10",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:51.314841",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 31,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 32,
+      "name": "Test11",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:52.937877",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 32,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 33,
+      "name": "Test12",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:54.323895",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 33,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 35,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:19:36.639830",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 35,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 36,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:21:56.202111",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 36,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 37,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:26:23.805743",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 37,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 38,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:32:10.680107",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 38,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 39,
+      "name": "ooo",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:38:08.543997",
+      "salary": 999.999,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 39,
+        "height": 5.0,
+        "passportID": "9999999999",
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 40,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T12:23:05.151474",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 40,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 41,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T14:01:37.359215500",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 41,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    }
+  ],
+  "249": [
+    {
+      "id": 2,
+      "name": "fdsfds",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T15:54:40.041115",
+      "person": {
+        "id": 2,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 4,
+      "name": "545",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T16:49:26.958754",
+      "person": {
+        "id": 4,
+        "height": 5.0,
+        "creatorId": 7
+      },
+      "creatorId": 7
+    },
+    {
+      "id": 7,
+      "name": "kamil",
+      "coordinates": {
+        "x": 1,
+        "y": 2
+      },
+      "creationDate": "2023-06-20T15:42:46.797085",
+      "person": {
+        "id": 7,
+        "height": 2.0,
+        "creatorId": 13
+      },
+      "creatorId": 13
+    },
+    {
+      "id": 8,
+      "name": "a",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-06-20T15:45:12.007009",
+      "person": {
+        "id": 8,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 19,
+      "name": "u",
+      "coordinates": {
+        "x": 9,
+        "y": 8
+      },
+      "creationDate": "2023-06-21T13:15:37.492647",
+      "person": {
+        "id": 19,
+        "height": 9.0,
+        "creatorId": 16
+      },
+      "creatorId": 16
+    },
+    {
+      "id": 21,
+      "name": "Test0",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:25.784207",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 21,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 22,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:27.462144",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 22,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 23,
+      "name": "Test2",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:28.936890",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 23,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 24,
+      "name": "Test3",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:32.385775",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 24,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 25,
+      "name": "Test4",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:35.027699",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 25,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 26,
+      "name": "Test5",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:36.996949",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 26,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 27,
+      "name": "Test6",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:41.048667",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 27,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 28,
+      "name": "Test7",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:42.808615",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 28,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 29,
+      "name": "Test8",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:44.886857",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 29,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 30,
+      "name": "Test9",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:50.029772",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 30,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 31,
+      "name": "Test10",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:51.314841",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 31,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 32,
+      "name": "Test11",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:52.937877",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 32,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 33,
+      "name": "Test12",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:54.323895",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 33,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 35,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:19:36.639830",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 35,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 36,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:21:56.202111",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 36,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 37,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:26:23.805743",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 37,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 38,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:32:10.680107",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 38,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 39,
+      "name": "ooo",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:38:08.543997",
+      "salary": 999.999,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 39,
+        "height": 5.0,
+        "passportID": "9999999999",
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 40,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T12:23:05.151474",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 40,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 41,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T14:01:37.359215500",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 41,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    }
+  ],
   "25": [],
+  "250": [
+    {
+      "id": 2,
+      "name": "fdsfds",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T15:54:40.041115",
+      "person": {
+        "id": 2,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 4,
+      "name": "545",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T16:49:26.958754",
+      "person": {
+        "id": 4,
+        "height": 5.0,
+        "creatorId": 7
+      },
+      "creatorId": 7
+    },
+    {
+      "id": 7,
+      "name": "kamil",
+      "coordinates": {
+        "x": 1,
+        "y": 2
+      },
+      "creationDate": "2023-06-20T15:42:46.797085",
+      "person": {
+        "id": 7,
+        "height": 2.0,
+        "creatorId": 13
+      },
+      "creatorId": 13
+    },
+    {
+      "id": 8,
+      "name": "a",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-06-20T15:45:12.007009",
+      "person": {
+        "id": 8,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 19,
+      "name": "u",
+      "coordinates": {
+        "x": 9,
+        "y": 8
+      },
+      "creationDate": "2023-06-21T13:15:37.492647",
+      "person": {
+        "id": 19,
+        "height": 9.0,
+        "creatorId": 16
+      },
+      "creatorId": 16
+    },
+    {
+      "id": 21,
+      "name": "Test0",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:25.784207",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 21,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 22,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:27.462144",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 22,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 23,
+      "name": "Test2",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:28.936890",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 23,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 24,
+      "name": "Test3",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:32.385775",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 24,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 25,
+      "name": "Test4",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:35.027699",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 25,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 26,
+      "name": "Test5",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:36.996949",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 26,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 27,
+      "name": "Test6",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:41.048667",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 27,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 28,
+      "name": "Test7",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:42.808615",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 28,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 29,
+      "name": "Test8",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:44.886857",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 29,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 30,
+      "name": "Test9",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:50.029772",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 30,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 31,
+      "name": "Test10",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:51.314841",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 31,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 32,
+      "name": "Test11",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:52.937877",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 32,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 33,
+      "name": "Test12",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:54.323895",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 33,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 35,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:19:36.639830",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 35,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 36,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:21:56.202111",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 36,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 37,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:26:23.805743",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 37,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 38,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:32:10.680107",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 38,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 39,
+      "name": "ooo",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:38:08.543997",
+      "salary": 999.999,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 39,
+        "birthday": "2023-06-22",
+        "height": 5.0,
+        "passportID": "9999999999",
+        "creatorId": 0
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 40,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T12:23:05.151474",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 40,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 41,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T14:01:37.359215500",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 41,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    }
+  ],
+  "251": [
+    {
+      "id": 2,
+      "name": "fdsfds",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T15:54:40.041115",
+      "person": {
+        "id": 2,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 4,
+      "name": "545",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-05-26T16:49:26.958754",
+      "person": {
+        "id": 4,
+        "height": 5.0,
+        "creatorId": 7
+      },
+      "creatorId": 7
+    },
+    {
+      "id": 7,
+      "name": "kamil",
+      "coordinates": {
+        "x": 1,
+        "y": 2
+      },
+      "creationDate": "2023-06-20T15:42:46.797085",
+      "person": {
+        "id": 7,
+        "height": 2.0,
+        "creatorId": 13
+      },
+      "creatorId": 13
+    },
+    {
+      "id": 8,
+      "name": "a",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "creationDate": "2023-06-20T15:45:12.007009",
+      "person": {
+        "id": 8,
+        "height": 5.0,
+        "creatorId": 5
+      },
+      "creatorId": 5
+    },
+    {
+      "id": 19,
+      "name": "u",
+      "coordinates": {
+        "x": 9,
+        "y": 8
+      },
+      "creationDate": "2023-06-21T13:15:37.492647",
+      "person": {
+        "id": 19,
+        "height": 9.0,
+        "creatorId": 16
+      },
+      "creatorId": 16
+    },
+    {
+      "id": 21,
+      "name": "Test0",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:25.784207",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 21,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 22,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:27.462144",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 22,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 23,
+      "name": "Test2",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:28.936890",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 23,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 24,
+      "name": "Test3",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:32.385775",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 24,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 25,
+      "name": "Test4",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:35.027699",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 25,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 26,
+      "name": "Test5",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:36.996949",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 26,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 27,
+      "name": "Test6",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:41.048667",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 27,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 28,
+      "name": "Test7",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:42.808615",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 28,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 29,
+      "name": "Test8",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:44.886857",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 29,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 30,
+      "name": "Test9",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:50.029772",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 30,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 31,
+      "name": "Test10",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:51.314841",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 31,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 32,
+      "name": "Test11",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:52.937877",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 32,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 33,
+      "name": "Test12",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T01:46:54.323895",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 33,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 35,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:19:36.639830",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 35,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 36,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:21:56.202111",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 36,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 37,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:26:23.805743",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 37,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 38,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:32:10.680107",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 38,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 39,
+      "name": "ooo",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T02:38:08.543997",
+      "salary": 999.999,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 39,
+        "birthday": "2023-06-22",
+        "height": 5.0,
+        "passportID": "9999999999",
+        "creatorId": 0
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 40,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T12:23:05.151474",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 40,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    },
+    {
+      "id": 41,
+      "name": "Test1",
+      "coordinates": {
+        "x": 74,
+        "y": 22
+      },
+      "creationDate": "2023-06-22T14:01:37.359215500",
+      "salary": 999.0,
+      "position": "HEAD_OF_DEPARTMENT",
+      "person": {
+        "id": 41,
+        "height": 5.0,
+        "creatorId": 4
+      },
+      "creatorId": 4
+    }
+  ],
   "26": [],
   "27": [],
   "28": [],

@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import utils.FilterCondition;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -163,5 +164,20 @@ public class FilterController extends BaseController {
                 System.out.println(comboBox.getValue() + textField.getText());
             }
         }
+    }
+
+    public FilterCondition getFilterCondition() {
+        return new FilterCondition(birthdayComboBox.getValue(), birthdayField.getText(),
+                creationDateComboBox.getValue(), creationDateField.getText(),
+                creatorIdComboBox.getValue(), creatorIdField.getText(),
+                heightComboBox.getValue(), heightField.getText(),
+                idComboBox.getValue(), idField.getText(),
+                nameComboBox.getValue(), nameField.getText(),
+                passportIdComboBox.getValue(), passportIdField.getText(),
+                positionComboBox.getValue(), positionField.getText(),
+                salaryComboBox.getValue(), salaryField.getText(),
+                statusComboBox.getValue(), statusField.getText(),
+                xComboBox.getValue(), xField.getText(),
+                yComboBox.getValue(), yField.getText());
     }
 }

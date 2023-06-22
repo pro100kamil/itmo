@@ -8,7 +8,7 @@ import common.models.UserRole;
 import java.sql.SQLException;
 
 /**
- * Команда change_user_role user_id role.
+ * Команда change_role user_id role.
  * Изменяет роль пользователя.
  * Роли может менять только админ. Себе он не может изменить роль, других админов он назначить не может.
  */

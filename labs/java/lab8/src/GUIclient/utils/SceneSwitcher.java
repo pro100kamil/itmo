@@ -1,7 +1,6 @@
-package UI.controllers;
+package utils;
 
-import UI.controllers.MainController;
-import client.managers.ClientManager;
+import UI.controllers.BaseController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
