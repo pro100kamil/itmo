@@ -21,7 +21,7 @@ import java.util.List;
  * Получает все команды из сервера, отправляет команду на сервер и обрабатывает результат.
  */
 public class ClientManager {
-    private static final Console console = new StandardConsole();
+    private Console console = new StandardConsole();
     private final Client client;
 
     private User user;
@@ -32,6 +32,10 @@ public class ClientManager {
 
     public User getUser() {
         return user;
+    }
+
+    public void setConsole(Console console) {
+        this.console = console;
     }
 
     public CommandDescription[] getAllCommands() throws IOException, ClassNotFoundException {

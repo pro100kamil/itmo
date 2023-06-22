@@ -1,2 +1,4 @@
 ssh -p 2222 s367149@se.ifmo.ru -L 5432:pg:5432
+
+ssh -p 2222 s367149@helios.cs.ifmo.ru -L 5432:pg:5432
 psql -h pg -d studs

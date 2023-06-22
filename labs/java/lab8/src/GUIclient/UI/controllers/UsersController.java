@@ -4,22 +4,19 @@ import common.commands.CommandDescription;
 import common.models.User;
 import common.models.UserRole;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import utils.MyAlerts;
 import utils.SceneSwitcher;
 
 import java.io.IOException;
 import java.util.List;
 
 public class UsersController extends BaseController {
-
-    @FXML
-    private ComboBox<UserRole> roleComboBox;
-    @FXML
-    private Label loginLabel;
 
     @FXML
     private Button backToTableButton;
@@ -62,13 +59,6 @@ public class UsersController extends BaseController {
 
         initializeColumns();
 
-        ObservableList<UserRole> variants = FXCollections.observableArrayList(
-                UserRole.USER_MIN,
-                UserRole.USER_MIDDLE,
-                UserRole.USER_SENIOR,
-                UserRole.ADMIN);
-        roleComboBox.setItems(variants);
-//        comboBox.setValue("");
 
         try {
             setUsers(clientManager.getUsers());
@@ -79,7 +69,11 @@ public class UsersController extends BaseController {
 
     private void handleChangeRoleButton() {
         User selectedUser = tableView.getSelectionModel().getSelectedItem();
-        System.out.println(selectedUser);
+        if (selectedUser == null) {
+            MyAlerts.showWarningAlert("Выберите пользователя",
+                    "Надо выбрать пользователя, у которого нужно изменить роль");
+            return;
+        }
 
         Stage stage = new Stage();
 
@@ -91,7 +85,7 @@ public class UsersController extends BaseController {
         stage.showAndWait();
 
         UserRole newRole = controller.getRole();
-        System.out.println(newRole);
+        if (newRole == null) return;
 
         CommandDescription commandDescription = new CommandDescription("change_role");
         commandDescription.setArgs(new String[]{String.valueOf(selectedUser.getId()), newRole.toString()});

@@ -1,7 +1,6 @@
 package UI.controllers;
 
 import common.models.UserRole;
-import common.models.Worker;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
 public class ChangeRoleController extends BaseController{
-
+    private UserRole userRole;
     @FXML
     private Button button;
 
@@ -29,7 +28,7 @@ public class ChangeRoleController extends BaseController{
     }
 
     public UserRole getRole() {
-        return comboBox.getValue();
+        return userRole;
     }
 
     public void setValue(UserRole role) {
@@ -37,7 +36,7 @@ public class ChangeRoleController extends BaseController{
     }
 
     public void handleButton() {
-        UserRole role = comboBox.getValue();
+        userRole = comboBox.getValue();
 
         currentStage.close();
     }

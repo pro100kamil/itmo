@@ -13,6 +13,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -20,6 +21,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import utils.FilterCondition;
+import utils.MyAlerts;
 import utils.SceneSwitcher;
 
 import java.io.File;
@@ -31,8 +33,6 @@ import java.util.List;
 public class MainController extends BaseController {
 
     private List<Worker> collection = new LinkedList<>();
-    @FXML
-    private ScrollPane scrollPane;
 
     @FXML
     private Button addButton;
@@ -41,14 +41,9 @@ public class MainController extends BaseController {
     private Button clearButton;
 
     @FXML
-    private Label controllersLabel;
+    private Label commandsLabel;
     @FXML
     private Button createFilterButton;
-    @FXML
-    private Button filterBySalaryButton;
-
-    @FXML
-    private HBox filtersHBox;
 
     @FXML
     private Button headButton;
@@ -72,12 +67,6 @@ public class MainController extends BaseController {
     private MenuItem logOutMenuItem;
 
     @FXML
-    private Button printDescendingButton;
-
-    @FXML
-    private Button printFieldDescendingPositionButton;
-
-    @FXML
     private Button removeByIdButton;
 
     @FXML
@@ -90,7 +79,7 @@ public class MainController extends BaseController {
     private Menu settingsMenu;
 
     @FXML
-    private Button showButton;
+    private Button helpButton;
 
     @FXML
     private TableView<Worker> tableView;
@@ -133,6 +122,20 @@ public class MainController extends BaseController {
     private Button visualizeButton;
     @FXML
     private Button usersButton;
+
+    private static void handle(ActionEvent event) {
+        CommandDescription commandDescription = new CommandDescription("info");
+        commandDescription.setArgs(new String[]{});
+        try {
+            clientManager.commandHandler(commandDescription, null);
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        MyAlerts.showInformationAlert("info", "info");
+
+    }
+
     public Stage getCurrentStage() {
         return currentStage;
     }
@@ -164,6 +167,20 @@ public class MainController extends BaseController {
 //        tableView.refresh();
     }
 
+    public void showResultSimpleCommandInInformationAlert(String commandName){
+        CommandDescription commandDescription = new CommandDescription(commandName);
+        commandDescription.setArgs(new String[]{});
+
+        StringConsole stringConsole = new StringConsole();
+        clientManager.setConsole(stringConsole);
+        try {
+            clientManager.commandHandler(commandDescription, null);
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        MyAlerts.showInformationAlert(commandName, stringConsole.getAllText());
+    }
 
     public void initialize() {
 //        TODO кнопки в зависимости от роли
@@ -177,7 +194,8 @@ public class MainController extends BaseController {
 
         updateCollection();
 
-        logOutMenuItem.setOnAction((event -> logout()));
+        logOutMenuItem.setOnAction((event ->
+                new SceneSwitcher().switchScene(currentStage, "/resources/Register.fxml", "Вход и регистрация")));
 
         addButton.setOnAction((event -> handleAddButton()));
         clearButton.setOnAction((event -> handleClearButton()));
@@ -186,23 +204,25 @@ public class MainController extends BaseController {
         removeByIdButton.setOnAction((event -> handleRemoveByIdButton()));
         updateButton.setOnAction((event -> handleUpdateButton()));
         executeScriptButton.setOnAction((event -> handleExecuteScriptButton()));
-        
-        visualizeButton.setOnAction((event -> visualize()));
+
+        visualizeButton.setOnAction((event ->
+                new SceneSwitcher().switchScene(currentStage, "/resources/VisualizerForm.fxml", "Визуализация")));
 
         createFilterButton.setOnAction((event -> filter()));
         removeFilterButton.setOnAction((event -> updateCollection()));
 
-        usersButton.setOnAction((event -> handleUsersButton()));
+        usersButton.setOnAction((event ->
+                new SceneSwitcher().switchScene(currentStage, "/resources/users.fxml", "Пользователи")));
+
+        headButton.setOnAction((event -> showResultSimpleCommandInInformationAlert("head")));
+        infoButton.setOnAction((event -> showResultSimpleCommandInInformationAlert("info")));
+        historyButton.setOnAction((event -> showResultSimpleCommandInInformationAlert("history")));
 
         initializeColumns();
     }
 
     private void updateCollection() {
         setCollection((List<Worker>) clientManager.getCollection());
-    }
-
-    private void handleUsersButton() {
-        new SceneSwitcher().switchScene(currentStage, "/resources/users.fxml", "Пользователи");
     }
 
     private void filter() {
@@ -219,14 +239,6 @@ public class MainController extends BaseController {
         setCollection(filterCondition.filter(collection));
 
 
-    }
-
-    private void visualize() {
-        new SceneSwitcher().switchScene(currentStage, "/resources/VisualizerForm.fxml", "Визуализация");
-    }
-
-    private void logout() {
-        new SceneSwitcher().switchScene(currentStage, "/resources/Register.fxml", "Вход и регистрация");
     }
 
     public Worker getWorker() {
@@ -320,6 +332,10 @@ public class MainController extends BaseController {
 
     private void handleRemoveByIdButton() {
         Worker worker = tableView.getSelectionModel().getSelectedItem();
+        if (worker == null) {
+            MyAlerts.showWarningAlert("Выберите работника", "Надо выбрать работника, которого нужно удалить");
+            return;
+        }
         CommandDescription commandDescription = new CommandDescription("remove_by_id");
         commandDescription.setArgs(new String[]{String.valueOf(worker.getId())});
         try {
@@ -334,6 +350,10 @@ public class MainController extends BaseController {
 
     private void handleUpdateButton() {
         Worker oldWorker = tableView.getSelectionModel().getSelectedItem();
+        if (oldWorker == null) {
+            MyAlerts.showWarningAlert("Выберите работника", "Надо выбрать работника, которого нужно обновить");
+            return;
+        }
         CommandDescription commandDescription = new CommandDescription("update");
         commandDescription.setArgs(new String[]{String.valueOf(oldWorker.getId())});
 
@@ -360,6 +380,7 @@ public class MainController extends BaseController {
         ExecuteScript executeScript = new ExecuteScript();
         executeScript.setClientManager(clientManager);
         StringConsole stringConsole = new StringConsole();
+        clientManager.setConsole(stringConsole);
         executeScript.setConsole(stringConsole);
         executeScript.execute(new String[]{selectedFile.getName()});
 

@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -15,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="863.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controllers.MainController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="863.0" style="-fx-background-color: #EE82EE;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controllers.MainController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="661.7692260742188" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="138.23077392578125" />
@@ -37,10 +36,10 @@
             <TableColumn fx:id="salaryColumn" prefWidth="61.0" text="salary" />
             <TableColumn fx:id="positionColumn" prefWidth="51.0" text="position" />
             <TableColumn fx:id="statusColumn" prefWidth="56.0" text="status" />
-            <TableColumn fx:id="birthdayColumn" prefWidth="58.0" resizable="false" text="birthday" />
+            <TableColumn fx:id="birthdayColumn" prefWidth="85.0" resizable="false" text="birthday" />
             <TableColumn fx:id="heightColumn" prefWidth="49.0" resizable="false" text="height" />
-            <TableColumn fx:id="passportIdColumn" minWidth="0.0" prefWidth="92.0" resizable="false" text="passport id" />
-            <TableColumn fx:id="creatorIdColumn" prefWidth="203.0" text="creator id" />
+            <TableColumn fx:id="passportIdColumn" minWidth="0.0" prefWidth="86.0" resizable="false" text="passport id" />
+            <TableColumn fx:id="creatorIdColumn" text="creator id" />
          </columns></TableView>
         <MenuBar maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-background-color: null;">
             <menus>
@@ -65,22 +64,6 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <HBox maxHeight="-Infinity" maxWidth="-Infinity" GridPane.rowIndex="1">
-                    <children>
-                        <ScrollPane fx:id="" focusTraversable="false" style="-fx-background-color: transparent; -fx-background: transparent;" vbarPolicy="NEVER">
-                            <content>
-                                <HBox fx:id="filtersHBox" spacing="10.0">
-                                    <padding>
-                                        <Insets bottom="20.0" />
-                                    </padding>
-                                </HBox>
-                            </content>
-                            <HBox.margin>
-                                <Insets top="15.0" />
-                            </HBox.margin>
-                        </ScrollPane>
-                    </children>
-                </HBox>
                 <GridPane>
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -104,7 +87,7 @@
                 <Insets bottom="10.0" />
             </GridPane.margin>
         </GridPane>
-        <MenuBar style="-fx-background-color: grey;" GridPane.columnIndex="1">
+        <MenuBar style="-fx-background-color: #6B8E23;" GridPane.columnIndex="1">
             <menus>
                 <Menu fx:id="userMenu" mnemonicParsing="false" text="User">
                     <items>
@@ -115,22 +98,19 @@
         </MenuBar>
         <VBox alignment="TOP_CENTER" prefHeight="481.0" prefWidth="194.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <children>
-                <Label fx:id="controllersLabel" text="Controllers" />
+                <Label fx:id="commandsLabel" text="Commands" textFill="#001aff" />
+            <Button fx:id="helpButton" mnemonicParsing="false" prefWidth="129.0" text="help" textAlignment="CENTER" wrapText="true" />
+                <Button fx:id="historyButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="history" textAlignment="CENTER" wrapText="true" />
+                <Button fx:id="infoButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="info" textAlignment="CENTER" wrapText="true" />
+                <Button fx:id="headButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="head" textAlignment="CENTER" wrapText="true" />
                 <Button fx:id="addButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="add" textAlignment="CENTER" wrapText="true">
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
                 </Button>
                 <Button fx:id="clearButton" minHeight="26.0" minWidth="129.0" mnemonicParsing="false" prefWidth="129.0" text="clear" textAlignment="CENTER" wrapText="true" />
-                <Button fx:id="filterBySalaryButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="filter by salary" textAlignment="CENTER" wrapText="true" />
-                <Button fx:id="headButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="head" textAlignment="CENTER" wrapText="true" />
-                <Button fx:id="historyButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="history" textAlignment="CENTER" wrapText="true" />
-                <Button fx:id="infoButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="info" textAlignment="CENTER" wrapText="true" />
-                <Button fx:id="printDescendingButton" mnemonicParsing="false" prefWidth="129.0" text="print descending" textAlignment="CENTER" wrapText="true" />
-                <Button fx:id="printFieldDescendingPositionButton" mnemonicParsing="false" prefWidth="129.0" text="print field descending position" textAlignment="CENTER" wrapText="true" />
                 <Button fx:id="removeByIdButton" mnemonicParsing="false" prefWidth="129.0" text="remove by id" textAlignment="CENTER" wrapText="true" />
                 <Button fx:id="removeGreaterButton" mnemonicParsing="false" prefWidth="129.0" text="remove greater" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="showButton" mnemonicParsing="false" prefWidth="129.0" text="show" textAlignment="CENTER" wrapText="true" />
             <Button fx:id="updateButton" mnemonicParsing="false" prefWidth="129.0" text="update" textAlignment="CENTER" wrapText="true" />
             <Button fx:id="executeScriptButton" mnemonicParsing="false" prefWidth="129.0" text="execute script" textAlignment="CENTER" wrapText="true" />
             </children>
