@@ -48,7 +48,7 @@
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4" />
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="5">
                <children>
-                  <Button mnemonicParsing="false" onMouseEntered="#onButtonMouseEntered" onMouseExited="#onButtonMouseExited" prefHeight="47.0" prefWidth="97.0" style="-fx-background-color: null; -fx-border-color: brown; -fx-border-radius: 50; -fx-border-width: 1;" text="Ok">
+                  <Button fx:id="channgeCoordinatesButton" mnemonicParsing="false" prefHeight="47.0" prefWidth="97.0" style="-fx-background-color: null; -fx-border-color: brown; -fx-border-radius: 50; -fx-border-width: 1;" text="Ok">
                      <font>
                         <Font size="20.0" />
                      </font>

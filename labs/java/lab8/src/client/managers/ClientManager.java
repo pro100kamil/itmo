@@ -24,7 +24,7 @@ public class ClientManager {
     private Console console = new StandardConsole();
     private final Client client;
 
-    private User user;
+    private static User user;
 
     public ClientManager() {
         client = new Client(Configuration.getHost(), Configuration.getPort());

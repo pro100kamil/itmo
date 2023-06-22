@@ -5,20 +5,18 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-          prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1"
-          xmlns="http://javafx.com/javafx/20.0.1" fx:controller="UI.controllers.ExecuteScriptResultController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controllers.ExecuteScriptResultController">
   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="316.0" minWidth="10.0" prefWidth="316.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="5000.0" minWidth="10.0" prefWidth="41.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="5000.0" minWidth="10.0" prefWidth="509.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="5000.0" minWidth="10.0" prefWidth="50.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="231.0" minHeight="10.0" prefHeight="231.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="80.0" prefHeight="80.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="5000.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="5000.0" minHeight="10.0" prefHeight="332.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="5000.0" minHeight="26.0" prefHeight="26.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TextArea fx:id="textArea" editable="false" prefHeight="245.0" prefWidth="362.0" text="jkkjkl\&#10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextArea fx:id="textArea" editable="false" prefHeight="332.0" prefWidth="515.0" text="jkkjkl\&#10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
    </children>
 </GridPane>

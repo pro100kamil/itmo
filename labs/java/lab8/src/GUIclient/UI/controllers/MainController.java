@@ -27,6 +27,7 @@ import utils.SceneSwitcher;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -123,18 +124,7 @@ public class MainController extends BaseController {
     @FXML
     private Button usersButton;
 
-    private static void handle(ActionEvent event) {
-        CommandDescription commandDescription = new CommandDescription("info");
-        commandDescription.setArgs(new String[]{});
-        try {
-            clientManager.commandHandler(commandDescription, null);
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
-        MyAlerts.showInformationAlert("info", "info");
-
-    }
+    private final HashMap<String, Button> commandsToButtons = new HashMap<>();
 
     public Stage getCurrentStage() {
         return currentStage;
@@ -160,34 +150,50 @@ public class MainController extends BaseController {
         creatorIdColumn.setCellValueFactory(new PropertyValueFactory<>("creatorId"));
     }
 
-    public void setCollection(List<Worker> workers) {
-        tableView.setItems(FXCollections.observableArrayList(
-                workers
-        ));
-//        tableView.refresh();
-    }
+    public void initializeButtons() {
+        commandsToButtons.put("history", historyButton);
+        commandsToButtons.put("info", infoButton);
+        commandsToButtons.put("head", headButton);
+        commandsToButtons.put("add", addButton);
+        commandsToButtons.put("clear", clearButton);
+        commandsToButtons.put("remove_by_id", removeByIdButton);
+        commandsToButtons.put("remove_greater", removeGreaterButton);
+        commandsToButtons.put("update", updateButton);
 
-    public void showResultSimpleCommandInInformationAlert(String commandName){
-        CommandDescription commandDescription = new CommandDescription(commandName);
-        commandDescription.setArgs(new String[]{});
-
-        StringConsole stringConsole = new StringConsole();
-        clientManager.setConsole(stringConsole);
+        CommandDescription[] commandDescriptions;
         try {
-            clientManager.commandHandler(commandDescription, null);
+            commandDescriptions = clientManager.getAllCommands();
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 
-        MyAlerts.showInformationAlert(commandName, stringConsole.getAllText());
-    }
-
-    public void initialize() {
-//        TODO кнопки в зависимости от роли
+        for (CommandDescription commandDescription : commandDescriptions) {
+            String commandName = commandDescription.getName();
+            if (commandsToButtons.containsKey(commandName)) {
+                if (clientManager.getUser().getRole().ordinal() < commandDescription.getMinUserRole().ordinal()) {
+                    System.out.println("mmmmmm444");
+                    commandsToButtons.get(commandName).setVisible(false);
+                }
+            }
+        }
+        for (String commandName : commandsToButtons.keySet()) {
+            boolean flag = true;
+            for (CommandDescription commandDescription : commandDescriptions) {
+                if (commandName.equals(commandDescription.getName())) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                commandsToButtons.get(commandName).setVisible(false);
+            }
+        }
+        //        TODO кнопки в зависимости от роли
         usersButton.setVisible(false);
-//        System.out.println("user " + clientManager.getUser());
+        executeScriptButton.setVisible(false);
         if (clientManager.getUser().getRole() == UserRole.ADMIN) {
             usersButton.setVisible(true);
+            executeScriptButton.setVisible(true);
         }
 
         userMenu.setText(clientManager.getUser().getName());
@@ -218,6 +224,32 @@ public class MainController extends BaseController {
         infoButton.setOnAction((event -> showResultSimpleCommandInInformationAlert("info")));
         historyButton.setOnAction((event -> showResultSimpleCommandInInformationAlert("history")));
 
+    }
+
+    public void setCollection(List<Worker> workers) {
+        tableView.setItems(FXCollections.observableArrayList(
+                workers
+        ));
+//        tableView.refresh();
+    }
+
+    public void showResultSimpleCommandInInformationAlert(String commandName){
+        CommandDescription commandDescription = new CommandDescription(commandName);
+        commandDescription.setArgs(new String[]{});
+
+        StringConsole stringConsole = new StringConsole();
+        clientManager.setConsole(stringConsole);
+        try {
+            clientManager.commandHandler(commandDescription, null);
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        MyAlerts.showInformationAlert(commandName, stringConsole.getAllText());
+    }
+
+    public void initialize() {
+        initializeButtons();
         initializeColumns();
     }
 
