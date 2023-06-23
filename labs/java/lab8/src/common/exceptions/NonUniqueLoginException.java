@@ -6,6 +6,7 @@ package common.exceptions;
 public class NonUniqueLoginException extends WrongCommandArgsException {
     @Override
     public String toString() {
-        return "Это имя пользователя занято!";
+        return "loginAlreadyExists";
+//        return "Это имя пользователя занято!";
     }
 }

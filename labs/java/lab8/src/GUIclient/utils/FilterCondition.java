@@ -78,14 +78,9 @@ public class FilterCondition {
             return worker.getPerson().getBirthday().isAfter(WorkerValidateManager.getBirthday(value));
         }
         return false;
-}
+    }
 
     public List<Worker> birthdayFilter(List<Worker> collection) {
-//        return collection.stream().filter((worker ->
-//        if (birthdaySign.equals("")) return true;
-//        else if (birthdaySign.equals("<")) return false;
-//        else return false;
-//                ))
         return collection.stream().filter(worker -> compareBirthdays(worker, birthdaySign, birthdayValue)).collect(Collectors.toList());
     }
 

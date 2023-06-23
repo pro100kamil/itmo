@@ -7,10 +7,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import localizations.CurrentLanguage;
 import utils.FilterCondition;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.ResourceBundle;
 
 public class FilterController extends BaseController {
     @FXML
@@ -154,8 +156,27 @@ public class FilterController extends BaseController {
         initializeComboBoxes();
 
         button.setOnAction((event -> handleButton()));
+        changeLocale();
     }
 
+    public void changeLocale() {
+        ResourceBundle resourceBundle = CurrentLanguage.getCurrentResourceBundle();
+//        idLabel.setText(resourceBundle.getString("inputWorker"));
+
+        idLabel.setText(resourceBundle.getString("id"));
+        nameLabel.setText(resourceBundle.getString("name"));
+        xLabel.setText(resourceBundle.getString("coordinateX"));
+        yLabel.setText(resourceBundle.getString("coordinateY"));
+        salaryLabel.setText(resourceBundle.getString("salary"));
+        positionLabel.setText(resourceBundle.getString("position"));
+        statusLabel.setText(resourceBundle.getString("status"));
+        birthdayLabel.setText(resourceBundle.getString("birthday"));
+        heightLabel.setText(resourceBundle.getString("height"));
+        passportIdLabel.setText(resourceBundle.getString("passportId"));
+        creatorIdLabel.setText(resourceBundle.getString("creatorId"));
+
+        button.setText(resourceBundle.getString("submit"));
+    }
     private void handleButton() {
         for (int i = 0; i < comboBoxes.size(); i++) {
             ComboBox<String> comboBox = comboBoxes.get(i);

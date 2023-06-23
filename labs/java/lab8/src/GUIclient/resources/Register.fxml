@@ -1,27 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="155.0" minWidth="200.0" prefHeight="155.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controllers.RegisterController">
-   <children>
-      <Label fx:id="mainLabel" text="Вход и регистрация" />
-      <Label fx:id="loginLabel" text="login" />
-      <TextField fx:id="loginField" />
-      <Label fx:id="passwordLabel" text="password" />
-      <PasswordField fx:id="passwordField" />
-      <Label fx:id="errorLabel" />
-      <BorderPane prefHeight="63.0" prefWidth="300.0">
-         <left>
-            <Button fx:id="authButton" mnemonicParsing="false" text="auth" BorderPane.alignment="CENTER" />
-         </left>
-         <right>
-            <Button fx:id="registerButton" mnemonicParsing="false" text="register" BorderPane.alignment="CENTER" />
-         </right>
-      </BorderPane>
-   </children>
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="155.0" minWidth="200.0"
+      prefHeight="199.0" prefWidth="300.0" style="-fx-background-color: #FFA07A;"
+      xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="UI.controllers.RegisterController">
+    <children>
+        <HBox prefHeight="68.0" prefWidth="300.0">
+            <children>
+                <ComboBox fx:id="languageComboBox" prefWidth="150.0"/>
+                <Button fx:id="changeLanguageButton" mnemonicParsing="false" text="change language"/>
+            </children>
+        </HBox>
+        <Label fx:id="mainLabel" text="auth and register"/>
+        <Label fx:id="loginLabel" text="login"/>
+        <TextField fx:id="loginField"/>
+        <Label fx:id="passwordLabel" text="password"/>
+        <PasswordField fx:id="passwordField"/>
+        <Label fx:id="errorLabel"/>
+        <BorderPane prefHeight="63.0" prefWidth="300.0">
+            <left>
+                <Button fx:id="authButton" mnemonicParsing="false" text="auth" BorderPane.alignment="CENTER"/>
+            </left>
+            <right>
+                <Button fx:id="registerButton" mnemonicParsing="false" text="register" BorderPane.alignment="CENTER"/>
+            </right>
+        </BorderPane>
+    </children>
 </VBox>

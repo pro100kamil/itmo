@@ -17,12 +17,15 @@ import javafx.scene.layout.Pane;
 import javafx.scene.transform.Affine;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import localizations.CurrentLanguage;
+import utils.MyAlerts;
 import utils.SceneSwitcher;
 import utils.WorkerSprite;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class Visualizer extends BaseController {
     private Worker selectedworker;
@@ -97,7 +100,17 @@ public class Visualizer extends BaseController {
         ));
         frameTimer.setCycleCount(Timeline.INDEFINITE);
         frameTimer.play();
+        changeLocale();
     }
+
+    public void changeLocale() {
+        ResourceBundle resourceBundle = CurrentLanguage.getCurrentResourceBundle();
+        backToTableButton.setText(resourceBundle.getString("backToTable"));
+        coordinateXLabel.setText(resourceBundle.getString("coordinateX"));
+        coordinateYLabel.setText(resourceBundle.getString("coordinateY"));
+        channgeCoordinatesButton.setText(resourceBundle.getString("changeCoordinates"));
+    }
+
 
     private void onCanvasMouseMoved(MouseEvent mouseEvent) {
         Affine affine = canvas.getGraphicsContext2D().getTransform();
@@ -145,11 +158,11 @@ public class Visualizer extends BaseController {
         WorkerSprite workerSprite = null;
         for (WorkerSprite sprite : workerSprites) {
             if (sprite.contains(newX, newY)) {
-//                var currentUsername = client.credentials().getUsername();
-//                if (!sprite.getworker().getOwner().getUsername().equals(currentUsername)) {
                 if (sprite.getWorker().getCreatorId() != clientManager.getUser().getId()) {
-                    System.out.println(clientManager.getUser());
-                    System.out.println("нельзя изменять чужого работника");
+                    MyAlerts.showWarningAlert("Чужой работник",
+                            CurrentLanguage.getCurrentResourceBundle().getString("foreignWorker"));
+
+//                    MyAlerts.showWarningAlert("Чужой работник", "Нельзя изменять чужого работника");
                     return;
                 }
                 workerSprite = sprite;
@@ -163,6 +176,7 @@ public class Visualizer extends BaseController {
     }
     @FXML
     protected void onOkButtonPressed(ActionEvent actionEvent) {
+        channgeCoordinatesButton.setDisable(true);
         System.out.println(selectedworker);
         if (selectedworker == null) {
             return;
@@ -172,13 +186,15 @@ public class Visualizer extends BaseController {
         CommandDescription commandDescription = new CommandDescription("update");
         commandDescription.setArgs(new String[]{String.valueOf(selectedworker.getId())});
         new Thread(() -> {
-            try {
-                clientManager.commandHandler(commandDescription, selectedworker);
-                updateSprite(selectedworker);
-            } catch (IOException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+            updateSprite(selectedworker);
         }).start();
+        try {
+            clientManager.commandHandler(commandDescription, selectedworker);
+
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        channgeCoordinatesButton.setDisable(false);
     }
 
     private void resetSelection() {
@@ -219,14 +235,14 @@ public class Visualizer extends BaseController {
         }
         var x = (double) worker.getCoordinates().getX();
         var y = (double) worker.getCoordinates().getY();
-        for (var sprite : workerSprites) {
+        for (WorkerSprite sprite : workerSprites) {
             if (sprite.getWorker().getId() == worker.getId()) {
                 sprite.setTarget(x, y);
             }
         }
     }
 
-    public static List<WorkerSprite> getworkerSprites() {
+    public static List<WorkerSprite> getWorkerSprites() {
         return workerSprites;
     }
     public void handleBackButton() {

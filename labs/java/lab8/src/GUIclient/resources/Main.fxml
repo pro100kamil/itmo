@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -14,107 +15,117 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="600.0" prefWidth="863.0" style="-fx-background-color: #EE82EE;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controllers.MainController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="600.0"
+          prefWidth="863.0" style="-fx-background-color: #FFA07A;" xmlns="http://javafx.com/javafx/20.0.1"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controllers.MainController">
     <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="661.7692260742188" />
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="138.23077392578125" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="661.7692260742188"/>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="138.23077392578125"/>
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.885089874267578" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="65.12806701660156" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="10.0" prefHeight="481.87193298339844" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="28.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.885089874267578" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="65.12806701660156" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="481.87193298339844" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="28.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES"/>
     </rowConstraints>
     <children>
         <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
-         <columns>
-            <TableColumn fx:id="idColumn" prefWidth="54.0" text="id" />
-            <TableColumn fx:id="nameColumn" prefWidth="50.0" text="name" />
-            <TableColumn fx:id="coordinateXColumn" prefWidth="32.0" text="X" />
-            <TableColumn fx:id="coordinateYColumn" prefWidth="35.0" text="Y" />
-            <TableColumn fx:id="creationDateColumn" prefWidth="84.0" text="creation date" />
-            <TableColumn fx:id="salaryColumn" prefWidth="61.0" text="salary" />
-            <TableColumn fx:id="positionColumn" prefWidth="51.0" text="position" />
-            <TableColumn fx:id="statusColumn" prefWidth="56.0" text="status" />
-            <TableColumn fx:id="birthdayColumn" prefWidth="85.0" resizable="false" text="birthday" />
-            <TableColumn fx:id="heightColumn" prefWidth="49.0" resizable="false" text="height" />
-            <TableColumn fx:id="passportIdColumn" minWidth="0.0" prefWidth="86.0" resizable="false" text="passport id" />
-            <TableColumn fx:id="creatorIdColumn" text="creator id" />
-         </columns></TableView>
-        <MenuBar maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-background-color: null;">
-            <menus>
-                <Menu fx:id="infoMenu" mnemonicParsing="false" text="Info">
-                    <items>
-                        <MenuItem fx:id="infoMenuItem" mnemonicParsing="false" text="Info" />
-                    </items>
-                </Menu>
-                <Menu fx:id="settingsMenu" mnemonicParsing="false" text="Settings">
-                    <items>
-                        <MenuItem fx:id="languageMenuItem" mnemonicParsing="false" text="Language" />
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
+            <columns>
+                <TableColumn fx:id="idColumn" prefWidth="54.0" text="id"/>
+                <TableColumn fx:id="nameColumn" prefWidth="50.0" text="name"/>
+                <TableColumn fx:id="coordinateXColumn" prefWidth="32.0" text="X"/>
+                <TableColumn fx:id="coordinateYColumn" prefWidth="35.0" text="Y"/>
+                <TableColumn fx:id="creationDateColumn" prefWidth="84.0" text="creation date"/>
+                <TableColumn fx:id="salaryColumn" prefWidth="61.0" text="salary"/>
+                <TableColumn fx:id="positionColumn" prefWidth="51.0" text="position"/>
+                <TableColumn fx:id="statusColumn" prefWidth="56.0" text="status"/>
+                <TableColumn fx:id="birthdayColumn" prefWidth="85.0" resizable="false" text="birthday"/>
+                <TableColumn fx:id="heightColumn" prefWidth="49.0" resizable="false" text="height"/>
+                <TableColumn fx:id="passportIdColumn" minWidth="0.0" prefWidth="86.0" resizable="false"
+                             text="passport id"/>
+                <TableColumn fx:id="creatorIdColumn" text="creator id"/>
+            </columns>
+        </TableView>
         <GridPane GridPane.rowIndex="1">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
                 <GridPane>
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                     </rowConstraints>
                     <children>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                             <children>
-                                <Button fx:id="createFilterButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="create filter" />
-                                <Button fx:id="removeFilterButton" mnemonicParsing="false" text="remove filter" />
+                                <Button fx:id="createFilterButton" minHeight="-Infinity" minWidth="-Infinity"
+                                        mnemonicParsing="false" text="create filter"/>
+                                <Button fx:id="removeFilterButton" mnemonicParsing="false" text="remove filter"/>
                             </children>
                         </HBox>
-                        <Button fx:id="visualizeButton" mnemonicParsing="false" text="visualize" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+                        <Button fx:id="visualizeButton" mnemonicParsing="false" text="visualize"
+                                GridPane.columnIndex="1" GridPane.halignment="RIGHT"/>
                     </children>
                 </GridPane>
             </children>
             <GridPane.margin>
-                <Insets bottom="10.0" />
+                <Insets bottom="10.0"/>
             </GridPane.margin>
         </GridPane>
         <MenuBar style="-fx-background-color: #6B8E23;" GridPane.columnIndex="1">
             <menus>
                 <Menu fx:id="userMenu" mnemonicParsing="false" text="User">
                     <items>
-                        <MenuItem fx:id="logOutMenuItem" mnemonicParsing="false" text="Log_Out" />
+                        <MenuItem fx:id="logOutMenuItem" mnemonicParsing="false" text="logout"/>
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
-        <VBox alignment="TOP_CENTER" prefHeight="481.0" prefWidth="194.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <VBox alignment="TOP_CENTER" prefHeight="481.0" prefWidth="194.0" spacing="5.0" GridPane.columnIndex="1"
+              GridPane.rowIndex="2">
             <children>
-                <Label fx:id="commandsLabel" text="Commands" textFill="#001aff" />
-            <Button fx:id="helpButton" mnemonicParsing="false" prefWidth="129.0" text="help" textAlignment="CENTER" wrapText="true" />
-                <Button fx:id="historyButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="history" textAlignment="CENTER" wrapText="true" />
-                <Button fx:id="infoButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="info" textAlignment="CENTER" wrapText="true" />
-                <Button fx:id="headButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="head" textAlignment="CENTER" wrapText="true" />
-                <Button fx:id="addButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="add" textAlignment="CENTER" wrapText="true">
+                <Label fx:id="commandsLabel" text="Commands" textFill="#001aff"/>
+                <Button fx:id="helpButton" mnemonicParsing="false" prefWidth="129.0" text="help" textAlignment="CENTER"
+                        wrapText="true"/>
+                <Button fx:id="historyButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="history"
+                        textAlignment="CENTER" wrapText="true"/>
+                <Button fx:id="infoButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="info"
+                        textAlignment="CENTER" wrapText="true"/>
+                <Button fx:id="headButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="head"
+                        textAlignment="CENTER" wrapText="true"/>
+                <Button fx:id="addButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="add"
+                        textAlignment="CENTER" wrapText="true">
                     <VBox.margin>
-                        <Insets />
+                        <Insets/>
                     </VBox.margin>
                 </Button>
-                <Button fx:id="clearButton" minHeight="26.0" minWidth="129.0" mnemonicParsing="false" prefWidth="129.0" text="clear" textAlignment="CENTER" wrapText="true" />
-                <Button fx:id="removeByIdButton" mnemonicParsing="false" prefWidth="129.0" text="remove by id" textAlignment="CENTER" wrapText="true" />
-                <Button fx:id="removeGreaterButton" mnemonicParsing="false" prefWidth="129.0" text="remove greater" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="updateButton" mnemonicParsing="false" prefWidth="129.0" text="update" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="executeScriptButton" mnemonicParsing="false" prefWidth="129.0" text="execute script" textAlignment="CENTER" wrapText="true" />
+                <Button fx:id="clearButton" minHeight="26.0" minWidth="129.0" mnemonicParsing="false" prefWidth="129.0"
+                        text="clear" textAlignment="CENTER" wrapText="true"/>
+                <Button fx:id="removeByIdButton" mnemonicParsing="false" prefWidth="129.0" text="remove by id"
+                        textAlignment="CENTER" wrapText="true"/>
+                <Button fx:id="removeGreaterButton" mnemonicParsing="false" prefWidth="129.0" text="remove greater"
+                        textAlignment="CENTER" wrapText="true"/>
+                <Button fx:id="updateButton" mnemonicParsing="false" prefWidth="129.0" text="update"
+                        textAlignment="CENTER" wrapText="true"/>
+                <Button fx:id="executeScriptButton" mnemonicParsing="false" prefWidth="129.0" text="execute script"
+                        textAlignment="CENTER" wrapText="true"/>
             </children>
         </VBox>
-      <Button fx:id="usersButton" mnemonicParsing="false" text="users" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button fx:id="usersButton" mnemonicParsing="false" text="users" GridPane.columnIndex="1"
+                GridPane.rowIndex="1"/>
+        <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <ComboBox fx:id="languageComboBox" prefWidth="150.0"/>
+                <Button fx:id="changeLanguageButton" mnemonicParsing="false" text="change language"/>
+            </children>
+        </HBox>
     </children>
 </GridPane>

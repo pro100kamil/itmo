@@ -8,8 +8,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import localizations.CurrentLanguage;
 
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 
 public class GetWorkerController extends BaseController {
     private Worker worker;
@@ -78,60 +80,78 @@ public class GetWorkerController extends BaseController {
     public void initialize() {
         errorLabel.setTextFill(Color.RED);
         button.setOnAction((event -> handleButton()));
+        changeLocale();
+    }
 
+    public void changeLocale() {
+        ResourceBundle resourceBundle = CurrentLanguage.getCurrentResourceBundle();
+        mainLabel.setText(resourceBundle.getString("inputWorker"));
+
+        nameLabel.setText(resourceBundle.getString("name"));
+        coordinateXLabel.setText(resourceBundle.getString("coordinateX"));
+        coordinateYLabel.setText(resourceBundle.getString("coordinateY"));
+        salaryLabel.setText(resourceBundle.getString("salary"));
+        positionLabel.setText(resourceBundle.getString("position"));
+        statusLabel.setText(resourceBundle.getString("status"));
+        birthdayLabel.setText(resourceBundle.getString("birthday"));
+        heightLabel.setText(resourceBundle.getString("height"));
+        passportLabel.setText(resourceBundle.getString("passportId"));
+        button.setText(resourceBundle.getString("submit"));
+        errorLabel.setText("");
     }
 
     public void handleButton() {
+        ResourceBundle resourceBundle = CurrentLanguage.getCurrentResourceBundle();
         if (!WorkerValidateManager.isName(nameField.getText())) {
-            errorLabel.setText("Имя не должно быть пустым");
+            errorLabel.setText(resourceBundle.getString("invalidName"));
             return;
         }
         String name = WorkerValidateManager.getName(nameField.getText());
 
         if (!WorkerValidateManager.isCoordinateX(coordinateXField.getText())) {
-            errorLabel.setText("Координата X должна быть целым числом");
+            errorLabel.setText(resourceBundle.getString("invalidX"));
             return;
         }
         Integer x = WorkerValidateManager.getCoordinateX(coordinateXField.getText());
         if (!WorkerValidateManager.isCoordinateY(coordinateYField.getText())) {
-            errorLabel.setText("Координата Y должна быть целым числом");
+            errorLabel.setText(resourceBundle.getString("invalidY"));
             return;
         }
         Integer y = WorkerValidateManager.getCoordinateY(coordinateYField.getText());
         Coordinates coordinates = new Coordinates(x, y);
 
         if (!WorkerValidateManager.isSalary(salaryField.getText())) {
-            errorLabel.setText("Зарплата должна быть вещественным числом");
+            errorLabel.setText(resourceBundle.getString("invalidSalary"));
             return;
         }
         Float salary = WorkerValidateManager.getSalary(salaryField.getText());
 
         if (!WorkerValidateManager.isPosition(positionField.getText())) {
-            errorLabel.setText("Несуществующая позиция");
+            errorLabel.setText(resourceBundle.getString("invalidPosition"));
             return;
         }
         Position position = WorkerValidateManager.getPosition(positionField.getText());
 
         if (!WorkerValidateManager.isStatus(statusField.getText())) {
-            errorLabel.setText("Несуществующий статус");
+            errorLabel.setText(resourceBundle.getString("invalidStatus"));
             return;
         }
         Status status = WorkerValidateManager.getStatus(statusField.getText());
 
         if (!WorkerValidateManager.isBirthday(birthdayField.getText())) {
-            errorLabel.setText("Некорректная дата");
+            errorLabel.setText(resourceBundle.getString("invalidBirthday"));
             return;
         }
         LocalDate birthday = WorkerValidateManager.getBirthday(birthdayField.getText());
 
         if (!WorkerValidateManager.isHeight(heightField.getText())) {
-            errorLabel.setText("Некорректный рост");
+            errorLabel.setText(resourceBundle.getString("invalidHeight"));
             return;
         }
         float height = WorkerValidateManager.getHeight(heightField.getText());
 
         if (!WorkerValidateManager.isPassportID(passportField.getText())) {
-            errorLabel.setText("Некорректная дата");
+            errorLabel.setText(resourceBundle.getString("invalidPassportId"));
             return;
         }
         errorLabel.setText("");

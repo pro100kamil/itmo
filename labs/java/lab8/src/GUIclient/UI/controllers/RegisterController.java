@@ -2,17 +2,18 @@ package UI.controllers;
 
 import common.commands.CommandDescription;
 import common.models.User;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import localizations.CurrentLanguage;
+import localizations.Languages;
 import utils.SceneSwitcher;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class RegisterController extends BaseController {
     @FXML
@@ -38,6 +39,12 @@ public class RegisterController extends BaseController {
     @FXML
     private Label passwordLabel;
 
+    @FXML
+    private Button changeLanguageButton;
+
+    @FXML
+    private ComboBox<String> languageComboBox;
+
     public Stage getCurrentStage() {
         return currentStage;
     }
@@ -55,9 +62,30 @@ public class RegisterController extends BaseController {
     public void initialize() {
         errorLabel.setTextFill(Color.RED);
 
+        languageComboBox.setItems(FXCollections.observableArrayList(Languages.getStringLanguages()));
+        languageComboBox.setValue(CurrentLanguage.getLanguage());
+
         registerButton.setOnAction(this::handleButton);
         authButton.setOnAction(this::handleButton);
+        changeLanguageButton.setOnAction((event -> {
+            CurrentLanguage.setLanguage(languageComboBox.getValue());
+            changeLocale();
+        }));
 
+
+        changeLocale();
+    }
+
+    public void changeLocale() {
+        ResourceBundle resourceBundle = CurrentLanguage.getCurrentResourceBundle();
+        changeLanguageButton.setText(resourceBundle.getString("changeLanguage"));
+        mainLabel.setText(resourceBundle.getString("authAndRegister"));
+        loginLabel.setText(resourceBundle.getString("login"));
+        passwordLabel.setText(resourceBundle.getString("password"));
+        authButton.setText(resourceBundle.getString("auth"));
+        registerButton.setText(resourceBundle.getString("register"));
+
+        errorLabel.setText("");
     }
 
     private void handleButton(ActionEvent actionEvent) {
@@ -66,13 +94,14 @@ public class RegisterController extends BaseController {
         if (button == registerButton) commandName = "register";
         else commandName = "auth";
 
+        ResourceBundle resourceBundle = CurrentLanguage.getCurrentResourceBundle();
         if (loginField.getText().equals("") || passwordField.getText().equals("")) {
-            errorLabel.setText("Логин и пароль не должны быть пустыми");
+//            errorLabel.setText("Логин и пароль не должны быть пустыми");
+            errorLabel.setText(resourceBundle.getString("emptyCredentials"));
             return;
         }
 
         User user = getUser();
-        System.out.println(user);
 
         CommandDescription commandDescription = new CommandDescription(commandName);
         commandDescription.setArgs(new String[]{user.getName(), user.getPassword()});
@@ -80,7 +109,11 @@ public class RegisterController extends BaseController {
         try {
             String errorMessage = clientManager.getErrorMessage(commandDescription);
             if (!errorMessage.equals("")) {
-                errorLabel.setText(errorMessage);
+                if (resourceBundle.containsKey(errorMessage)) {
+                    errorLabel.setText(resourceBundle.getString(errorMessage));
+                } else {
+                    errorLabel.setText(errorMessage);
+                }
                 return;
             }
             clientManager.commandHandler(commandDescription, null);

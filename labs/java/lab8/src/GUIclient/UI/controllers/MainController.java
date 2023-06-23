@@ -2,9 +2,7 @@ package UI.controllers;
 
 import client.commands.ExecuteScript;
 import client.commands.Help;
-import client.managers.ClientManager;
 import common.commands.CommandDescription;
-import common.consoles.Console;
 import common.consoles.StringConsole;
 import common.managers.FileManager;
 import common.models.Position;
@@ -16,12 +14,9 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import localizations.CurrentLanguage;
@@ -61,16 +56,6 @@ public class MainController extends BaseController {
 
     @FXML
     private Button infoButton;
-
-    @FXML
-    private Menu infoMenu;
-
-    @FXML
-    private MenuItem infoMenuItem;
-
-    @FXML
-    private MenuItem languageMenuItem;
-
     @FXML
     private MenuItem logOutMenuItem;
 
@@ -82,9 +67,6 @@ public class MainController extends BaseController {
 
     @FXML
     private Button removeGreaterButton;
-
-    @FXML
-    private Menu settingsMenu;
 
     @FXML
     private Button helpButton;
@@ -131,6 +113,12 @@ public class MainController extends BaseController {
     @FXML
     private Button usersButton;
 
+    @FXML
+    private Button changeLanguageButton;
+
+    @FXML
+    private ComboBox<String> languageComboBox;
+
     private final HashMap<String, Button> commandsToButtons = new HashMap<>();
 
     public Stage getCurrentStage() {
@@ -161,8 +149,16 @@ public class MainController extends BaseController {
 
         usersButton.setText(resourceBundle.getString("users"));
 
+        helpButton.setText(resourceBundle.getString("help"));
+
+        commandsLabel.setText(resourceBundle.getString("commands"));
         for (String commandName : commandsToButtons.keySet()) {
-            commandsToButtons.get(commandName).setText(commandName);
+            try {
+                commandsToButtons.get(commandName).setText(resourceBundle.getString(commandName));
+            } catch (Exception e) {
+                System.out.println(e);
+                System.out.println(commandName);
+            }
         }
     }
 
@@ -183,6 +179,11 @@ public class MainController extends BaseController {
     }
 
     public void initializeButtons() {
+        changeLanguageButton.setOnAction((event -> {
+            CurrentLanguage.setLanguage(languageComboBox.getValue());
+            changeLocale();
+        }));
+
         commandsToButtons.put("history", historyButton);
         commandsToButtons.put("info", infoButton);
         commandsToButtons.put("head", headButton);
@@ -200,15 +201,6 @@ public class MainController extends BaseController {
             throw new RuntimeException(e);
         }
 
-        for (CommandDescription commandDescription : commandDescriptions) {
-            String commandName = commandDescription.getName();
-            if (commandsToButtons.containsKey(commandName)) {
-                if (clientManager.getUser().getRole().ordinal() < commandDescription.getMinUserRole().ordinal()) {
-                    System.out.println("mmmmmm444");
-                    commandsToButtons.get(commandName).setVisible(false);
-                }
-            }
-        }
         for (String commandName : commandsToButtons.keySet()) {
             boolean flag = true;
             for (CommandDescription commandDescription : commandDescriptions) {
@@ -221,7 +213,7 @@ public class MainController extends BaseController {
                 commandsToButtons.get(commandName).setVisible(false);
             }
         }
-        //        TODO кнопки в зависимости от роли
+
         usersButton.setVisible(false);
         if (clientManager.getUser().getRole() == UserRole.ADMIN) {
             usersButton.setVisible(true);
@@ -285,7 +277,7 @@ public class MainController extends BaseController {
 //        tableView.refresh();
     }
 
-    public void showResultSimpleCommandInInformationAlert(String commandName){
+    public void showResultSimpleCommandInInformationAlert(String commandName) {
         CommandDescription commandDescription = new CommandDescription(commandName);
         commandDescription.setArgs(new String[]{});
 
@@ -304,7 +296,9 @@ public class MainController extends BaseController {
         initializeButtons();
         initializeColumns();
 
-        CurrentLanguage.setCurrentResourceBundle(Languages.ru);
+        languageComboBox.setItems(FXCollections.observableArrayList(Languages.getStringLanguages()));
+        languageComboBox.setValue(CurrentLanguage.getLanguage());
+
 
         changeLocale();
 
@@ -420,9 +414,14 @@ public class MainController extends BaseController {
 
 
     private void handleRemoveByIdButton() {
+        ResourceBundle resourceBundle = CurrentLanguage.getCurrentResourceBundle();
         Worker worker = tableView.getSelectionModel().getSelectedItem();
         if (worker == null) {
-            MyAlerts.showWarningAlert("Выберите работника", "Надо выбрать работника, которого нужно удалить");
+            MyAlerts.showWarningAlert("Выберите работника", resourceBundle.getString("notSelectedWorker"));
+            return;
+        }
+        if (worker.getCreatorId() != clientManager.getUser().getId()) {
+            MyAlerts.showWarningAlert("Чужой работник", resourceBundle.getString("foreignWorker"));
             return;
         }
         CommandDescription commandDescription = new CommandDescription("remove_by_id");
@@ -438,9 +437,16 @@ public class MainController extends BaseController {
     }
 
     private void handleUpdateButton() {
+        ResourceBundle resourceBundle = CurrentLanguage.getCurrentResourceBundle();
         Worker oldWorker = tableView.getSelectionModel().getSelectedItem();
         if (oldWorker == null) {
-            MyAlerts.showWarningAlert("Выберите работника", "Надо выбрать работника, которого нужно обновить");
+//            MyAlerts.showWarningAlert("Выберите работника", "Надо выбрать работника, которого нужно обновить");
+            MyAlerts.showWarningAlert("Выберите работника", resourceBundle.getString("notSelectedWorker"));
+            return;
+        }
+        if (oldWorker.getCreatorId() != clientManager.getUser().getId()) {
+//            MyAlerts.showWarningAlert("Чужой работник", "Нельзя изменять чужого работника");
+            MyAlerts.showWarningAlert("Чужой работник", resourceBundle.getString("foreignWorker"));
             return;
         }
         CommandDescription commandDescription = new CommandDescription("update");
